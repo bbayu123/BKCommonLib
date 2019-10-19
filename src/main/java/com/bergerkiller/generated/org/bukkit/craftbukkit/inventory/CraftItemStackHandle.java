@@ -41,11 +41,11 @@ public abstract class CraftItemStackHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftItemStackClass extends Template.Class<CraftItemStackHandle> {
-        public final Template.Field.Converted<Object> handle = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> handle = new Template.Field.Converted<>();
 
-        public final Template.StaticMethod.Converted<Object> asNMSCopy = new Template.StaticMethod.Converted<Object>();
-        public final Template.StaticMethod.Converted<ItemStack> asCraftCopy = new Template.StaticMethod.Converted<ItemStack>();
-        public final Template.StaticMethod.Converted<ItemStack> asCraftMirror = new Template.StaticMethod.Converted<ItemStack>();
+        public final Template.StaticMethod.Converted<Object> asNMSCopy = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<ItemStack> asCraftCopy = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<ItemStack> asCraftMirror = new Template.StaticMethod.Converted<>();
 
     }
 

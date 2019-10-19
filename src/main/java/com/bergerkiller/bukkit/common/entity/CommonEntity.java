@@ -15,6 +15,7 @@ import com.bergerkiller.bukkit.common.internal.logic.EntityAddRemoveHandler;
 import com.bergerkiller.bukkit.common.internal.logic.EntityTypingHandler;
 import com.bergerkiller.bukkit.common.protocol.CommonPacket;
 import com.bergerkiller.bukkit.common.protocol.PacketType;
+import com.bergerkiller.bukkit.common.utils.ChunkUtil;
 import com.bergerkiller.bukkit.common.utils.CommonUtil;
 import com.bergerkiller.bukkit.common.utils.EntityUtil;
 import com.bergerkiller.bukkit.common.utils.PacketUtil;
@@ -30,6 +31,7 @@ import com.bergerkiller.generated.net.minecraft.server.WorldHandle;
 import com.bergerkiller.generated.net.minecraft.server.WorldServerHandle;
 import com.bergerkiller.generated.org.bukkit.craftbukkit.entity.CraftEntityHandle;
 import com.bergerkiller.generated.org.bukkit.craftbukkit.inventory.CraftInventoryHandle;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 import com.bergerkiller.mountiplex.reflection.declarations.Template.Handle;
 
 import org.bukkit.Bukkit;
@@ -117,7 +119,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
         EntityNetworkController oldController = null;
         EntityTrackerEntryHook hook = EntityTypingHandler.INSTANCE.getEntityTrackerEntryHook(Handle.getRaw(storedEntry));
         if (hook != null) {
-            oldController = (EntityNetworkController<CommonEntity<org.bukkit.entity.Entity>>) hook.getController();
+            oldController = hook.getController();
             if (oldController == controller) {
                 return; // No Change!
             }
@@ -127,7 +129,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
         // This is required to respawn the entity if so required
         List<Player> previousViewers;
         if (storedEntry != null) {
-            previousViewers = new ArrayList<Player>(storedEntry.getViewers());
+            previousViewers = new ArrayList<>(storedEntry.getViewers());
         } else {
             previousViewers = Collections.emptyList();
         }
@@ -220,7 +222,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
      */
     @SuppressWarnings("unchecked")
     public <C extends EntityController<?>> C getController(Class<? extends C> controllerType) {
-        EntityHook hook = EntityHook.get(getHandle(), EntityHook.class);
+        EntityHook hook = ClassInterceptor.get(getHandle(), EntityHook.class);
         if (hook == null || !hook.hasController()) {
             return null;
         }
@@ -242,7 +244,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public EntityController<CommonEntity<T>> getController() {
-        EntityHook hook = EntityHook.get(getHandle(), EntityHook.class);
+        EntityHook hook = ClassInterceptor.get(getHandle(), EntityHook.class);
         final EntityController controller;
         if (hook == null) {
             controller = new DefaultEntityController();
@@ -313,7 +315,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
      * @return True if hooked, False if not
      */
     protected boolean isHooked() {
-        return EntityHook.get(getHandle(), EntityHook.class) != null;
+        return ClassInterceptor.get(getHandle(), EntityHook.class) != null;
     }
 
     /**
@@ -382,7 +384,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
         // *** Replace entity in passenger and vehicle fields ***
         EntityHandle vehicle = newInstance.getVehicle();
         if (vehicle != null) {
-            List<EntityHandle> passengers = new ArrayList<EntityHandle>(vehicle.getPassengers());
+            List<EntityHandle> passengers = new ArrayList<>(vehicle.getPassengers());
             replaceInList(passengers, newInstance);
             vehicle.setPassengers(passengers);
         }
@@ -403,12 +405,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
         EntityAddRemoveHandler.INSTANCE.replace(world, oldInstance, newInstance);
 
         // *** Repeat the replacement in the server the next tick to make sure nothing lingers ***
-        CommonUtil.nextTick(new Runnable() {
-            @Override
-            public void run() {
-                EntityAddRemoveHandler.INSTANCE.replace(world, oldInstance, newInstance);
-            }
-        });
+        CommonUtil.nextTick(() -> EntityAddRemoveHandler.INSTANCE.replace(world, oldInstance, newInstance));
 
         // *** Make sure a controller is set when hooked ***
         if (this.isHooked()) {
@@ -478,16 +475,16 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
         // Handle chunk/slice movement
         // Remove from the previous chunk
         if (isLoaded && changedChunks) {
-            final org.bukkit.Chunk chunk = WorldUtil.getChunk(world, oldcx, oldcz);
+            final org.bukkit.Chunk chunk = ChunkUtil.getChunk(world, oldcx, oldcz);
             if (chunk != null) {
-                WorldUtil.removeEntity(chunk, entity);
+                ChunkUtil.removeEntity(chunk, entity);
             }
         }
         // Add to the new chunk
         if (!isLoaded || changedChunks) {
-            final org.bukkit.Chunk chunk = WorldUtil.getChunk(world, newcx, newcz);
+            final org.bukkit.Chunk chunk = ChunkUtil.getChunk(world, newcx, newcz);
             if (isLoaded = chunk != null) {
-                WorldUtil.addEntity(chunk, entity);
+                ChunkUtil.addEntity(chunk, entity);
             }
             this.handle.setIsLoaded(isLoaded);
         }
@@ -506,7 +503,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
                     commonPassenger.doPostTick();
                 } else {
                     if (updatedPassengers == null) {
-                        updatedPassengers = new ArrayList<org.bukkit.entity.Entity>();
+                        updatedPassengers = new ArrayList<>();
                         for (org.bukkit.entity.Entity passedPassenger : getPassengers()) {
                             if (passedPassenger == passenger) {
                                 break;
@@ -538,7 +535,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
 
         // If in a vehicle, make sure we eject first
         if (isInsideVehicle()) {
-            ExtendedEntity<Entity> extVeh = new ExtendedEntity<Entity>(getVehicle());
+            ExtendedEntity<Entity> extVeh = new ExtendedEntity<>(getVehicle());
             extVeh.removePassenger(entity);
         }
 
@@ -581,7 +578,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
                 // Hook the entity tracker to cancel track() on this Entity
                 Object nmsWorldHandle = HandleConversion.toWorldHandle(location.getWorld());
                 Object nmsEntityTrackerHandle = WorldServerHandle.T.getEntityTracker.raw.invoke(nmsWorldHandle);
-                EntityTrackerHook hook = EntityTrackerHook.get(nmsEntityTrackerHandle, EntityTrackerHook.class);
+                EntityTrackerHook hook = ClassInterceptor.get(nmsEntityTrackerHandle, EntityTrackerHook.class);
                 if (hook == null) {
                     hook = new EntityTrackerHook(nmsEntityTrackerHandle);
                     WorldServerHandle.T.setEntityTracker.raw.invoke(nmsWorldHandle, hook.hook(nmsEntityTrackerHandle));
@@ -608,7 +605,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
         // If there was a passenger, teleport it and let passenger enter again
         if (succ && !passengers.isEmpty()) {
             // Teleport the passenger, but ignore the chunk send check so vehicle is properly spawned to all players
-            List<org.bukkit.entity.Entity> teleportedPassengers = new ArrayList<org.bukkit.entity.Entity>();
+            List<org.bukkit.entity.Entity> teleportedPassengers = new ArrayList<>();
             this.handle.setIgnoreChunkCheck(true);
 
             float yawChange = location.getYaw() - oldLocation.getYaw();
@@ -630,7 +627,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
             if (!teleportedPassengers.isEmpty()) {
                 if (hasNetworkController) {
                     // network controller is used; simply set the passengers of the entity handle
-                    List<EntityHandle> passengerHandles = new ArrayList<EntityHandle>(teleportedPassengers.size());
+                    List<EntityHandle> passengerHandles = new ArrayList<>(teleportedPassengers.size());
                     for (org.bukkit.entity.Entity passenger : teleportedPassengers) {
                         EntityHandle phandle = EntityHandle.fromBukkit(passenger);
                         passengerHandles.add(phandle);
@@ -681,7 +678,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
             // Hook the entity tracker to cancel track() on this Entity
             Object nmsWorldHandle = HandleConversion.toWorldHandle(location.getWorld());
             Object nmsEntityTrackerHandle = WorldServerHandle.T.getEntityTracker.raw.invoke(nmsWorldHandle);
-            EntityTrackerHook hook = EntityTrackerHook.get(nmsEntityTrackerHandle, EntityTrackerHook.class);
+            EntityTrackerHook hook = ClassInterceptor.get(nmsEntityTrackerHandle, EntityTrackerHook.class);
             if (hook == null) {
                 hook = new EntityTrackerHook(nmsEntityTrackerHandle);
                 WorldServerHandle.T.setEntityTracker.raw.invoke(nmsWorldHandle, hook.hook(nmsEntityTrackerHandle));
@@ -824,7 +821,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
             return null;
         }
 
-        EntityHook hook = EntityHook.get(handle, EntityHook.class);
+        EntityHook hook = ClassInterceptor.get(handle, EntityHook.class);
         if (hook != null && hook.hasController()) {
             return (CommonEntity<T>) hook.getController().getEntity();
         }
@@ -843,7 +840,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
         CommonEntity<?> commonEntity = get(entity);
 
         Object oldInstance = commonEntity.getHandle();
-        EntityHook oldHook = EntityHook.get(oldInstance, EntityHook.class);
+        EntityHook oldHook = ClassInterceptor.get(oldInstance, EntityHook.class);
 
         // Detach controller and undo hook Entity replacement
         if (oldHook != null) {
@@ -858,7 +855,7 @@ public class CommonEntity<T extends org.bukkit.entity.Entity> extends ExtendedEn
             }
             try {
                 // Transfer data and replace
-                Object newInstance = EntityHook.unhook(oldInstance);
+                Object newInstance = ClassInterceptor.unhook(oldInstance);
                 commonEntity.replaceEntity(EntityHandle.createHandle(newInstance));
             } catch (Throwable t) {
                 Logging.LOGGER.log(Level.SEVERE, "Failed to unhook Common Entity Controller:");

@@ -86,33 +86,33 @@ public abstract class ItemStackHandle extends Template.Handle {
      */
     public static final class ItemStackClass extends Template.Class<ItemStackHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<ItemStackHandle> OPT_EMPTY_ITEM = new Template.StaticField.Converted<ItemStackHandle>();
+        public final Template.StaticField.Converted<ItemStackHandle> OPT_EMPTY_ITEM = new Template.StaticField.Converted<>();
 
         public final Template.Field.Integer amountField = new Template.Field.Integer();
-        public final Template.Field.Converted<Material> typeField = new Template.Field.Converted<Material>();
-        public final Template.Field.Converted<CommonTagCompound> tagField = new Template.Field.Converted<CommonTagCompound>();
+        public final Template.Field.Converted<Material> typeField = new Template.Field.Converted<>();
+        public final Template.Field.Converted<CommonTagCompound> tagField = new Template.Field.Converted<>();
         @Template.Optional
         public final Template.Field.Integer durabilityField = new Template.Field.Integer();
 
-        public final Template.StaticMethod.Converted<ItemStackHandle> newInstance = new Template.StaticMethod.Converted<ItemStackHandle>();
-        public final Template.StaticMethod.Converted<ItemStackHandle> fromBlockData = new Template.StaticMethod.Converted<ItemStackHandle>();
+        public final Template.StaticMethod.Converted<ItemStackHandle> newInstance = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<ItemStackHandle> fromBlockData = new Template.StaticMethod.Converted<>();
 
         @Template.Optional
-        public final Template.Method<Boolean> isEmpty = new Template.Method<Boolean>();
-        public final Template.Method.Converted<Object> getItem = new Template.Method.Converted<Object>();
-        public final Template.Method.Converted<ChatText> getName = new Template.Method.Converted<ChatText>();
-        public final Template.Method.Converted<Void> setName = new Template.Method.Converted<Void>();
+        public final Template.Method<Boolean> isEmpty = new Template.Method<>();
+        public final Template.Method.Converted<Object> getItem = new Template.Method.Converted<>();
+        public final Template.Method.Converted<ChatText> getName = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setName = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method<Void> setDamage_1_13 = new Template.Method<Void>();
-        public final Template.Method<Integer> getRepairCost = new Template.Method<Integer>();
-        public final Template.Method<Void> setRepairCost = new Template.Method<Void>();
-        public final Template.Method<Boolean> hasName = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> hasTag = new Template.Method<Boolean>();
-        public final Template.Method.Converted<CommonTagCompound> getTag = new Template.Method.Converted<CommonTagCompound>();
-        public final Template.Method.Converted<CommonTagCompound> saveToNBT = new Template.Method.Converted<CommonTagCompound>();
-        public final Template.Method.Converted<ItemStackHandle> cloneAndSubtract = new Template.Method.Converted<ItemStackHandle>();
-        public final Template.Method.Converted<ItemStackHandle> cloneItemStack = new Template.Method.Converted<ItemStackHandle>();
-        public final Template.Method<ItemStack> toBukkit = new Template.Method<ItemStack>();
+        public final Template.Method<Void> setDamage_1_13 = new Template.Method<>();
+        public final Template.Method<Integer> getRepairCost = new Template.Method<>();
+        public final Template.Method<Void> setRepairCost = new Template.Method<>();
+        public final Template.Method<Boolean> hasName = new Template.Method<>();
+        public final Template.Method<Boolean> hasTag = new Template.Method<>();
+        public final Template.Method.Converted<CommonTagCompound> getTag = new Template.Method.Converted<>();
+        public final Template.Method.Converted<CommonTagCompound> saveToNBT = new Template.Method.Converted<>();
+        public final Template.Method.Converted<ItemStackHandle> cloneAndSubtract = new Template.Method.Converted<>();
+        public final Template.Method.Converted<ItemStackHandle> cloneItemStack = new Template.Method.Converted<>();
+        public final Template.Method<ItemStack> toBukkit = new Template.Method<>();
 
     }
 

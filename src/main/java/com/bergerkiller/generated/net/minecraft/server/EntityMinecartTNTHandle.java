@@ -32,8 +32,8 @@ public abstract class EntityMinecartTNTHandle extends EntityMinecartAbstractHand
     public static final class EntityMinecartTNTClass extends Template.Class<EntityMinecartTNTHandle> {
         public final Template.Field.Integer fuse = new Template.Field.Integer();
 
-        public final Template.Method<Void> explode = new Template.Method<Void>();
-        public final Template.Method<Void> prime = new Template.Method<Void>();
+        public final Template.Method<Void> explode = new Template.Method<>();
+        public final Template.Method<Void> prime = new Template.Method<>();
 
     }
 

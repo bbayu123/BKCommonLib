@@ -25,9 +25,9 @@ import com.bergerkiller.mountiplex.reflection.util.FastMethod;
  * Handles region-based operations from MC 1.14 onwards
  */
 public class RegionHandler_1_14 extends RegionHandler {
-    private static final FastMethod<Collection<Object>> findWorldRegionFileInstances = new FastMethod<Collection<Object>>();
-    private static final FastMethod<Collection<IntVector2>> findWorldRegionFileCoordinates = new FastMethod<Collection<IntVector2>>();
-    private static final FastMethod<Object> findRegionFileAt = new FastMethod<Object>();
+    private static final FastMethod<Collection<Object>> findWorldRegionFileInstances = new FastMethod<>();
+    private static final FastMethod<Collection<IntVector2>> findWorldRegionFileCoordinates = new FastMethod<>();
+    private static final FastMethod<Object> findRegionFileAt = new FastMethod<>();
 
     public RegionHandler_1_14() {
         ClassResolver resolver = new ClassResolver();
@@ -93,7 +93,7 @@ public class RegionHandler_1_14 extends RegionHandler {
 
     @Override
     public Set<IntVector2> getRegions(World world) {
-        HashSet<IntVector2> regionIndices = new HashSet<IntVector2>();
+        HashSet<IntVector2> regionIndices = new HashSet<>();
 
         // Add all RegionFile instances in the cache
         regionIndices.addAll(findWorldRegionFileCoordinates.invoke(null, WorldHandle.fromBukkit(world).getRaw()));

@@ -52,19 +52,19 @@ public abstract class TileEntityHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class TileEntityClass extends Template.Class<TileEntityHandle> {
-        public final Template.Field.Converted<World> world_field = new Template.Field.Converted<World>();
-        public final Template.Field.Converted<IntVector3> position_field = new Template.Field.Converted<IntVector3>();
+        public final Template.Field.Converted<World> world_field = new Template.Field.Converted<>();
+        public final Template.Field.Converted<IntVector3> position_field = new Template.Field.Converted<>();
 
-        public final Template.Method.Converted<WorldHandle> getWorld = new Template.Method.Converted<WorldHandle>();
-        public final Template.Method.Converted<BlockPositionHandle> getPosition = new Template.Method.Converted<BlockPositionHandle>();
-        public final Template.Method.Converted<BlockData> getBlockDataIfCached = new Template.Method.Converted<BlockData>();
-        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<BlockData>();
-        public final Template.Method.Converted<Material> getType = new Template.Method.Converted<Material>();
+        public final Template.Method.Converted<WorldHandle> getWorld = new Template.Method.Converted<>();
+        public final Template.Method.Converted<BlockPositionHandle> getPosition = new Template.Method.Converted<>();
+        public final Template.Method.Converted<BlockData> getBlockDataIfCached = new Template.Method.Converted<>();
+        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Material> getType = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method<Integer> getLegacyData = new Template.Method<Integer>();
-        public final Template.Method.Converted<CommonPacket> getUpdatePacket = new Template.Method.Converted<CommonPacket>();
-        public final Template.Method.Converted<Void> load = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> save = new Template.Method.Converted<Void>();
+        public final Template.Method<Integer> getLegacyData = new Template.Method<>();
+        public final Template.Method.Converted<CommonPacket> getUpdatePacket = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> load = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> save = new Template.Method.Converted<>();
 
     }
 

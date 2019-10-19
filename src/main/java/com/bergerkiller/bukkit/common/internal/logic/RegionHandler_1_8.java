@@ -35,8 +35,8 @@ import com.bergerkiller.mountiplex.reflection.util.FastMethod;
  */
 public class RegionHandler_1_8 extends RegionHandler {
     private final Class<?> regionFileCacheType = CommonUtil.getNMSClass("RegionFileCache");
-    private final FastMethod<Boolean> chunkExists = new FastMethod<Boolean>();
-    private final FastField<Map<File, Object>> cacheField = new FastField<Map<File, Object>>();
+    private final FastMethod<Boolean> chunkExists = new FastMethod<>();
+    private final FastField<Map<File, Object>> cacheField = new FastField<>();
 
     public RegionHandler_1_8() {
         ClassResolver resolver = new ClassResolver();
@@ -119,7 +119,7 @@ public class RegionHandler_1_8 extends RegionHandler {
     @Override
     public Set<IntVector2> getRegions(World world) {
         // Obtain the region file names
-        Set<File> regionFiles = new HashSet<File>();
+        Set<File> regionFiles = new HashSet<>();
         File regionFolder = Common.SERVER.getWorldRegionFolder(world.getName());
         if (regionFolder != null) {
             String[] regionFileNames = regionFolder.list();
@@ -142,7 +142,7 @@ public class RegionHandler_1_8 extends RegionHandler {
         }
 
         // Parse all found files into the region x and z coordinates
-        HashSet<IntVector2> regionIndices = new HashSet<IntVector2>();
+        HashSet<IntVector2> regionIndices = new HashSet<>();
         for (File file : regionFiles) {
             IntVector2 coords = getRegionFileCoordinates(file);
             if (coords != null) {

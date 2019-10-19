@@ -16,11 +16,11 @@ import org.bukkit.util.Vector;
  * 
  */
 public class DebugLogger {
-    private static final Map<String, DebugLogger> _loggers = new HashMap<String, DebugLogger>();
+    private static final Map<String, DebugLogger> _loggers = new HashMap<>();
     private final String _name;
     private int[] _columnSpacing = new int[0];
     private final StringBuilder _buffer = new StringBuilder();
-    private final List<String> _backBuffer = new ArrayList<String>();
+    private final List<String> _backBuffer = new ArrayList<>();
     private boolean _backBufferActive = false;
     private int _col = 0;
 

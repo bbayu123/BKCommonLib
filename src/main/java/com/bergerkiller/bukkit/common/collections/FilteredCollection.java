@@ -35,7 +35,7 @@ public class FilteredCollection<E> implements Collection<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new FilteredIterator<E>(this);
+        return new FilteredIterator<>(this);
     }
 
     /**
@@ -217,7 +217,7 @@ public class FilteredCollection<E> implements Collection<E> {
      * @return new FilteredCollection instance
      */
     public static <T> FilteredCollection<T> create(Collection<T> base, Filter<T> filter) {
-        return new FilteredCollection<T>(base, filter);
+        return new FilteredCollection<>(base, filter);
     }
 
     /**

@@ -19,7 +19,7 @@ import com.bergerkiller.bukkit.common.utils.MathUtil;
  * @param <K> key type
  */
 public abstract class MapFont<K> {
-    private final HashMap<K, MapTexture> sprites = new HashMap<K, MapTexture>();
+    private final HashMap<K, MapTexture> sprites = new HashMap<>();
 
     // Constants for some default font types
     /**

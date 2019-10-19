@@ -29,8 +29,8 @@ public abstract class PacketPlayInResourcePackStatusHandle extends PacketHandle 
      */
     public static final class PacketPlayInResourcePackStatusClass extends Template.Class<PacketPlayInResourcePackStatusHandle> {
         @Template.Optional
-        public final Template.Field<String> message = new Template.Field<String>();
-        public final Template.Field.Converted<Object> status = new Template.Field.Converted<Object>();
+        public final Template.Field<String> message = new Template.Field<>();
+        public final Template.Field.Converted<Object> status = new Template.Field.Converted<>();
 
     }
 

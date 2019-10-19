@@ -31,7 +31,7 @@ public abstract class EntityBatHandle extends EntityInsentientHandle {
      */
     public static final class EntityBatClass extends Template.Class<EntityBatHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Byte>> DATA_BAT_FLAGS = new Template.StaticField.Converted<Key<Byte>>();
+        public final Template.StaticField.Converted<Key<Byte>> DATA_BAT_FLAGS = new Template.StaticField.Converted<>();
 
     }
 

@@ -2,6 +2,7 @@ package com.bergerkiller.bukkit.common.bases.mutable;
 
 import com.bergerkiller.bukkit.common.bases.IntVector3;
 import com.bergerkiller.bukkit.common.entity.CommonEntity;
+import com.bergerkiller.bukkit.common.utils.EntityPropertyUtil;
 import com.bergerkiller.bukkit.common.utils.EntityUtil;
 import com.bergerkiller.bukkit.common.utils.MathUtil;
 import org.bukkit.Location;
@@ -16,30 +17,36 @@ import org.bukkit.util.Vector;
 public abstract class LongVectorAbstract {
 
     public final LongAbstract x = new LongAbstract() {
+        @Override
         public long get() {
             return LongVectorAbstract.this.getX();
         }
 
+        @Override
         public LongAbstract set(long value) {
             LongVectorAbstract.this.setX(value);
             return this;
         }
     };
     public final LongAbstract y = new LongAbstract() {
+        @Override
         public long get() {
             return LongVectorAbstract.this.getY();
         }
 
+        @Override
         public LongAbstract set(long value) {
             LongVectorAbstract.this.setY(value);
             return this;
         }
     };
     public final LongAbstract z = new LongAbstract() {
+        @Override
         public long get() {
             return LongVectorAbstract.this.getZ();
         }
 
+        @Override
         public LongAbstract set(long value) {
             LongVectorAbstract.this.setZ(value);
             return this;
@@ -216,11 +223,11 @@ public abstract class LongVectorAbstract {
     }
 
     public double distance(Entity other) {
-        return distance(EntityUtil.getLocX(other), EntityUtil.getLocY(other), EntityUtil.getLocZ(other));
+        return distance(EntityPropertyUtil.getLocX(other), EntityPropertyUtil.getLocY(other), EntityPropertyUtil.getLocZ(other));
     }
 
     public double distanceSquared(Entity other) {
-        return distanceSquared(EntityUtil.getLocX(other), EntityUtil.getLocY(other), EntityUtil.getLocZ(other));
+        return distanceSquared(EntityPropertyUtil.getLocX(other), EntityPropertyUtil.getLocY(other), EntityPropertyUtil.getLocZ(other));
     }
 
     public double distance(Block block) {
@@ -252,7 +259,7 @@ public abstract class LongVectorAbstract {
     }
 
     public Vector offsetTo(org.bukkit.entity.Entity e) {
-        return offsetTo(EntityUtil.getLocX(e), EntityUtil.getLocY(e), EntityUtil.getLocZ(e));
+        return offsetTo(EntityPropertyUtil.getLocX(e), EntityPropertyUtil.getLocY(e), EntityPropertyUtil.getLocZ(e));
     }
 
     @Override

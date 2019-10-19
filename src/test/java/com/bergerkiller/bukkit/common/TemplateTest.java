@@ -16,6 +16,7 @@ import com.bergerkiller.bukkit.common.internal.logic.EntityMoveHandler_1_14;
 import com.bergerkiller.bukkit.common.utils.CommonUtil;
 import com.bergerkiller.bukkit.common.utils.StringUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.ResourceKey;
 import com.bergerkiller.generated.net.minecraft.server.SoundEffectTypeHandle;
 import com.bergerkiller.generated.net.minecraft.server.DataWatcherHandle;
@@ -31,7 +32,7 @@ public class TemplateTest {
     @Test
     public void testTemplate() {
         boolean fullySuccessful = true;
-        ArrayList<Template.Class<?>> classes = new ArrayList<Template.Class<?>>();
+        ArrayList<Template.Class<?>> classes = new ArrayList<>();
         for (ClassDeclaration dec : Common.TEMPLATE_RESOLVER.all()) {
             String genClassPath = "com.bergerkiller.generated";
 
@@ -236,7 +237,7 @@ public class TemplateTest {
     @Test
     public void testBlockPlaceSound() {
         assertTrue(SoundEffectTypeHandle.T.isAvailable());
-        ResourceKey stepName = BlockData.fromMaterial(Material.GRASS).getPlaceSound();
+        ResourceKey stepName = BlockDataRegistry.fromMaterial(Material.GRASS).getPlaceSound();
         if (CommonCapabilities.KEYED_EFFECTS) {
             assertEquals("minecraft:block.grass.place", stepName.getPath());
         } else {

@@ -31,7 +31,7 @@ public abstract class IRegistryHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class IRegistryClass extends Template.Class<IRegistryHandle> {
-        public final Template.StaticMethod<Integer> getWindowIdFromName = new Template.StaticMethod<Integer>();
+        public final Template.StaticMethod<Integer> getWindowIdFromName = new Template.StaticMethod<>();
 
     }
 

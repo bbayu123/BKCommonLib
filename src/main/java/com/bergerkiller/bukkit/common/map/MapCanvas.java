@@ -470,7 +470,7 @@ public abstract class MapCanvas {
     public final MapCanvas remap(byte[] remappingColors) {
         byte[] pixels = this.readPixels();
         for (int i = 0; i < pixels.length; i++) {
-            pixels[i] = remappingColors[(int) pixels[i]];
+            pixels[i] = remappingColors[pixels[i]];
         }
         return this.writePixels(0, 0, this.getWidth(), this.getHeight(), pixels);
     }

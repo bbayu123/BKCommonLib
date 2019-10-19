@@ -58,7 +58,7 @@ public abstract class PacketPlayOutPositionHandle extends PacketHandle {
         public final Template.Field.Double z = new Template.Field.Double();
         public final Template.Field.Float yaw = new Template.Field.Float();
         public final Template.Field.Float pitch = new Template.Field.Float();
-        public final Template.Field.Converted<Set<?>> teleportFlags = new Template.Field.Converted<Set<?>>();
+        public final Template.Field.Converted<Set<?>> teleportFlags = new Template.Field.Converted<>();
         @Template.Optional
         public final Template.Field.Integer teleportWaitTimer = new Template.Field.Integer();
 

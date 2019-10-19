@@ -25,7 +25,7 @@ public class ModuleLogger extends Logger {
 
     private final String[] modulePath;
     private final String prefix;
-    private final HashSet<String> logOnceSet = new HashSet<String>();
+    private final HashSet<String> logOnceSet = new HashSet<>();
 
     private static Logger createDefaultLogger() {
         if (Bukkit.getServer() != null && Bukkit.getLogger() != MountiplexUtil.LOGGER)

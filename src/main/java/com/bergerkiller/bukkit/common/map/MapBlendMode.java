@@ -23,7 +23,7 @@ public enum MapBlendMode {
         case MULTIPLY:
             return MapColorPalette.remapColor(inputA, inputB, MapColorPalette.COLOR_MAP_MULTIPLY);
         }
-        return (byte) inputA;
+        return inputA;
     }
 
     public void process(byte input, byte[] output) {

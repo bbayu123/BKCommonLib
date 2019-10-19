@@ -34,9 +34,9 @@ public abstract class PacketPlayInBlockDigHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayInBlockDigClass extends Template.Class<PacketPlayInBlockDigHandle> {
-        public final Template.Field.Converted<IntVector3> position = new Template.Field.Converted<IntVector3>();
-        public final Template.Field.Converted<BlockFace> direction = new Template.Field.Converted<BlockFace>();
-        public final Template.Field.Converted<EnumPlayerDigTypeHandle> digType = new Template.Field.Converted<EnumPlayerDigTypeHandle>();
+        public final Template.Field.Converted<IntVector3> position = new Template.Field.Converted<>();
+        public final Template.Field.Converted<BlockFace> direction = new Template.Field.Converted<>();
+        public final Template.Field.Converted<EnumPlayerDigTypeHandle> digType = new Template.Field.Converted<>();
 
     }
 
@@ -70,12 +70,12 @@ public abstract class PacketPlayInBlockDigHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class EnumPlayerDigTypeClass extends Template.Class<EnumPlayerDigTypeHandle> {
-            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> START_DESTROY_BLOCK = new Template.EnumConstant.Converted<EnumPlayerDigTypeHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> ABORT_DESTROY_BLOCK = new Template.EnumConstant.Converted<EnumPlayerDigTypeHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> STOP_DESTROY_BLOCK = new Template.EnumConstant.Converted<EnumPlayerDigTypeHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> DROP_ALL_ITEMS = new Template.EnumConstant.Converted<EnumPlayerDigTypeHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> DROP_ITEM = new Template.EnumConstant.Converted<EnumPlayerDigTypeHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> RELEASE_USE_ITEM = new Template.EnumConstant.Converted<EnumPlayerDigTypeHandle>();
+            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> START_DESTROY_BLOCK = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> ABORT_DESTROY_BLOCK = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> STOP_DESTROY_BLOCK = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> DROP_ALL_ITEMS = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> DROP_ITEM = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerDigTypeHandle> RELEASE_USE_ITEM = new Template.EnumConstant.Converted<>();
 
         }
 

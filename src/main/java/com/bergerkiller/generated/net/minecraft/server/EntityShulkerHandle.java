@@ -36,13 +36,13 @@ public abstract class EntityShulkerHandle extends EntityInsentientHandle {
      */
     public static final class EntityShulkerClass extends Template.Class<EntityShulkerHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<BlockFace>> DATA_FACE_DIRECTION = new Template.StaticField.Converted<Key<BlockFace>>();
+        public final Template.StaticField.Converted<Key<BlockFace>> DATA_FACE_DIRECTION = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<IntVector3>> DATA_AP = new Template.StaticField.Converted<Key<IntVector3>>();
+        public final Template.StaticField.Converted<Key<IntVector3>> DATA_AP = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Byte>> DATA_PEEK = new Template.StaticField.Converted<Key<Byte>>();
+        public final Template.StaticField.Converted<Key<Byte>> DATA_PEEK = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Byte>> DATA_COLOR = new Template.StaticField.Converted<Key<Byte>>();
+        public final Template.StaticField.Converted<Key<Byte>> DATA_COLOR = new Template.StaticField.Converted<>();
 
     }
 

@@ -17,6 +17,7 @@ import com.bergerkiller.generated.net.minecraft.server.EntityTrackerEntryStateHa
 import com.bergerkiller.generated.net.minecraft.server.EntityTrackerHandle;
 import com.bergerkiller.generated.net.minecraft.server.EntityTypesHandle;
 import com.bergerkiller.generated.net.minecraft.server.WorldServerHandle;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 import com.bergerkiller.mountiplex.reflection.ClassTemplate;
 import com.bergerkiller.mountiplex.reflection.declarations.ClassResolver;
 import com.bergerkiller.mountiplex.reflection.declarations.MethodDeclaration;
@@ -29,9 +30,9 @@ import com.bergerkiller.mountiplex.reflection.util.FastMethod;
  * all these in a map.
  */
 public class EntityTypingHandler_1_14 extends EntityTypingHandler {
-    private final IdentityHashMap<Object, Class<?>> _cache = new IdentityHashMap<Object, Class<?>>();
-    private final FastMethod<Class<?>> findEntityTypesClass = new FastMethod<Class<?>>();
-    private final FastMethod<Object> createEntry = new FastMethod<Object>();
+    private final IdentityHashMap<Object, Class<?>> _cache = new IdentityHashMap<>();
+    private final FastMethod<Class<?>> findEntityTypesClass = new FastMethod<>();
+    private final FastMethod<Object> createEntry = new FastMethod<>();
     private final Object nmsWorldHandle;
 
     // Initialize findEntityTypesClass which is a fallback for types we did not pre-register
@@ -81,7 +82,7 @@ public class EntityTypingHandler_1_14 extends EntityTypingHandler {
                     "    #require net.minecraft.server.World public final WorldData worldData;\n" +
                     "    instance#worldData = worldData;\n" +
                     "}"));
-            FastMethod<Void> fm = new FastMethod<Void>();
+            FastMethod<Void> fm = new FastMethod<>();
             fm.init(m);
             fm.invoke(this.nmsWorldHandle, nmsWorldData);
         }
@@ -151,14 +152,14 @@ public class EntityTypingHandler_1_14 extends EntityTypingHandler {
         EntityTrackerEntryHandle entry = EntityTrackerEntryHandle.createHandle(handle);
 
         // Set the passengers field to the current passengers
-        EntityTrackerEntryStateHandle.T.opt_passengers.set(entry.getState().getRaw(), (new ExtendedEntity<Entity>(entity)).getPassengers());
+        EntityTrackerEntryStateHandle.T.opt_passengers.set(entry.getState().getRaw(), (new ExtendedEntity<>(entity)).getPassengers());
 
         return entry;
     }
 
     @Override
     public EntityTrackerEntryHook getEntityTrackerEntryHook(Object entityTrackerEntryHandle) {
-        return EntityTrackerEntryHook_1_14.get(entityTrackerEntryHandle, EntityTrackerEntryHook_1_14.class);
+        return ClassInterceptor.get(entityTrackerEntryHandle, EntityTrackerEntryHook_1_14.class);
     }
 
     @Override

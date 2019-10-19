@@ -27,7 +27,7 @@ public class OctreeTest {
 
     @Test
     public void testPutGet() {
-        Octree<String> tree = new Octree<String>();
+        Octree<String> tree = new Octree<>();
         putDemoValues(tree);
 
         assertEquals("A", tree.get(0, 0, 0));
@@ -42,7 +42,7 @@ public class OctreeTest {
 
     @Test
     public void testRemove() {
-        Octree<String> tree = new Octree<String>();
+        Octree<String> tree = new Octree<>();
         putDemoValues(tree);
 
         // This complexity was expected to require 178 nodes
@@ -79,7 +79,7 @@ public class OctreeTest {
 
     @Test
     public void testIterator() {
-        Octree<String> tree = new Octree<String>();
+        Octree<String> tree = new Octree<>();
         putDemoValues(tree);
 
         OctreeIterator<String> iter = tree.iterator();
@@ -96,7 +96,7 @@ public class OctreeTest {
 
     @Test
     public void testValues() {
-        Octree<String> tree = new Octree<String>();
+        Octree<String> tree = new Octree<>();
         putDemoValues(tree);
 
         Collection<String> values = tree.values();
@@ -132,7 +132,7 @@ public class OctreeTest {
     public void testSmallCuboid() {
         // Tests a single-block area cuboid, which is challenging because
         // the last data-entry holding node will be filtered only
-        Octree<String> tree = new Octree<String>();
+        Octree<String> tree = new Octree<>();
         putDemoValues(tree);
 
         IntVector3 block = new IntVector3(10, 100, 1000);
@@ -151,7 +151,7 @@ public class OctreeTest {
         // it first runs into a direct sibling of the value. This causes the algorithm
         // to look for a sibling at depth=0 which has some interesting consequences.
         IntVector3 block = new IntVector3(1, 0, 0);
-        Octree<String> tree = new Octree<String>();
+        Octree<String> tree = new Octree<>();
         tree.put(block.x, block.y, block.z, "A");
         tree.put(block.x, block.y, block.z+1, "B");
         tree.put(block.x, block.y+1, block.z, "C");

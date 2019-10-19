@@ -149,7 +149,7 @@ public class CommonTag extends BasicWrapper<NBTBaseHandle> implements Cloneable 
             }
         } else if (data instanceof Set) {
             Set<Object> elems = (Set<Object>) data;
-            HashSet<Object> tags = new HashSet<Object>(elems.size());
+            HashSet<Object> tags = new HashSet<>(elems.size());
             // Replace
             for (Object value : elems) {
                 tags.add(commonToNbt(value));
@@ -157,7 +157,7 @@ public class CommonTag extends BasicWrapper<NBTBaseHandle> implements Cloneable 
             return tags;
         } else if (data instanceof Map) {
             Map<String, Object> elems = (Map<String, Object>) data;
-            HashMap<String, Object> tags = new HashMap<String, Object>(elems.size());
+            HashMap<String, Object> tags = new HashMap<>(elems.size());
             // Replace
             for (Entry<String, Object> entry : elems.entrySet()) {
                 Object value = commonToNbt(entry.getValue());
@@ -166,7 +166,7 @@ public class CommonTag extends BasicWrapper<NBTBaseHandle> implements Cloneable 
             return tags;
         } else if (data instanceof Collection) {
             Collection<Object> elems = (Collection<Object>) data;
-            ArrayList<Object> tags = new ArrayList<Object>(elems.size());
+            ArrayList<Object> tags = new ArrayList<>(elems.size());
             // Replace
             for (Object value : elems) {
                 tags.add(commonToNbt(value));
@@ -203,7 +203,7 @@ public class CommonTag extends BasicWrapper<NBTBaseHandle> implements Cloneable 
             }
         } else if (data instanceof Set) {
             Set<Object> elems = (Set<Object>) data;
-            HashSet<Object> tags = new HashSet<Object>(elems.size());
+            HashSet<Object> tags = new HashSet<>(elems.size());
             // Replace
             for (Object value : elems) {
                 tags.add(nbtToCommon(value, wrapData));
@@ -211,7 +211,7 @@ public class CommonTag extends BasicWrapper<NBTBaseHandle> implements Cloneable 
             return tags;
         } else if (data instanceof Map) {
             Map<String, Object> elems = (Map<String, Object>) data;
-            HashMap<String, Object> tags = new HashMap<String, Object>(elems.size());
+            HashMap<String, Object> tags = new HashMap<>(elems.size());
             // Replace
             for (Entry<String, Object> entry : elems.entrySet()) {
                 tags.put(entry.getKey(), nbtToCommon(entry.getValue(), wrapData));
@@ -219,7 +219,7 @@ public class CommonTag extends BasicWrapper<NBTBaseHandle> implements Cloneable 
             return tags;
         } else if (data instanceof Collection) {
             Collection<Object> elems = (Collection<Object>) data;
-            ArrayList<Object> tags = new ArrayList<Object>(elems.size());
+            ArrayList<Object> tags = new ArrayList<>(elems.size());
             // Replace
             for (Object value : elems) {
                 tags.add(nbtToCommon(value, wrapData));

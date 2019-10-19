@@ -28,7 +28,7 @@ public abstract class IRecipeHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class IRecipeClass extends Template.Class<IRecipeHandle> {
-        public final Template.Method.Converted<ItemStack> getOutput = new Template.Method.Converted<ItemStack>();
+        public final Template.Method.Converted<ItemStack> getOutput = new Template.Method.Converted<>();
 
     }
 

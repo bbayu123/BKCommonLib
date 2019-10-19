@@ -190,7 +190,7 @@ public class CollectionBasics {
             if (size >= index) {
                 index -= size;
             } else {
-                return new ListEntry<T>(list, index);
+                return new ListEntry<>(list, index);
             }
         }
         throw new IndexOutOfBoundsException();

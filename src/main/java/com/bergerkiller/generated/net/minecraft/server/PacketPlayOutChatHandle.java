@@ -32,10 +32,10 @@ public abstract class PacketPlayOutChatHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutChatClass extends Template.Class<PacketPlayOutChatHandle> {
-        public final Template.Field.Converted<ChatText> text = new Template.Field.Converted<ChatText>();
+        public final Template.Field.Converted<ChatText> text = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<Object[]> components = new Template.Field.Converted<Object[]>();
-        public final Template.Field.Converted<ChatMessageType> type = new Template.Field.Converted<ChatMessageType>();
+        public final Template.Field.Converted<Object[]> components = new Template.Field.Converted<>();
+        public final Template.Field.Converted<ChatMessageType> type = new Template.Field.Converted<>();
 
     }
 

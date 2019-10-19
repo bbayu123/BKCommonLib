@@ -26,6 +26,7 @@ public class VanillaResourcePack extends MapResourcePack {
      * We assume you have already accepted the Minecraft EULA to run the server. If you have not,
      * please read <a href="https://account.mojang.com/documents/minecraft_eula">https://account.mojang.com/documents/minecraft_eula.</a>
      */
+    @Override
     public void load() {
         super.load();
     }

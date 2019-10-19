@@ -94,7 +94,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
      * @param value Value to set to, is cast to a byte (0-255)
      */
     public void setByte(Key<Byte> key, int value) {
-        set(key, Byte.valueOf((byte) (value & 0xFF)));
+        set(key, (byte) (value & 0xFF));
     }
 
     /**
@@ -124,7 +124,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
             new_flags &= ~flag;
         }
         if (old_flags != new_flags) {
-            this.set(key, Byte.valueOf((byte) (new_flags & 0xFF)));
+            this.set(key, (byte) (new_flags & 0xFF));
         }
     }
 
@@ -195,7 +195,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
      * @return value of key, defaultValue if the key isn't registered, -1 if null
      */
     public int tryGetByte(Key<Byte> key, int defaultValue) {
-        Byte result = tryGet(key, Byte.valueOf((byte) (defaultValue & 0xFF))).byteValue();
+        Byte result = tryGet(key, (byte) (defaultValue & 0xFF));
         return (result == null) ? -1 : result.byteValue();
     }
 
@@ -214,7 +214,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
         if (rawItem == null) {
             return null;
         } else {
-            return new Item<V>(key, DataWatcherHandle.ItemHandle.createHandle(rawItem));
+            return new Item<>(key, DataWatcherHandle.ItemHandle.createHandle(rawItem));
         }
     }
 
@@ -273,7 +273,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
         if (itemHandles == null) {
             itemHandles = Collections.emptyList();
         }
-        return new ConvertingList<Item<?>>(itemHandles, DuplexConversion.dataWatcherItem);
+        return new ConvertingList<>(itemHandles, DuplexConversion.dataWatcherItem);
     }
 
     /**
@@ -365,7 +365,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
             if (!key.equals(this.getKey())) {
                 return null;
             }
-            return new Item<W>(key, this.handle);
+            return new Item<>(key, this.handle);
         }
 
         /**
@@ -388,7 +388,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
                 int keyId = DataWatcherHandle.ItemHandle.T.keyId.getInteger(this.handle.getRaw());
                 Object token = Integer.valueOf(typeId);
                 Object handle = new com.bergerkiller.bukkit.common.internal.proxy.DataWatcherObject<V>(keyId, token);
-                return new Key<V>(handle);
+                return new Key<>(handle);
             }
         }
 
@@ -416,8 +416,9 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
         /**
          * Clones this DataWatcher Item, making sure changes to it does not affect the DataWatcher
          */
+        @Override
         public Item<V> clone() {
-            return new Item<V>(this.key, this.handle.cloneHandle());
+            return new Item<>(this.key, this.handle.cloneHandle());
         }
 
         @Override
@@ -480,7 +481,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
          * @return translated item
          */
         public <C> EntityItem<C> translate(DuplexConverter<V, C> converterPair) {
-            return new ConvertingEntityItem<V, C>(this, converterPair);
+            return new ConvertingEntityItem<>(this, converterPair);
         }
     }
 
@@ -607,7 +608,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
          * Stores Key Type Serialization information to enable conversion from/to the internally stored type.
          */
         public static class Type<T> {
-            private static final HashMap<Class<?>, Type<?>> byTypeMapping = new HashMap<Class<?>, Type<?>>();
+            private static final HashMap<Class<?>, Type<?>> byTypeMapping = new HashMap<>();
             private final Object _token;
             private final DuplexConverter<Object, T> _converter;
             private Type<T> _optional_opposite;
@@ -657,7 +658,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
                 }
 
                 if (optional) {
-                    converter = new OptionalDuplexConverter<T>(converter);
+                    converter = new OptionalDuplexConverter<>(converter);
                 }
 
                 this._converter = converter;
@@ -695,7 +696,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
                 // Merge this converter with the one specified, completing the chain
                 final DuplexConverter<Object, T> ca = this._converter;
                 final DuplexConverter<T, C> cb = converter;
-                return new Type<C>(this._token, new DuplexConverter<Object, C>(ca.input, cb.output) {
+                return new Type<>(this._token, new DuplexConverter<Object, C>(ca.input, cb.output) {
                     @Override
                     public C convertInput(Object value) {
                         T ca_output = ca.convertInput(value);
@@ -725,9 +726,9 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
                 // Cache this to better deal with repeated calls
                 if (this._optional_opposite == null) {
                     if (selfIsOptional) {
-                        this._optional_opposite = new Type<T>(this._token, ((OptionalDuplexConverter<T>) this._converter)._baseConverter);
+                        this._optional_opposite = new Type<>(this._token, ((OptionalDuplexConverter<T>) this._converter)._baseConverter);
                     } else {
-                        this._optional_opposite = new Type<T>(this._token, new OptionalDuplexConverter<T>(this._converter));
+                        this._optional_opposite = new Type<>(this._token, new OptionalDuplexConverter<>(this._converter));
                     }
                 }
                 return this._optional_opposite;
@@ -747,16 +748,16 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
                             // This can not be! It should really exist if it also existed on 1.8.x...
                             System.err.println("DataWatcher key not found: " + tokenField.getElementName());
                         }
-                        return new Key.Disabled<T>(this);
+                        return new Key.Disabled<>(this);
                     } else {
-                        return new Key<T>(tokenField.raw.get(), this);
+                        return new Key<>(tokenField.raw.get(), this);
                     }
                 } else if (alternativeId != -1) {
                     Object handle;
                     handle = new com.bergerkiller.bukkit.common.internal.proxy.DataWatcherObject<T>(alternativeId, this._token);
-                    return new Key<T>(handle, this);
+                    return new Key<>(handle, this);
                 } else {
-                    return new Key.Disabled<T>(this);
+                    return new Key.Disabled<>(this);
                 }
             }
 
@@ -817,7 +818,7 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
                     if (internalType == null) {
                         throw new IllegalArgumentException("Object of type " + externalType.getName() + " can not be stored in a DataWatcher");
                     }
-                    result = new Type<V>(internalType, externalType);
+                    result = new Type<>(internalType, externalType);
                     byTypeMapping.put(externalType, result);
                 }
                 return (Type<V>) result;
@@ -858,10 +859,10 @@ public class DataWatcher extends BasicWrapper<DataWatcherHandle> implements Clon
 
     // Stores the internal type Serializer mapping, and how exposed types (IntVector3) are internally stored (BlockPosition)
     private static class DataSerializerRegistry {
-        private static final HashMap<Object, InternalType> tokenRegistryRev = new HashMap<Object, InternalType>();
-        private static final HashMap<Class<?>, Object> tokenRegistry = new HashMap<Class<?>, Object>();
-        private static final HashMap<Class<?>, Object> tokenRegistry_optional = new HashMap<Class<?>, Object>();
-        private static final HashMap<Class<?>, Class<?>> typeMapping = new HashMap<Class<?>, Class<?>>();
+        private static final HashMap<Object, InternalType> tokenRegistryRev = new HashMap<>();
+        private static final HashMap<Class<?>, Object> tokenRegistry = new HashMap<>();
+        private static final HashMap<Class<?>, Object> tokenRegistry_optional = new HashMap<>();
+        private static final HashMap<Class<?>, Class<?>> typeMapping = new HashMap<>();
 
         static {
             Class<?> registryClass = CommonUtil.getNMSClass("DataWatcherRegistry");

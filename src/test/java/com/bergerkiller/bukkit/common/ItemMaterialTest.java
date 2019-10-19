@@ -30,6 +30,7 @@ import com.bergerkiller.bukkit.common.utils.MaterialUtil;
 import com.bergerkiller.bukkit.common.utils.ParseUtil;
 import com.bergerkiller.bukkit.common.utils.StringUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 
 /*
  * Tests whether the material properties and ItemStack-related utilities are functional
@@ -256,16 +257,16 @@ public class ItemMaterialTest {
         BlockData data;
         if (CommonCapabilities.MATERIAL_ENUM_CHANGES) {
             // Get BlockData of stained glass the new way
-            data = BlockData.fromMaterial(MaterialUtil.getMaterial("PURPLE_STAINED_GLASS"));
+            data = BlockDataRegistry.fromMaterial(MaterialUtil.getMaterial("PURPLE_STAINED_GLASS"));
         } else {
             // Get BlockData of stained glass the old way
-            data = BlockData.fromMaterialData(MaterialUtil.getMaterial("LEGACY_STAINED_GLASS"), 2);
+            data = BlockDataRegistry.fromMaterialData(MaterialUtil.getMaterial("LEGACY_STAINED_GLASS"), 2);
         }
 
         ItemStack item = data.createItem(12);
         assertNotNull(item);
         assertEquals(12, item.getAmount());
-        assertEquals(data, BlockData.fromItemStack(item));
+        assertEquals(data, BlockDataRegistry.fromItemStack(item));
 
         if (CommonCapabilities.MATERIAL_ENUM_CHANGES) {
             assertEquals(MaterialUtil.getMaterial("PURPLE_STAINED_GLASS"), item.getType());
@@ -343,13 +344,13 @@ public class ItemMaterialTest {
             assertEquals(38, actual.size());
             
             // Add all items to a set. Each item should be unique.
-            HashSet<ItemStack> set = new HashSet<ItemStack>(actual);
+            HashSet<ItemStack> set = new HashSet<>(actual);
             assertEquals(actual.size(), set.size());
         } else {
             // Test using White Whool
             // All 16 wool colors should be returned here
             Material woolMat = getLegacyMaterial("WOOL");
-            List<ItemStack> expected = new ArrayList<ItemStack>();
+            List<ItemStack> expected = new ArrayList<>();
             for (int dur = 0; dur < 16; dur++) {
                 expected.add(new ItemStack(woolMat, 1, (short) dur));
             }
@@ -461,14 +462,14 @@ public class ItemMaterialTest {
     }
 
     private static <T> PropertyTest<T> testProperty(MaterialProperty<T> prop, String name) {
-        return new PropertyTest<T>(prop, name);
+        return new PropertyTest<>(prop, name);
     }
 
     private static class PropertyTest<T> {
         private final MaterialProperty<T> prop;
         private final String name;
         private boolean has_error = false;
-        private HashSet<Material> not_handled = new HashSet<Material>();
+        private HashSet<Material> not_handled = new HashSet<>();
 
         public PropertyTest(MaterialProperty<T> prop, String name) {
             this.prop = prop;
@@ -497,7 +498,7 @@ public class ItemMaterialTest {
 
         public PropertyTest<T> checkData(Class<?> materialData, T value) {
             for (Material m : remaining()) {
-               MaterialData data = BlockData.fromMaterial(m).newMaterialData();
+               MaterialData data = BlockDataRegistry.fromMaterial(m).newMaterialData();
                if (materialData.isInstance(data)) {
                    check(m, value);
                }
@@ -513,7 +514,7 @@ public class ItemMaterialTest {
         }
 
         public HashSet<Material> remaining() {
-            return new HashSet<Material>(not_handled);
+            return new HashSet<>(not_handled);
         }
 
         public PropertyTest<T> checkNewAndLegacy(String name, T value) {
@@ -550,12 +551,12 @@ public class ItemMaterialTest {
             if (has_error) {
                 Logging.LOGGER.severe("Property " + name + " is invalid. It has the following mapping:");
 
-                TreeMap<Object, ArrayList<String>> mapping = new TreeMap<Object, ArrayList<String>>();
+                TreeMap<Object, ArrayList<String>> mapping = new TreeMap<>();
                 for (Material m : getAllMaterials()) {
                     Object val = prop.get(m);
                     ArrayList<String> list = mapping.get(val);
                     if (list == null) {
-                        list = new ArrayList<String>();
+                        list = new ArrayList<>();
                         mapping.put(val, list);
                     }
                     list.add(m.toString());
@@ -566,7 +567,7 @@ public class ItemMaterialTest {
                     ArrayList<String> list = entry.getValue();
                     int nn = 5;
                     while (list.size() >= nn) {
-                        ArrayList<String> part = new ArrayList<String>();
+                        ArrayList<String> part = new ArrayList<>();
                         for (int i = 0; i < nn; i++) {
                             part.add(list.get(0));
                             list.remove(0);

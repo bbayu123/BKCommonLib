@@ -29,8 +29,8 @@ public abstract class InventoryEnderChestHandle extends IInventoryHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class InventoryEnderChestClass extends Template.Class<InventoryEnderChestHandle> {
-        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<CommonTagList> saveToNBT = new Template.Method.Converted<CommonTagList>();
+        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<>();
+        public final Template.Method.Converted<CommonTagList> saveToNBT = new Template.Method.Converted<>();
 
     }
 

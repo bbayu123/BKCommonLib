@@ -188,7 +188,7 @@ public class StringTreeNode {
             this._children = Collections.singletonList(node);
         } else {
             if (this._children.size() == 1) {
-                this._children = new ArrayList<StringTreeNode>(this._children);
+                this._children = new ArrayList<>(this._children);
             }
             this._children.add(index, node);
         }
@@ -221,7 +221,7 @@ public class StringTreeNode {
             clone._children = Collections.singletonList(childClone);
             clone._totalLength += childClone._totalLength;
         } else if (child_count > 0) {
-            clone._children = new ArrayList<StringTreeNode>(child_count);
+            clone._children = new ArrayList<>(child_count);
             for (StringTreeNode child : this._children) {
                 StringTreeNode childClone = child.clone(buffer, position);
                 childClone._parent = clone;

@@ -463,12 +463,12 @@ public abstract class PluginBase extends JavaPlugin {
             if (arguments.length > 0) {
                 StringBuilder tmpPathBuilder = new StringBuilder(path);
                 String tmpPath = path;
-                for (int i = 0; i < arguments.length; i++) {
+                for (String argument : arguments) {
                     tmpPathBuilder.append('.');
-                    if (arguments[i] == null) {
+                    if (argument == null) {
                         tmpPathBuilder.append("null");
                     } else {
-                        tmpPathBuilder.append(arguments[i].toLowerCase(Locale.ENGLISH));
+                        tmpPathBuilder.append(argument.toLowerCase(Locale.ENGLISH));
                     }
                     tmpPath = tmpPathBuilder.toString();
                     // New argument appended path exists, update the path
@@ -611,7 +611,7 @@ public abstract class PluginBase extends JavaPlugin {
                         if (plugin == null) {
                             log(Level.SEVERE, type + " a dependency of this plugin");
                             // Add all dependencies of this plugin to the cause
-                            LinkedHashSet<String> dep = new LinkedHashSet<String>();
+                            LinkedHashSet<String> dep = new LinkedHashSet<>();
                             dep.add(this.getName());
                             dep.addAll(LogicUtil.fixNull(this.getDescription().getDepend(), Collections.EMPTY_LIST));
                             dep.addAll(LogicUtil.fixNull(this.getDescription().getSoftDepend(), Collections.EMPTY_LIST));
@@ -750,12 +750,12 @@ public abstract class PluginBase extends JavaPlugin {
             ConfigurationNode commandsNode = getLocalizationNode("commands");
 
             // Create a new modifiable commands map to replace with
-            commands = new HashMap<String, Map<String, Object>>(commands);
+            commands = new HashMap<>(commands);
             for (Entry<String, Map<String, Object>> commandEntry : commands.entrySet()) {
                 ConfigurationNode node = commandsNode.getNode(commandEntry.getKey());
 
                 // Transfer description and usage
-                Map<String, Object> data = new HashMap<String, Object>(commandEntry.getValue());
+                Map<String, Object> data = new HashMap<>(commandEntry.getValue());
                 node.shareWith(data, "description", "No description specified");
                 node.shareWith(data, "usage", "/" + commandEntry.getKey());
                 commandEntry.setValue(Collections.unmodifiableMap(data));

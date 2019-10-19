@@ -30,11 +30,11 @@ public class CommonPlayerMeta {
     private int respawnBlindnessEndTick = 0;
 
     protected CommonPlayerMeta(Player player) {
-        this.playerRef = new WeakReference<Player>(player);
+        this.playerRef = new WeakReference<>(player);
         if (EntityPlayerHandle.T.removeQueue.isAvailable()) {
             removeQueue = EntityPlayerHandle.T.removeQueue.get(Conversion.toEntityHandle.convert(player));
         } else {
-            removeQueue = new ArrayList<Integer>();
+            removeQueue = new ArrayList<>();
         }
     }
 
@@ -74,7 +74,7 @@ public class CommonPlayerMeta {
             if (num > 0 && CommonPlugin.hasInstance()) {
                 // Schedule updateViewer() at a later time
                 if (this.pendingViewerUpdates.isEmpty()) {
-                    this.pendingViewerUpdates = new ArrayList<EntityNetworkController<?>>();
+                    this.pendingViewerUpdates = new ArrayList<>();
                     new ProcessPendingViewerUpdatesTask().start(num);
                 }
                 this.pendingViewerUpdates.add(controller);

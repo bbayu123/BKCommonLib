@@ -28,6 +28,7 @@ import com.bergerkiller.bukkit.common.math.Vector2;
 import com.bergerkiller.bukkit.common.math.Vector3;
 import com.bergerkiller.bukkit.common.utils.ItemUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.BlockRenderOptions;
 
 public class MapModelRenderTest
@@ -115,7 +116,7 @@ class Pseudo3DImagePanel extends JPanel
 
         System.out.println("Yaw=" + yaw + " Pitch=" + pitch);
 
-        BlockRenderOptions opt = BlockData.fromMaterialData(Material.RAIL, 6).getDefaultRenderOptions();
+        BlockRenderOptions opt = BlockDataRegistry.fromMaterialData(Material.RAIL, 6).getDefaultRenderOptions();
 
         //System.out.println(opt);
 

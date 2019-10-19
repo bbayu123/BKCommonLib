@@ -54,8 +54,8 @@ public abstract class PacketPlayOutScoreboardScoreHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class EnumScoreboardActionClass extends Template.Class<EnumScoreboardActionHandle> {
-            public final Template.EnumConstant.Converted<EnumScoreboardActionHandle> CHANGE = new Template.EnumConstant.Converted<EnumScoreboardActionHandle>();
-            public final Template.EnumConstant.Converted<EnumScoreboardActionHandle> REMOVE = new Template.EnumConstant.Converted<EnumScoreboardActionHandle>();
+            public final Template.EnumConstant.Converted<EnumScoreboardActionHandle> CHANGE = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumScoreboardActionHandle> REMOVE = new Template.EnumConstant.Converted<>();
 
         }
 

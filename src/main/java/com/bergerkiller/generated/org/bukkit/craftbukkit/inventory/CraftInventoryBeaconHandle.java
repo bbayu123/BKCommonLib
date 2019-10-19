@@ -31,7 +31,7 @@ public abstract class CraftInventoryBeaconHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftInventoryBeaconClass extends Template.Class<CraftInventoryBeaconHandle> {
-        public final Template.StaticMethod.Converted<BeaconInventory> createNew = new Template.StaticMethod.Converted<BeaconInventory>();
+        public final Template.StaticMethod.Converted<BeaconInventory> createNew = new Template.StaticMethod.Converted<>();
 
     }
 

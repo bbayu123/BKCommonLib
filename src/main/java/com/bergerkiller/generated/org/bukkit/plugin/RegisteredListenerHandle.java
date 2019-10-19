@@ -29,7 +29,7 @@ public abstract class RegisteredListenerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class RegisteredListenerClass extends Template.Class<RegisteredListenerHandle> {
-        public final Template.Field<EventExecutor> executor = new Template.Field<EventExecutor>();
+        public final Template.Field<EventExecutor> executor = new Template.Field<>();
 
     }
 

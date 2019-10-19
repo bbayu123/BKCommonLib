@@ -128,7 +128,7 @@ public class EntityHook extends ClassHook<EntityHook> {
     public void onBurn(float damage) {
         try {
             if (checkController()) {
-                controller.onBurnDamage((double) damage);
+                controller.onBurnDamage(damage);
             } else {
                 base.onBurn(damage);
             }

@@ -31,7 +31,7 @@ public abstract class EntityEnderCrystalHandle extends EntityHandle {
      */
     public static final class EntityEnderCrystalClass extends Template.Class<EntityEnderCrystalHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<IntVector3>> DATA_BEAM_TARGET = new Template.StaticField.Converted<Key<IntVector3>>();
+        public final Template.StaticField.Converted<Key<IntVector3>> DATA_BEAM_TARGET = new Template.StaticField.Converted<>();
 
     }
 

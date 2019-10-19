@@ -7,6 +7,7 @@ import com.bergerkiller.bukkit.common.conversion.Conversion;
 import com.bergerkiller.bukkit.common.internal.CommonCapabilities;
 import com.bergerkiller.bukkit.common.internal.CommonLegacyMaterials;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 
 import org.bukkit.DyeColor;
 import org.bukkit.GrassSpecies;
@@ -163,7 +164,7 @@ public class ParseUtil {
      * @return Parsed value, false when not a known yes value
      */
     public static boolean parseBool(String text) {
-        return parseBool(text, Boolean.FALSE).booleanValue();
+        return parseBool(text, Boolean.FALSE);
     }
 
     /**
@@ -185,7 +186,7 @@ public class ParseUtil {
      * @return Parsed or default value
      */
     public static float parseFloat(String text, float def) {
-        return parseFloat(text, Float.valueOf(def)).floatValue();
+        return parseFloat(text, def).floatValue();
     }
 
     /**
@@ -207,7 +208,7 @@ public class ParseUtil {
      * @return Parsed or default value
      */
     public static double parseDouble(String text, double def) {
-        return parseDouble(text, Double.valueOf(def)).doubleValue();
+        return parseDouble(text, def).doubleValue();
     }
 
     /**
@@ -229,7 +230,7 @@ public class ParseUtil {
      * @return Parsed or default value
      */
     public static long parseLong(String text, long def) {
-        return parseLong(text, Long.valueOf(def)).longValue();
+        return parseLong(text, def).longValue();
     }
 
     /**
@@ -251,7 +252,7 @@ public class ParseUtil {
      * @return Parsed or default value
      */
     public static int parseInt(String text, int def) {
-        return parseInt(text, Integer.valueOf(def)).intValue();
+        return parseInt(text, def).intValue();
     }
 
     /**
@@ -273,7 +274,7 @@ public class ParseUtil {
      * @return Parsed or default value
      */
     public static float parseShort(String text, short def) {
-        return parseShort(text, Short.valueOf(def)).shortValue();
+        return parseShort(text, def).shortValue();
     }
 
     /**
@@ -295,7 +296,7 @@ public class ParseUtil {
      * @return Parsed or default value
      */
     public static float parseByte(String text, byte def) {
-        return parseByte(text, Byte.valueOf(def)).byteValue();
+        return parseByte(text, def).byteValue();
     }
 
     /**
@@ -536,7 +537,7 @@ public class ParseUtil {
                 }
                 return def;
             } else {
-                MaterialData dat = BlockData.fromMaterialData(material, 0).getMaterialData();
+                MaterialData dat = BlockDataRegistry.fromMaterialData(material, 0).getMaterialData();
                 if (dat instanceof TexturedMaterial) {
                     TexturedMaterial tdat = (TexturedMaterial) dat;
                     Material mat = parseMaterial(text, null);

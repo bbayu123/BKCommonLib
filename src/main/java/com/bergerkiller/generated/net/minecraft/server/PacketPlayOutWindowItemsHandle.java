@@ -33,7 +33,7 @@ public abstract class PacketPlayOutWindowItemsHandle extends PacketHandle {
      */
     public static final class PacketPlayOutWindowItemsClass extends Template.Class<PacketPlayOutWindowItemsHandle> {
         public final Template.Field.Integer windowId = new Template.Field.Integer();
-        public final Template.Field.Converted<List<ItemStack>> items = new Template.Field.Converted<List<ItemStack>>();
+        public final Template.Field.Converted<List<ItemStack>> items = new Template.Field.Converted<>();
 
     }
 

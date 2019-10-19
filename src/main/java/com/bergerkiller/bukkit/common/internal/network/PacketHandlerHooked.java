@@ -36,11 +36,11 @@ import java.util.logging.Level;
  */
 public abstract class PacketHandlerHooked implements PacketHandler {
 
-    private final Map<PacketType, List<PacketListener>> listeners = new HashMap<PacketType, List<PacketListener>>();
-    private final Map<PacketType, List<PacketMonitor>> monitors = new HashMap<PacketType, List<PacketMonitor>>();
-    private final Map<Plugin, List<PacketListener>> listenerPlugins = new HashMap<Plugin, List<PacketListener>>();
-    private final Map<Plugin, List<PacketMonitor>> monitorPlugins = new HashMap<Plugin, List<PacketMonitor>>();
-    private final ClassMap<SafeMethod<?>> receiverMethods = new ClassMap<SafeMethod<?>>();
+    private final Map<PacketType, List<PacketListener>> listeners = new HashMap<>();
+    private final Map<PacketType, List<PacketMonitor>> monitors = new HashMap<>();
+    private final Map<Plugin, List<PacketListener>> listenerPlugins = new HashMap<>();
+    private final Map<Plugin, List<PacketMonitor>> monitorPlugins = new HashMap<>();
+    private final ClassMap<SafeMethod<?>> receiverMethods = new ClassMap<>();
     private final SilentPacketQueue silentQueue = new SilentPacketQueue();
 
     @Override
@@ -139,14 +139,14 @@ public abstract class PacketHandlerHooked implements PacketHandler {
             // Map to listener array
             List<PacketMonitor> monitorList = monitors.get(type);
             if (monitorList == null) {
-                monitorList = new ArrayList<PacketMonitor>();
+                monitorList = new ArrayList<>();
                 monitors.put(type, monitorList);
             }
             monitorList.add(monitor);
             // Map to plugin list
             List<PacketMonitor> list = monitorPlugins.get(plugin);
             if (list == null) {
-                list = new ArrayList<PacketMonitor>(2);
+                list = new ArrayList<>(2);
                 monitorPlugins.put(plugin, list);
             }
             list.add(monitor);
@@ -165,14 +165,14 @@ public abstract class PacketHandlerHooked implements PacketHandler {
             // Map to listener array
             List<PacketListener> listenerList = listeners.get(type);
             if (listenerList == null) {
-                listenerList = new ArrayList<PacketListener>();
+                listenerList = new ArrayList<>();
                 listeners.put(type, listenerList);
             }
             listenerList.add(listener);
             // Map to plugin list
             List<PacketListener> list = listenerPlugins.get(plugin);
             if (list == null) {
-                list = new ArrayList<PacketListener>(2);
+                list = new ArrayList<>(2);
                 listenerPlugins.put(plugin, list);
             }
             list.add(listener);
@@ -183,12 +183,7 @@ public abstract class PacketHandlerHooked implements PacketHandler {
     public void receivePacket(final Player player, final PacketType type, final Object packet) {
         // If not main thread, schedule a next-tick task to run it
         if (!CommonUtil.isMainThread()) {
-            CommonUtil.nextTick(new Runnable() {
-                @Override
-                public void run() {
-                    receivePacket(player, type, packet);
-                }
-            });
+            CommonUtil.nextTick(() -> receivePacket(player, type, packet));
             return;
         }
 
@@ -229,7 +224,7 @@ public abstract class PacketHandlerHooked implements PacketHandler {
         if (listenerList == null) {
             return Collections.emptySet();
         }
-        List<Plugin> plugins = new ArrayList<Plugin>();
+        List<Plugin> plugins = new ArrayList<>();
         for (Entry<Plugin, List<PacketListener>> entry : listenerPlugins.entrySet()) {
             for (PacketListener listener : listenerList) {
                 if (entry.getValue().contains(listener)) {
@@ -256,7 +251,7 @@ public abstract class PacketHandlerHooked implements PacketHandler {
     }
 
     private PacketType[] getListenerTypes(PacketListener listener) {
-        ArrayList<PacketType> list = new ArrayList<PacketType>();
+        ArrayList<PacketType> list = new ArrayList<>();
         for (Map.Entry<PacketType, List<PacketListener>> entry : listeners.entrySet()) {
             if (entry.getValue().contains(listener)) {
                 list.add(entry.getKey());
@@ -266,7 +261,7 @@ public abstract class PacketHandlerHooked implements PacketHandler {
     }
 
     private PacketType[] getMonitorTypes(PacketMonitor listener) {
-        ArrayList<PacketType> list = new ArrayList<PacketType>();
+        ArrayList<PacketType> list = new ArrayList<>();
         for (Map.Entry<PacketType, List<PacketMonitor>> entry : monitors.entrySet()) {
             if (entry.getValue().contains(listener)) {
                 list.add(entry.getKey());

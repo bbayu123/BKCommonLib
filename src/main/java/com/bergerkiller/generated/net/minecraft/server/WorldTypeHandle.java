@@ -34,11 +34,11 @@ public abstract class WorldTypeHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class WorldTypeClass extends Template.Class<WorldTypeHandle> {
-        public final Template.Field<String> name = new Template.Field<String>();
+        public final Template.Field<String> name = new Template.Field<>();
 
-        public final Template.StaticMethod.Converted<WorldTypeHandle> getType = new Template.StaticMethod.Converted<WorldTypeHandle>();
+        public final Template.StaticMethod.Converted<WorldTypeHandle> getType = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<Dimension> getDimension = new Template.Method.Converted<Dimension>();
+        public final Template.Method.Converted<Dimension> getDimension = new Template.Method.Converted<>();
 
     }
 

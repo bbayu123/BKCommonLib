@@ -26,6 +26,7 @@ public class EntityAddEvent extends EntityEvent {
         return this.world;
     }
 
+    @Override
     public HandlerList getHandlers() {
         return handlers;
     }

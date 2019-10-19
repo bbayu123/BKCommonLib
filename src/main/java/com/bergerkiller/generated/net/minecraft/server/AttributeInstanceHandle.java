@@ -28,8 +28,8 @@ public abstract class AttributeInstanceHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class AttributeInstanceClass extends Template.Class<AttributeInstanceHandle> {
-        public final Template.Method<Void> setValue = new Template.Method<Void>();
-        public final Template.Method<Double> getValue = new Template.Method<Double>();
+        public final Template.Method<Void> setValue = new Template.Method<>();
+        public final Template.Method<Double> getValue = new Template.Method<>();
 
     }
 

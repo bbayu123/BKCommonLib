@@ -37,15 +37,15 @@ public abstract class EntitySliceHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EntitySliceClass extends Template.Class<EntitySliceHandle> {
-        public final Template.Constructor.Converted<EntitySliceHandle> constr_oclass = new Template.Constructor.Converted<EntitySliceHandle>();
+        public final Template.Constructor.Converted<EntitySliceHandle> constr_oclass = new Template.Constructor.Converted<>();
 
         @Template.Optional
-        public final Template.Field<List<Object>> listValues_1_8_3 = new Template.Field<List<Object>>();
+        public final Template.Field<List<Object>> listValues_1_8_3 = new Template.Field<>();
 
-        public final Template.Method<Boolean> add = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> remove = new Template.Method<Boolean>();
-        public final Template.Method<Iterator> iterator = new Template.Method<Iterator>();
-        public final Template.Method<Integer> size = new Template.Method<Integer>();
+        public final Template.Method<Boolean> add = new Template.Method<>();
+        public final Template.Method<Boolean> remove = new Template.Method<>();
+        public final Template.Method<Iterator> iterator = new Template.Method<>();
+        public final Template.Method<Integer> size = new Template.Method<>();
 
     }
 

@@ -30,7 +30,7 @@ public abstract class ShapelessRecipesHandle extends IRecipeHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ShapelessRecipesClass extends Template.Class<ShapelessRecipesHandle> {
-        public final Template.Field.Converted<List<CraftInputSlot>> inputItems = new Template.Field.Converted<List<CraftInputSlot>>();
+        public final Template.Field.Converted<List<CraftInputSlot>> inputItems = new Template.Field.Converted<>();
 
     }
 

@@ -29,7 +29,7 @@ public class VoxelShapeProxy {
     }
 
     public static VoxelShapeProxy fromNMSAABB(List<?> aabbObjects) {
-        return new VoxelShapeProxy(new ConvertingList<AxisAlignedBBHandle>(aabbObjects, toAABBHandle));
+        return new VoxelShapeProxy(new ConvertingList<>(aabbObjects, toAABBHandle));
     }
 
     public double traceXAxis(AxisAlignedBBHandle boundingBox, double coordinate) {

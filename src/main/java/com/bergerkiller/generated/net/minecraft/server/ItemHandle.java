@@ -37,13 +37,13 @@ public abstract class ItemHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ItemClass extends Template.Class<ItemHandle> {
-        public final Template.StaticMethod<Iterable<?>> getRegistry = new Template.StaticMethod<Iterable<?>>();
+        public final Template.StaticMethod<Iterable<?>> getRegistry = new Template.StaticMethod<>();
 
-        public final Template.Method<Integer> getMaxStackSize = new Template.Method<Integer>();
-        public final Template.Method<Integer> getMaxDurability = new Template.Method<Integer>();
-        public final Template.Method<Boolean> usesDurability = new Template.Method<Boolean>();
-        public final Template.Method.Converted<String> getInternalName = new Template.Method.Converted<String>();
-        public final Template.Method.Converted<List<ItemStack>> getItemVariants = new Template.Method.Converted<List<ItemStack>>();
+        public final Template.Method<Integer> getMaxStackSize = new Template.Method<>();
+        public final Template.Method<Integer> getMaxDurability = new Template.Method<>();
+        public final Template.Method<Boolean> usesDurability = new Template.Method<>();
+        public final Template.Method.Converted<String> getInternalName = new Template.Method.Converted<>();
+        public final Template.Method.Converted<List<ItemStack>> getItemVariants = new Template.Method.Converted<>();
 
     }
 

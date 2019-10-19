@@ -31,7 +31,7 @@ public abstract class CraftSoundHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftSoundClass extends Template.Class<CraftSoundHandle> {
-        public final Template.StaticMethod<String> getSoundName = new Template.StaticMethod<String>();
+        public final Template.StaticMethod<String> getSoundName = new Template.StaticMethod<>();
 
     }
 

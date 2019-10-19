@@ -25,7 +25,7 @@ public class EntitySliceProxy_1_8<E> extends AbstractList<E> {
 
     public EntitySliceProxy_1_8(EntitySliceHandle handle) {
         this.handle = handle;
-        this.listValues = new ArrayList<E>(handle.size());
+        this.listValues = new ArrayList<>(handle.size());
 
         Iterator<E> iter = handleIter();
         while (iter.hasNext()) {

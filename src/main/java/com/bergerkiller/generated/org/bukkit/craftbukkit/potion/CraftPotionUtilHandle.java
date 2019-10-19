@@ -35,8 +35,8 @@ public abstract class CraftPotionUtilHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftPotionUtilClass extends Template.Class<CraftPotionUtilHandle> {
-        public final Template.StaticMethod.Converted<PotionEffect> toBukkit = new Template.StaticMethod.Converted<PotionEffect>();
-        public final Template.StaticMethod.Converted<Object> fromBukkit = new Template.StaticMethod.Converted<Object>();
+        public final Template.StaticMethod.Converted<PotionEffect> toBukkit = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Object> fromBukkit = new Template.StaticMethod.Converted<>();
 
     }
 

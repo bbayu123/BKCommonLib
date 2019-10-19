@@ -37,13 +37,13 @@ import java.util.logging.Level;
  */
 @SuppressWarnings({"unchecked", "deprecation"})
 public class CommonEntityType {
-    private static final Map<String, ObjectTypeInfo> objectTypes = new HashMap<String, ObjectTypeInfo>();
-    private static final ClassMap<CommonEntityType> byNMS = new ClassMap<CommonEntityType>();
-    private static final Map<Integer, CommonEntityType> byObjectTypeId = new HashMap<Integer, CommonEntityType>();
-    private static final Map<Integer, CommonEntityType> byEntityTypeId = new HashMap<Integer, CommonEntityType>();
-    private static final Map<Object, CommonEntityType> byNMSEntityType = new HashMap<Object, CommonEntityType>();
+    private static final Map<String, ObjectTypeInfo> objectTypes = new HashMap<>();
+    private static final ClassMap<CommonEntityType> byNMS = new ClassMap<>();
+    private static final Map<Integer, CommonEntityType> byObjectTypeId = new HashMap<>();
+    private static final Map<Integer, CommonEntityType> byEntityTypeId = new HashMap<>();
+    private static final Map<Object, CommonEntityType> byNMSEntityType = new HashMap<>();
     private static final CommonPair[] commonPairs;
-    private static final EnumMap<EntityType, CommonEntityType> byEntityType = new EnumMap<EntityType, CommonEntityType>(EntityType.class);
+    private static final EnumMap<EntityType, CommonEntityType> byEntityType = new EnumMap<>(EntityType.class);
     public static final CommonEntityType UNKNOWN = new CommonEntityType(EntityType.UNKNOWN, true);
 
     public final ClassTemplate<?> nmsType;

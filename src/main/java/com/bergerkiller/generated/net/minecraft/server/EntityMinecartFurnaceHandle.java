@@ -36,7 +36,7 @@ public abstract class EntityMinecartFurnaceHandle extends EntityMinecartAbstract
      */
     public static final class EntityMinecartFurnaceClass extends Template.Class<EntityMinecartFurnaceHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Boolean>> DATA_SMOKING = new Template.StaticField.Converted<Key<Boolean>>();
+        public final Template.StaticField.Converted<Key<Boolean>> DATA_SMOKING = new Template.StaticField.Converted<>();
 
         public final Template.Field.Integer fuel = new Template.Field.Integer();
         public final Template.Field.Double pushForceX = new Template.Field.Double();

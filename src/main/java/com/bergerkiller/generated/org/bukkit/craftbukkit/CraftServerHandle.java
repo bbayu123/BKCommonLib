@@ -40,9 +40,9 @@ public abstract class CraftServerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftServerClass extends Template.Class<CraftServerHandle> {
-        public final Template.Method<SimpleCommandMap> getCommandMap = new Template.Method<SimpleCommandMap>();
-        public final Template.Method.Converted<DedicatedPlayerListHandle> getPlayerList = new Template.Method.Converted<DedicatedPlayerListHandle>();
-        public final Template.Method.Converted<MinecraftServerHandle> getServer = new Template.Method.Converted<MinecraftServerHandle>();
+        public final Template.Method<SimpleCommandMap> getCommandMap = new Template.Method<>();
+        public final Template.Method.Converted<DedicatedPlayerListHandle> getPlayerList = new Template.Method.Converted<>();
+        public final Template.Method.Converted<MinecraftServerHandle> getServer = new Template.Method.Converted<>();
 
     }
 

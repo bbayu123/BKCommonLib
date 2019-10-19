@@ -52,19 +52,19 @@ public abstract class MobSpawnerAbstractHandle extends Template.Handle {
      */
     public static final class MobSpawnerAbstractClass extends Template.Class<MobSpawnerAbstractHandle> {
         public final Template.Field.Integer spawnDelay = new Template.Field.Integer();
-        public final Template.Field.Converted<List<MobSpawnerDataHandle>> mobs = new Template.Field.Converted<List<MobSpawnerDataHandle>>();
-        public final Template.Field.Converted<MobSpawnerDataHandle> spawnData = new Template.Field.Converted<MobSpawnerDataHandle>();
+        public final Template.Field.Converted<List<MobSpawnerDataHandle>> mobs = new Template.Field.Converted<>();
+        public final Template.Field.Converted<MobSpawnerDataHandle> spawnData = new Template.Field.Converted<>();
         public final Template.Field.Integer minSpawnDelay = new Template.Field.Integer();
         public final Template.Field.Integer maxSpawnDelay = new Template.Field.Integer();
         public final Template.Field.Integer spawnCount = new Template.Field.Integer();
-        public final Template.Field.Converted<Entity> entity = new Template.Field.Converted<Entity>();
+        public final Template.Field.Converted<Entity> entity = new Template.Field.Converted<>();
         public final Template.Field.Integer maxNearbyEntities = new Template.Field.Integer();
         public final Template.Field.Integer requiredPlayerRange = new Template.Field.Integer();
         public final Template.Field.Integer spawnRange = new Template.Field.Integer();
 
-        public final Template.Method<Void> onTick = new Template.Method<Void>();
-        public final Template.Method.Converted<MinecraftKeyHandle> getMobName = new Template.Method.Converted<MinecraftKeyHandle>();
-        public final Template.Method.Converted<Void> setMobName = new Template.Method.Converted<Void>();
+        public final Template.Method<Void> onTick = new Template.Method<>();
+        public final Template.Method.Converted<MinecraftKeyHandle> getMobName = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setMobName = new Template.Method.Converted<>();
 
     }
 

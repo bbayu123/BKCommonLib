@@ -29,7 +29,7 @@ public abstract class EntityMinecartMobSpawnerHandle extends EntityMinecartAbstr
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EntityMinecartMobSpawnerClass extends Template.Class<EntityMinecartMobSpawnerHandle> {
-        public final Template.Field.Converted<MobSpawner> mobSpawner = new Template.Field.Converted<MobSpawner>();
+        public final Template.Field.Converted<MobSpawner> mobSpawner = new Template.Field.Converted<>();
 
     }
 

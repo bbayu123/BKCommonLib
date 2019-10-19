@@ -462,15 +462,15 @@ public class YamlTest {
         Map<?, ?> hello = (Map<?, ?>) output.root.get("hello");
         Map<?, ?> cool = (Map<?, ?>) hello.get("cool");
         List<?> anyList = (List<?>) hello.get("*");
-        assertEquals("§cColored text&ampersand", (String) cool.get("text"));
-        assertEquals(Integer.valueOf(-5), (Integer) cool.get("value"));
+        assertEquals("§cColored text&ampersand", cool.get("text"));
+        assertEquals(Integer.valueOf(-5), cool.get("value"));
         assertEquals(3, anyList.size());
-        assertEquals("value1", (String) anyList.get(0));
-        assertEquals("value2", (String) anyList.get(1));
+        assertEquals("value1", anyList.get(0));
+        assertEquals("value2", anyList.get(1));
         List<?> anyListSubList = (List<?>) anyList.get(2);
         assertEquals(2, anyListSubList.size());
-        assertEquals("value3", (String) anyListSubList.get(0));
-        assertEquals("value4", (String) anyListSubList.get(1));
+        assertEquals("value3", anyListSubList.get(0));
+        assertEquals("value4", anyListSubList.get(1));
 
         // Check all headers
         assertEquals("Main file header", output.headers.get(YamlPath.create("")));

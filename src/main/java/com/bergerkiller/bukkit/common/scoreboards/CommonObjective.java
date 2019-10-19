@@ -18,7 +18,7 @@ public class CommonObjective {
     private String name;
     private String displayName;
     private boolean displayed;
-    private Map<String, CommonScore> scores = new HashMap<String, CommonScore>();
+    private Map<String, CommonScore> scores = new HashMap<>();
 
     protected CommonObjective(CommonScoreboard scoreboard, Display display) {
         this.display = display;

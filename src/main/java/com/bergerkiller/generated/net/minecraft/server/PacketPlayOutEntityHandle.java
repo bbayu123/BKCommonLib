@@ -67,16 +67,16 @@ public abstract class PacketPlayOutEntityHandle extends PacketHandle {
         public final Template.Field.Integer entityId = new Template.Field.Integer();
         public final Template.Field.Boolean onGround = new Template.Field.Boolean();
 
-        public final Template.Method<Double> getDeltaX = new Template.Method<Double>();
-        public final Template.Method<Double> getDeltaY = new Template.Method<Double>();
-        public final Template.Method<Double> getDeltaZ = new Template.Method<Double>();
-        public final Template.Method<Void> setDeltaX = new Template.Method<Void>();
-        public final Template.Method<Void> setDeltaY = new Template.Method<Void>();
-        public final Template.Method<Void> setDeltaZ = new Template.Method<Void>();
-        public final Template.Method<Float> getYaw = new Template.Method<Float>();
-        public final Template.Method<Float> getPitch = new Template.Method<Float>();
-        public final Template.Method<Void> setYaw = new Template.Method<Void>();
-        public final Template.Method<Void> setPitch = new Template.Method<Void>();
+        public final Template.Method<Double> getDeltaX = new Template.Method<>();
+        public final Template.Method<Double> getDeltaY = new Template.Method<>();
+        public final Template.Method<Double> getDeltaZ = new Template.Method<>();
+        public final Template.Method<Void> setDeltaX = new Template.Method<>();
+        public final Template.Method<Void> setDeltaY = new Template.Method<>();
+        public final Template.Method<Void> setDeltaZ = new Template.Method<>();
+        public final Template.Method<Float> getYaw = new Template.Method<>();
+        public final Template.Method<Float> getPitch = new Template.Method<>();
+        public final Template.Method<Void> setYaw = new Template.Method<>();
+        public final Template.Method<Void> setPitch = new Template.Method<>();
 
     }
 
@@ -122,7 +122,7 @@ public abstract class PacketPlayOutEntityHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class PacketPlayOutEntityLookClass extends Template.Class<PacketPlayOutEntityLookHandle> {
-            public final Template.Constructor.Converted<PacketPlayOutEntityLookHandle> constr = new Template.Constructor.Converted<PacketPlayOutEntityLookHandle>();
+            public final Template.Constructor.Converted<PacketPlayOutEntityLookHandle> constr = new Template.Constructor.Converted<>();
 
         }
 
@@ -171,7 +171,7 @@ public abstract class PacketPlayOutEntityHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class PacketPlayOutRelEntityMoveClass extends Template.Class<PacketPlayOutRelEntityMoveHandle> {
-            public final Template.Constructor.Converted<PacketPlayOutRelEntityMoveHandle> constr = new Template.Constructor.Converted<PacketPlayOutRelEntityMoveHandle>();
+            public final Template.Constructor.Converted<PacketPlayOutRelEntityMoveHandle> constr = new Template.Constructor.Converted<>();
 
         }
 
@@ -222,7 +222,7 @@ public abstract class PacketPlayOutEntityHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class PacketPlayOutRelEntityMoveLookClass extends Template.Class<PacketPlayOutRelEntityMoveLookHandle> {
-            public final Template.Constructor.Converted<PacketPlayOutRelEntityMoveLookHandle> constr = new Template.Constructor.Converted<PacketPlayOutRelEntityMoveLookHandle>();
+            public final Template.Constructor.Converted<PacketPlayOutRelEntityMoveLookHandle> constr = new Template.Constructor.Converted<>();
 
         }
 

@@ -63,12 +63,14 @@ public class MapWidget implements MapDisplayEvents {
     /**
      * Called when the widget is attached to a map display
      */
+    @Override
     public void onAttached() {
     }
 
     /**
      * Called when a widget is removed from a map display
      */
+    @Override
     public void onDetached() {
     }
 
@@ -108,6 +110,7 @@ public class MapWidget implements MapDisplayEvents {
      * Called every tick to refresh this widget.
      * The base {@link #update()} automatically calls onDraw() when the widget is invalidated.
      */
+    @Override
     public void onTick() {
     }
 
@@ -448,7 +451,7 @@ public class MapWidget implements MapDisplayEvents {
         if (this._children == old_children) {
             this._children = new MapWidget[0];
         } else {
-            ArrayList<MapWidget> remaining = new ArrayList<MapWidget>(Arrays.asList(this._children));
+            ArrayList<MapWidget> remaining = new ArrayList<>(Arrays.asList(this._children));
             for (MapWidget old_child : old_children) {
                 for (int i = 0; i < remaining.size(); i++) {
                     if (remaining.get(i) == old_child) {

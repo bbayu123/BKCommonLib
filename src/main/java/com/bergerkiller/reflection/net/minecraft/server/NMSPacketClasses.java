@@ -207,7 +207,7 @@ public class NMSPacketClasses {
         @Override
         protected boolean matchPacket(Object packetHandle) {
             if (CommonCapabilities.PLACE_PACKETS_MERGED) {
-                return PacketPlayInUseItemHandle.T.isBlockPlacePacket.invoke(packetHandle).booleanValue();
+                return PacketPlayInUseItemHandle.T.isBlockPlacePacket.invoke(packetHandle);
             } else {
                 return true;
             }
@@ -709,12 +709,12 @@ public class NMSPacketClasses {
         public final FieldAccessor<Float> pitch = new SafeDirectField<Float>() {
             @Override
             public Float get(Object instance) {
-                return Float.valueOf(PacketPlayOutCustomSoundEffectHandle.createHandle(instance).getPitch());
+                return PacketPlayOutCustomSoundEffectHandle.createHandle(instance).getPitch();
             }
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutCustomSoundEffectHandle.createHandle(instance).setPitch(value.floatValue());
+                PacketPlayOutCustomSoundEffectHandle.createHandle(instance).setPitch(value);
                 return true;
             }
         };
@@ -734,7 +734,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutEntityHandle.createHandle(instance).setDeltaX(value.doubleValue());
+                PacketPlayOutEntityHandle.createHandle(instance).setDeltaX(value);
                 return true;
             }
         };
@@ -746,7 +746,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutEntityHandle.createHandle(instance).setDeltaY(value.doubleValue());
+                PacketPlayOutEntityHandle.createHandle(instance).setDeltaY(value);
                 return true;
             }
         };
@@ -758,7 +758,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutEntityHandle.createHandle(instance).setDeltaZ(value.doubleValue());
+                PacketPlayOutEntityHandle.createHandle(instance).setDeltaZ(value);
                 return true;
             }
         };
@@ -771,7 +771,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutEntityHandle.createHandle(instance).setYaw(value.floatValue());
+                PacketPlayOutEntityHandle.createHandle(instance).setYaw(value);
                 return true;
             }
         };
@@ -783,7 +783,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutEntityHandle.createHandle(instance).setPitch(value.floatValue());
+                PacketPlayOutEntityHandle.createHandle(instance).setPitch(value);
                 return true;
             }
         };
@@ -902,7 +902,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutEntityHeadRotationHandle.createHandle(instance).setHeadYaw(value.floatValue());
+                PacketPlayOutEntityHeadRotationHandle.createHandle(instance).setHeadYaw(value);
                 return true;
             }
         };
@@ -939,7 +939,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPosX(value.doubleValue());
+                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPosX(value);
                 return true;
             }
         };
@@ -951,7 +951,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPosY(value.doubleValue());
+                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPosY(value);
                 return true;
             }
         };
@@ -963,7 +963,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPosZ(value.doubleValue());
+                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPosZ(value);
                 return true;
             }
         };
@@ -975,7 +975,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutEntityTeleportHandle.createHandle(instance).setYaw(value.floatValue());
+                PacketPlayOutEntityTeleportHandle.createHandle(instance).setYaw(value);
                 return true;
             }
         };
@@ -987,7 +987,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPitch(value.floatValue());
+                PacketPlayOutEntityTeleportHandle.createHandle(instance).setPitch(value);
                 return true;
             }
         };
@@ -1059,7 +1059,7 @@ public class NMSPacketClasses {
 
         public CommonPacket newInstance(double x, double y, double z, float radius, List<IntVector3> blocks, Vector pushedForce) {
             Object vec = (pushedForce == null) ? null : NMSVector.newVec(pushedForce.getX(), pushedForce.getY(), pushedForce.getZ());
-            List<Object> blocksHandles = new ArrayList<Object>(blocks.size());
+            List<Object> blocksHandles = new ArrayList<>(blocks.size());
             for (IntVector3 block : blocks) {
                 blocksHandles.add(NMSVector.newPosition(block.x, block.y, block.z));
             }
@@ -1205,7 +1205,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Integer value) {
-                PacketPlayOutMapChunkHandle.createHandle(instance).setSectionsMask(value.intValue());
+                PacketPlayOutMapChunkHandle.createHandle(instance).setSectionsMask(value);
                 return true;
             }
         };
@@ -1314,7 +1314,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPosX(value.doubleValue());
+                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPosX(value);
                 return true;
             }
         };
@@ -1326,7 +1326,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPosY(value.doubleValue());
+                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPosY(value);
                 return true;
             }
         };
@@ -1338,7 +1338,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPosZ(value.doubleValue());
+                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPosZ(value);
                 return true;
             }
         };
@@ -1350,7 +1350,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setYaw(value.floatValue());
+                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setYaw(value);
                 return true;
             }
         };
@@ -1362,7 +1362,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPitch(value.floatValue());
+                PacketPlayOutNamedEntitySpawnHandle.createHandle(instance).setPitch(value);
                 return true;
             }
         };
@@ -1400,7 +1400,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutNamedSoundEffectHandle.createHandle(instance).setPitch(value.floatValue());
+                PacketPlayOutNamedSoundEffectHandle.createHandle(instance).setPitch(value);
                 return true;
             }
         };
@@ -1457,7 +1457,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Integer value) {
-                PacketPlayOutPositionHandle.createHandle(instance).setTeleportWaitTimer(value.intValue());
+                PacketPlayOutPositionHandle.createHandle(instance).setTeleportWaitTimer(value);
                 return true;
             }
         };
@@ -1573,7 +1573,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPosX(value.doubleValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPosX(value);
                 return true;
             }
         };
@@ -1585,7 +1585,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPosY(value.doubleValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPosY(value);
                 return true;
             }
         };
@@ -1597,7 +1597,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPosZ(value.doubleValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPosZ(value);
                 return true;
             }
         };
@@ -1610,7 +1610,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setMotX(value.doubleValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setMotX(value);
                 return true;
             }
         };
@@ -1622,7 +1622,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setMotY(value.doubleValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setMotY(value);
                 return true;
             }
         };
@@ -1634,7 +1634,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setMotZ(value.doubleValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setMotZ(value);
                 return true;
             }
         };
@@ -1646,7 +1646,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPitch(value.floatValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setPitch(value);
                 return true;
             }
         };
@@ -1658,7 +1658,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setYaw(value.floatValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setYaw(value);
                 return true;
             }
         };
@@ -1677,7 +1677,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Integer value) {
-                PacketPlayOutSpawnEntityHandle.createHandle(instance).setEntityTypeId(value.intValue());
+                PacketPlayOutSpawnEntityHandle.createHandle(instance).setEntityTypeId(value);
                 return true;
             }
         };
@@ -1707,7 +1707,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityExperienceOrbHandle.createHandle(instance).setPosX(value.doubleValue());
+                PacketPlayOutSpawnEntityExperienceOrbHandle.createHandle(instance).setPosX(value);
                 return true;
             }
         };
@@ -1719,7 +1719,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityExperienceOrbHandle.createHandle(instance).setPosY(value.doubleValue());
+                PacketPlayOutSpawnEntityExperienceOrbHandle.createHandle(instance).setPosY(value);
                 return true;
             }
         };
@@ -1731,7 +1731,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityExperienceOrbHandle.createHandle(instance).setPosZ(value.doubleValue());
+                PacketPlayOutSpawnEntityExperienceOrbHandle.createHandle(instance).setPosZ(value);
                 return true;
             }
         };
@@ -1751,7 +1751,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPosX(value.doubleValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPosX(value);
                 return true;
             }
         };
@@ -1763,7 +1763,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPosY(value.doubleValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPosY(value);
                 return true;
             }
         };
@@ -1775,7 +1775,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPosZ(value.doubleValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPosZ(value);
                 return true;
             }
         };
@@ -1787,7 +1787,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setMotX(value.doubleValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setMotX(value);
                 return true;
             }
         };
@@ -1799,7 +1799,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setMotY(value.doubleValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setMotY(value);
                 return true;
             }
         };
@@ -1811,7 +1811,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setMotZ(value.doubleValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setMotZ(value);
                 return true;
             }
         };
@@ -1823,7 +1823,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setYaw(value.floatValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setYaw(value);
                 return true;
             }
         };
@@ -1835,7 +1835,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPitch(value.floatValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setPitch(value);
                 return true;
             }
         };
@@ -1847,7 +1847,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Float value) {
-                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setHeadYaw(value.floatValue());
+                PacketPlayOutSpawnEntityLivingHandle.createHandle(instance).setHeadYaw(value);
                 return true;
             }
         };
@@ -1879,7 +1879,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityWeatherHandle.createHandle(instance).setPosX(value.doubleValue());
+                PacketPlayOutSpawnEntityWeatherHandle.createHandle(instance).setPosX(value);
                 return true;
             }
         };
@@ -1891,7 +1891,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityWeatherHandle.createHandle(instance).setPosY(value.doubleValue());
+                PacketPlayOutSpawnEntityWeatherHandle.createHandle(instance).setPosY(value);
                 return true;
             }
         };
@@ -1903,7 +1903,7 @@ public class NMSPacketClasses {
 
             @Override
             public boolean set(Object instance, Double value) {
-                PacketPlayOutSpawnEntityWeatherHandle.createHandle(instance).setPosZ(value.doubleValue());
+                PacketPlayOutSpawnEntityWeatherHandle.createHandle(instance).setPosZ(value);
                 return true;
             }
         };

@@ -106,22 +106,22 @@ public abstract class PacketPlayOutMapChunkHandle extends PacketHandle {
      */
     public static final class PacketPlayOutMapChunkClass extends Template.Class<PacketPlayOutMapChunkHandle> {
         @Template.Optional
-        public final Template.Constructor.Converted<PacketPlayOutMapChunkHandle> constr_chunk_flag_sectionsMask = new Template.Constructor.Converted<PacketPlayOutMapChunkHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutMapChunkHandle> constr_chunk_flag_sectionsMask = new Template.Constructor.Converted<>();
         @Template.Optional
-        public final Template.Constructor.Converted<PacketPlayOutMapChunkHandle> constr_chunk_sectionsMask = new Template.Constructor.Converted<PacketPlayOutMapChunkHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutMapChunkHandle> constr_chunk_sectionsMask = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer x = new Template.Field.Integer();
         public final Template.Field.Integer z = new Template.Field.Integer();
         @Template.Optional
         public final Template.Field.Integer sectionsMask = new Template.Field.Integer();
         @Template.Optional
-        public final Template.Field.Converted<CommonTagCompound> metadata = new Template.Field.Converted<CommonTagCompound>();
+        public final Template.Field.Converted<CommonTagCompound> metadata = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field<byte[]> data = new Template.Field<byte[]>();
+        public final Template.Field<byte[]> data = new Template.Field<>();
         @Template.Optional
-        public final Template.Field.Converted<List<CommonTagCompound>> tags = new Template.Field.Converted<List<CommonTagCompound>>();
+        public final Template.Field.Converted<List<CommonTagCompound>> tags = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<ChunkMapHandle> chunkInfo = new Template.Field.Converted<ChunkMapHandle>();
+        public final Template.Field.Converted<ChunkMapHandle> chunkInfo = new Template.Field.Converted<>();
         public final Template.Field.Boolean hasBiomeData = new Template.Field.Boolean();
 
     }
@@ -155,7 +155,7 @@ public abstract class PacketPlayOutMapChunkHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class ChunkMapClass extends Template.Class<ChunkMapHandle> {
-            public final Template.Field<byte[]> data = new Template.Field<byte[]>();
+            public final Template.Field<byte[]> data = new Template.Field<>();
             public final Template.Field.Integer sectionsMask = new Template.Field.Integer();
 
         }

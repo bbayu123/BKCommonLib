@@ -34,7 +34,7 @@ public abstract class ChunkCoordIntPairHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ChunkCoordIntPairClass extends Template.Class<ChunkCoordIntPairHandle> {
-        public final Template.Constructor.Converted<ChunkCoordIntPairHandle> constr_x_z = new Template.Constructor.Converted<ChunkCoordIntPairHandle>();
+        public final Template.Constructor.Converted<ChunkCoordIntPairHandle> constr_x_z = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer x = new Template.Field.Integer();
         public final Template.Field.Integer z = new Template.Field.Integer();

@@ -9,7 +9,7 @@ import com.bergerkiller.mountiplex.reflection.ClassHook;
  * It is only temporarily hooked for the duration of a single Entity spawn.
  */
 public class EntityTrackerHook extends ClassHook<EntityTrackerHook> {
-    public final HashSet<Object> ignoredEntities = new HashSet<Object>();
+    public final HashSet<Object> ignoredEntities = new HashSet<>();
     public final Object original;
 
     public EntityTrackerHook(Object original) {

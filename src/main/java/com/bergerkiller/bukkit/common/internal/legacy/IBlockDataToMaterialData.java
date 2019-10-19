@@ -29,10 +29,10 @@ import com.bergerkiller.mountiplex.reflection.util.FastMethod;
  */
 @SuppressWarnings("deprecation")
 public class IBlockDataToMaterialData extends CommonLegacyMaterials {
-    public static final Map<Object, MaterialData> INTERNAL_IBLOCKDATA_TO_MATERIALDATA = new HashMap<Object, MaterialData>();
-    private static final Map<Material, MaterialDataBuilder> materialdata_builders = new EnumMap<Material, MaterialDataBuilder>(Material.class);
-    private static final Map<Material, Byte> materialdata_default_data = new EnumMap<Material, Byte>(Material.class);
-    private static final FastMethod<MaterialData> craftbukkitGetMaterialdata = new FastMethod<MaterialData>();
+    public static final Map<Object, MaterialData> INTERNAL_IBLOCKDATA_TO_MATERIALDATA = new HashMap<>();
+    private static final Map<Material, MaterialDataBuilder> materialdata_builders = new EnumMap<>(Material.class);
+    private static final Map<Material, Byte> materialdata_default_data = new EnumMap<>(Material.class);
+    private static final FastMethod<MaterialData> craftbukkitGetMaterialdata = new FastMethod<>();
 
     static {
         // Stores a mapping from IBlockData to MaterialData for some values
@@ -86,28 +86,13 @@ public class IBlockDataToMaterialData extends CommonLegacyMaterials {
             }
         }
 
-        MaterialDataBuilder default_builder = new MaterialDataBuilder() {
-            @Override
-            public MaterialData create(Material material_type, Material legacy_data_type, byte legacy_data_value) {
-                return legacy_data_type.getNewData(legacy_data_value);
-            }
-        };
+        MaterialDataBuilder default_builder = (material_type, legacy_data_type, legacy_data_value) -> legacy_data_type.getNewData(legacy_data_value);
 
         // Bukkit bugfix.
-        storeBuilders(new MaterialDataBuilder() {
-            @Override
-            public MaterialData create(Material material_type, Material legacy_data_type, byte legacy_data_value) {
-                return new org.bukkit.material.PressurePlate(material_type, legacy_data_value);
-            }
-        }, "LEGACY_GOLD_PLATE", "LEGACY_IRON_PLATE");
+        storeBuilders((material_type, legacy_data_type, legacy_data_value) -> new org.bukkit.material.PressurePlate(material_type, legacy_data_value), "LEGACY_GOLD_PLATE", "LEGACY_IRON_PLATE");
 
         // Bukkit bugfix. (<= 1.8.3)
-        storeBuilders(new MaterialDataBuilder() {
-            @Override
-            public MaterialData create(Material material_type, Material legacy_data_type, byte legacy_data_value) {
-                return new org.bukkit.material.Door(material_type, legacy_data_value);
-            }
-        }, "LEGACY_JUNGLE_DOOR", "LEGACY_ACACIA_DOOR", "LEGACY_DARK_OAK_DOOR", "LEGACY_SPRUCE_DOOR", "LEGACY_BIRCH_DOOR");
+        storeBuilders((material_type, legacy_data_type, legacy_data_value) -> new org.bukkit.material.Door(material_type, legacy_data_value), "LEGACY_JUNGLE_DOOR", "LEGACY_ACACIA_DOOR", "LEGACY_DARK_OAK_DOOR", "LEGACY_SPRUCE_DOOR", "LEGACY_BIRCH_DOOR");
 
         // Default data values for some common Material types
         // This ensures getMaterialData() works correctly when used from BY_MATERIAL
@@ -122,7 +107,7 @@ public class IBlockDataToMaterialData extends CommonLegacyMaterials {
                 materialdata_builders.put(type, default_builder);
             }
             if (!materialdata_default_data.containsKey(type)) {
-                materialdata_default_data.put(type, Byte.valueOf((byte) 0));
+                materialdata_default_data.put(type, (byte) 0);
             }
         }
 
@@ -215,7 +200,7 @@ public class IBlockDataToMaterialData extends CommonLegacyMaterials {
                 @Override
                 public List<IBlockDataHandle> createStates(IBlockDataHandle wire_data, org.bukkit.material.RedstoneWire wire) {
                     final String[] SIDE_VALUES = {"up", "side", "none"};
-                    ArrayList<IBlockDataHandle> variants = new ArrayList<IBlockDataHandle>(3*3*3*3);
+                    ArrayList<IBlockDataHandle> variants = new ArrayList<>(3*3*3*3);
                     wire_data = wire_data.set("power", wire.getData());
                     for (String side_north : SIDE_VALUES) {
                         wire_data = wire_data.set("north", side_north);
@@ -367,7 +352,7 @@ public class IBlockDataToMaterialData extends CommonLegacyMaterials {
     }
 
     private static void storeMaterialDataDefault(String name, int data) {
-        materialdata_default_data.put(CommonLegacyMaterials.getLegacyMaterial(name), Byte.valueOf((byte) data));
+        materialdata_default_data.put(CommonLegacyMaterials.getLegacyMaterial(name), (byte) data);
     }
 
     /**
@@ -400,7 +385,7 @@ public class IBlockDataToMaterialData extends CommonLegacyMaterials {
      * @return MaterialData
      */
     public static MaterialData createMaterialData(Material legacy_data_type) {
-        return createMaterialData(legacy_data_type, legacy_data_type, materialdata_default_data.get(legacy_data_type).byteValue());
+        return createMaterialData(legacy_data_type, legacy_data_type, materialdata_default_data.get(legacy_data_type));
     }
 
     /**

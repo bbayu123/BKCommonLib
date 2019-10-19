@@ -17,12 +17,13 @@ import com.bergerkiller.bukkit.common.internal.CommonLegacyMaterials;
 import com.bergerkiller.bukkit.common.internal.legacy.MaterialDataToIBlockData;
 import com.bergerkiller.bukkit.common.utils.MaterialUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 
 public class BlockDataTest {
 
     @Test
     public void testMaterialData() {
-        final Map<Material, int[]> legacyDataRanges = new HashMap<Material, int[]>();
+        final Map<Material, int[]> legacyDataRanges = new HashMap<>();
 
         // ================== Data value ranges, empty to skip the Material =================
         legacyDataRanges.put(getLegacyMaterial("STATIONARY_WATER"), new int[0]);
@@ -70,11 +71,11 @@ public class BlockDataTest {
     public void testBlockData() {
         for (Material mat : getAllMaterials()) {
             if (!mat.isBlock()) {
-                assertType(Material.AIR, BlockData.fromMaterial(mat).getType());
+                assertType(Material.AIR, BlockDataRegistry.fromMaterial(mat).getType());
             } else if (MaterialUtil.isLegacyType(mat)) {
-                assertType(mat, BlockData.fromMaterial(mat).getLegacyType());
+                assertType(mat, BlockDataRegistry.fromMaterial(mat).getLegacyType());
             } else {
-                assertType(mat, BlockData.fromMaterial(mat).getType());
+                assertType(mat, BlockDataRegistry.fromMaterial(mat).getType());
             }
         }
 
@@ -82,8 +83,8 @@ public class BlockDataTest {
             // Since MC 1.13 CraftBukkit deals with legacy conversion, and does some interesting things as a result
             Material[] to_test = getAllByName("LEGACY_AIR", "LEGACY_STONE", "LEGACY_GLASS", "AIR", "STONE", "GLASS");
             for (Material mat : to_test) {
-                BlockData from_matdata = BlockData.fromMaterialData(mat, 0);
-                BlockData from_mat = BlockData.fromMaterial(mat);
+                BlockData from_matdata = BlockDataRegistry.fromMaterialData(mat, 0);
+                BlockData from_mat = BlockDataRegistry.fromMaterial(mat);
                 assertType(from_matdata.getType(),from_mat.getType());
                 assertType(from_matdata.getLegacyType(),from_mat.getLegacyType());
             }
@@ -91,25 +92,25 @@ public class BlockDataTest {
             // On older versions, the type from fromMaterialData MUST match the type fromMaterial
             for (Material mat : getAllMaterials()) {
                 if (mat.isBlock()) {
-                    BlockData from_matdata = BlockData.fromMaterialData(mat, 0);
-                    BlockData from_mat = BlockData.fromMaterial(mat);
+                    BlockData from_matdata = BlockDataRegistry.fromMaterialData(mat, 0);
+                    BlockData from_mat = BlockDataRegistry.fromMaterial(mat);
                     assertType(from_matdata.getType(),from_mat.getType());
                     assertType(from_matdata.getLegacyType(),from_mat.getLegacyType());
                 }
             }
         }
 
-        assertEquals(0, BlockData.fromMaterial(Material.AIR).getEmission());
+        assertEquals(0, BlockDataRegistry.fromMaterial(Material.AIR).getEmission());
         //assertEquals(0, BlockData.fromMaterial(Material.AIR).getOpacity());
-        assertEquals(15, BlockData.fromMaterial(Material.GLOWSTONE).getEmission());
-        assertEquals(14, BlockData.fromMaterial(Material.TORCH).getEmission());
+        assertEquals(15, BlockDataRegistry.fromMaterial(Material.GLOWSTONE).getEmission());
+        assertEquals(14, BlockDataRegistry.fromMaterial(Material.TORCH).getEmission());
     }
 
     @Test
     public void testBlockDataStates() {
         // Get Block Data of stairs
         Material mat = MaterialUtil.getFirst("OAK_STAIRS", "LEGACY_WOOD_STAIRS");
-        BlockData data = BlockData.fromMaterial(mat);
+        BlockData data = BlockDataRegistry.fromMaterial(mat);
 
         data = data.setState("facing", BlockFace.EAST);
         assertEquals(BlockFace.EAST, data.getState("facing", BlockFace.class));
@@ -123,7 +124,7 @@ public class BlockDataTest {
     private void assertType(Material expected, Material object) {
         if (expected != object) {
             // There are some exceptions where type information went missing on 1.13
-            Map<String, String> exceptions = new HashMap<String, String>();
+            Map<String, String> exceptions = new HashMap<>();
             exceptions.put("LEGACY_STATIONARY_WATER", "LEGACY_WATER");
             exceptions.put("LEGACY_STATIONARY_LAVA", "LEGACY_LAVA");
             exceptions.put("LEGACY_DEAD_BUSH", "LEGACY_LONG_GRASS");
@@ -140,7 +141,7 @@ public class BlockDataTest {
     }
 
     private void testLegacyMaterial(Material legacyMaterialType, int dataValue) {
-        BlockData blockData = BlockData.fromMaterialData(legacyMaterialType, dataValue);
+        BlockData blockData = BlockDataRegistry.fromMaterialData(legacyMaterialType, dataValue);
         MaterialData materialData = blockData.getMaterialData();
         if (CommonLegacyMaterials.toLegacy(materialData.getItemType()) != legacyMaterialType) {
             System.out.println("MaterialData type: " + materialData.getClass().getName());
@@ -154,7 +155,7 @@ public class BlockDataTest {
         if (materialData.getData() != (byte) dataValue) {
             System.err.println("BlockData of " + legacyMaterialType + ":" + dataValue + " = " + blockData);
             String msg = "testLegacyMaterial(" + legacyMaterialType + ", " + dataValue + ") failed: " +
-                    "Expected legacy data " + dataValue + ", but was " + ((int) materialData.getData() & 0xF);
+                    "Expected legacy data " + dataValue + ", but was " + (materialData.getData() & 0xF);
             System.err.println(msg);
             fail(msg);
         }
@@ -189,11 +190,11 @@ public class BlockDataTest {
 
     private void testSignMaterial(Material material, boolean isWallSign) {
         assertNotNull(material);
-        BlockData signData = BlockData.fromMaterial(material);
+        BlockData signData = BlockDataRegistry.fromMaterial(material);
         if (signData == null) {
             fail("Material " + material.name() + " produces unexpected null BlockData");
         }
-        if (signData == BlockData.AIR) {
+        if (signData == BlockDataRegistry.AIR) {
             fail("Material " + material.name() + " can not be resolved to valid Sign BlockData");
         }
         if (signData.getLegacyType() != MaterialUtil.getMaterial(isWallSign ? "LEGACY_WALL_SIGN" : "LEGACY_SIGN_POST")) {
@@ -217,7 +218,7 @@ public class BlockDataTest {
         }
 
         // MaterialData -> BlockData
-        BlockData restoredBlockData = BlockData.fromMaterialData(legacyMaterialData);
+        BlockData restoredBlockData = BlockDataRegistry.fromMaterialData(legacyMaterialData);
         if (restoredBlockData != signData) {
             fail("Block Data was not restored from MaterialData correctly. Expected " + signData + ", but got " + restoredBlockData);
         }

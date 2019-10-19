@@ -1,6 +1,7 @@
 package com.bergerkiller.bukkit.common.internal.proxy;
 
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 
 /**
  * Emulates access to a char[] array as if it is by the DataPaletteBlock API.
@@ -15,7 +16,7 @@ public class DataPaletteBlock {
 
     @SuppressWarnings("deprecation")
     public BlockData getBlockData(int x, int y, int z) {
-        return BlockData.fromCombinedId_1_8_8(this.blockIds[y << 8 | z << 4 | x]);
+        return BlockDataRegistry.fromCombinedId_1_8_8(this.blockIds[y << 8 | z << 4 | x]);
     }
 
     @SuppressWarnings("deprecation")

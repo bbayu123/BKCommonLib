@@ -23,7 +23,7 @@ import java.util.List;
 public class CommonEventFactory {
 
     private final EntityMoveEvent entityMoveEvent = new EntityMoveEvent();
-    private final List<EntityHandle> entityMoveEntities = new ArrayList<EntityHandle>();
+    private final List<EntityHandle> entityMoveEntities = new ArrayList<>();
     private final CreaturePreSpawnEvent creaturePreSpawnEvent = new CreaturePreSpawnEvent();
 
     private final InstanceBuffer<BiomeMetaHandle> creaturePreSpawnMobs = new InstanceBuffer<BiomeMetaHandle>() {
@@ -37,7 +37,7 @@ public class CommonEventFactory {
     @SuppressWarnings("unchecked")
     private Iterable<Object> getAllServerEntities() {
         Collection<World> worlds = WorldUtil.getWorlds();
-        List<Iterable<Object>> world_entity_lists = new ArrayList<Iterable<Object>>(worlds.size());
+        List<Iterable<Object>> world_entity_lists = new ArrayList<>(worlds.size());
         for (World world : worlds) {
             Object worldHandle = WorldServerHandle.fromBukkit(world).getRaw();
             world_entity_lists.add((Iterable<Object>) WorldServerHandle.T.getEntities.raw.invoke(worldHandle));

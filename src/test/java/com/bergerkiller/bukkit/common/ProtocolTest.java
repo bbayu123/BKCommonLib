@@ -63,7 +63,7 @@ public class ProtocolTest {
         }
 
         // Display performance difference
-        System.out.println("getProtocolRotation: " + ((double) (ma_end - ma_start) / 1000000.0) + " ms");
-        System.out.println("hasProtocolRotationChanged: " + ((double) (mb_end - mb_start) / 1000000.0) + " ms");
+        System.out.println("getProtocolRotation: " + ((ma_end - ma_start) / 1000000.0) + " ms");
+        System.out.println("hasProtocolRotationChanged: " + ((mb_end - mb_start) / 1000000.0) + " ms");
     }
 }

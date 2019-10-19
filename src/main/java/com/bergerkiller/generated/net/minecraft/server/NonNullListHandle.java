@@ -32,7 +32,7 @@ public abstract class NonNullListHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class NonNullListClass extends Template.Class<NonNullListHandle> {
-        public final Template.StaticMethod.Converted<List<?>> create = new Template.StaticMethod.Converted<List<?>>();
+        public final Template.StaticMethod.Converted<List<?>> create = new Template.StaticMethod.Converted<>();
 
     }
 

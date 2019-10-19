@@ -37,12 +37,12 @@ public abstract class PropertyHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PropertyClass extends Template.Class<PropertyHandle> {
-        public final Template.Constructor.Converted<PropertyHandle> constr_name_value = new Template.Constructor.Converted<PropertyHandle>();
-        public final Template.Constructor.Converted<PropertyHandle> constr_name_value_signature = new Template.Constructor.Converted<PropertyHandle>();
+        public final Template.Constructor.Converted<PropertyHandle> constr_name_value = new Template.Constructor.Converted<>();
+        public final Template.Constructor.Converted<PropertyHandle> constr_name_value_signature = new Template.Constructor.Converted<>();
 
-        public final Template.Method<String> getName = new Template.Method<String>();
-        public final Template.Method<String> getValue = new Template.Method<String>();
-        public final Template.Method<String> getSignature = new Template.Method<String>();
+        public final Template.Method<String> getName = new Template.Method<>();
+        public final Template.Method<String> getValue = new Template.Method<>();
+        public final Template.Method<String> getSignature = new Template.Method<>();
 
     }
 

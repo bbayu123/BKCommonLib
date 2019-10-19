@@ -30,7 +30,7 @@ public abstract class CraftingManagerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftingManagerClass extends Template.Class<CraftingManagerHandle> {
-        public final Template.StaticMethod.Converted<Iterable<IRecipeHandle>> getRecipes = new Template.StaticMethod.Converted<Iterable<IRecipeHandle>>();
+        public final Template.StaticMethod.Converted<Iterable<IRecipeHandle>> getRecipes = new Template.StaticMethod.Converted<>();
 
     }
 

@@ -41,10 +41,10 @@ public abstract class PacketPlayOutRemoveEntityEffectHandle extends PacketHandle
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutRemoveEntityEffectClass extends Template.Class<PacketPlayOutRemoveEntityEffectHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutRemoveEntityEffectHandle> constr = new Template.Constructor.Converted<PacketPlayOutRemoveEntityEffectHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutRemoveEntityEffectHandle> constr = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
-        public final Template.Field.Converted<MobEffectListHandle> effectList = new Template.Field.Converted<MobEffectListHandle>();
+        public final Template.Field.Converted<MobEffectListHandle> effectList = new Template.Field.Converted<>();
 
     }
 

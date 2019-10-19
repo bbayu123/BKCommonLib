@@ -37,8 +37,8 @@ public abstract class EnumItemSlotHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EnumItemSlotClass extends Template.Class<EnumItemSlotHandle> {
-        public final Template.Method<Integer> getIndex = new Template.Method<Integer>();
-        public final Template.Method<String> getName = new Template.Method<String>();
+        public final Template.Method<Integer> getIndex = new Template.Method<>();
+        public final Template.Method<String> getName = new Template.Method<>();
 
     }
 

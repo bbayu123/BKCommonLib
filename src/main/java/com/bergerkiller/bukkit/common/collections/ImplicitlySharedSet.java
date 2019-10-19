@@ -157,17 +157,12 @@ public class ImplicitlySharedSet<E> extends ImplicitlySharedHolder<Set<E>> imple
      * @return iterable clone view of this set's data
      */
     public Iterable<E> cloneAsIterable() {
-        return new Iterable<E>() {
-            @Override
-            public Iterator<E> iterator() {
-                return new ReferencedSetCopyIterator<E>(ImplicitlySharedSet.this);
-            }
-        };
+        return () -> new ReferencedSetCopyIterator<>(ImplicitlySharedSet.this);
     }
 
     @Override
     public ImplicitlySharedSet<E> clone() {
-        return new ImplicitlySharedSet<E>(this);
+        return new ImplicitlySharedSet<>(this);
     }
 
     @Override
@@ -177,11 +172,11 @@ public class ImplicitlySharedSet<E> extends ImplicitlySharedHolder<Set<E>> imple
         if (input instanceof TreeSet) {
             return (Set<E>) ((TreeSet<E>) input).clone();
         } else if (input instanceof LinkedHashSet) {
-            return new LinkedHashSet<E>(input);
+            return new LinkedHashSet<>(input);
         } else if (input instanceof HashSet) {
             return (Set<E>) ((HashSet<E>) input).clone();
         } else {
-            return new HashSet<E>(input);
+            return new HashSet<>(input);
         }
     }
 

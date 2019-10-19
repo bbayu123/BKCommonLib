@@ -30,7 +30,7 @@ public class StringMapCaseInsensitive<V> implements Map<String, V> {
         }
     };
 
-    private final HashMap<StringWrap, V> base = new HashMap<StringWrap, V>();
+    private final HashMap<StringWrap, V> base = new HashMap<>();
     private final StringWrap tmpWrap = new StringWrap("");
 
     @Override
@@ -100,7 +100,7 @@ public class StringMapCaseInsensitive<V> implements Map<String, V> {
 
     @Override
     public Set<String> keySet() {
-        return new ConvertingSet<String>(base.keySet(), pair);
+        return new ConvertingSet<>(base.keySet(), pair);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class StringMapCaseInsensitive<V> implements Map<String, V> {
     @SuppressWarnings("unchecked")
     public Set<Entry<String, V>> entrySet() {
         EntryConverter<String, V> converter = EntryConverter.create(pair, DuplexConversion.NONE);
-        return new ConvertingSet<Entry<String, V>>(base.entrySet(), converter);
+        return new ConvertingSet<>(base.entrySet(), converter);
     }
 
     private static class StringWrap {

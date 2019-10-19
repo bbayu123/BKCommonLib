@@ -37,13 +37,13 @@ public abstract class ChunkSectionHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ChunkSectionClass extends Template.Class<ChunkSectionHandle> {
-        public final Template.StaticMethod.Converted<ChunkSectionHandle> createNew = new Template.StaticMethod.Converted<ChunkSectionHandle>();
+        public final Template.StaticMethod.Converted<ChunkSectionHandle> createNew = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<Boolean> isEmpty = new Template.Method<Boolean>();
-        public final Template.Method<Integer> getYPosition = new Template.Method<Integer>();
-        public final Template.Method.Converted<DataPaletteBlockHandle> getBlockPalette = new Template.Method.Converted<DataPaletteBlockHandle>();
-        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<BlockData>();
-        public final Template.Method.Converted<Void> setBlockData = new Template.Method.Converted<Void>();
+        public final Template.Method<Boolean> isEmpty = new Template.Method<>();
+        public final Template.Method<Integer> getYPosition = new Template.Method<>();
+        public final Template.Method.Converted<DataPaletteBlockHandle> getBlockPalette = new Template.Method.Converted<>();
+        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setBlockData = new Template.Method.Converted<>();
 
     }
 

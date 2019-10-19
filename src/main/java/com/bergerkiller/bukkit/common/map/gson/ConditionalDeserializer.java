@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.bergerkiller.bukkit.common.map.util.BlockModelState;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.BlockRenderOptions;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
@@ -24,7 +25,7 @@ public class ConditionalDeserializer implements JsonDeserializer<BlockModelState
             // Multiple conditions or'd together
             BlockModelState.Condition orCondition = new BlockModelState.Condition();
             orCondition.mode = BlockModelState.Condition.Mode.OR;
-            orCondition.conditions = new ArrayList<BlockModelState.Condition>(parts.length);
+            orCondition.conditions = new ArrayList<>(parts.length);
             for (String part : parts) {
                 BlockModelState.Condition condition = new BlockModelState.Condition();
                 condition.mode = BlockModelState.Condition.Mode.SELF;
@@ -49,7 +50,7 @@ public class ConditionalDeserializer implements JsonDeserializer<BlockModelState
     public BlockModelState.Condition deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         BlockModelState.Condition result = new BlockModelState.Condition();
         result.mode = BlockModelState.Condition.Mode.AND;
-        result.conditions = new ArrayList<BlockModelState.Condition>(1);
+        result.conditions = new ArrayList<>(1);
 
         if (jsonElement.isJsonPrimitive()) {
             // Options stored in a single String token
@@ -61,7 +62,7 @@ public class ConditionalDeserializer implements JsonDeserializer<BlockModelState
             }
 
             // Parse
-            Map<String, String> options = new BlockRenderOptions(BlockData.AIR, options_str);
+            Map<String, String> options = new BlockRenderOptions(BlockDataRegistry.AIR, options_str);
             for (Map.Entry<String, String> option : options.entrySet()) {
                 result.conditions.add(createSelfCondition(option.getKey(), option.getValue()));
             }
@@ -87,7 +88,7 @@ public class ConditionalDeserializer implements JsonDeserializer<BlockModelState
                     if (entry.getValue().isJsonArray()) {
                         // Array of Object conditions
                         JsonArray condArr = entry.getValue().getAsJsonArray();
-                        subCondition.conditions = new ArrayList<BlockModelState.Condition>(condArr.size());
+                        subCondition.conditions = new ArrayList<>(condArr.size());
                         for (JsonElement condElem : condArr) {
                             subCondition.conditions.add(deserialize(condElem, type, jsonDeserializationContext));
                         }

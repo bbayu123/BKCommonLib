@@ -31,8 +31,8 @@ public abstract class CraftTaskHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftTaskClass extends Template.Class<CraftTaskHandle> {
-        public final Template.Field<Runnable> task = new Template.Field<Runnable>();
-        public final Template.Field<Plugin> plugin = new Template.Field<Plugin>();
+        public final Template.Field<Runnable> task = new Template.Field<>();
+        public final Template.Field<Plugin> plugin = new Template.Field<>();
 
     }
 

@@ -28,7 +28,7 @@ public abstract class PacketPlayInKeepAliveHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayInKeepAliveClass extends Template.Class<PacketPlayInKeepAliveHandle> {
-        public final Template.Field.Converted<Long> key = new Template.Field.Converted<Long>();
+        public final Template.Field.Converted<Long> key = new Template.Field.Converted<>();
 
     }
 

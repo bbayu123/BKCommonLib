@@ -53,6 +53,6 @@ public final class RunnableConsumer<T> implements Consumer<T> {
     }
     
     public static <T> RunnableConsumer<T> create(Runnable runnable) {
-        return new RunnableConsumer<T>(runnable);
+        return new RunnableConsumer<>(runnable);
     }
 }

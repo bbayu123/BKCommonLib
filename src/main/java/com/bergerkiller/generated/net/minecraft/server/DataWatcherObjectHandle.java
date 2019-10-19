@@ -29,10 +29,10 @@ public abstract class DataWatcherObjectHandle extends Template.Handle {
      */
     public static final class DataWatcherObjectClass extends Template.Class<DataWatcherObjectHandle> {
         @Template.Optional
-        public final Template.Constructor.Converted<DataWatcherObjectHandle> constr_index = new Template.Constructor.Converted<DataWatcherObjectHandle>();
+        public final Template.Constructor.Converted<DataWatcherObjectHandle> constr_index = new Template.Constructor.Converted<>();
 
-        public final Template.Method<Integer> getId = new Template.Method<Integer>();
-        public final Template.Method.Converted<Object> getSerializer = new Template.Method.Converted<Object>();
+        public final Template.Method<Integer> getId = new Template.Method<>();
+        public final Template.Method.Converted<Object> getSerializer = new Template.Method.Converted<>();
 
     }
 

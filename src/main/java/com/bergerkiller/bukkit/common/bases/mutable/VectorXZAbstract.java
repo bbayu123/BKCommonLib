@@ -2,6 +2,7 @@ package com.bergerkiller.bukkit.common.bases.mutable;
 
 import com.bergerkiller.bukkit.common.bases.IntVector2;
 import com.bergerkiller.bukkit.common.entity.CommonEntity;
+import com.bergerkiller.bukkit.common.utils.EntityPropertyUtil;
 import com.bergerkiller.bukkit.common.utils.EntityUtil;
 import com.bergerkiller.bukkit.common.utils.MathUtil;
 import org.bukkit.Location;
@@ -13,20 +14,24 @@ import org.bukkit.util.Vector;
 public abstract class VectorXZAbstract {
 
     public final DoubleAbstract x = new DoubleAbstract() {
+        @Override
         public double get() {
             return VectorXZAbstract.this.getX();
         }
 
+        @Override
         public DoubleAbstract set(double value) {
             VectorXZAbstract.this.setX(value);
             return this;
         }
     };
     public final DoubleAbstract z = new DoubleAbstract() {
+        @Override
         public double get() {
             return VectorXZAbstract.this.getZ();
         }
 
+        @Override
         public DoubleAbstract set(double value) {
             VectorXZAbstract.this.setZ(value);
             return this;
@@ -220,11 +225,11 @@ public abstract class VectorXZAbstract {
     }
 
     public double distance(Entity other) {
-        return distance(EntityUtil.getLocX(other), EntityUtil.getLocZ(other));
+        return distance(EntityPropertyUtil.getLocX(other), EntityPropertyUtil.getLocZ(other));
     }
 
     public double distanceSquared(Entity other) {
-        return distanceSquared(EntityUtil.getLocX(other), EntityUtil.getLocZ(other));
+        return distanceSquared(EntityPropertyUtil.getLocX(other), EntityPropertyUtil.getLocZ(other));
     }
 
     public double distance(CommonEntity<?> other) {

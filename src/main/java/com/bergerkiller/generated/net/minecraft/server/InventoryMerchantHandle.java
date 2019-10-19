@@ -28,7 +28,7 @@ public abstract class InventoryMerchantHandle extends IInventoryHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class InventoryMerchantClass extends Template.Class<InventoryMerchantHandle> {
-        public final Template.Field.Converted<Object> merchant = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> merchant = new Template.Field.Converted<>();
 
     }
 

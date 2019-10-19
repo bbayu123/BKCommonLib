@@ -28,10 +28,10 @@ public class Model {
     public transient boolean placeholder = false;
     protected transient BuiltinType builtinType = BuiltinType.DEFAULT;
     public boolean ambientocclusion = true;
-    public Map<String, Display> display = new HashMap<String, Display>();
-    public Map<String, String> textures = new HashMap<String, String>();
-    public List<Element> elements = new ArrayList<Element>();
-    public List<ModelOverride> overrides = new ArrayList<ModelOverride>();
+    public Map<String, Display> display = new HashMap<>();
+    public Map<String, String> textures = new HashMap<>();
+    public List<Element> elements = new ArrayList<>();
+    public List<ModelOverride> overrides = new ArrayList<>();
 
     public final String getParentName() {
         return this.parent;
@@ -190,7 +190,7 @@ public class Model {
     }
 
     public List<Quad> getQuads() {
-        ArrayList<Quad> result = new ArrayList<Quad>(this.totalQuadCount);
+        ArrayList<Quad> result = new ArrayList<>(this.totalQuadCount);
         for (Element element : this.elements) {
             for (Face face : element.faces.values()) {
                 result.add(face.quad.clone());
@@ -242,7 +242,7 @@ public class Model {
         public Vector3 from = new Vector3(0.0f, 0.0f, 0.0f);
         public Vector3 to = new Vector3(16.0f, 16.0f, 16.0f);
         public Rotation rotation = null;
-        public Map<BlockFace, Face> faces = new EnumMap<BlockFace, Face>(BlockFace.class);
+        public Map<BlockFace, Face> faces = new EnumMap<>(BlockFace.class);
         public transient Matrix4x4 transform = null;
 
         public void build(MapResourcePack resourcePack, Map<String, String> textures) {
@@ -484,7 +484,7 @@ public class Model {
         public ModelOverride clone() {
             ModelOverride clone = new ModelOverride();
             clone.model = this.model;
-            clone.predicate = (this.predicate == null) ? null : new HashMap<String, String>(this.predicate);
+            clone.predicate = (this.predicate == null) ? null : new HashMap<>(this.predicate);
             return clone;
         }
 

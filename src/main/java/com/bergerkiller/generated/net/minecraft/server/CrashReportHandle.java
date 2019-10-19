@@ -31,9 +31,9 @@ public abstract class CrashReportHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CrashReportClass extends Template.Class<CrashReportHandle> {
-        public final Template.StaticMethod.Converted<CrashReportHandle> create = new Template.StaticMethod.Converted<CrashReportHandle>();
+        public final Template.StaticMethod.Converted<CrashReportHandle> create = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<CrashReportSystemDetailsHandle> getSystemDetails = new Template.Method.Converted<CrashReportSystemDetailsHandle>();
+        public final Template.Method.Converted<CrashReportSystemDetailsHandle> getSystemDetails = new Template.Method.Converted<>();
 
     }
 

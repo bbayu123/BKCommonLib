@@ -59,7 +59,7 @@ public class YamlDeserializer {
             this.preParser.open(reader);
             Output output = new Output();
             output.root = CommonUtil.tryCast(this.yaml.load(this.preParser), Map.class, Collections.emptyMap());
-            output.headers = new HashMap<YamlPath, String>(this.preParser.headers);
+            output.headers = new HashMap<>(this.preParser.headers);
             if (this.preParser.mainHeader.length() > 0) {
                 output.headers.put(YamlPath.ROOT, this.preParser.mainHeader.toString());
             }
@@ -90,7 +90,7 @@ public class YamlDeserializer {
         private HeaderBuilder headerBuilder = new HeaderBuilder();
         private final NodeBuilder nodeBuilder = new NodeBuilder(-1);
         private StringBuilder mainHeader = new StringBuilder();
-        private Map<YamlPath, String> headers = new HashMap<YamlPath, String>();
+        private Map<YamlPath, String> headers = new HashMap<>();
         private StringBuilder currentLine = new StringBuilder();
         private int currentColumn = 0;
 

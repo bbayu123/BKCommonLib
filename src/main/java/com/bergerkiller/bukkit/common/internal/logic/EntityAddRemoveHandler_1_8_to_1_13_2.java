@@ -17,6 +17,7 @@ import com.bergerkiller.bukkit.common.conversion.type.HandleConversion;
 import com.bergerkiller.bukkit.common.conversion.type.WrapperConversion;
 import com.bergerkiller.bukkit.common.internal.CommonBootstrap;
 import com.bergerkiller.bukkit.common.internal.CommonPlugin;
+import com.bergerkiller.bukkit.common.utils.ChunkUtil;
 import com.bergerkiller.bukkit.common.utils.CommonUtil;
 import com.bergerkiller.bukkit.common.utils.WorldUtil;
 import com.bergerkiller.bukkit.common.wrappers.EntityTracker;
@@ -28,6 +29,7 @@ import com.bergerkiller.generated.net.minecraft.server.WorldHandle;
 import com.bergerkiller.generated.net.minecraft.server.WorldServerHandle;
 import com.bergerkiller.mountiplex.MountiplexUtil;
 import com.bergerkiller.mountiplex.reflection.ClassHook;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 import com.bergerkiller.mountiplex.reflection.Invokable;
 import com.bergerkiller.mountiplex.reflection.SafeField;
 import com.bergerkiller.mountiplex.reflection.util.FastField;
@@ -46,7 +48,7 @@ public class EntityAddRemoveHandler_1_8_to_1_13_2 extends EntityAddRemoveHandler
     public EntityAddRemoveHandler_1_8_to_1_13_2() {
         this.iWorldAccessType = CommonUtil.getNMSClass("IWorldAccess");
         this.entitiesByIdField = SafeField.create(WorldHandle.T.getType(), "entitiesById", IntHashMapHandle.T.getType());
-        this.entityListField = new FastField<List<Object>>();
+        this.entityListField = new FastField<>();
         try {
             this.entityListField.init(WorldHandle.T.getType().getDeclaredField("entityList"));
         } catch (Throwable t) {
@@ -79,7 +81,7 @@ public class EntityAddRemoveHandler_1_8_to_1_13_2 extends EntityAddRemoveHandler
             if (entityRemoveQueueField == null) {
                 this.entityRemoveQueue = SafeField.createNull("World Entity Remove Queue");
             } else {
-                this.entityRemoveQueue = new SafeField<Collection<Object>>(entityRemoveQueueField);
+                this.entityRemoveQueue = new SafeField<>(entityRemoveQueueField);
             }
         }
     }
@@ -93,7 +95,7 @@ public class EntityAddRemoveHandler_1_8_to_1_13_2 extends EntityAddRemoveHandler
     public void hook(World world) {
         List<Object> accessList = this.accessListField.get(Conversion.toWorldHandle.convert(world));
         for (Object o : accessList) {
-            if (WorldListenerHook.get(o, WorldListenerHook.class) != null) {
+            if (ClassInterceptor.get(o, WorldListenerHook.class) != null) {
                 return; // Already hooked
             }
         }
@@ -106,7 +108,7 @@ public class EntityAddRemoveHandler_1_8_to_1_13_2 extends EntityAddRemoveHandler
     public void unhook(World world) {
         Iterator<Object> iter = this.accessListField.get(Conversion.toWorldHandle.convert(world)).iterator();
         while (iter.hasNext()) {
-            if (WorldListenerHook.get(iter.next(), WorldListenerHook.class) != null) {
+            if (ClassInterceptor.get(iter.next(), WorldListenerHook.class) != null) {
                 iter.remove();
             }
         }
@@ -198,7 +200,7 @@ public class EntityAddRemoveHandler_1_8_to_1_13_2 extends EntityAddRemoveHandler
         final int chunkX = newInstance.getChunkX();
         final int chunkY = newInstance.getChunkY();
         final int chunkZ = newInstance.getChunkZ();
-        Object chunkHandle = HandleConversion.toChunkHandle(WorldUtil.getChunk(newInstance.getWorld().getWorld(), chunkX, chunkZ));
+        Object chunkHandle = HandleConversion.toChunkHandle(ChunkUtil.getChunk(newInstance.getWorld().getWorld(), chunkX, chunkZ));
         if (chunkHandle != null) {
             final List<Object>[] entitySlices = ChunkHandle.T.entitySlices.get(chunkHandle);
             if (!replaceInList(entitySlices[chunkY], newInstance)) {
@@ -225,7 +227,7 @@ public class EntityAddRemoveHandler_1_8_to_1_13_2 extends EntityAddRemoveHandler
                 entry.setEntity(newInstance);
             }
 
-            List<EntityHandle> passengers = new ArrayList<EntityHandle>(tracker.getPassengers());
+            List<EntityHandle> passengers = new ArrayList<>(tracker.getPassengers());
             replaceInList(passengers, newInstance);
             tracker.setPassengers(passengers);
         }

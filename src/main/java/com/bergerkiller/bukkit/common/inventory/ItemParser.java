@@ -5,6 +5,7 @@ import com.bergerkiller.bukkit.common.internal.CommonLegacyMaterials;
 import com.bergerkiller.bukkit.common.nbt.CommonTagCompound;
 import com.bergerkiller.bukkit.common.utils.*;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -179,7 +180,7 @@ public class ItemParser {
 
         // add metadata rules
         if (!LogicUtil.nullOrEmpty(dataname_meta)) {
-            parser.rules = new ArrayList<ItemParserMetaRule>(4);
+            parser.rules = new ArrayList<>(4);
             int index = 0;
             do {
                 String ruleStr;
@@ -272,7 +273,7 @@ public class ItemParser {
                 if (!typeIsLegacy) {
                     // Input type -> legacy. Update data parameter doing so if a Block.
                     if (type.isBlock()) {
-                        BlockData block = BlockData.fromMaterial(type);
+                        BlockData block = BlockDataRegistry.fromMaterial(type);
                         type = block.getLegacyType();
                         data = block.getRawData();
                     } else {
@@ -386,9 +387,9 @@ public class ItemParser {
             // For Block items, use BlockData that supports the legacy Material data API
             BlockData block;
             if (this.hasData()) {
-                block = BlockData.fromMaterialData(this.type, this.data);
+                block = BlockDataRegistry.fromMaterialData(this.type, this.data);
             } else {
-                block = BlockData.fromMaterial(this.type);
+                block = BlockDataRegistry.fromMaterial(this.type);
             }
             return block.createItem(amount);
         } else {
@@ -439,7 +440,7 @@ public class ItemParser {
      */
     public ItemParser setMetaRules(List<ItemParserMetaRule> rules) {
         ItemParser clone = this.cloneParser();
-        clone.rules = (rules.isEmpty() ? Collections.emptyList() : new ArrayList<ItemParserMetaRule>(rules));
+        clone.rules = (rules.isEmpty() ? Collections.emptyList() : new ArrayList<>(rules));
         return clone;
     }
 
@@ -460,7 +461,7 @@ public class ItemParser {
 
     private ItemParser cloneParser() {
         return new ItemParser(this.type, this.amount, this.data, 
-                (this.rules.isEmpty() ? Collections.emptyList() : new ArrayList<ItemParserMetaRule>(this.rules)));
+                (this.rules.isEmpty() ? Collections.emptyList() : new ArrayList<>(this.rules)));
     }
 
     @Override
@@ -479,9 +480,9 @@ public class ItemParser {
         }
         if (!this.rules.isEmpty()) {
             rval.append(METADATA_CHAR);
-            for (int i = 0; i < this.rules.size(); i++) {
+            for (ItemParserMetaRule element : this.rules) {
                 rval.append(METADATA_CHAR);
-                rval.append(this.rules.get(i).toString());
+                rval.append(element.toString());
             }
         }
         return rval.toString();

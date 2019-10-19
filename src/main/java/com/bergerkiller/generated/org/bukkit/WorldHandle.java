@@ -27,7 +27,7 @@ public abstract class WorldHandle extends Template.Handle {
      */
     public static final class WorldClass extends Template.Class<WorldHandle> {
         @Template.Optional
-        public final Template.Method<Void> playSound = new Template.Method<Void>();
+        public final Template.Method<Void> playSound = new Template.Method<>();
 
     }
 

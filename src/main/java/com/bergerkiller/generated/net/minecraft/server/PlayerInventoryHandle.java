@@ -33,10 +33,10 @@ public abstract class PlayerInventoryHandle extends IInventoryHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PlayerInventoryClass extends Template.Class<PlayerInventoryHandle> {
-        public final Template.StaticMethod<Integer> getHotbarSize = new Template.StaticMethod<Integer>();
+        public final Template.StaticMethod<Integer> getHotbarSize = new Template.StaticMethod<>();
 
-        public final Template.Method.Converted<CommonTagList> saveToNBT = new Template.Method.Converted<CommonTagList>();
-        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<CommonTagList> saveToNBT = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<>();
 
     }
 

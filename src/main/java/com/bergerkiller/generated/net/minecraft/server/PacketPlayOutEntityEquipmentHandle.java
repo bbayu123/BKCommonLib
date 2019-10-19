@@ -38,11 +38,11 @@ public abstract class PacketPlayOutEntityEquipmentHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutEntityEquipmentClass extends Template.Class<PacketPlayOutEntityEquipmentHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutEntityEquipmentHandle> constr_entityId_slot_itemStack = new Template.Constructor.Converted<PacketPlayOutEntityEquipmentHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutEntityEquipmentHandle> constr_entityId_slot_itemStack = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
-        public final Template.Field.Converted<EquipmentSlot> slot = new Template.Field.Converted<EquipmentSlot>();
-        public final Template.Field.Converted<ItemStack> itemStack = new Template.Field.Converted<ItemStack>();
+        public final Template.Field.Converted<EquipmentSlot> slot = new Template.Field.Converted<>();
+        public final Template.Field.Converted<ItemStack> itemStack = new Template.Field.Converted<>();
 
     }
 

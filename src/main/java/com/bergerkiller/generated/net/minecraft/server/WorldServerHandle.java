@@ -59,26 +59,26 @@ public abstract class WorldServerHandle extends WorldHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class WorldServerClass extends Template.Class<WorldServerHandle> {
-        public final Template.Field.Converted<Map<UUID, EntityHandle>> entitiesByUUID = new Template.Field.Converted<Map<UUID, EntityHandle>>();
+        public final Template.Field.Converted<Map<UUID, EntityHandle>> entitiesByUUID = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<ChunkProviderServerHandle> field_chunkProviderServer = new Template.Field.Converted<ChunkProviderServerHandle>();
+        public final Template.Field.Converted<ChunkProviderServerHandle> field_chunkProviderServer = new Template.Field.Converted<>();
 
-        public final Template.Method.Converted<List<EntityPlayerHandle>> getPlayers = new Template.Method.Converted<List<EntityPlayerHandle>>();
-        public final Template.Method.Converted<EntityTracker> getEntityTracker = new Template.Method.Converted<EntityTracker>();
-        public final Template.Method.Converted<PlayerChunkMapHandle> getPlayerChunkMap = new Template.Method.Converted<PlayerChunkMapHandle>();
-        public final Template.Method.Converted<Void> setEntityTracker = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<ChunkProviderServerHandle> getChunkProviderServer = new Template.Method.Converted<ChunkProviderServerHandle>();
-        public final Template.Method.Converted<Chunk> getChunkIfLoaded = new Template.Method.Converted<Chunk>();
+        public final Template.Method.Converted<List<EntityPlayerHandle>> getPlayers = new Template.Method.Converted<>();
+        public final Template.Method.Converted<EntityTracker> getEntityTracker = new Template.Method.Converted<>();
+        public final Template.Method.Converted<PlayerChunkMapHandle> getPlayerChunkMap = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setEntityTracker = new Template.Method.Converted<>();
+        public final Template.Method.Converted<ChunkProviderServerHandle> getChunkProviderServer = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Chunk> getChunkIfLoaded = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method<Void> setForceLoadedAsync = new Template.Method<Void>();
+        public final Template.Method<Void> setForceLoadedAsync = new Template.Method<>();
         @Template.Optional
-        public final Template.Method.Converted<ForcedChunkHandle> getForcedChunk = new Template.Method.Converted<ForcedChunkHandle>();
-        public final Template.Method.Converted<WorldNBTStorageHandle> getDataManager = new Template.Method.Converted<WorldNBTStorageHandle>();
-        public final Template.Method.Converted<Collection<EntityHandle>> getEntities = new Template.Method.Converted<Collection<EntityHandle>>();
-        public final Template.Method.Converted<Void> removeEntity = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Boolean> addEntity = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<MinecraftServerHandle> getMinecraftServer = new Template.Method.Converted<MinecraftServerHandle>();
-        public final Template.Method<Void> saveLevel = new Template.Method<Void>();
+        public final Template.Method.Converted<ForcedChunkHandle> getForcedChunk = new Template.Method.Converted<>();
+        public final Template.Method.Converted<WorldNBTStorageHandle> getDataManager = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Collection<EntityHandle>> getEntities = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> removeEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> addEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<MinecraftServerHandle> getMinecraftServer = new Template.Method.Converted<>();
+        public final Template.Method<Void> saveLevel = new Template.Method<>();
 
     }
 

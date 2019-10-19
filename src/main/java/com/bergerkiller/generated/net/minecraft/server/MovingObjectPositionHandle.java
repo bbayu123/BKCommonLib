@@ -32,9 +32,9 @@ public abstract class MovingObjectPositionHandle extends Template.Handle {
      */
     public static final class MovingObjectPositionClass extends Template.Class<MovingObjectPositionHandle> {
         @Template.Readonly
-        public final Template.Field.Converted<Vector> pos = new Template.Field.Converted<Vector>();
+        public final Template.Field.Converted<Vector> pos = new Template.Field.Converted<>();
 
-        public final Template.Method.Converted<BlockFace> getDirection = new Template.Method.Converted<BlockFace>();
+        public final Template.Method.Converted<BlockFace> getDirection = new Template.Method.Converted<>();
 
     }
 

@@ -19,7 +19,7 @@ public class ImplicitSharingTest {
 
     @Test
     public void testImplicitSharedSet() {
-        try (ImplicitlySharedSet<String> input = new ImplicitlySharedSet<String>()) {
+        try (ImplicitlySharedSet<String> input = new ImplicitlySharedSet<>()) {
             input.add("Hello");
             input.add("World");
             assertTrue(input.contains("Hello"));
@@ -41,7 +41,7 @@ public class ImplicitSharingTest {
 
             // Safe copy iteration
             int n = 0;
-            List<String> iterated = new ArrayList<String>();
+            List<String> iterated = new ArrayList<>();
             for (String element : input.cloneAsIterable()) {
                 input.add("Hello" + (n++));
                 iterated.add(element);
@@ -76,7 +76,7 @@ public class ImplicitSharingTest {
 
     @Test
     public void testImplicitlySharedList() {
-        try (ImplicitlySharedList<String> input = new ImplicitlySharedList<String>()) {
+        try (ImplicitlySharedList<String> input = new ImplicitlySharedList<>()) {
             input.add("Hello");
             input.add("World");
             assertTrue(input.contains("Hello"));
@@ -98,7 +98,7 @@ public class ImplicitSharingTest {
 
             // Safe copy iteration
             int n = 0;
-            List<String> iterated = new ArrayList<String>();
+            List<String> iterated = new ArrayList<>();
             for (String element : input.cloneAsIterable()) {
                 input.add("Hello" + (n++));
                 iterated.add(element);
@@ -136,7 +136,7 @@ public class ImplicitSharingTest {
         // Verifies that iterating a clone on another thread has no impact on using the set
 
         // Set to work with
-        try (final ImplicitlySharedSet<String> set = new ImplicitlySharedSet<String>()) {
+        try (final ImplicitlySharedSet<String> set = new ImplicitlySharedSet<>()) {
             // These items are always present
             set.add("test1");
             set.add("test2");
@@ -145,7 +145,7 @@ public class ImplicitSharingTest {
             // Start some threads
             final AtomicBoolean threadLoopFailed = new AtomicBoolean(false);
             final AtomicBoolean stop = new AtomicBoolean(false);
-            List<Thread> threads = new ArrayList<Thread>();
+            List<Thread> threads = new ArrayList<>();
             for (int i = 0; i < 10; i++) {
                 threads.add(new Thread() {
                     @Override

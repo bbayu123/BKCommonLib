@@ -64,6 +64,7 @@ public class InventoryProxy extends ProxyBase<Inventory> implements Inventory {
     }
 
     // @Override // Since >= v1.10.2
+    @Override
     public ItemStack[] getStorageContents() {
         if (InventoryHandle.T.getStorageContents.isAvailable()) {
             return InventoryHandle.T.getStorageContents.invoke(base);
@@ -73,6 +74,7 @@ public class InventoryProxy extends ProxyBase<Inventory> implements Inventory {
     }
 
     // @Override // Since >= v1.10.2
+    @Override
     public void setStorageContents(ItemStack[] itemStacks) throws IllegalArgumentException {
         if (InventoryHandle.T.setStorageContents.isAvailable()) {
             InventoryHandle.T.setStorageContents.invoke(base, itemStacks);
@@ -82,6 +84,7 @@ public class InventoryProxy extends ProxyBase<Inventory> implements Inventory {
     }
 
     // @Override // Since >= v1.10.2
+    @Override
     public Location getLocation() {
         if (InventoryHandle.T.getLocation.isAvailable()) {
             return InventoryHandle.T.getLocation.invoke(base);

@@ -20,7 +20,7 @@ public class CraftRecipe {
 
     private CraftRecipe(Collection<CraftInputSlot> unmodifiedInputs, ItemStack output) {
         // Merge the input slots when possible
-        ArrayList<CraftInputSlot> inputSlotsList = new ArrayList<CraftInputSlot>(unmodifiedInputs.size());
+        ArrayList<CraftInputSlot> inputSlotsList = new ArrayList<>(unmodifiedInputs.size());
         for (CraftInputSlot unmodInput : unmodifiedInputs) {
             boolean merged = false;
             for (int i = 0; i < inputSlotsList.size(); i++) {
@@ -37,7 +37,7 @@ public class CraftRecipe {
         this.inputSlots = inputSlotsList.toArray(new CraftInputSlot[inputSlotsList.size()]);
 
         // Take the default item for all inputs and merge those, too
-        List<ItemStack> inputItemsList = new ArrayList<ItemStack>(inputSlotsList.size());
+        List<ItemStack> inputItemsList = new ArrayList<>(inputSlotsList.size());
         boolean create;
         for (CraftInputSlot itemSlot : inputSlotsList) {
             ItemStack item = itemSlot.getDefaultChoice();
@@ -63,11 +63,11 @@ public class CraftRecipe {
         this.input = inputItemsList.toArray(new ItemStack[inputItemsList.size()]);
 
         // Convert the output
-        List<ItemStack> newoutput = new ArrayList<ItemStack>(1);
+        List<ItemStack> newoutput = new ArrayList<>(1);
         newoutput.add(output.clone());
         // Deal with special cases that demand an additional item (added elsewhere)
         for (ItemStack stack : inputItemsList) {
-            if (BlockUtil.isType(stack, Material.LAVA_BUCKET, Material.WATER_BUCKET, Material.MILK_BUCKET)) {
+            if (MaterialUtil.isType(stack, Material.LAVA_BUCKET, Material.WATER_BUCKET, Material.MILK_BUCKET)) {
                 newoutput.add(new ItemStack(Material.BUCKET, stack.getAmount()));
             }
         }
@@ -312,7 +312,7 @@ public class CraftRecipe {
         if (LogicUtil.nullOrEmpty(inputs) || LogicUtil.nullOrEmpty(output)) {
             return null;
         } else {
-            ArrayList<CraftInputSlot> slots = new ArrayList<CraftInputSlot>();
+            ArrayList<CraftInputSlot> slots = new ArrayList<>();
             for (ItemStack input : inputs) {
                 slots.add(new CraftInputSlot(new ItemStack[] {input}));
             }

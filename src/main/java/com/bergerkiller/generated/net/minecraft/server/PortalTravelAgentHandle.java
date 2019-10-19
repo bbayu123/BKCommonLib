@@ -36,13 +36,13 @@ public abstract class PortalTravelAgentHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PortalTravelAgentClass extends Template.Class<PortalTravelAgentHandle> {
-        public final Template.Constructor.Converted<PortalTravelAgentHandle> constr_world = new Template.Constructor.Converted<PortalTravelAgentHandle>();
+        public final Template.Constructor.Converted<PortalTravelAgentHandle> constr_world = new Template.Constructor.Converted<>();
 
         @Template.Readonly
-        public final Template.Field.Converted<World> world = new Template.Field.Converted<World>();
+        public final Template.Field.Converted<World> world = new Template.Field.Converted<>();
 
-        public final Template.Method<Location> findPortal = new Template.Method<Location>();
-        public final Template.Method<Boolean> createPortal = new Template.Method<Boolean>();
+        public final Template.Method<Location> findPortal = new Template.Method<>();
+        public final Template.Method<Boolean> createPortal = new Template.Method<>();
 
     }
 

@@ -30,11 +30,13 @@ import com.bergerkiller.bukkit.common.conversion.Conversion;
 import com.bergerkiller.bukkit.common.protocol.CommonPacket;
 import com.bergerkiller.bukkit.common.protocol.PacketType;
 import com.bergerkiller.bukkit.common.utils.CommonUtil;
+import com.bergerkiller.bukkit.common.utils.EntityPropertyUtil;
 import com.bergerkiller.bukkit.common.utils.EntityUtil;
 import com.bergerkiller.bukkit.common.utils.MathUtil;
 import com.bergerkiller.bukkit.common.utils.PacketUtil;
 import com.bergerkiller.bukkit.common.utils.WorldUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.DataWatcher;
 import com.bergerkiller.bukkit.common.wrappers.ResourceKey;
 import com.bergerkiller.generated.net.minecraft.server.EntityHandle;
@@ -54,137 +56,167 @@ import com.bergerkiller.mountiplex.reflection.FieldAccessor;
 public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
 
     public final LocationAbstract loc = new LocationAbstract() {
+        @Override
         public World getWorld() {
             return ExtendedEntity.this.getWorld();
         }
 
+        @Override
         public LocationAbstract setWorld(World world) {
             ExtendedEntity.this.setWorld(world);
             return this;
         }
 
+        @Override
         public double getX() {
             return ExtendedEntity.this.handle.getLocX();
         }
 
+        @Override
         public double getY() {
             return ExtendedEntity.this.handle.getLocY();
         }
 
+        @Override
         public double getZ() {
             return ExtendedEntity.this.handle.getLocZ();
         }
 
+        @Override
         public LocationAbstract setX(double x) {
             ExtendedEntity.this.handle.setLocX(x);
             return this;
         }
 
+        @Override
         public LocationAbstract setY(double y) {
             ExtendedEntity.this.handle.setLocY(y);
             return this;
         }
 
+        @Override
         public LocationAbstract setZ(double z) {
             ExtendedEntity.this.handle.setLocZ(z);
             return this;
         }
 
+        @Override
         public float getYaw() {
             return ExtendedEntity.this.handle.getYaw();
         }
 
+        @Override
         public float getPitch() {
             return ExtendedEntity.this.handle.getPitch();
         }
 
+        @Override
         public LocationAbstract setYaw(float yaw) {
             ExtendedEntity.this.handle.setYaw(yaw);
             return this;
         }
 
+        @Override
         public LocationAbstract setPitch(float pitch) {
             ExtendedEntity.this.handle.setPitch(pitch);
             return this;
         }
     };
     public final LocationAbstract last = new LocationAbstract() {
+        @Override
         public World getWorld() {
             return ExtendedEntity.this.getWorld();
         }
 
+        @Override
         public LocationAbstract setWorld(World world) {
             return this;
         }
 
+        @Override
         public double getX() {
             return ExtendedEntity.this.handle.getLastX();
         }
 
+        @Override
         public double getY() {
             return ExtendedEntity.this.handle.getLastY();
         }
 
+        @Override
         public double getZ() {
             return ExtendedEntity.this.handle.getLastZ();
         }
 
+        @Override
         public LocationAbstract setX(double x) {
             ExtendedEntity.this.handle.setLastX(x);
             return this;
         }
 
+        @Override
         public LocationAbstract setY(double y) {
             ExtendedEntity.this.handle.setLastY(y);
             return this;
         }
 
+        @Override
         public LocationAbstract setZ(double z) {
             ExtendedEntity.this.handle.setLastZ(z);
             return this;
         }
 
+        @Override
         public float getYaw() {
             return ExtendedEntity.this.handle.getLastYaw();
         }
 
+        @Override
         public float getPitch() {
             return ExtendedEntity.this.handle.getLastPitch();
         }
 
+        @Override
         public LocationAbstract setYaw(float yaw) {
             ExtendedEntity.this.handle.setLastYaw(yaw);
             return this;
         }
 
+        @Override
         public LocationAbstract setPitch(float pitch) {
             ExtendedEntity.this.handle.setLastPitch(pitch);
             return this;
         }
     };
     public final VectorAbstract vel = new VectorAbstract() {
+        @Override
         public double getX() {
             return ExtendedEntity.this.handle.getMotX();
         }
 
+        @Override
         public double getY() {
             return ExtendedEntity.this.handle.getMotY();
         }
 
+        @Override
         public double getZ() {
             return ExtendedEntity.this.handle.getMotZ();
         }
 
+        @Override
         public VectorAbstract setX(double x) {
             ExtendedEntity.this.handle.setMotX(x);
             return this;
         }
 
+        @Override
         public VectorAbstract setY(double y) {
             ExtendedEntity.this.handle.setMotY(y);
             return this;
         }
 
+        @Override
         public VectorAbstract setZ(double z) {
             ExtendedEntity.this.handle.setMotZ(z);
             return this;
@@ -488,7 +520,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
     }
 
     public void makeStepSound(int blockX, int blockY, int blockZ, Material type) {
-        this.handle.playStepSound(new IntVector3(blockX, blockY, blockZ), BlockData.fromMaterial(type));
+        this.handle.playStepSound(new IntVector3(blockX, blockY, blockZ), BlockDataRegistry.fromMaterial(type));
     }
 
     public List<MetadataValue> getMetadata(String arg0) {
@@ -636,7 +668,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
      */
     public List<Player> getPlayerPassengers() {
         List<org.bukkit.entity.Entity> passengers = this.getPassengers();
-        List<Player> playerPassengers = new ArrayList<Player>(passengers.size());
+        List<Player> playerPassengers = new ArrayList<>(passengers.size());
         for (org.bukkit.entity.Entity entity : passengers) {
             if (entity instanceof Player) {
                 playerPassengers.add((Player) entity);
@@ -788,7 +820,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
      * @param allow whether to allow portal entering
      */
     public void setAllowTeleportation(boolean allow) {
-        EntityUtil.setAllowTeleportation(entity, allow);
+        EntityPropertyUtil.setAllowTeleportation(entity, allow);
     }
 
     /**
@@ -797,7 +829,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
      * into/away from a portal.
      */
     public boolean getAllowTeleportation() {
-        return EntityUtil.getAllowTeleportation(entity);
+        return EntityPropertyUtil.getAllowTeleportation(entity);
     }
 
     /**
@@ -806,7 +838,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
      * @return entity cooldown ticks
      */
     public int getPortalCooldown() {
-        return EntityUtil.getPortalCooldown(entity);
+        return EntityPropertyUtil.getPortalCooldown(entity);
     }
 
     /**
@@ -815,7 +847,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
      * @param cooldownTicks to set to
      */
     public void setPortalCooldown(int cooldownTicks) {
-        EntityUtil.setPortalCooldown(entity, cooldownTicks);
+        EntityPropertyUtil.setPortalCooldown(entity, cooldownTicks);
     }
 
     /**
@@ -825,7 +857,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
      * @return entity maximum portal cooldown ticks
      */
     public int getPortalCooldownMaximum() {
-        return EntityUtil.getPortalCooldownMaximum(entity);
+        return EntityPropertyUtil.getPortalCooldownMaximum(entity);
     }
 
     public boolean leaveVehicle() {
@@ -925,11 +957,11 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
         final EntityHandle handle = this.handle;
 
         // This list will be filled with the update handles, finally set using setPassengers
-        List<EntityHandle> newPassengerHandles = new ArrayList<EntityHandle>(this.handle.getPassengers());
+        List<EntityHandle> newPassengerHandles = new ArrayList<>(this.handle.getPassengers());
 
         // Generate a difference view between the expected list of passengers, and the current
-        List<EntityHandle> removedPassengers = new ArrayList<EntityHandle>(newPassengerHandles.size());
-        List<org.bukkit.entity.Entity> keptPassengers = new ArrayList<org.bukkit.entity.Entity>(newPassengers.size());
+        List<EntityHandle> removedPassengers = new ArrayList<>(newPassengerHandles.size());
+        List<org.bukkit.entity.Entity> keptPassengers = new ArrayList<>(newPassengers.size());
         for (EntityHandle oldPassenger : newPassengerHandles) {
             boolean found = false;
             for (org.bukkit.entity.Entity p : newPassengers) {
@@ -1100,7 +1132,7 @@ public class ExtendedEntity<T extends org.bukkit.entity.Entity> {
      * @return DataWatcher Item
      */
     public <V> DataWatcher.EntityItem<V> getDataItem(DataWatcher.Key<V> key) {
-        return new DataWatcher.EntityItem<V>(this, key);
+        return new DataWatcher.EntityItem<>(this, key);
     }
 
     /**

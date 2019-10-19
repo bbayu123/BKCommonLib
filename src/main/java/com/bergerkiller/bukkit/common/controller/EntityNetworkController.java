@@ -73,33 +73,40 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
      * or written to
      */
     public VectorAbstract velSynched = new VectorAbstract() {
+        @Override
         public double getX() {
             return state.getXVel();
         }
 
+        @Override
         public double getY() {
             return state.getYVel();
         }
 
+        @Override
         public double getZ() {
             return state.getZVel();
         }
 
+        @Override
         public VectorAbstract set(double x, double y, double z) {
             state.setVelocity(x, y, z);
             return this;
         }
 
+        @Override
         public VectorAbstract setX(double x) {
             state.setXVel(x);
             return this;
         }
 
+        @Override
         public VectorAbstract setY(double y) {
             state.setYVel(y);
             return this;
         }
 
+        @Override
         public VectorAbstract setZ(double z) {
             state.setZVel(z);
             return this;
@@ -110,28 +117,34 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
      * written to
      */
     public VectorAbstract velLive = new VectorAbstract() {
+        @Override
         public double getX() {
             return entity.vel.getX();
         }
 
+        @Override
         public double getY() {
             return entity.vel.getY();
         }
 
+        @Override
         public double getZ() {
             return entity.vel.getZ();
         }
 
+        @Override
         public VectorAbstract setX(double x) {
             entity.vel.setX(x);
             return this;
         }
 
+        @Override
         public VectorAbstract setY(double y) {
             entity.vel.setY(y);
             return this;
         }
 
+        @Override
         public VectorAbstract setZ(double z) {
             entity.vel.setZ(z);
             return this;
@@ -142,55 +155,67 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
      * read from or written to
      */
     public LocationAbstract locSynched = new LocationAbstract() {
+        @Override
         public World getWorld() {
             return entity.getWorld();
         }
 
+        @Override
         public LocationAbstract setWorld(World world) {
             entity.setWorld(world);
             return this;
         }
 
+        @Override
         public double getX() {
             return state.getLocX();
         }
 
+        @Override
         public double getY() {
             return state.getLocY();
         }
 
+        @Override
         public double getZ() {
             return state.getLocZ();
         }
 
+        @Override
         public LocationAbstract setX(double x) {
             state.setLocX(x);
             return this;
         }
 
+        @Override
         public LocationAbstract setY(double y) {
             state.setLocY(y);
             return this;
         }
 
+        @Override
         public LocationAbstract setZ(double z) {
             state.setLocZ(z);
             return this;
         }
 
+        @Override
         public float getYaw() {
             return state.getYaw();
         }
 
+        @Override
         public float getPitch() {
             return state.getPitch();
         }
 
+        @Override
         public LocationAbstract setYaw(float yaw) {
             state.setYaw(yaw);
             return this;
         }
 
+        @Override
         public LocationAbstract setPitch(float pitch) {
             state.setPitch(pitch);
             return this;
@@ -215,46 +240,56 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
             return this;
         }
 
+        @Override
         public double getX() {
             return entity.loc.getX();
         }
 
+        @Override
         public double getY() {
             return entity.loc.getY();
         }
 
+        @Override
         public double getZ() {
             return entity.loc.getZ();
         }
 
+        @Override
         public LocationAbstract setX(double x) {
             entity.loc.setX(x);
             return this;
         }
 
+        @Override
         public LocationAbstract setY(double y) {
             entity.loc.setY(y);
             return this;
         }
 
+        @Override
         public LocationAbstract setZ(double z) {
             entity.loc.setZ(z);
             return this;
         }
 
+        @Override
         public float getYaw() {
             return entity.loc.getYaw();
         }
 
+        @Override
         public float getPitch() {
             return entity.loc.getPitch();
         }
 
+        @Override
         public LocationAbstract setYaw(float yaw) {
             entity.loc.setYaw(yaw);
             return this;
         }
 
+        @Override
         public LocationAbstract setPitch(float pitch) {
             entity.loc.setPitch(pitch);
             return this;
@@ -266,10 +301,12 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
      * be read from or written to
      */
     public FloatAbstract headRotSynched = new FloatAbstract() {
+        @Override
         public float get() {
         	return state.getHeadYaw();
         }
 
+        @Override
         public FloatAbstract set(float value) {
         	state.setHeadYaw(value);
             return this;
@@ -280,10 +317,12 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
      * reading is supported.
      */
     public FloatAbstract headRotLive = new FloatAbstract() {
+        @Override
         public float get() {
             return entity.getHeadRotation();
         }
 
+        @Override
         public FloatAbstract set(float value) {
             throw new UnsupportedOperationException();
         }
@@ -295,10 +334,12 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
      * the hood.
      */
     public IntegerAbstract ticks = new IntegerAbstract() {
+        @Override
         public int get() {
             return state.getTickCounter();
         }
 
+        @Override
         public IntegerAbstract set(int value) {
             state.setTickCounter(value);
             return this;
@@ -487,8 +528,8 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
             }
         }
         // View range check
-        final int dx = MathUtil.floor(Math.abs(EntityUtil.getLocX(viewer) - this.locSynched.getX()));
-        final int dz = MathUtil.floor(Math.abs(EntityUtil.getLocZ(viewer) - this.locSynched.getZ()));
+        final int dx = MathUtil.floor(Math.abs(EntityPropertyUtil.getLocX(viewer) - this.locSynched.getX()));
+        final int dz = MathUtil.floor(Math.abs(EntityPropertyUtil.getLocZ(viewer) - this.locSynched.getZ()));
         final int view = this.getViewDistance();
         if (dx > view || dz > view) {
             return false;
@@ -896,14 +937,14 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
             }
             if (passengersDifferent) {
                 // Store old passengers list for later event handling
-                ArrayList<org.bukkit.entity.Entity> old_passengers_bu = new ArrayList<org.bukkit.entity.Entity>(old_passengers);  
+                ArrayList<org.bukkit.entity.Entity> old_passengers_bu = new ArrayList<>(old_passengers);  
 
                 // Update the raw List. This prevents converters being used in the final List.
                 List<Object> newList = CommonUtil.unsafeCast(EntityTrackerEntryStateHandle.T.opt_passengers.raw.get(state.getRaw()));
                 if (newList instanceof ArrayList) {
                     newList.clear();
                 } else {
-                    newList = new ArrayList<Object>(new_passengers.size());
+                    newList = new ArrayList<>(new_passengers.size());
                     EntityTrackerEntryStateHandle.T.opt_passengers.raw.set(state.getRaw(), newList);
                 }
                 for (Entity e : new_passengers) {
@@ -928,8 +969,8 @@ public abstract class EntityNetworkController<T extends CommonEntity<?>> extends
             // Track passenger ourselves to implement onSyncPassengers functionality
             org.bukkit.entity.Entity new_entity = this.entity.getPassenger();
             if (new_entity != this.last_passenger_1_8_8) {
-                ArrayList<org.bukkit.entity.Entity> old_list = new ArrayList<org.bukkit.entity.Entity>(1);
-                ArrayList<org.bukkit.entity.Entity> new_list = new ArrayList<org.bukkit.entity.Entity>(1);
+                ArrayList<org.bukkit.entity.Entity> old_list = new ArrayList<>(1);
+                ArrayList<org.bukkit.entity.Entity> new_list = new ArrayList<>(1);
                 if (this.last_passenger_1_8_8 != null) {
                     old_list.add(this.last_passenger_1_8_8);
                 }

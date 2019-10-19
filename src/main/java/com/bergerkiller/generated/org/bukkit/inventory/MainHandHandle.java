@@ -29,8 +29,8 @@ public abstract class MainHandHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class MainHandClass extends Template.Class<MainHandHandle> {
-        public final Template.EnumConstant.Converted<MainHandHandle> LEFT = new Template.EnumConstant.Converted<MainHandHandle>();
-        public final Template.EnumConstant.Converted<MainHandHandle> RIGHT = new Template.EnumConstant.Converted<MainHandHandle>();
+        public final Template.EnumConstant.Converted<MainHandHandle> LEFT = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<MainHandHandle> RIGHT = new Template.EnumConstant.Converted<>();
 
     }
 

@@ -35,11 +35,11 @@ public abstract class EntityInsentientHandle extends EntityLivingHandle {
      */
     public static final class EntityInsentientClass extends Template.Class<EntityInsentientHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Byte>> DATA_INSENTIENT_FLAGS = new Template.StaticField.Converted<Key<Byte>>();
+        public final Template.StaticField.Converted<Key<Byte>> DATA_INSENTIENT_FLAGS = new Template.StaticField.Converted<>();
 
-        public final Template.Method.Converted<EntityHandle> getLeashHolder = new Template.Method.Converted<EntityHandle>();
-        public final Template.Method.Converted<Object> getNavigation = new Template.Method.Converted<Object>();
-        public final Template.Method<Boolean> isSleeping = new Template.Method<Boolean>();
+        public final Template.Method.Converted<EntityHandle> getLeashHolder = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Object> getNavigation = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> isSleeping = new Template.Method<>();
 
     }
 

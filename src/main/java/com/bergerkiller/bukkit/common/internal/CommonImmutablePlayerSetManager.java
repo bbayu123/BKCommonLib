@@ -230,7 +230,7 @@ public class CommonImmutablePlayerSetManager {
 
         // mutable. Only used for the temporary cache object for finding entries in the cache
         public CommonImmutablePlayerSetData() {
-            this.set = new HashSet<Player>();
+            this.set = new HashSet<>();
             this.hashCode = 0;
         }
 
@@ -241,7 +241,7 @@ public class CommonImmutablePlayerSetManager {
                 this.set = Collections.singleton(data.set.iterator().next());
             } else {
                 //TODO: Is Guava's immutable set an idea?
-                this.set = Collections.unmodifiableSet(new HashSet<Player>(data.set));
+                this.set = Collections.unmodifiableSet(new HashSet<>(data.set));
             }
             // Copy hashCode
             this.hashCode = data.hashCode;

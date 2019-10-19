@@ -26,7 +26,7 @@ import com.bergerkiller.mountiplex.reflection.declarations.TypeDeclaration;
 import com.bergerkiller.mountiplex.reflection.util.FastMethod;
 
 public class EntityMoveHandler_1_14 extends EntityMoveHandler {
-    private static final FastMethod<java.util.stream.Stream<?>> getBlockCollisions_method = new FastMethod<java.util.stream.Stream<?>>();
+    private static final FastMethod<java.util.stream.Stream<?>> getBlockCollisions_method = new FastMethod<>();
     private static final Converter<java.util.stream.Stream<?>, Stream<VoxelShapeHandle>> streamConverter;
     private static final boolean getBlockCollisions_method_init;
 
@@ -93,7 +93,7 @@ public class EntityMoveHandler_1_14 extends EntityMoveHandler {
         AxisAlignedBBHandle entityBounds = this.that.getBoundingBox();
         if (entityBounds.getMaxY() > (block.getY() + 1.0)) {
             hitFace = BlockFace.UP;
-        } else if (entityBounds.getMinY() < (double) block.getY()) {
+        } else if (entityBounds.getMinY() < block.getY()) {
             hitFace = BlockFace.DOWN;
         } else {
             double dx = this.that.getLocX() - block.getX() - 0.5;
@@ -149,9 +149,7 @@ public class EntityMoveHandler_1_14 extends EntityMoveHandler {
         if (entity != null && this.entityCollisionEnabled) {
             List<EntityHandle> list = entity.getWorld().getNearbyEntities(entity, axisalignedbb.growUniform(0.25D));
 
-            for (int i = 0; i < list.size(); i++) {
-                EntityHandle entity1 = list.get(i);
-
+            for (EntityHandle entity1 : list) {
                 if (!entity.isInSameVehicle(entity1)) {
                     // BKCommonLib start: block collision event handler
                     AxisAlignedBBHandle axisalignedbb1 = entity1.getOtherBoundingBox();

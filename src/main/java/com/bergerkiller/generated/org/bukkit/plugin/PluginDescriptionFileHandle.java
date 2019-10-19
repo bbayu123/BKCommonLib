@@ -29,7 +29,7 @@ public abstract class PluginDescriptionFileHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PluginDescriptionFileClass extends Template.Class<PluginDescriptionFileHandle> {
-        public final Template.Field<Map<String, Map<String, Object>>> commands = new Template.Field<Map<String, Map<String, Object>>>();
+        public final Template.Field<Map<String, Map<String, Object>>> commands = new Template.Field<>();
 
     }
 

@@ -36,11 +36,11 @@ public abstract class PacketPlayOutRespawnHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutRespawnClass extends Template.Class<PacketPlayOutRespawnHandle> {
-        public final Template.Field.Converted<Dimension> dimension = new Template.Field.Converted<Dimension>();
+        public final Template.Field.Converted<Dimension> dimension = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<Difficulty> difficulty = new Template.Field.Converted<Difficulty>();
-        public final Template.Field.Converted<GameMode> gamemode = new Template.Field.Converted<GameMode>();
-        public final Template.Field.Converted<WorldType> worldType = new Template.Field.Converted<WorldType>();
+        public final Template.Field.Converted<Difficulty> difficulty = new Template.Field.Converted<>();
+        public final Template.Field.Converted<GameMode> gamemode = new Template.Field.Converted<>();
+        public final Template.Field.Converted<WorldType> worldType = new Template.Field.Converted<>();
 
     }
 

@@ -32,9 +32,9 @@ public abstract class AttributeMapServerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class AttributeMapServerClass extends Template.Class<AttributeMapServerHandle> {
-        public final Template.Constructor.Converted<AttributeMapServerHandle> constr = new Template.Constructor.Converted<AttributeMapServerHandle>();
+        public final Template.Constructor.Converted<AttributeMapServerHandle> constr = new Template.Constructor.Converted<>();
 
-        public final Template.Method.Converted<Collection<Object>> attributes = new Template.Method.Converted<Collection<Object>>();
+        public final Template.Method.Converted<Collection<Object>> attributes = new Template.Method.Converted<>();
 
     }
 

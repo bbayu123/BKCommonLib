@@ -13,7 +13,7 @@ public class ForcedChunk implements AutoCloseable {
     private final AtomicReference<ForcedChunkManager.ForcedChunkEntry> entry;
 
     protected ForcedChunk(ForcedChunkManager.ForcedChunkEntry entry) {
-        this.entry = new AtomicReference<ForcedChunkManager.ForcedChunkEntry>(entry);
+        this.entry = new AtomicReference<>(entry);
     }
 
     /**

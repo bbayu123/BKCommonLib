@@ -40,7 +40,7 @@ public class StopWatch {
      * @return Total time in milliseconds
      */
     public double get() {
-        return (double) prevdur / 1E6D;
+        return prevdur / 1E6D;
     }
 
     /**
@@ -50,7 +50,7 @@ public class StopWatch {
      * @return Total time in milliseconds divided by the scale
      */
     public double get(int scale) {
-        return (double) prevdur / 1E6D / (double) scale;
+        return prevdur / 1E6D / scale;
     }
 
     /**

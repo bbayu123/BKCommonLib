@@ -41,7 +41,7 @@ public abstract class CommonServerBase implements CommonServer {
     @Override
     public Collection<String> getLoadableWorlds() {
         File[] files = Bukkit.getWorldContainer().listFiles();
-        Collection<String> rval = new ArrayList<String>(files.length);
+        Collection<String> rval = new ArrayList<>(files.length);
         for (String worldName : Bukkit.getWorldContainer().list()) {
             if (isLoadableWorld(worldName)) {
                 rval.add(worldName);

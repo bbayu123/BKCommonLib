@@ -17,7 +17,7 @@ public class NMSPlayerAbilities {
     public static final FieldAccessor<Float> flySpeed            = new SafeDirectField<Float>() {
         @Override
         public Float get(Object instance) {
-            return Float.valueOf((float) PlayerAbilitiesHandle.createHandle(instance).getFlySpeed());
+            return (float) PlayerAbilitiesHandle.createHandle(instance).getFlySpeed();
         }
 
         @Override

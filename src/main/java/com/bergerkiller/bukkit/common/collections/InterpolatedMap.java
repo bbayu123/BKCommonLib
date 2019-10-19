@@ -22,7 +22,7 @@ import java.util.ListIterator;
  */
 public class InterpolatedMap {
 
-    private final List<Entry> entries = new ArrayList<Entry>();
+    private final List<Entry> entries = new ArrayList<>();
 
     /**
      * Checks whether this Interpolated Map is empty or not

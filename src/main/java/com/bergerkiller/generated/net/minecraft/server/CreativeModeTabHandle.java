@@ -27,7 +27,7 @@ public abstract class CreativeModeTabHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CreativeModeTabClass extends Template.Class<CreativeModeTabHandle> {
-        public final Template.StaticField.Converted<CreativeModeTabHandle> SEARCH = new Template.StaticField.Converted<CreativeModeTabHandle>();
+        public final Template.StaticField.Converted<CreativeModeTabHandle> SEARCH = new Template.StaticField.Converted<>();
 
     }
 

@@ -257,7 +257,7 @@ public abstract class InventoryBase implements Inventory {
         if (InventoryHandle.T.removeItemAnySlot.isAvailable()) {
             return InventoryHandle.T.removeItemAnySlot.invoke(this.cbProxy);
         } else {
-            return new HashMap<Integer, ItemStack>();
+            return new HashMap<>();
         }
     }
 
@@ -277,11 +277,13 @@ public abstract class InventoryBase implements Inventory {
     }
 
     //@Override // Only on >= v1.10.2
+    @Override
     public Location getLocation() {
         return null;
     }
 
     //@Override // Only on >= v1.10.2
+    @Override
     public ItemStack[] getStorageContents() {
         if (InventoryHandle.T.getStorageContents.isAvailable()) {
             return InventoryHandle.T.getStorageContents.invoke(this.cbProxy);
@@ -291,6 +293,7 @@ public abstract class InventoryBase implements Inventory {
     }
 
     //@Override // Only on >= v1.10.2
+    @Override
     public void setStorageContents(ItemStack[] items) throws IllegalArgumentException {
         if (InventoryHandle.T.setStorageContents.isAvailable()) {
             InventoryHandle.T.setStorageContents.invoke(this.cbProxy, items);

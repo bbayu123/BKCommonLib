@@ -36,7 +36,7 @@ public abstract class Vec3DHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class Vec3DClass extends Template.Class<Vec3DHandle> {
-        public final Template.Constructor.Converted<Vec3DHandle> constr_x_y_z = new Template.Constructor.Converted<Vec3DHandle>();
+        public final Template.Constructor.Converted<Vec3DHandle> constr_x_y_z = new Template.Constructor.Converted<>();
 
         public final Template.Field.Double x = new Template.Field.Double();
         public final Template.Field.Double y = new Template.Field.Double();

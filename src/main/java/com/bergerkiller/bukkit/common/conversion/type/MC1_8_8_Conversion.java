@@ -32,7 +32,7 @@ public class MC1_8_8_Conversion {
     @ConverterMethod(input="net.minecraft.server.DataWatcher.WatchableObject")
     public static com.bergerkiller.bukkit.common.wrappers.DataWatcher.Item<?> watchableObjectToItem(Object watchableObject) {
         DataWatcherHandle.ItemHandle handle = DataWatcherHandle.ItemHandle.createHandle(watchableObject);
-        return new com.bergerkiller.bukkit.common.wrappers.DataWatcher.Item<Object>(handle);
+        return new com.bergerkiller.bukkit.common.wrappers.DataWatcher.Item<>(handle);
     }
 
     @ConverterMethod()

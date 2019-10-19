@@ -19,8 +19,8 @@ import com.bergerkiller.bukkit.common.wrappers.HumanHand;
  * Maintains information about the player owners that own the session of a Map Display.
  */
 public class MapSession {
-    public final HashSet<UUID> owners = new HashSet<UUID>();
-    public final ArrayList<Owner> onlineOwners = new ArrayList<Owner>();
+    public final HashSet<UUID> owners = new HashSet<>();
+    public final ArrayList<Owner> onlineOwners = new ArrayList<>();
     public final MapDisplay display;
     public boolean hasHolders = false;
     public boolean hasViewers = false;

@@ -15,6 +15,7 @@ public class EntityRemoveFromServerEvent extends EntityEvent {
         super(removed);
     }
 
+    @Override
     public HandlerList getHandlers() {
         return handlers;
     }

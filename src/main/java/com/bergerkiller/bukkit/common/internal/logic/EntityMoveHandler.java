@@ -49,7 +49,7 @@ public abstract class EntityMoveHandler {
     protected EntityController<?> controller;
     protected EntityHandle that;
     private CommonEntity<?> entity;
-    private final StreamAccumulator<VoxelShapeHandle> shapeAccumulator = new StreamAccumulator<VoxelShapeHandle>();
+    private final StreamAccumulator<VoxelShapeHandle> shapeAccumulator = new StreamAccumulator<>();
 
     protected EntityMoveHandler() {
     }
@@ -224,7 +224,7 @@ public abstract class EntityMoveHandler {
             double d9 = d2;
 
             if ((movetype == MoveType.SELF || movetype == MoveType.PLAYER) && that.isOnGround() && that.isSneaking() && that.isInstanceOf(EntityHumanHandle.T)) {
-                for (/* double d10 = 0.05D*/; d0 != 0.0D && world.isNotCollidingWithBlocks(that, that.getBoundingBox().translate(d0, (double) (-that.getHeightOffset()), 0.0D)); d7 = d0) {
+                for (/* double d10 = 0.05D*/; d0 != 0.0D && world.isNotCollidingWithBlocks(that, that.getBoundingBox().translate(d0, (-that.getHeightOffset()), 0.0D)); d7 = d0) {
                     if (d0 < 0.05D && d0 >= -0.05D) {
                         d0 = 0.0D;
                     } else if (d0 > 0.0D) {
@@ -234,7 +234,7 @@ public abstract class EntityMoveHandler {
                     }
                 }
 
-                for (; d2 != 0.0D && world.isNotCollidingWithBlocks(that, that.getBoundingBox().translate(0.0D, (double) (-that.getHeightOffset()), d2)); d9 = d2) {
+                for (; d2 != 0.0D && world.isNotCollidingWithBlocks(that, that.getBoundingBox().translate(0.0D, (-that.getHeightOffset()), d2)); d9 = d2) {
                     if (d2 < 0.05D && d2 >= -0.05D) {
                         d2 = 0.0D;
                     } else if (d2 > 0.0D) {
@@ -244,7 +244,7 @@ public abstract class EntityMoveHandler {
                     }
                 }
 
-                for (; d0 != 0.0D && d2 != 0.0D && world.isNotCollidingWithBlocks(that, that.getBoundingBox().translate(d0, (double) (-that.getHeightOffset()), d2)); d9 = d2) {
+                for (; d0 != 0.0D && d2 != 0.0D && world.isNotCollidingWithBlocks(that, that.getBoundingBox().translate(d0, (-that.getHeightOffset()), d2)); d9 = d2) {
                     if (d0 < 0.05D && d0 >= -0.05D) {
                         d0 = 0.0D;
                     } else if (d0 > 0.0D) {
@@ -308,7 +308,7 @@ public abstract class EntityMoveHandler {
                 AxisAlignedBBHandle axisalignedbb1 = that.getBoundingBox();
 
                 that.setBoundingBox(axisalignedbb);
-                d1 = (double) that.getHeightOffset();
+                d1 = that.getHeightOffset();
 
                 // BKCommonLib start
                 // collision event handler
@@ -489,9 +489,9 @@ public abstract class EntityMoveHandler {
                     iblockdata.stepOn(this.entity.getWorld(), blockposition, this.entity.getEntity());
                 }
 
-                that.setWalkedDistanceXZ((float) ((double) that.getWalkedDistanceXZ() + Math.sqrt(d22 * d22 + d11 * d11) * 0.6D));
-                that.setWalkedDistanceXYZ((float) ((double) that.getWalkedDistanceXYZ() + Math.sqrt(d22 * d22 + d23 * d23 + d11 * d11) * 0.6D));
-                if (that.getWalkedDistanceXYZ() > (float) that.getStepCounter() && !iblockdata.isType(org.bukkit.Material.AIR)) {
+                that.setWalkedDistanceXZ((float) (that.getWalkedDistanceXZ() + Math.sqrt(d22 * d22 + d11 * d11) * 0.6D));
+                that.setWalkedDistanceXYZ((float) (that.getWalkedDistanceXYZ() + Math.sqrt(d22 * d22 + d23 * d23 + d11 * d11) * 0.6D));
+                if (that.getWalkedDistanceXYZ() > that.getStepCounter() && !iblockdata.isType(org.bukkit.Material.AIR)) {
                     that.setStepCounter((int) that.getWalkedDistanceXYZ() + 1);
                     if (that.isInWater()) {
                         EntityHandle entity = that.isVehicle() ? that.getDriverEntity() : null;

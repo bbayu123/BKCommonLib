@@ -32,7 +32,7 @@ public abstract class PacketPlayInSetCreativeSlotHandle extends PacketHandle {
      */
     public static final class PacketPlayInSetCreativeSlotClass extends Template.Class<PacketPlayInSetCreativeSlotHandle> {
         public final Template.Field.Integer slot = new Template.Field.Integer();
-        public final Template.Field.Converted<ItemStack> item = new Template.Field.Converted<ItemStack>();
+        public final Template.Field.Converted<ItemStack> item = new Template.Field.Converted<>();
 
     }
 

@@ -34,8 +34,8 @@ public abstract class MobEffectListHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class MobEffectListClass extends Template.Class<MobEffectListHandle> {
-        public final Template.StaticMethod.Converted<Integer> getId = new Template.StaticMethod.Converted<Integer>();
-        public final Template.StaticMethod.Converted<MobEffectListHandle> fromId = new Template.StaticMethod.Converted<MobEffectListHandle>();
+        public final Template.StaticMethod.Converted<Integer> getId = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<MobEffectListHandle> fromId = new Template.StaticMethod.Converted<>();
 
     }
 

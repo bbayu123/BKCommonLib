@@ -10,7 +10,7 @@ import java.util.logging.Level;
 
 public class MessageBuilder {
 
-    private final List<StringBuilder> lines = new ArrayList<StringBuilder>();
+    private final List<StringBuilder> lines = new ArrayList<>();
     private StringBuilder builder;
     private int currentWidth;
     private String separator;

@@ -26,6 +26,7 @@ import com.bergerkiller.bukkit.common.protocol.CommonPacket;
 import com.bergerkiller.bukkit.common.utils.CommonUtil;
 import com.bergerkiller.bukkit.common.utils.ParseUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.ChatMessageType;
 import com.bergerkiller.bukkit.common.wrappers.ChatText;
 import com.bergerkiller.bukkit.common.wrappers.ChunkSection;
@@ -268,7 +269,7 @@ public class WrapperConversion {
     @ConverterMethod(input="net.minecraft.server.EnumDifficulty")
     public static org.bukkit.Difficulty toDifficulty(Object nmsEnumDifficultyHandle) {
         Integer id = EnumDifficultyHandle.T.getId.invoke(nmsEnumDifficultyHandle);
-        return Difficulty.getByValue(id.intValue());
+        return Difficulty.getByValue(id);
     }
 
     @SuppressWarnings("deprecation")
@@ -391,12 +392,12 @@ public class WrapperConversion {
 
     @ConverterMethod(input="net.minecraft.server.IntHashMap<T>")
     public static <T> IntHashMap<T> toIntHashMap(Object nmsIntHashMapHandle) {
-        return new IntHashMap<T>(nmsIntHashMapHandle);
+        return new IntHashMap<>(nmsIntHashMapHandle);
     }
 
     @ConverterMethod(input="net.minecraft.server.IntHashMap<?>")
     public static IntHashMap<Object> toRawIntHashMap(Object nmsIntHashMapHandle) {
-        return new IntHashMap<Object>(nmsIntHashMapHandle);
+        return new IntHashMap<>(nmsIntHashMapHandle);
     }
 
     @ConverterMethod(input="net.minecraft.server.PacketPlayInUseEntity.EnumEntityUseAction")
@@ -411,22 +412,22 @@ public class WrapperConversion {
 
     @ConverterMethod(input="net.minecraft.server.IBlockData")
     public static BlockData toBlockData(Object nmsIBlockDataHandle) {
-        return BlockData.fromBlockData(nmsIBlockDataHandle);
+        return BlockDataRegistry.fromBlockData(nmsIBlockDataHandle);
     }
 
     @ConverterMethod(input="net.minecraft.server.Block")
     public static BlockData toBlockDataFromBlock(Object nmsBlockHandle) {
-        return BlockData.fromBlock(nmsBlockHandle);
+        return BlockDataRegistry.fromBlock(nmsBlockHandle);
     }
 
     @ConverterMethod
     public static BlockData getBlockData(Material material) {
-        return BlockData.fromMaterial(material);
+        return BlockDataRegistry.fromMaterial(material);
     }
 
     @ConverterMethod
     public static BlockData getBlockData(MaterialData data) {
-        return BlockData.fromMaterialData(data);
+        return BlockDataRegistry.fromMaterialData(data);
     }
 
     @SuppressWarnings("deprecation")
@@ -436,7 +437,7 @@ public class WrapperConversion {
         if (!type.isBlock()) {
             return null;
         }
-        return BlockData.fromMaterialData(type, item.getDurability());
+        return BlockDataRegistry.fromMaterialData(type, item.getDurability());
     }
 
     @SuppressWarnings("deprecation")
@@ -447,9 +448,9 @@ public class WrapperConversion {
             return null;
         }
         if (parser.hasData()) {
-            return BlockData.fromMaterialData(parser.getType(), parser.getData());
+            return BlockDataRegistry.fromMaterialData(parser.getType(), parser.getData());
         } else {
-            return BlockData.fromMaterial(parser.getType());
+            return BlockDataRegistry.fromMaterial(parser.getType());
         }
     }
 
@@ -479,13 +480,13 @@ public class WrapperConversion {
 
     @ConverterMethod(input="net.minecraft.server.DataWatcherObject")
     public static <T> com.bergerkiller.bukkit.common.wrappers.DataWatcher.Key<T> toKey(Object nmsDataWatcherObjectHandle) {
-        return new com.bergerkiller.bukkit.common.wrappers.DataWatcher.Key<T>(nmsDataWatcherObjectHandle);
+        return new com.bergerkiller.bukkit.common.wrappers.DataWatcher.Key<>(nmsDataWatcherObjectHandle);
     }
 
     @ConverterMethod(input="net.minecraft.server.DataWatcher.Item")
     public static <T> com.bergerkiller.bukkit.common.wrappers.DataWatcher.Item<T> toDataWatcherItem(Object nmsDataWatcherItemHandle) {
         DataWatcherHandle.ItemHandle handle = DataWatcherHandle.ItemHandle.createHandle(nmsDataWatcherItemHandle);
-        return new com.bergerkiller.bukkit.common.wrappers.DataWatcher.Item<T>(handle);
+        return new com.bergerkiller.bukkit.common.wrappers.DataWatcher.Item<>(handle);
     }
 
     @ConverterMethod(input="net.minecraft.server.MapIcon")
@@ -534,7 +535,7 @@ public class WrapperConversion {
 
     @ConverterMethod(input="net.minecraft.server.ChatMessageType", optional=true)
     public static ChatMessageType toChatMessageType(Object nmsChatMessageType) {
-        return ChatMessageType.getById(ChatMessageTypeHandle.T.getId.invoke(nmsChatMessageType).byteValue());
+        return ChatMessageType.getById(ChatMessageTypeHandle.T.getId.invoke(nmsChatMessageType));
     }
 
     @ConverterMethod()

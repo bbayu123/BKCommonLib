@@ -39,22 +39,22 @@ public abstract class EntityMinecartAbstractHandle extends EntityHandle {
      */
     public static final class EntityMinecartAbstractClass extends Template.Class<EntityMinecartAbstractHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Integer>> DATA_SHAKING_FACTOR = new Template.StaticField.Converted<Key<Integer>>();
+        public final Template.StaticField.Converted<Key<Integer>> DATA_SHAKING_FACTOR = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Integer>> DATA_SHAKING_DIRECTION = new Template.StaticField.Converted<Key<Integer>>();
+        public final Template.StaticField.Converted<Key<Integer>> DATA_SHAKING_DIRECTION = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Float>> DATA_SHAKING_DAMAGE = new Template.StaticField.Converted<Key<Float>>();
+        public final Template.StaticField.Converted<Key<Float>> DATA_SHAKING_DAMAGE = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Integer>> DATA_BLOCK_TYPE = new Template.StaticField.Converted<Key<Integer>>();
+        public final Template.StaticField.Converted<Key<Integer>> DATA_BLOCK_TYPE = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Integer>> DATA_BLOCK_OFFSET = new Template.StaticField.Converted<Key<Integer>>();
+        public final Template.StaticField.Converted<Key<Integer>> DATA_BLOCK_OFFSET = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Boolean>> DATA_BLOCK_VISIBLE = new Template.StaticField.Converted<Key<Boolean>>();
+        public final Template.StaticField.Converted<Key<Boolean>> DATA_BLOCK_VISIBLE = new Template.StaticField.Converted<>();
 
-        public final Template.Method<Float> getDamage = new Template.Method<Float>();
-        public final Template.Method<Void> setDamage = new Template.Method<Void>();
-        public final Template.Method<Integer> getType = new Template.Method<Integer>();
-        public final Template.Method<Void> activate = new Template.Method<Void>();
+        public final Template.Method<Float> getDamage = new Template.Method<>();
+        public final Template.Method<Void> setDamage = new Template.Method<>();
+        public final Template.Method<Integer> getType = new Template.Method<>();
+        public final Template.Method<Void> activate = new Template.Method<>();
 
     }
 

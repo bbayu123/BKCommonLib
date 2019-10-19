@@ -14,7 +14,7 @@ public class YamlRoot {
     private final Map<YamlPath, YamlEntry> _entries;
 
     public YamlRoot() {
-        this._entries = new HashMap<YamlPath, YamlEntry>();
+        this._entries = new HashMap<>();
     }
 
     /**

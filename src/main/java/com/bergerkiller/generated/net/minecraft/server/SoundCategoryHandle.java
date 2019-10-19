@@ -32,9 +32,9 @@ public abstract class SoundCategoryHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class SoundCategoryClass extends Template.Class<SoundCategoryHandle> {
-        public final Template.StaticMethod.Converted<SoundCategoryHandle> byName = new Template.StaticMethod.Converted<SoundCategoryHandle>();
+        public final Template.StaticMethod.Converted<SoundCategoryHandle> byName = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<String> getName = new Template.Method<String>();
+        public final Template.Method<String> getName = new Template.Method<>();
 
     }
 

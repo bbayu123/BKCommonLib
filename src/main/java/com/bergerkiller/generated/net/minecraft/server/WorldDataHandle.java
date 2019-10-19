@@ -28,8 +28,8 @@ public abstract class WorldDataHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class WorldDataClass extends Template.Class<WorldDataHandle> {
-        public final Template.Method.Converted<WorldTypeHandle> getType = new Template.Method.Converted<WorldTypeHandle>();
-        public final Template.Method<Void> setClearTimer = new Template.Method<Void>();
+        public final Template.Method.Converted<WorldTypeHandle> getType = new Template.Method.Converted<>();
+        public final Template.Method<Void> setClearTimer = new Template.Method<>();
 
     }
 

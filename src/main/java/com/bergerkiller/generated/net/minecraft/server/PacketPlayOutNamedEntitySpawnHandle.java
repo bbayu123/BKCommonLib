@@ -99,7 +99,7 @@ public abstract class PacketPlayOutNamedEntitySpawnHandle extends PacketHandle {
      */
     public static final class PacketPlayOutNamedEntitySpawnClass extends Template.Class<PacketPlayOutNamedEntitySpawnHandle> {
         public final Template.Field.Integer entityId = new Template.Field.Integer();
-        public final Template.Field<UUID> entityUUID = new Template.Field<UUID>();
+        public final Template.Field<UUID> entityUUID = new Template.Field<>();
         @Template.Optional
         public final Template.Field.Integer posX_1_8_8 = new Template.Field.Integer();
         @Template.Optional
@@ -117,9 +117,9 @@ public abstract class PacketPlayOutNamedEntitySpawnHandle extends PacketHandle {
         @Template.Optional
         public final Template.Field.Byte pitch_raw = new Template.Field.Byte();
         @Template.Optional
-        public final Template.Field.Converted<Material> heldItem = new Template.Field.Converted<Material>();
-        public final Template.Field.Converted<DataWatcher> dataWatcher = new Template.Field.Converted<DataWatcher>();
-        public final Template.Field.Converted<List<Item<?>>> dataWatcherItems = new Template.Field.Converted<List<Item<?>>>();
+        public final Template.Field.Converted<Material> heldItem = new Template.Field.Converted<>();
+        public final Template.Field.Converted<DataWatcher> dataWatcher = new Template.Field.Converted<>();
+        public final Template.Field.Converted<List<Item<?>>> dataWatcherItems = new Template.Field.Converted<>();
 
     }
 

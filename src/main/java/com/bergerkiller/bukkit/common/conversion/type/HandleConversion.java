@@ -444,9 +444,9 @@ public class HandleConversion {
     @ConverterMethod(input="net.minecraft.server.EntitySlice<?>", optional=true)
     public static List<Object> cbEntitySliceToList(Object nmsEntitySliceHandle) {
         if (CommonCapabilities.REVISED_CHUNK_ENTITY_SLICE) {
-            return new EntitySliceProxy_1_8_3<Object>(EntitySliceHandle.createHandle(nmsEntitySliceHandle));
+            return new EntitySliceProxy_1_8_3<>(EntitySliceHandle.createHandle(nmsEntitySliceHandle));
         } else {
-            return new EntitySliceProxy_1_8<Object>(EntitySliceHandle.createHandle(nmsEntitySliceHandle));
+            return new EntitySliceProxy_1_8<>(EntitySliceHandle.createHandle(nmsEntitySliceHandle));
         }
     }
 

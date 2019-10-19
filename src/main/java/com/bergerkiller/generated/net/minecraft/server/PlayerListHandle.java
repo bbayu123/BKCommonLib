@@ -37,12 +37,12 @@ public abstract class PlayerListHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PlayerListClass extends Template.Class<PlayerListHandle> {
-        public final Template.Field.Converted<List<Player>> players = new Template.Field.Converted<List<Player>>();
-        public final Template.Field.Converted<IPlayerFileDataHandle> playerFileData = new Template.Field.Converted<IPlayerFileDataHandle>();
+        public final Template.Field.Converted<List<Player>> players = new Template.Field.Converted<>();
+        public final Template.Field.Converted<IPlayerFileDataHandle> playerFileData = new Template.Field.Converted<>();
         public final Template.Field.Integer maxPlayers = new Template.Field.Integer();
 
-        public final Template.Method<Void> savePlayers = new Template.Method<Void>();
-        public final Template.Method.Converted<Void> sendRawPacketNearby = new Template.Method.Converted<Void>();
+        public final Template.Method<Void> savePlayers = new Template.Method<>();
+        public final Template.Method.Converted<Void> sendRawPacketNearby = new Template.Method.Converted<>();
 
     }
 

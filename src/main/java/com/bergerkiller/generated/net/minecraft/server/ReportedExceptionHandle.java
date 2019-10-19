@@ -30,7 +30,7 @@ public abstract class ReportedExceptionHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ReportedExceptionClass extends Template.Class<ReportedExceptionHandle> {
-        public final Template.Constructor.Converted<ReportedExceptionHandle> constr_paramCrashReport = new Template.Constructor.Converted<ReportedExceptionHandle>();
+        public final Template.Constructor.Converted<ReportedExceptionHandle> constr_paramCrashReport = new Template.Constructor.Converted<>();
 
     }
 

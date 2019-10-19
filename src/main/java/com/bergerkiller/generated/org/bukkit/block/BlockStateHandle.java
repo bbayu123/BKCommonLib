@@ -28,9 +28,9 @@ public abstract class BlockStateHandle extends Template.Handle {
      */
     public static final class BlockStateClass extends Template.Class<BlockStateHandle> {
         @Template.Optional
-        public final Template.Method<Boolean> isPlaced = new Template.Method<Boolean>();
+        public final Template.Method<Boolean> isPlaced = new Template.Method<>();
         @Template.Optional
-        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<BlockData>();
+        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<>();
 
     }
 

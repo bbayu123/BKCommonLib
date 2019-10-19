@@ -30,17 +30,17 @@ public abstract class InventoryHandle extends Template.Handle {
      */
     public static final class InventoryClass extends Template.Class<InventoryHandle> {
         @Template.Optional
-        public final Template.Method<Location> getLocation = new Template.Method<Location>();
+        public final Template.Method<Location> getLocation = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<ItemStack[]> getStorageContents = new Template.Method<ItemStack[]>();
+        public final Template.Method<ItemStack[]> getStorageContents = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<Void> setStorageContents = new Template.Method<Void>();
+        public final Template.Method<Void> setStorageContents = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<String> getName = new Template.Method<String>();
+        public final Template.Method<String> getName = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<String> getTitle = new Template.Method<String>();
+        public final Template.Method<String> getTitle = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<HashMap<Integer, ItemStack>> removeItemAnySlot = new Template.Method<HashMap<Integer, ItemStack>>();
+        public final Template.Method<HashMap<Integer, ItemStack>> removeItemAnySlot = new Template.Method<>();
 
     }
 

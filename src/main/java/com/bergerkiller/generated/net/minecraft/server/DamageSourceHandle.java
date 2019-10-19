@@ -72,7 +72,7 @@ public abstract class DamageSourceHandle extends Template.Handle {
     }
 
 
-    private static final java.util.HashMap<String, DamageSourceHandle> _values = new java.util.HashMap<String, DamageSourceHandle>();
+    private static final java.util.HashMap<String, DamageSourceHandle> _values = new java.util.HashMap<>();
     public static DamageSourceHandle byName(String name) {
         if (_values.size() == 0) {
             for (Object rawValue : com.bergerkiller.bukkit.common.utils.CommonUtil.getClassConstants(T.getType())) {
@@ -93,20 +93,20 @@ public abstract class DamageSourceHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class DamageSourceClass extends Template.Class<DamageSourceHandle> {
-        public final Template.Field<String> translationIndex = new Template.Field<String>();
+        public final Template.Field<String> translationIndex = new Template.Field<>();
 
-        public final Template.StaticMethod.Converted<DamageSourceHandle> mobAttack = new Template.StaticMethod.Converted<DamageSourceHandle>();
-        public final Template.StaticMethod.Converted<DamageSourceHandle> playerAttack = new Template.StaticMethod.Converted<DamageSourceHandle>();
-        public final Template.StaticMethod.Converted<DamageSourceHandle> arrowHit = new Template.StaticMethod.Converted<DamageSourceHandle>();
-        public final Template.StaticMethod.Converted<DamageSourceHandle> fireballHit = new Template.StaticMethod.Converted<DamageSourceHandle>();
-        public final Template.StaticMethod.Converted<DamageSourceHandle> thrownHit = new Template.StaticMethod.Converted<DamageSourceHandle>();
-        public final Template.StaticMethod.Converted<DamageSourceHandle> magicHit = new Template.StaticMethod.Converted<DamageSourceHandle>();
-        public final Template.StaticMethod.Converted<DamageSourceHandle> thorns = new Template.StaticMethod.Converted<DamageSourceHandle>();
-        public final Template.StaticMethod.Converted<DamageSourceHandle> explosion = new Template.StaticMethod.Converted<DamageSourceHandle>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> mobAttack = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> playerAttack = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> arrowHit = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> fireballHit = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> thrownHit = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> magicHit = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> thorns = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<DamageSourceHandle> explosion = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<Boolean> isExplosion = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> isFireDamage = new Template.Method<Boolean>();
-        public final Template.Method.Converted<Entity> getEntity = new Template.Method.Converted<Entity>();
+        public final Template.Method<Boolean> isExplosion = new Template.Method<>();
+        public final Template.Method<Boolean> isFireDamage = new Template.Method<>();
+        public final Template.Method.Converted<Entity> getEntity = new Template.Method.Converted<>();
 
     }
 

@@ -30,7 +30,7 @@ public abstract class SimplePluginManagerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class SimplePluginManagerClass extends Template.Class<SimplePluginManagerHandle> {
-        public final Template.Field<List<Plugin>> plugins = new Template.Field<List<Plugin>>();
+        public final Template.Field<List<Plugin>> plugins = new Template.Field<>();
 
     }
 

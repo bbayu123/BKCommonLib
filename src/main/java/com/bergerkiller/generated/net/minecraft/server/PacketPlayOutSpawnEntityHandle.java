@@ -170,11 +170,11 @@ public abstract class PacketPlayOutSpawnEntityHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutSpawnEntityClass extends Template.Class<PacketPlayOutSpawnEntityHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutSpawnEntityHandle> constr = new Template.Constructor.Converted<PacketPlayOutSpawnEntityHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutSpawnEntityHandle> constr = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
         @Template.Optional
-        public final Template.Field<UUID> entityUUID = new Template.Field<UUID>();
+        public final Template.Field<UUID> entityUUID = new Template.Field<>();
         @Template.Optional
         public final Template.Field.Integer posX_1_8_8 = new Template.Field.Integer();
         @Template.Optional
@@ -200,7 +200,7 @@ public abstract class PacketPlayOutSpawnEntityHandle extends PacketHandle {
         @Template.Optional
         public final Template.Field.Integer opt_entityTypeId = new Template.Field.Integer();
         @Template.Optional
-        public final Template.Field.Converted<EntityTypesHandle> opt_entityType = new Template.Field.Converted<EntityTypesHandle>();
+        public final Template.Field.Converted<EntityTypesHandle> opt_entityType = new Template.Field.Converted<>();
         public final Template.Field.Integer extraData = new Template.Field.Integer();
 
     }

@@ -34,9 +34,9 @@ public class LogicUtilTest {
     );
     private static final List<Collection<Integer>> demo_sync_sets;
     static {
-        demo_sync_sets = new ArrayList<Collection<Integer>>(demo_sync_lists.size());
+        demo_sync_sets = new ArrayList<>(demo_sync_lists.size());
         for (Collection<Integer> coll : demo_sync_lists) {
-            demo_sync_sets.add(new HashSet<Integer>(coll));
+            demo_sync_sets.add(new HashSet<>(coll));
         }
     }
     private static final ItemSynchronizer<Integer, Integer> synchronizer = new ItemSynchronizer<Integer, Integer>() {
@@ -77,7 +77,7 @@ public class LogicUtilTest {
     private double runTest(TestMode mode, int count) {
         long time_a, time_b;
         if (mode == TestMode.ORDERED_LIST) {
-            List<Integer> sync = new ArrayList<Integer>();
+            List<Integer> sync = new ArrayList<>();
 
             time_a = System.nanoTime();
             for (int i = 0; i < count; i++) {
@@ -87,7 +87,7 @@ public class LogicUtilTest {
             }
             time_b = System.nanoTime();
         } else {
-            Set<Integer> sync = new HashSet<Integer>();
+            Set<Integer> sync = new HashSet<>();
 
             time_a = System.nanoTime();
             for (int i = 0; i < count; i++) {
@@ -106,7 +106,7 @@ public class LogicUtilTest {
     private double runTestUnchanging(TestMode mode, int count) {
         long time_a, time_b;
         if (mode == TestMode.ORDERED_LIST) {
-            List<Integer> sync = new ArrayList<Integer>();
+            List<Integer> sync = new ArrayList<>();
             Collection<Integer> compare = demo_sync_lists.get(0);
 
             time_a = System.nanoTime();
@@ -115,7 +115,7 @@ public class LogicUtilTest {
             }
             time_b = System.nanoTime();
         } else {
-            Set<Integer> sync = new HashSet<Integer>();
+            Set<Integer> sync = new HashSet<>();
             Collection<Integer> compare = demo_sync_sets.get(0);
 
             time_a = System.nanoTime();
@@ -166,7 +166,7 @@ public class LogicUtilTest {
 
     @Test
     public void testClone() {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         list.add("hello");
         list.add("world");
         ArrayList<String> list_clone = LogicUtil.clone(list);

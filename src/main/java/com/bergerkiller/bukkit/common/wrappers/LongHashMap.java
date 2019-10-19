@@ -131,7 +131,7 @@ public class LongHashMap<V> extends BasicWrapper<LongObjectHashMapHandle> {
         long[] result = new long[keys.size()];
         int i = 0;
         for (Long key : keys) {
-            result[i++] = key.longValue();
+            result[i++] = key;
         }
         return result;
         //return ((TLongObjectHashMap<V>) getRawHandle()).keySet().toArray(new long[0]);

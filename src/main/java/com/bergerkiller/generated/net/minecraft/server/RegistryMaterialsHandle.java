@@ -30,10 +30,10 @@ public abstract class RegistryMaterialsHandle extends Template.Handle {
      */
     public static final class RegistryMaterialsClass extends Template.Class<RegistryMaterialsHandle> {
         @Template.Optional
-        public final Template.Field<Map<Object, Object>> opt_inverseLookupField = new Template.Field<Map<Object, Object>>();
+        public final Template.Field<Map<Object, Object>> opt_inverseLookupField = new Template.Field<>();
 
-        public final Template.Method.Converted<Object> get = new Template.Method.Converted<Object>();
-        public final Template.Method.Converted<Object> getKey = new Template.Method.Converted<Object>();
+        public final Template.Method.Converted<Object> get = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Object> getKey = new Template.Method.Converted<>();
 
     }
 

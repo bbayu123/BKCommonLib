@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class FilterBundle<E> implements Filter<E> {
 
-    private final List<Filter<E>> filters = new ArrayList<Filter<E>>();
+    private final List<Filter<E>> filters = new ArrayList<>();
 
     /**
      * Constructs a new empty Filter Bundle. You can add filters using the

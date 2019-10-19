@@ -27,7 +27,7 @@ public abstract class BlocksHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class BlocksClass extends Template.Class<BlocksHandle> {
-        public final Template.StaticField.Converted<Object> LADDER = new Template.StaticField.Converted<Object>();
+        public final Template.StaticField.Converted<Object> LADDER = new Template.StaticField.Converted<>();
 
     }
 

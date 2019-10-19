@@ -46,7 +46,7 @@ public abstract class PacketPlayInBlockPlaceHandle extends PacketHandle {
      */
     public static final class PacketPlayInBlockPlaceClass extends Template.Class<PacketPlayInBlockPlaceHandle> {
         @Template.Optional
-        public final Template.Field.Converted<Object> enumHand = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> enumHand = new Template.Field.Converted<>();
         @Template.Optional
         public final Template.Field.Long timestamp = new Template.Field.Long();
 

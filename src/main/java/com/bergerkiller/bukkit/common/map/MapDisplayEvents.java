@@ -24,6 +24,7 @@ public interface MapDisplayEvents extends Tickable {
      * This method can be overridden to dynamically update the map continuously.
      * To optimize performance, only draw things in the map when they change.
      */
+    @Override
     public void onTick();
 
     /**

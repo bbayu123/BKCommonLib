@@ -78,7 +78,7 @@ public class PlayerUtil extends EntityUtil {
         List<?> nearbyPlayerHandles = handle.getWorld().getRawEntitiesOfType(
                 EntityPlayerHandle.T.getType(),
                 handle.getBoundingBox().grow(radius, radius, radius));
-        return new ConvertingList<Player>(nearbyPlayerHandles, DuplexConversion.player);
+        return new ConvertingList<>(nearbyPlayerHandles, DuplexConversion.player);
     }
 
     /**
@@ -349,9 +349,9 @@ public class PlayerUtil extends EntityUtil {
         } else {
             // This is a legacy fallback used on Minecraft 1.12.2 and before
             // The color is a close approximation
-            double red = MathUtil.clamp((double) color.getRed() / 255.0, 0.0, 1.0);
-            double green = MathUtil.clamp((double) color.getGreen() / 255.0, 0.0, 1.0);
-            double blue = MathUtil.clamp((double) color.getBlue() / 255.0, 0.0, 1.0);
+            double red = MathUtil.clamp(color.getRed() / 255.0, 0.0, 1.0);
+            double green = MathUtil.clamp(color.getGreen() / 255.0, 0.0, 1.0);
+            double blue = MathUtil.clamp(color.getBlue() / 255.0, 0.0, 1.0);
             if (red > 0.5) {
                 red -= 1.0;
                 if (red > -0.01) {

@@ -12,8 +12,8 @@ import com.bergerkiller.bukkit.common.internal.blocks.BlockRenderProvider;
 import com.bergerkiller.bukkit.common.wrappers.BlockRenderOptions;
 
 public class GrassRenderingProvider extends BlockRenderProvider {
-    private final ArrayList<Material> grass_materials = new ArrayList<Material>();
-    private final ArrayList<Material> materials = new ArrayList<Material>();
+    private final ArrayList<Material> grass_materials = new ArrayList<>();
+    private final ArrayList<Material> materials = new ArrayList<>();
 
     public GrassRenderingProvider() {
         // Grass types

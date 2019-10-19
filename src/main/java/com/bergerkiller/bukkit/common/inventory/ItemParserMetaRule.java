@@ -64,7 +64,7 @@ public class ItemParserMetaRule {
                 if (value instanceof Double) {
                     num_expect = Double.parseDouble(this._value);
                 } else {
-                    num_expect = (double) Float.parseFloat(this._value);
+                    num_expect = Float.parseFloat(this._value);
                 }
                 switch (this._operator) {
                 case "=":

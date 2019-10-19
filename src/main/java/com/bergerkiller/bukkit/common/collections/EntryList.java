@@ -21,6 +21,6 @@ public class EntryList<K, V> extends ArrayList<Entry<K, V>> {
      * @param value of the entry
      */
     public void add(K key, V value) {
-        add(new SimpleEntry<K, V>(key, value));
+        add(new SimpleEntry<>(key, value));
     }
 }

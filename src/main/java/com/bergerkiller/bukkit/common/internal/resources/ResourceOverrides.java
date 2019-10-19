@@ -7,7 +7,7 @@ import java.util.Set;
  * Tracks overrided resources
  */
 public class ResourceOverrides {
-    private static final Set<String> _overrided = new HashSet<String>();
+    private static final Set<String> _overrided = new HashSet<>();
 
     static {
         String[] shulker_colors = new String[] {

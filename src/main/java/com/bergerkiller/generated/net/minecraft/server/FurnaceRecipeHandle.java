@@ -33,9 +33,9 @@ public abstract class FurnaceRecipeHandle extends IRecipeHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class FurnaceRecipeClass extends Template.Class<FurnaceRecipeHandle> {
-        public final Template.StaticMethod.Converted<Iterable<FurnaceRecipeHandle>> getRecipes = new Template.StaticMethod.Converted<Iterable<FurnaceRecipeHandle>>();
+        public final Template.StaticMethod.Converted<Iterable<FurnaceRecipeHandle>> getRecipes = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<CraftInputSlot> getIngredient = new Template.Method.Converted<CraftInputSlot>();
+        public final Template.Method.Converted<CraftInputSlot> getIngredient = new Template.Method.Converted<>();
 
     }
 

@@ -47,14 +47,14 @@ public abstract class NibbleArrayHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class NibbleArrayClass extends Template.Class<NibbleArrayHandle> {
-        public final Template.Constructor.Converted<NibbleArrayHandle> constr = new Template.Constructor.Converted<NibbleArrayHandle>();
-        public final Template.Constructor.Converted<NibbleArrayHandle> constr_data = new Template.Constructor.Converted<NibbleArrayHandle>();
+        public final Template.Constructor.Converted<NibbleArrayHandle> constr = new Template.Constructor.Converted<>();
+        public final Template.Constructor.Converted<NibbleArrayHandle> constr_data = new Template.Constructor.Converted<>();
 
-        public final Template.Field<byte[]> dataField = new Template.Field<byte[]>();
+        public final Template.Field<byte[]> dataField = new Template.Field<>();
 
-        public final Template.Method<Integer> get = new Template.Method<Integer>();
-        public final Template.Method<Void> set = new Template.Method<Void>();
-        public final Template.Method<byte[]> getData = new Template.Method<byte[]>();
+        public final Template.Method<Integer> get = new Template.Method<>();
+        public final Template.Method<Void> set = new Template.Method<>();
+        public final Template.Method<byte[]> getData = new Template.Method<>();
 
     }
 

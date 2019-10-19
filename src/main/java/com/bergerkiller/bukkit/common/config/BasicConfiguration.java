@@ -165,7 +165,7 @@ public class BasicConfiguration extends ConfigurationNode {
             writeHeader(true, writer, this.getHeader(), 0);
 
             // Write other headers and the nodes
-            IntHashMap<String> anchorData = new IntHashMap<String>();
+            IntHashMap<String> anchorData = new IntHashMap<>();
             int indent;
             int anchStart, anchEnd, anchId = -1, anchDepth = 0, anchIndent = 0;
             boolean wasAnchor;

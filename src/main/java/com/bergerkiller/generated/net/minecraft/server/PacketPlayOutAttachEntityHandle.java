@@ -39,9 +39,9 @@ public abstract class PacketPlayOutAttachEntityHandle extends PacketHandle {
      */
     public static final class PacketPlayOutAttachEntityClass extends Template.Class<PacketPlayOutAttachEntityHandle> {
         @Template.Optional
-        public final Template.Constructor.Converted<PacketPlayOutAttachEntityHandle> constr_leashId_passengerEntity_vehicleEntity = new Template.Constructor.Converted<PacketPlayOutAttachEntityHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutAttachEntityHandle> constr_leashId_passengerEntity_vehicleEntity = new Template.Constructor.Converted<>();
         @Template.Optional
-        public final Template.Constructor.Converted<PacketPlayOutAttachEntityHandle> constr_passengerEntity_vehicleEntity = new Template.Constructor.Converted<PacketPlayOutAttachEntityHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutAttachEntityHandle> constr_passengerEntity_vehicleEntity = new Template.Constructor.Converted<>();
 
         @Template.Optional
         public final Template.Field.Integer leashId = new Template.Field.Integer();

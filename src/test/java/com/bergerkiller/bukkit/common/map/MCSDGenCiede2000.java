@@ -163,7 +163,7 @@ public class MCSDGenCiede2000 extends MapColorSpaceData {
     }
 
     private static class EntryBuilder {
-        private final ArrayList<Entry> entries = new ArrayList<Entry>();
+        private final ArrayList<Entry> entries = new ArrayList<>();
 
         public EntryBuilder addBaseColor(int r, int g, int b) {
             return addBaseColor(r, g, b, 255);
@@ -390,7 +390,7 @@ public class MCSDGenCiede2000 extends MapColorSpaceData {
         public final double x, y, z;
 
         public CIE_XYZ(int value, double fx, double fy, double fz, double referent) {
-            double d = (double) value / 255.0;
+            double d = value / 255.0;
             d = d <= 0.04045 ? d/12.92 : Math.pow((d+0.055)/1.055, 2.4);
             this.x = (d * fx) / referent;
             this.y = (d * fy) / referent;

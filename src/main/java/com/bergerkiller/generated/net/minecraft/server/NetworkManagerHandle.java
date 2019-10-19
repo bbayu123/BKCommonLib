@@ -30,9 +30,9 @@ public abstract class NetworkManagerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class NetworkManagerClass extends Template.Class<NetworkManagerHandle> {
-        public final Template.Field<Channel> channel = new Template.Field<Channel>();
+        public final Template.Field<Channel> channel = new Template.Field<>();
 
-        public final Template.Method<Boolean> isConnected = new Template.Method<Boolean>();
+        public final Template.Method<Boolean> isConnected = new Template.Method<>();
 
     }
 

@@ -40,14 +40,14 @@ public abstract class CraftBlockStateHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftBlockStateClass extends Template.Class<CraftBlockStateHandle> {
-        public final Template.Constructor.Converted<BlockState> constr_block = new Template.Constructor.Converted<BlockState>();
+        public final Template.Constructor.Converted<BlockState> constr_block = new Template.Constructor.Converted<>();
 
-        public final Template.Field.Converted<World> world = new Template.Field.Converted<World>();
-        public final Template.Field.Converted<Chunk> chunk = new Template.Field.Converted<Chunk>();
+        public final Template.Field.Converted<World> world = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Chunk> chunk = new Template.Field.Converted<>();
         public final Template.Field.Integer flag = new Template.Field.Integer();
 
         @Template.Optional
-        public final Template.Method<Void> init = new Template.Method<Void>();
+        public final Template.Method<Void> init = new Template.Method<>();
 
     }
 

@@ -28,7 +28,7 @@ public abstract class HumanEntityHandle extends EntityHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class HumanEntityClass extends Template.Class<HumanEntityHandle> {
-        public final Template.Method<HumanHand> getMainHumanHand = new Template.Method<HumanHand>();
+        public final Template.Method<HumanHand> getMainHumanHand = new Template.Method<>();
 
     }
 

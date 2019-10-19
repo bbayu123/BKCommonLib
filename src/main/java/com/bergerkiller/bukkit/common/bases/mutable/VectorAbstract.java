@@ -2,6 +2,7 @@ package com.bergerkiller.bukkit.common.bases.mutable;
 
 import com.bergerkiller.bukkit.common.bases.IntVector3;
 import com.bergerkiller.bukkit.common.entity.CommonEntity;
+import com.bergerkiller.bukkit.common.utils.EntityPropertyUtil;
 import com.bergerkiller.bukkit.common.utils.EntityUtil;
 import com.bergerkiller.bukkit.common.utils.MathUtil;
 import org.bukkit.Location;
@@ -19,49 +20,59 @@ public abstract class VectorAbstract {
      * Gets a referenced Vector version for only the x and z coordinates
      */
     public final VectorXZAbstract xz = new VectorXZAbstract() {
+        @Override
         public double getX() {
             return VectorAbstract.this.getX();
         }
 
+        @Override
         public double getZ() {
             return VectorAbstract.this.getZ();
         }
 
+        @Override
         public VectorXZAbstract setX(double x) {
             VectorAbstract.this.setX(x);
             return this;
         }
 
+        @Override
         public VectorXZAbstract setZ(double z) {
             VectorAbstract.this.setZ(z);
             return this;
         }
     };
     public final DoubleAbstract x = new DoubleAbstract() {
+        @Override
         public double get() {
             return VectorAbstract.this.getX();
         }
 
+        @Override
         public DoubleAbstract set(double value) {
             VectorAbstract.this.setX(value);
             return this;
         }
     };
     public final DoubleAbstract y = new DoubleAbstract() {
+        @Override
         public double get() {
             return VectorAbstract.this.getY();
         }
 
+        @Override
         public DoubleAbstract set(double value) {
             VectorAbstract.this.setY(value);
             return this;
         }
     };
     public final DoubleAbstract z = new DoubleAbstract() {
+        @Override
         public double get() {
             return VectorAbstract.this.getZ();
         }
 
+        @Override
         public DoubleAbstract set(double value) {
             VectorAbstract.this.setZ(value);
             return this;
@@ -260,11 +271,11 @@ public abstract class VectorAbstract {
     }
 
     public double distance(Entity other) {
-        return distance(EntityUtil.getLocX(other), EntityUtil.getLocY(other), EntityUtil.getLocZ(other));
+        return distance(EntityPropertyUtil.getLocX(other), EntityPropertyUtil.getLocY(other), EntityPropertyUtil.getLocZ(other));
     }
 
     public double distanceSquared(Entity other) {
-        return distanceSquared(EntityUtil.getLocX(other), EntityUtil.getLocY(other), EntityUtil.getLocZ(other));
+        return distanceSquared(EntityPropertyUtil.getLocX(other), EntityPropertyUtil.getLocY(other), EntityPropertyUtil.getLocZ(other));
     }
 
     public double distance(Block block) {
@@ -300,7 +311,7 @@ public abstract class VectorAbstract {
     }
 
     public Vector offsetTo(org.bukkit.entity.Entity e) {
-        return offsetTo(EntityUtil.getLocX(e), EntityUtil.getLocY(e), EntityUtil.getLocZ(e));
+        return offsetTo(EntityPropertyUtil.getLocX(e), EntityPropertyUtil.getLocY(e), EntityPropertyUtil.getLocZ(e));
     }
 
     @Override

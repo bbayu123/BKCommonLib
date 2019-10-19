@@ -38,7 +38,7 @@ public abstract class PlayerAbilitiesHandle extends Template.Handle {
         if (T.flySpeed_double.isAvailable()) {
             return T.flySpeed_double.getDouble(getRaw());
         } else {
-            return (double) T.flySpeed_float.getFloat(getRaw());
+            return T.flySpeed_float.getFloat(getRaw());
         }
     }
     public abstract boolean isInvulnerable();
@@ -58,7 +58,7 @@ public abstract class PlayerAbilitiesHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PlayerAbilitiesClass extends Template.Class<PlayerAbilitiesHandle> {
-        public final Template.Constructor.Converted<PlayerAbilitiesHandle> constr = new Template.Constructor.Converted<PlayerAbilitiesHandle>();
+        public final Template.Constructor.Converted<PlayerAbilitiesHandle> constr = new Template.Constructor.Converted<>();
 
         public final Template.Field.Boolean isInvulnerable = new Template.Field.Boolean();
         public final Template.Field.Boolean isFlying = new Template.Field.Boolean();

@@ -34,12 +34,12 @@ public abstract class NBTTagListHandle extends NBTBaseHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class NBTTagListClass extends Template.Class<NBTTagListHandle> {
-        public final Template.Field.Converted<List<NBTBaseHandle>> list = new Template.Field.Converted<List<NBTBaseHandle>>();
+        public final Template.Field.Converted<List<NBTBaseHandle>> list = new Template.Field.Converted<>();
         public final Template.Field.Byte type = new Template.Field.Byte();
 
-        public final Template.Method.Converted<Boolean> add = new Template.Method.Converted<Boolean>();
-        public final Template.Method<Integer> size = new Template.Method<Integer>();
-        public final Template.Method.Converted<NBTBaseHandle> get = new Template.Method.Converted<NBTBaseHandle>();
+        public final Template.Method.Converted<Boolean> add = new Template.Method.Converted<>();
+        public final Template.Method<Integer> size = new Template.Method<>();
+        public final Template.Method.Converted<NBTBaseHandle> get = new Template.Method.Converted<>();
 
     }
 

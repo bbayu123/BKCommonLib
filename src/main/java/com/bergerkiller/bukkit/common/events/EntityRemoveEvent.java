@@ -26,6 +26,7 @@ public class EntityRemoveEvent extends EntityEvent {
         return this.world;
     }
 
+    @Override
     public HandlerList getHandlers() {
         return handlers;
     }

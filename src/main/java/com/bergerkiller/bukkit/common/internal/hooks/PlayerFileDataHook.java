@@ -12,6 +12,7 @@ import com.bergerkiller.bukkit.common.nbt.CommonTagCompound;
 import com.bergerkiller.generated.net.minecraft.server.IPlayerFileDataHandle;
 import com.bergerkiller.generated.net.minecraft.server.PlayerListHandle;
 import com.bergerkiller.mountiplex.reflection.ClassHook;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 import com.bergerkiller.reflection.org.bukkit.craftbukkit.CBCraftServer;
 
 public class PlayerFileDataHook extends ClassHook<PlayerFileDataHook> {
@@ -22,7 +23,7 @@ public class PlayerFileDataHook extends ClassHook<PlayerFileDataHook> {
         Object fileDataHandle = playerList.getPlayerFileData().getRaw();
 
         // Get the player file data hook or hook a new one
-        PlayerFileDataHook hook = PlayerFileDataHook.get(fileDataHandle, PlayerFileDataHook.class);
+        PlayerFileDataHook hook = ClassInterceptor.get(fileDataHandle, PlayerFileDataHook.class);
         if ((hook == null) && (action != HookAction.UNHOOK)) {
             hook = new PlayerFileDataHook();
             if (action == HookAction.MOCK) {
@@ -31,7 +32,7 @@ public class PlayerFileDataHook extends ClassHook<PlayerFileDataHook> {
                 playerList.setPlayerFileData(IPlayerFileDataHandle.createHandle(hook.hook(fileDataHandle)));
             }
         } else if ((hook != null) && (action == HookAction.UNHOOK)) {
-            playerList.setPlayerFileData(IPlayerFileDataHandle.createHandle(PlayerFileDataHook.unhook(fileDataHandle)));
+            playerList.setPlayerFileData(IPlayerFileDataHandle.createHandle(ClassInterceptor.unhook(fileDataHandle)));
             hook = new PlayerFileDataHook();
             hook.mock(fileDataHandle);
         }

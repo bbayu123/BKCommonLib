@@ -49,12 +49,12 @@ public abstract class PacketPlayOutMapHandle extends PacketHandle {
         public final Template.Field.Boolean track = new Template.Field.Boolean();
         @Template.Optional
         public final Template.Field.Boolean locked = new Template.Field.Boolean();
-        public final Template.Field.Converted<MapCursor[]> cursors = new Template.Field.Converted<MapCursor[]>();
+        public final Template.Field.Converted<MapCursor[]> cursors = new Template.Field.Converted<>();
         public final Template.Field.Integer xmin = new Template.Field.Integer();
         public final Template.Field.Integer ymin = new Template.Field.Integer();
         public final Template.Field.Integer width = new Template.Field.Integer();
         public final Template.Field.Integer height = new Template.Field.Integer();
-        public final Template.Field<byte[]> pixels = new Template.Field<byte[]>();
+        public final Template.Field<byte[]> pixels = new Template.Field<>();
 
     }
 

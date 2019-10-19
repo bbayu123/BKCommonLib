@@ -37,11 +37,11 @@ public abstract class PacketPlayOutCombatEventHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutCombatEventClass extends Template.Class<PacketPlayOutCombatEventHandle> {
-        public final Template.Field.Converted<Object> eventType = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> eventType = new Template.Field.Converted<>();
         public final Template.Field.Integer entityId1 = new Template.Field.Integer();
         public final Template.Field.Integer entityId2 = new Template.Field.Integer();
         public final Template.Field.Integer tickDuration = new Template.Field.Integer();
-        public final Template.Field.Converted<ChatText> message = new Template.Field.Converted<ChatText>();
+        public final Template.Field.Converted<ChatText> message = new Template.Field.Converted<>();
 
     }
 

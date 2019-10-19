@@ -64,32 +64,32 @@ public abstract class EntityLivingHandle extends EntityHandle {
      */
     public static final class EntityLivingClass extends Template.Class<EntityLivingHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Byte>> DATA_LIVING_FLAGS = new Template.StaticField.Converted<Key<Byte>>();
+        public final Template.StaticField.Converted<Key<Byte>> DATA_LIVING_FLAGS = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Float>> DATA_HEALTH = new Template.StaticField.Converted<Key<Float>>();
+        public final Template.StaticField.Converted<Key<Float>> DATA_HEALTH = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Integer>> DATA_PARTICLES_TIMER = new Template.StaticField.Converted<Key<Integer>>();
+        public final Template.StaticField.Converted<Key<Integer>> DATA_PARTICLES_TIMER = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Boolean>> DATA_PARTICLES_HIDDEN = new Template.StaticField.Converted<Key<Boolean>>();
+        public final Template.StaticField.Converted<Key<Boolean>> DATA_PARTICLES_HIDDEN = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Integer>> DATA_ARROWCOUNT = new Template.StaticField.Converted<Key<Integer>>();
+        public final Template.StaticField.Converted<Key<Integer>> DATA_ARROWCOUNT = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<IntVector3>> DATA_BEDPOSITION = new Template.StaticField.Converted<Key<IntVector3>>();
+        public final Template.StaticField.Converted<Key<IntVector3>> DATA_BEDPOSITION = new Template.StaticField.Converted<>();
 
-        public final Template.Field.Converted<AttributeMapServerHandle> attributeMapField = new Template.Field.Converted<AttributeMapServerHandle>();
-        public final Template.Field.Converted<Map<MobEffectListHandle, MobEffectHandle>> mobEffects = new Template.Field.Converted<Map<MobEffectListHandle, MobEffectHandle>>();
+        public final Template.Field.Converted<AttributeMapServerHandle> attributeMapField = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Map<MobEffectListHandle, MobEffectHandle>> mobEffects = new Template.Field.Converted<>();
         public final Template.Field.Float lastDamage = new Template.Field.Float();
         public final Template.Field.Float sideMovement = new Template.Field.Float();
         public final Template.Field.Float forwardMovement = new Template.Field.Float();
         public final Template.Field.Boolean updateEffects = new Template.Field.Boolean();
 
-        public final Template.Method.Converted<Collection<MobEffectHandle>> getEffects = new Template.Method.Converted<Collection<MobEffectHandle>>();
-        public final Template.Method.Converted<ItemStack> getEquipment = new Template.Method.Converted<ItemStack>();
-        public final Template.Method<Void> resetAttributes = new Template.Method<Void>();
-        public final Template.Method.Converted<AttributeMapServerHandle> getAttributeMap = new Template.Method.Converted<AttributeMapServerHandle>();
-        public final Template.Method.Converted<AttributeInstanceHandle> getAttributeInstance = new Template.Method.Converted<AttributeInstanceHandle>();
-        public final Template.Method<Float> getHealth = new Template.Method<Float>();
-        public final Template.Method<Float> getMaxHealth = new Template.Method<Float>();
+        public final Template.Method.Converted<Collection<MobEffectHandle>> getEffects = new Template.Method.Converted<>();
+        public final Template.Method.Converted<ItemStack> getEquipment = new Template.Method.Converted<>();
+        public final Template.Method<Void> resetAttributes = new Template.Method<>();
+        public final Template.Method.Converted<AttributeMapServerHandle> getAttributeMap = new Template.Method.Converted<>();
+        public final Template.Method.Converted<AttributeInstanceHandle> getAttributeInstance = new Template.Method.Converted<>();
+        public final Template.Method<Float> getHealth = new Template.Method<>();
+        public final Template.Method<Float> getMaxHealth = new Template.Method<>();
 
     }
 

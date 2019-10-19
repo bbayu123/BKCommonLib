@@ -217,7 +217,7 @@ public class ChunkUtil {
         if (entitySlices == null || entitySlices.length == 0) {
             return Collections.emptyList();
         }
-        return new ConvertingList<org.bukkit.entity.Entity>(new List2D<Object>(entitySlices), DuplexConversion.entity);
+        return new ConvertingList<>(new List2D<>(entitySlices), DuplexConversion.entity);
     }
 
     /**
@@ -288,7 +288,7 @@ public class ChunkUtil {
      * @return chunk future that is completed when the chunk is ready
      */
     public static CompletableFuture<org.bukkit.Chunk> getChunkAsync(World world, final int x, final int z) {
-        final CompletableFuture<org.bukkit.Chunk> result = new CompletableFuture<org.bukkit.Chunk>();
+        final CompletableFuture<org.bukkit.Chunk> result = new CompletableFuture<>();
 
         org.bukkit.Chunk loadedChunk = getChunk(world, x, z);
         if (loadedChunk != null) {
@@ -319,12 +319,7 @@ public class ChunkUtil {
                     if (executor == null) {
                         cps_handle.getChunkAtAsync(x, z, this);
                     } else {
-                        CompletableFuture.runAsync(new Runnable() {
-                            @Override
-                            public void run() {
-                                cps_handle.getChunkAtAsync(x, z, AsyncConsumer.this);
-                            }
-                        }, executor);
+                        CompletableFuture.runAsync(() -> cps_handle.getChunkAtAsync(x, z, AsyncConsumer.this), executor);
                     }
                 }
             };
@@ -402,7 +397,7 @@ public class ChunkUtil {
     public static boolean removeEntity(org.bukkit.Chunk chunk, org.bukkit.entity.Entity entity) {
         final ChunkHandle chunkHandle = CommonNMS.getHandle(chunk);
         final List<Object>[] slices = chunkHandle.getEntitySlices();
-        final int sliceY = MathUtil.clamp(MathUtil.toChunk(EntityUtil.getLocY(entity)), 0, slices.length - 1);
+        final int sliceY = MathUtil.clamp(MathUtil.toChunk(EntityPropertyUtil.getLocY(entity)), 0, slices.length - 1);
         final Object handle = HandleConversion.toEntityHandle(entity);
         if (slices[sliceY].remove(handle)) {
             chunkHandle.markDirty();

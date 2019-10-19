@@ -36,11 +36,11 @@ public abstract class RecipesFurnaceHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class RecipesFurnaceClass extends Template.Class<RecipesFurnaceHandle> {
-        public final Template.Field.Converted<Map<ItemStack, ItemStack>> recipes = new Template.Field.Converted<Map<ItemStack, ItemStack>>();
+        public final Template.Field.Converted<Map<ItemStack, ItemStack>> recipes = new Template.Field.Converted<>();
 
-        public final Template.StaticMethod.Converted<RecipesFurnaceHandle> getInstance = new Template.StaticMethod.Converted<RecipesFurnaceHandle>();
+        public final Template.StaticMethod.Converted<RecipesFurnaceHandle> getInstance = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<ItemStackHandle> getResult = new Template.Method.Converted<ItemStackHandle>();
+        public final Template.Method.Converted<ItemStackHandle> getResult = new Template.Method.Converted<>();
 
     }
 

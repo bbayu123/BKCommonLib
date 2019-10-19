@@ -56,10 +56,10 @@ public abstract class PacketPlayOutMountHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutMountClass extends Template.Class<PacketPlayOutMountHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutMountHandle> constr = new Template.Constructor.Converted<PacketPlayOutMountHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutMountHandle> constr = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
-        public final Template.Field<int[]> mountedEntityIds = new Template.Field<int[]>();
+        public final Template.Field<int[]> mountedEntityIds = new Template.Field<>();
 
     }
 

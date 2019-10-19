@@ -123,7 +123,7 @@ public class Timings implements AutoCloseable {
         return t.start();
     }
 
-    private static final Map<TimingsKey, Timings> cachedTimings = new HashMap<TimingsKey, Timings>();
+    private static final Map<TimingsKey, Timings> cachedTimings = new HashMap<>();
 
     private static final class TimingsKey {
         public final Class<?> profiledClass;

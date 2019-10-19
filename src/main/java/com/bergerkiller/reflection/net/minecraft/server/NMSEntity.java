@@ -57,7 +57,7 @@ public class NMSEntity {
         }
         @Override
         public boolean set(Object instance, Float value) {
-            EntityHandle.createHandle(instance).setStepCounter(value.floatValue());
+            EntityHandle.createHandle(instance).setStepCounter(value);
             return true;
         }
     };

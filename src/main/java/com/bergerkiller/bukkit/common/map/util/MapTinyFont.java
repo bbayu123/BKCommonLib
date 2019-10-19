@@ -12,7 +12,7 @@ public class MapTinyFont extends MapFont<Character> {
 
     @Override
     protected MapTexture loadSprite(Character key) {
-        int code = (int) key.charValue();
+        int code = key.charValue();
         if (code >= 0 && code < 256) {
             if (this._fontMap == null) {
                 this._fontMap = CommonPlugin.getInstance().loadTexture("com/bergerkiller/bukkit/common/internal/resources/textures/tinyfont.png");

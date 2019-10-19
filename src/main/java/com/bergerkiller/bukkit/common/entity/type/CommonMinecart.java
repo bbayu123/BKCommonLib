@@ -11,6 +11,7 @@ import org.bukkit.util.Vector;
 
 import com.bergerkiller.bukkit.common.entity.CommonEntity;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.DataWatcher;
 import com.bergerkiller.generated.net.minecraft.server.EntityMinecartAbstractHandle;
 import com.bergerkiller.generated.net.minecraft.server.EntityMinecartRideableHandle;
@@ -165,7 +166,7 @@ public class CommonMinecart<T extends Minecart> extends CommonEntity<T> {
      */
     @Deprecated
     public void setBlock(Material blockType, int blockData) {
-        setBlock(BlockData.fromMaterialData(blockType, blockData));
+        setBlock(BlockDataRegistry.fromMaterialData(blockType, blockData));
     }
 
     /**
@@ -175,7 +176,7 @@ public class CommonMinecart<T extends Minecart> extends CommonEntity<T> {
      */
     @SuppressWarnings("deprecation")
     public BlockData getBlock() {
-        return BlockData.fromCombinedId(metaBlockType.get());
+        return BlockDataRegistry.fromCombinedId(metaBlockType.get());
     }
 
     /**
@@ -184,7 +185,7 @@ public class CommonMinecart<T extends Minecart> extends CommonEntity<T> {
      * @param blockType of the Block
      */
     public void setBlock(Material blockType) {
-        setBlock(BlockData.fromMaterial(blockType));
+        setBlock(BlockDataRegistry.fromMaterial(blockType));
     }
 
     /**

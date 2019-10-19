@@ -15,7 +15,7 @@ public class LongHashMapTest {
 
     @Test
     public void testHashMap() {
-        LongHashMap<String> test = new LongHashMap<String>();
+        LongHashMap<String> test = new LongHashMap<>();
         test.put(1546464643643436634L, "test_string");
         assertEquals("test_string", test.get(1546464643643436634L));
         assertNull(test.get(1546463213643436633L));

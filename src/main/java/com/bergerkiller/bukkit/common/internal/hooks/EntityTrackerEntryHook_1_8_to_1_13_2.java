@@ -17,10 +17,12 @@ import com.bergerkiller.mountiplex.reflection.ClassHook;
 public class EntityTrackerEntryHook_1_8_to_1_13_2 extends ClassHook<EntityTrackerEntryHook_1_8_to_1_13_2> implements EntityTrackerEntryHook {
     private EntityNetworkController<?> controller;
 
+    @Override
     public EntityNetworkController<?> getController() {
         return controller;
     }
 
+    @Override
     public void setController(EntityNetworkController<?> controller) {
         this.controller = controller;
     }

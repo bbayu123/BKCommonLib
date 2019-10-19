@@ -40,16 +40,16 @@ public abstract class IntHashMapHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class IntHashMapClass extends Template.Class<IntHashMapHandle> {
-        public final Template.StaticMethod.Converted<IntHashMapHandle> createNew = new Template.StaticMethod.Converted<IntHashMapHandle>();
+        public final Template.StaticMethod.Converted<IntHashMapHandle> createNew = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<Object> get = new Template.Method<Object>();
-        public final Template.Method<Object> remove = new Template.Method<Object>();
-        public final Template.Method.Converted<Void> put = new Template.Method.Converted<Void>();
-        public final Template.Method<Boolean> containsKey = new Template.Method<Boolean>();
-        public final Template.Method<Void> clear = new Template.Method<Void>();
-        public final Template.Method.Converted<Object> getEntry = new Template.Method.Converted<Object>();
-        public final Template.Method<List<Entry>> getEntries = new Template.Method<List<Entry>>();
-        public final Template.Method<List<Object>> getValues = new Template.Method<List<Object>>();
+        public final Template.Method<Object> get = new Template.Method<>();
+        public final Template.Method<Object> remove = new Template.Method<>();
+        public final Template.Method.Converted<Void> put = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> containsKey = new Template.Method<>();
+        public final Template.Method<Void> clear = new Template.Method<>();
+        public final Template.Method.Converted<Object> getEntry = new Template.Method.Converted<>();
+        public final Template.Method<List<Entry>> getEntries = new Template.Method<>();
+        public final Template.Method<List<Object>> getValues = new Template.Method<>();
 
     }
 
@@ -80,9 +80,9 @@ public abstract class IntHashMapHandle extends Template.Handle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class IntHashMapEntryClass extends Template.Class<IntHashMapEntryHandle> {
-            public final Template.Method<Integer> getKey = new Template.Method<Integer>();
-            public final Template.Method<Object> getValue = new Template.Method<Object>();
-            public final Template.Method<Void> setValue = new Template.Method<Void>();
+            public final Template.Method<Integer> getKey = new Template.Method<>();
+            public final Template.Method<Object> getValue = new Template.Method<>();
+            public final Template.Method<Void> setValue = new Template.Method<>();
 
         }
 

@@ -32,9 +32,9 @@ public abstract class PacketPlayOutEntityDestroyHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutEntityDestroyClass extends Template.Class<PacketPlayOutEntityDestroyHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutEntityDestroyHandle> constr_entityIds = new Template.Constructor.Converted<PacketPlayOutEntityDestroyHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutEntityDestroyHandle> constr_entityIds = new Template.Constructor.Converted<>();
 
-        public final Template.Field<int[]> entityIds = new Template.Field<int[]>();
+        public final Template.Field<int[]> entityIds = new Template.Field<>();
 
     }
 

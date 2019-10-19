@@ -72,14 +72,14 @@ public abstract class PacketPlayOutEntityVelocityHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutEntityVelocityClass extends Template.Class<PacketPlayOutEntityVelocityHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutEntityVelocityHandle> constr_entity = new Template.Constructor.Converted<PacketPlayOutEntityVelocityHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutEntityVelocityHandle> constr_entity = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
         public final Template.Field.Integer motX_raw = new Template.Field.Integer();
         public final Template.Field.Integer motY_raw = new Template.Field.Integer();
         public final Template.Field.Integer motZ_raw = new Template.Field.Integer();
 
-        public final Template.StaticMethod.Converted<PacketPlayOutEntityVelocityHandle> createNew = new Template.StaticMethod.Converted<PacketPlayOutEntityVelocityHandle>();
+        public final Template.StaticMethod.Converted<PacketPlayOutEntityVelocityHandle> createNew = new Template.StaticMethod.Converted<>();
 
     }
 

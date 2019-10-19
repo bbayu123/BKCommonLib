@@ -81,7 +81,7 @@ public class LongHashSetTest {
         assertEquals(4, test.size());
 
         // Verify iterator
-        HashSet<Long> verifySet = new HashSet<Long>();
+        HashSet<Long> verifySet = new HashSet<>();
         iter = test.longIterator();
         while (iter.hasNext()) {
             verifySet.add(iter.next());

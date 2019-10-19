@@ -54,7 +54,7 @@ public class ConfigTest {
         assertEquals("value", config.getNode("lazyNode").get("key", String.class));
 
         // Create a list of nodes
-        List<ConfigurationNode> nodeList = new ArrayList<ConfigurationNode>();
+        List<ConfigurationNode> nodeList = new ArrayList<>();
         nodeList.add(new ConfigurationNode());
         nodeList.add(new ConfigurationNode());
         nodeList.get(0).set("node1Key", "value1");

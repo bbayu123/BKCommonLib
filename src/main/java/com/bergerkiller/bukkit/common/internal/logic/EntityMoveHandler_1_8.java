@@ -24,7 +24,7 @@ import com.bergerkiller.mountiplex.MountiplexUtil;
  */
 public class EntityMoveHandler_1_8 extends EntityMoveHandler {
     private static boolean loggedEntityCollisionUndoFailure = false;
-    private static final List<AxisAlignedBBHandle> collisions_buffer = new ArrayList<AxisAlignedBBHandle>();
+    private static final List<AxisAlignedBBHandle> collisions_buffer = new ArrayList<>();
 
     @Override
     protected Stream<VoxelShapeHandle> world_getCollisionShapes(EntityHandle entity, double mx, double my, double mz) {
@@ -56,8 +56,7 @@ public class EntityMoveHandler_1_8 extends EntityMoveHandler {
         // This is a bit of a hacked in way for backwards <= 1.10.2 support
         // Basically, we repeat getCubes() and ignore all found bounding boxes in here
         List<EntityHandle> list = entity.getWorld().getNearbyEntities(entity, movedBounds.growUniform(0.25D));
-        for (int i = 0; i < list.size(); i++) {
-            EntityHandle entity1 = list.get(i);
+        for (EntityHandle entity1 : list) {
             if (CommonCapabilities.VEHICLES_COLLIDE_WITH_PASSENGERS || !entity.isInSameVehicle(entity1)) {
                 // BKCommonLib start: block collision event handler
                 AxisAlignedBBHandle axisalignedbb1 = entity1.getOtherBoundingBox();
@@ -92,9 +91,7 @@ public class EntityMoveHandler_1_8 extends EntityMoveHandler {
         if (entity != null && this.entityCollisionEnabled) {
             List<EntityHandle> list = entity.getWorld().getNearbyEntities(entity, axisalignedbb.growUniform(0.25D));
 
-            for (int i = 0; i < list.size(); i++) {
-                EntityHandle entity1 = list.get(i);
-
+            for (EntityHandle entity1 : list) {
                 if (!entity.isInSameVehicle(entity1)) {
                     // BKCommonLib start: block collision event handler
                     AxisAlignedBBHandle axisalignedbb1 = entity1.getOtherBoundingBox();

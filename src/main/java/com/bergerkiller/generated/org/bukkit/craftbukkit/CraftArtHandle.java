@@ -51,12 +51,12 @@ public abstract class CraftArtHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftArtClass extends Template.Class<CraftArtHandle> {
-        public final Template.StaticMethod.Converted<Art> NotchToBukkit = new Template.StaticMethod.Converted<Art>();
-        public final Template.StaticMethod.Converted<Object> BukkitToNotch = new Template.StaticMethod.Converted<Object>();
-        public final Template.StaticMethod.Converted<Object> NotchFromInternalId = new Template.StaticMethod.Converted<Object>();
-        public final Template.StaticMethod.Converted<Integer> NotchToInternalId = new Template.StaticMethod.Converted<Integer>();
-        public final Template.StaticMethod.Converted<Object> NotchFromInternalName = new Template.StaticMethod.Converted<Object>();
-        public final Template.StaticMethod.Converted<String> NotchToInternalName = new Template.StaticMethod.Converted<String>();
+        public final Template.StaticMethod.Converted<Art> NotchToBukkit = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Object> BukkitToNotch = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Object> NotchFromInternalId = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Integer> NotchToInternalId = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Object> NotchFromInternalName = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<String> NotchToInternalName = new Template.StaticMethod.Converted<>();
 
     }
 

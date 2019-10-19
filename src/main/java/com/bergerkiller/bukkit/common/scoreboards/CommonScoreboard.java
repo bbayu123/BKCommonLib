@@ -18,38 +18,48 @@ import java.util.logging.Level;
  */
 public class CommonScoreboard {
 
-    private static Map<Player, CommonScoreboard> boards = new WeakHashMap<Player, CommonScoreboard>();
-    private static Map<String, CommonTeam> teams = new HashMap<String, CommonTeam>();
+    private static Map<Player, CommonScoreboard> boards = new WeakHashMap<>();
+    private static Map<String, CommonTeam> teams = new HashMap<>();
     public static final CommonTeam dummyTeam = new CommonTeam("dummy") {
         private static final long serialVersionUID = 2284488822613734842L;
 
+        @Override
         public void addPlayer(OfflinePlayer player) {
         }
 
+        @Override
         public void removePlayer(OfflinePlayer player) {
         }
 
+        @Override
         public void show() {
         }
 
+        @Override
         public void hide() {
         }
 
+        @Override
         public void setDisplayName(String displayName) {
         }
 
+        @Override
         public void setPrefix(String prefix) {
         }
 
+        @Override
         public void setSuffix(String suffic) {
         }
 
+        @Override
         public void setFriendlyFire(FriendlyFireType friendlyFire) {
         }
 
+        @Override
         public void send(Player player) {
         }
 
+        @Override
         public void setSendToAll(boolean sendToAll) {
         }
     };
@@ -59,7 +69,7 @@ public class CommonScoreboard {
 
     private CommonScoreboard(Player player) {
         this.team = dummyTeam;
-        this.player = new WeakReference<Player>(player);
+        this.player = new WeakReference<>(player);
         for (int i = 0; i < 3; i++) {
             Display display = Display.fromInt(i);
             objectives[i] = new CommonObjective(this, display);

@@ -51,13 +51,13 @@ public abstract class PacketPlayInSettingsHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayInSettingsClass extends Template.Class<PacketPlayInSettingsHandle> {
-        public final Template.Field<String> lang = new Template.Field<String>();
+        public final Template.Field<String> lang = new Template.Field<>();
         public final Template.Field.Integer view = new Template.Field.Integer();
-        public final Template.Field.Converted<Object> chatVisibility = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> chatVisibility = new Template.Field.Converted<>();
         public final Template.Field.Boolean enableColors = new Template.Field.Boolean();
         public final Template.Field.Integer modelPartFlags = new Template.Field.Integer();
         @Template.Optional
-        public final Template.Field.Converted<HumanHand> mainHand = new Template.Field.Converted<HumanHand>();
+        public final Template.Field.Converted<HumanHand> mainHand = new Template.Field.Converted<>();
 
     }
 

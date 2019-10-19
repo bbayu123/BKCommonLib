@@ -29,7 +29,7 @@ public abstract class IChatBaseComponentHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class IChatBaseComponentClass extends Template.Class<IChatBaseComponentHandle> {
-        public final Template.Method.Converted<IChatBaseComponentHandle> addSibling = new Template.Method.Converted<IChatBaseComponentHandle>();
+        public final Template.Method.Converted<IChatBaseComponentHandle> addSibling = new Template.Method.Converted<>();
 
     }
 
@@ -73,10 +73,10 @@ public abstract class IChatBaseComponentHandle extends Template.Handle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class ChatSerializerClass extends Template.Class<ChatSerializerHandle> {
-            public final Template.StaticMethod.Converted<String> chatComponentToJson = new Template.StaticMethod.Converted<String>();
-            public final Template.StaticMethod.Converted<IChatBaseComponentHandle> jsonToChatComponent = new Template.StaticMethod.Converted<IChatBaseComponentHandle>();
-            public final Template.StaticMethod.Converted<IChatBaseComponentHandle> empty = new Template.StaticMethod.Converted<IChatBaseComponentHandle>();
-            public final Template.StaticMethod.Converted<IChatBaseComponentHandle> modifiersToComponent = new Template.StaticMethod.Converted<IChatBaseComponentHandle>();
+            public final Template.StaticMethod.Converted<String> chatComponentToJson = new Template.StaticMethod.Converted<>();
+            public final Template.StaticMethod.Converted<IChatBaseComponentHandle> jsonToChatComponent = new Template.StaticMethod.Converted<>();
+            public final Template.StaticMethod.Converted<IChatBaseComponentHandle> empty = new Template.StaticMethod.Converted<>();
+            public final Template.StaticMethod.Converted<IChatBaseComponentHandle> modifiersToComponent = new Template.StaticMethod.Converted<>();
 
         }
 

@@ -8,7 +8,7 @@ import java.util.List;
  * widgets can be added to be displayed.
  */
 public class MapWidgetTabView extends MapWidget {
-    private final List<Tab> tabs = new ArrayList<Tab>();
+    private final List<Tab> tabs = new ArrayList<>();
 
     /**
      * Adds a new tab to this tab view. Custom tabs can be implemented
@@ -21,7 +21,7 @@ public class MapWidgetTabView extends MapWidget {
      */
     public <T extends Tab> T addTab(T tab) {
         {
-            Tab t = (Tab) tab;
+            Tab t = tab;
             if (t.tabView != null) {
                 t.tabView.removeTab(t);
                 t.tabView = null;

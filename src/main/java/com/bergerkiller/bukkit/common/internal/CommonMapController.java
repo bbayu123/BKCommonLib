@@ -88,28 +88,28 @@ import com.bergerkiller.mountiplex.reflection.util.OutputTypeMap;
 
 public class CommonMapController implements PacketListener, Listener {
     // Stores cached thread-safe lists of item frames by world
-    private final HashMap<World, ImplicitlySharedSet<ItemFrame> > worldItemFrames = new HashMap<World, ImplicitlySharedSet<ItemFrame> >();
+    private final HashMap<World, ImplicitlySharedSet<ItemFrame> > worldItemFrames = new HashMap< >();
     // Bi-directional mapping between map UUID and Map (durability) Id
-    private final IntHashMap<MapUUID> mapUUIDById = new IntHashMap<MapUUID>();
-    private final HashMap<MapUUID, Integer> mapIdByUUID = new HashMap<MapUUID, Integer>();
+    private final IntHashMap<MapUUID> mapUUIDById = new IntHashMap<>();
+    private final HashMap<MapUUID, Integer> mapIdByUUID = new HashMap<>();
     // Stores Map Displays, mapped by Map UUID
-    private final HashMap<UUID, MapDisplayInfo> maps = new HashMap<UUID, MapDisplayInfo>();
+    private final HashMap<UUID, MapDisplayInfo> maps = new HashMap<>();
     // Stores map items for a short time while a player is moving it around in creative mode
-    private final HashMap<UUID, CachedMapItem> cachedMapItems = new HashMap<UUID, CachedMapItem>();
+    private final HashMap<UUID, CachedMapItem> cachedMapItems = new HashMap<>();
     // How long a cached item is kept around and tracked when in the creative player's control
     private static final int CACHED_ITEM_MAX_LIFE = 20*60*10; // 10 minutes
     private static final int CACHED_ITEM_CLEAN_INTERVAL = 60; //60 ticks
     // Stores Map Displays by their Type information
-    private final OutputTypeMap<MapDisplay> displays = new OutputTypeMap<MapDisplay>();
+    private final OutputTypeMap<MapDisplay> displays = new OutputTypeMap<>();
     // Stores player map input (through Vehicle Steer packets)
-    private final HashMap<Player, MapPlayerInput> playerInputs = new HashMap<Player, MapPlayerInput>();
+    private final HashMap<Player, MapPlayerInput> playerInputs = new HashMap<>();
     // Tracks all item frames loaded on the server
     // Note: we are not using an IntHashMap because we need to iterate over the values, which is too slow with IntHashMap
-    private final Map<Integer, ItemFrameInfo> itemFrames = new HashMap<Integer, ItemFrameInfo>();
+    private final Map<Integer, ItemFrameInfo> itemFrames = new HashMap<>();
     // Tracks all maps that need to have their Map Ids re-synchronized (item slot / itemframe metadata updates)
-    private HashSet<UUID> dirtyMapUUIDSet = new HashSet<UUID>();
+    private HashSet<UUID> dirtyMapUUIDSet = new HashSet<>();
     // Stores neighbouring chunks of chunk-bordering item frames that must be loaded in case they are part of a multi-display
-    private final ImplicitlySharedSet<PendingChunkLoad> neighbourChunkQueue = new ImplicitlySharedSet<PendingChunkLoad>();
+    private final ImplicitlySharedSet<PendingChunkLoad> neighbourChunkQueue = new ImplicitlySharedSet<>();
     // Caches used while executing findNeighbours()
     private FindNeighboursCache findNeighboursCache = null;
     // Neighbours of item frames to check for either x-aligned or z-aligned
@@ -347,8 +347,8 @@ public class CommonMapController implements PacketListener, Listener {
      * Cleans up all running map displays and de-initializes all map display logic
      */
     public void onDisable() {
-        for (MapDisplayInfo map : new ArrayList<MapDisplayInfo>(this.maps.values())) {
-            for (MapSession session : new ArrayList<MapSession>(map.sessions)) {
+        for (MapDisplayInfo map : new ArrayList<>(this.maps.values())) {
+            for (MapSession session : new ArrayList<>(map.sessions)) {
                 session.display.setRunning(false);
             }
         }
@@ -413,7 +413,7 @@ public class CommonMapController implements PacketListener, Listener {
         // Obtain from cache
         Integer storedMapId = mapIdByUUID.get(mapUUID);
         if (storedMapId != null) {
-            return storedMapId.intValue();
+            return storedMapId;
         }
 
         // If the UUID is that of a static UUID, we must make sure to store it as such
@@ -473,7 +473,7 @@ public class CommonMapController implements PacketListener, Listener {
 
                 // Store in mapping
                 mapUUIDById.put(mapidValue, mapUUID);
-                mapIdByUUID.put(mapUUID, Integer.valueOf(mapidValue));
+                mapIdByUUID.put(mapUUID, mapidValue);
 
                 // Invalidate display if it exists
                 MapDisplayInfo mapInfo = maps.get(mapUUID.getUUID());
@@ -571,7 +571,7 @@ public class CommonMapController implements PacketListener, Listener {
                     CommonMapUUIDStore.setItemMapId(newMapItem, newMapId);
                     item = item.clone();
                     item.setValue(newMapItem, item.isChanged());
-                    itemsIter.set((DataWatcher.Item<Object>) (DataWatcher.Item) item);
+                    itemsIter.set((DataWatcher.Item) item);
                 }
             }
         }
@@ -817,9 +817,9 @@ public class CommonMapController implements PacketListener, Listener {
         Location playerPos = player.getEyeLocation();
         Vector dir = playerPos.getDirection();
         Block itemBlock = EntityUtil.getHangingBlock(itemFrame);
-        double target_x = (double) itemBlock.getX() + 1.0;
-        double target_y = (double) itemBlock.getY() + 1.0;
-        double target_z = (double) itemBlock.getZ() + 1.0;
+        double target_x = itemBlock.getX() + 1.0;
+        double target_y = itemBlock.getY() + 1.0;
+        double target_z = itemBlock.getZ() + 1.0;
 
         final double FRAME_OFFSET = 0.0625; // offset from wall
         double dx, dy;
@@ -851,9 +851,9 @@ public class CommonMapController implements PacketListener, Listener {
     }
 
     private boolean dispatchClickActionFromBlock(Player player, Block clickedBlock, BlockFace clickedFace, MapAction action) {
-        double x = clickedBlock.getX() + 0.5 + (double) clickedFace.getModX() * 0.5;
-        double y = clickedBlock.getY() + 0.5 + (double) clickedFace.getModY() * 0.5;
-        double z = clickedBlock.getZ() + 0.5 + (double) clickedFace.getModZ() * 0.5;
+        double x = clickedBlock.getX() + 0.5 + clickedFace.getModX() * 0.5;
+        double y = clickedBlock.getY() + 0.5 + clickedFace.getModY() * 0.5;
+        double z = clickedBlock.getZ() + 0.5 + clickedFace.getModZ() * 0.5;
         for (Entity e : WorldUtil.getEntities(clickedBlock.getWorld(), null, 
                 x - 0.01, y - 0.01, z - 0.01,
                 x + 0.01, y + 0.01, z + 0.01))
@@ -940,13 +940,13 @@ public class CommonMapController implements PacketListener, Listener {
             return Collections.emptySet();
         } else {
             Set<UUID> result = this.dirtyMapUUIDSet;
-            this.dirtyMapUUIDSet = new HashSet<UUID>();
+            this.dirtyMapUUIDSet = new HashSet<>();
             return result;
         }
     }
 
     private synchronized void cleanupUnusedUUIDs(Set<MapUUID> existingMapUUIDs) {
-        HashSet<MapUUID> idsToRemove = new HashSet<MapUUID>(mapIdByUUID.keySet());
+        HashSet<MapUUID> idsToRemove = new HashSet<>(mapIdByUUID.keySet());
         idsToRemove.removeAll(existingMapUUIDs);
         for (MapUUID toRemove : idsToRemove) {
             // Clean up the map display information first
@@ -962,7 +962,7 @@ public class CommonMapController implements PacketListener, Listener {
             // Clean up from bi-directional mapping
             Integer mapId = mapIdByUUID.remove(toRemove);
             if (mapId != null) {
-                mapUUIDById.remove(mapId.intValue());
+                mapUUIDById.remove(mapId);
             }
 
             // Clean up from 'dirty' set (probably never needed)
@@ -1044,16 +1044,16 @@ public class CommonMapController implements PacketListener, Listener {
 
         // Maintains information about the item frames that show this map, and what players
         // can see this map on the item frames
-        public final ArrayList<ItemFrameInfo> itemFrames = new ArrayList<ItemFrameInfo>();
-        public final LinkedHashSet<Player> frameViewers = new LinkedHashSet<Player>();
+        public final ArrayList<ItemFrameInfo> itemFrames = new ArrayList<>();
+        public final LinkedHashSet<Player> frameViewers = new LinkedHashSet<>();
         private boolean hasFrameViewerChanges = true;
         private boolean resetDisplayRequest = false;
 
         // A list of all active running displays bound to this map
-        public final ArrayList<MapSession> sessions = new ArrayList<MapSession>();
+        public final ArrayList<MapSession> sessions = new ArrayList<>();
 
         // Maps the display view stack by player
-        public final HashMap<UUID, ViewStack> views = new HashMap<UUID, ViewStack>();
+        public final HashMap<UUID, ViewStack> views = new HashMap<>();
 
         public MapDisplayInfo(UUID uuid) {
             this.uuid = uuid;
@@ -1141,7 +1141,7 @@ public class CommonMapController implements PacketListener, Listener {
      * showing the item frame version.
      */
     public class ViewStack {
-        public final LinkedList<MapDisplay> stack = new LinkedList<MapDisplay>();
+        public final LinkedList<MapDisplay> stack = new LinkedList<>();
 
         @Override
         public String toString() {
@@ -1181,7 +1181,7 @@ public class CommonMapController implements PacketListener, Listener {
             this.itemFrame = itemFrame;
             this.itemFrameHandle = EntityItemFrameHandle.fromBukkit(itemFrame);
             this.itemFrame_dw_item = this.itemFrameHandle.getDataWatcher().getItem(EntityItemFrameHandle.DATA_ITEM);
-            this.viewers = new HashSet<Player>();
+            this.viewers = new HashSet<>();
             this.removed = false;
             this.lastMapUUID = null;
             this.displayInfo = null;
@@ -1368,7 +1368,7 @@ public class CommonMapController implements PacketListener, Listener {
                 idGenerationCounter = 0;
 
                 // Find all map UUIDs that exist on the server
-                HashSet<MapUUID> validUUIDs = new HashSet<MapUUID>();
+                HashSet<MapUUID> validUUIDs = new HashSet<>();
                 for (World world : Bukkit.getWorlds()) {
                     for (ItemFrame itemFrame : iterateItemFrames(world)) {
                         MapUUID mapUUID = getItemFrameMapUUID(itemFrame);
@@ -1568,7 +1568,7 @@ public class CommonMapController implements PacketListener, Listener {
                     }
 
                     // Restart all display sessions; their canvas changed resolution or has holes
-                    for (MapSession session : new ArrayList<MapSession>(map.sessions)) {
+                    for (MapSession session : new ArrayList<>(map.sessions)) {
                         MapDisplay display = session.display;
                         display.setRunning(false);
                         display.setRunning(true);
@@ -1582,7 +1582,7 @@ public class CommonMapController implements PacketListener, Listener {
      * Continuously checks if a map item is being held by a player
      */
     public class HeldMapUpdater extends Task implements LogicUtil.ItemSynchronizer<Player, HeldMapUpdater.MapViewEntry> {
-        private final List<MapViewEntry> entries = new LinkedList<MapViewEntry>();
+        private final List<MapViewEntry> entries = new LinkedList<>();
 
         public HeldMapUpdater(JavaPlugin plugin) {
             super(plugin);
@@ -1834,7 +1834,7 @@ public class CommonMapController implements PacketListener, Listener {
 
             // Make sure the neighbours result are a single contiguous blob
             // Islands (can not reach the input item frame) are removed
-            List<IntVector3> result = new ArrayList<IntVector3>(cache.cache.size());
+            List<IntVector3> result = new ArrayList<>(cache.cache.size());
             cache.pendingList.add(itemFramePos);
             do {
                 IntVector3 pending = cache.pendingList.poll();
@@ -1879,9 +1879,9 @@ public class CommonMapController implements PacketListener, Listener {
 
     private static final class FindNeighboursCache {
         // Stores potential multi-ItemFrame neighbours during findNeighbours() temporarily
-        public final HashMap<IntVector3, Frame> cache = new HashMap<IntVector3, Frame>();
+        public final HashMap<IntVector3, Frame> cache = new HashMap<>();
         // Stores the coordinates of the item frames whose neighbours still need to be checked during findNeighbours()
-        public final Queue<IntVector3> pendingList = new ArrayDeque<IntVector3>();
+        public final Queue<IntVector3> pendingList = new ArrayDeque<>();
 
         // Called before use
         public void reset() {
@@ -1922,7 +1922,7 @@ public class CommonMapController implements PacketListener, Listener {
     }
 
     private final ImplicitlySharedSet<ItemFrame> initItemFrameSetOfWorld(World world) {
-        ImplicitlySharedSet<ItemFrame> itemFrames = new ImplicitlySharedSet<ItemFrame>();
+        ImplicitlySharedSet<ItemFrame> itemFrames = new ImplicitlySharedSet<>();
         for (Object entityHandle : (Iterable<?>) WorldServerHandle.T.getEntities.raw.invoke(HandleConversion.toWorldHandle(world))) {
             if (EntityItemFrameHandle.T.isAssignableFrom(entityHandle)) {
                 itemFrames.add((ItemFrame) WrapperConversion.toEntity(entityHandle));
@@ -1938,7 +1938,7 @@ public class CommonMapController implements PacketListener, Listener {
         synchronized (this.worldItemFrames) {
             ImplicitlySharedSet<ItemFrame> set = this.worldItemFrames.get(world);
             if (set == null) {
-                set = new ImplicitlySharedSet<ItemFrame>();
+                set = new ImplicitlySharedSet<>();
                 this.worldItemFrames.put(world, set);
             }
             return set;

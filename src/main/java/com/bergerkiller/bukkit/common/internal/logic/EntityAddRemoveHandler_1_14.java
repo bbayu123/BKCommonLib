@@ -15,6 +15,7 @@ import org.bukkit.World;
 import com.bergerkiller.bukkit.common.conversion.type.HandleConversion;
 import com.bergerkiller.bukkit.common.conversion.type.WrapperConversion;
 import com.bergerkiller.bukkit.common.internal.CommonPlugin;
+import com.bergerkiller.bukkit.common.utils.ChunkUtil;
 import com.bergerkiller.bukkit.common.utils.CommonUtil;
 import com.bergerkiller.bukkit.common.utils.WorldUtil;
 import com.bergerkiller.bukkit.common.wrappers.EntityTracker;
@@ -33,7 +34,7 @@ import com.bergerkiller.mountiplex.reflection.SafeField;
 public class EntityAddRemoveHandler_1_14 extends EntityAddRemoveHandler {
     private final SafeField<?> entitiesByIdField;
     private final SafeField<Queue<Object>> entitiesToAddField;
-    private final List<EntitiesByUUIDMapHook> hooks = new ArrayList<EntitiesByUUIDMapHook>();
+    private final List<EntitiesByUUIDMapHook> hooks = new ArrayList<>();
 
     public EntityAddRemoveHandler_1_14() {
         this.entitiesByIdField = SafeField.create(WorldServerHandle.T.getType(), "entitiesById", IntHashMapHandle.T.getType());
@@ -78,7 +79,7 @@ public class EntityAddRemoveHandler_1_14 extends EntityAddRemoveHandler {
     private static final class EntitiesByUUIDMapHook implements Map<UUID, Object> {
         private final World world;
         private final Map<UUID, Object> base;
-        private final Queue<org.bukkit.entity.Entity> pendingAddEvents = new LinkedList<org.bukkit.entity.Entity>();
+        private final Queue<org.bukkit.entity.Entity> pendingAddEvents = new LinkedList<>();
 
         public EntitiesByUUIDMapHook(World world, Map<UUID, Object> base) {
             this.world = world;
@@ -166,7 +167,7 @@ public class EntityAddRemoveHandler_1_14 extends EntityAddRemoveHandler {
             if (this.base.isEmpty()) {
                 return;
             }
-            ArrayList<Object> old_values = new ArrayList<Object>(this.values());
+            ArrayList<Object> old_values = new ArrayList<>(this.values());
             this.base.clear();
             for (Object removed : old_values) {
                 this.onRemoved(removed);
@@ -222,7 +223,7 @@ public class EntityAddRemoveHandler_1_14 extends EntityAddRemoveHandler {
         final int chunkX = newEntity.getChunkX();
         final int chunkY = newEntity.getChunkY();
         final int chunkZ = newEntity.getChunkZ();
-        Object chunkHandle = HandleConversion.toChunkHandle(WorldUtil.getChunk(newEntity.getWorld().getWorld(), chunkX, chunkZ));
+        Object chunkHandle = HandleConversion.toChunkHandle(ChunkUtil.getChunk(newEntity.getWorld().getWorld(), chunkX, chunkZ));
         if (chunkHandle != null) {
             final List<Object>[] entitySlices = ChunkHandle.T.entitySlices.get(chunkHandle);
             if (!replaceInList(entitySlices[chunkY], newEntity)) {
@@ -249,7 +250,7 @@ public class EntityAddRemoveHandler_1_14 extends EntityAddRemoveHandler {
                 entry.setEntity(newInstance);
             }
 
-            List<EntityHandle> passengers = new ArrayList<EntityHandle>(tracker.getPassengers());
+            List<EntityHandle> passengers = new ArrayList<>(tracker.getPassengers());
             replaceInList(passengers, newInstance);
             tracker.setPassengers(passengers);
         }

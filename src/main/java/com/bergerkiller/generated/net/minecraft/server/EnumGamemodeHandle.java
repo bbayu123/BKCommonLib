@@ -34,7 +34,7 @@ public abstract class EnumGamemodeHandle extends Template.Handle {
     public static final class EnumGamemodeClass extends Template.Class<EnumGamemodeHandle> {
         public final Template.Field.Integer id = new Template.Field.Integer();
 
-        public final Template.StaticMethod.Converted<EnumGamemodeHandle> getById = new Template.StaticMethod.Converted<EnumGamemodeHandle>();
+        public final Template.StaticMethod.Converted<EnumGamemodeHandle> getById = new Template.StaticMethod.Converted<>();
 
     }
 

@@ -46,14 +46,14 @@ public abstract class PacketPlayOutEntityHeadRotationHandle extends PacketHandle
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutEntityHeadRotationClass extends Template.Class<PacketPlayOutEntityHeadRotationHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutEntityHeadRotationHandle> constr = new Template.Constructor.Converted<PacketPlayOutEntityHeadRotationHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutEntityHeadRotationHandle> constr = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
 
-        public final Template.StaticMethod.Converted<PacketPlayOutEntityHeadRotationHandle> createNew = new Template.StaticMethod.Converted<PacketPlayOutEntityHeadRotationHandle>();
+        public final Template.StaticMethod.Converted<PacketPlayOutEntityHeadRotationHandle> createNew = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<Float> getHeadYaw = new Template.Method<Float>();
-        public final Template.Method<Void> setHeadYaw = new Template.Method<Void>();
+        public final Template.Method<Float> getHeadYaw = new Template.Method<>();
+        public final Template.Method<Void> setHeadYaw = new Template.Method<>();
 
     }
 

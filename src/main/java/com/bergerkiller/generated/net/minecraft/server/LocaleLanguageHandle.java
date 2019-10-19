@@ -28,9 +28,9 @@ public abstract class LocaleLanguageHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class LocaleLanguageClass extends Template.Class<LocaleLanguageHandle> {
-        public final Template.StaticField.Converted<LocaleLanguageHandle> INSTANCE = new Template.StaticField.Converted<LocaleLanguageHandle>();
+        public final Template.StaticField.Converted<LocaleLanguageHandle> INSTANCE = new Template.StaticField.Converted<>();
 
-        public final Template.Method<String> get = new Template.Method<String>();
+        public final Template.Method<String> get = new Template.Method<>();
 
     }
 

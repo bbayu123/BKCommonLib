@@ -27,7 +27,7 @@ public abstract class RegistryIDHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class RegistryIDClass extends Template.Class<RegistryIDHandle> {
-        public final Template.Method<Integer> getId = new Template.Method<Integer>();
+        public final Template.Method<Integer> getId = new Template.Method<>();
 
     }
 

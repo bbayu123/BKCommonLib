@@ -30,10 +30,10 @@ public abstract class HeightMapHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class HeightMapClass extends Template.Class<HeightMapHandle> {
-        public final Template.Method.Converted<ChunkHandle> getChunk = new Template.Method.Converted<ChunkHandle>();
-        public final Template.Method<Integer> getHeight = new Template.Method<Integer>();
-        public final Template.Method<Void> setHeight = new Template.Method<Void>();
-        public final Template.Method<Void> initialize = new Template.Method<Void>();
+        public final Template.Method.Converted<ChunkHandle> getChunk = new Template.Method.Converted<>();
+        public final Template.Method<Integer> getHeight = new Template.Method<>();
+        public final Template.Method<Void> setHeight = new Template.Method<>();
+        public final Template.Method<Void> initialize = new Template.Method<>();
 
     }
 

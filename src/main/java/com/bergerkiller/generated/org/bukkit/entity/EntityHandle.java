@@ -31,13 +31,13 @@ public abstract class EntityHandle extends Template.Handle {
      */
     public static final class EntityClass extends Template.Class<EntityHandle> {
         @Template.Optional
-        public final Template.Method<List<Entity>> getPassengers = new Template.Method<List<Entity>>();
+        public final Template.Method<List<Entity>> getPassengers = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<Boolean> addPassenger = new Template.Method<Boolean>();
+        public final Template.Method<Boolean> addPassenger = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<Boolean> removePassenger = new Template.Method<Boolean>();
-        public final Template.Method<Entity> getPassenger = new Template.Method<Entity>();
-        public final Template.Method<Boolean> setPassenger = new Template.Method<Boolean>();
+        public final Template.Method<Boolean> removePassenger = new Template.Method<>();
+        public final Template.Method<Entity> getPassenger = new Template.Method<>();
+        public final Template.Method<Boolean> setPassenger = new Template.Method<>();
 
     }
 

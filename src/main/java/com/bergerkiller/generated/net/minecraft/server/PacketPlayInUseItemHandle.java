@@ -58,22 +58,22 @@ public abstract class PacketPlayInUseItemHandle extends PacketHandle {
         @Template.Optional
         public final Template.Field.Long timestamp = new Template.Field.Long();
 
-        public final Template.Method<HumanHand> getHand = new Template.Method<HumanHand>();
-        public final Template.Method<Void> setHand = new Template.Method<Void>();
-        public final Template.Method.Converted<BlockFace> getDirection = new Template.Method.Converted<BlockFace>();
-        public final Template.Method.Converted<Void> setDirection = new Template.Method.Converted<Void>();
-        public final Template.Method<Boolean> isBlockPlacePacket = new Template.Method<Boolean>();
-        public final Template.Method<Void> setBlockPlacePacket = new Template.Method<Void>();
-        public final Template.Method.Converted<IntVector3> getPosition = new Template.Method.Converted<IntVector3>();
-        public final Template.Method.Converted<Void> setPosition = new Template.Method.Converted<Void>();
-        public final Template.Method<Float> getDeltaX = new Template.Method<Float>();
-        public final Template.Method<Float> getDeltaY = new Template.Method<Float>();
-        public final Template.Method<Float> getDeltaZ = new Template.Method<Float>();
-        public final Template.Method<Void> setDeltaX = new Template.Method<Void>();
-        public final Template.Method<Void> setDeltaY = new Template.Method<Void>();
-        public final Template.Method<Void> setDeltaZ = new Template.Method<Void>();
+        public final Template.Method<HumanHand> getHand = new Template.Method<>();
+        public final Template.Method<Void> setHand = new Template.Method<>();
+        public final Template.Method.Converted<BlockFace> getDirection = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setDirection = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> isBlockPlacePacket = new Template.Method<>();
+        public final Template.Method<Void> setBlockPlacePacket = new Template.Method<>();
+        public final Template.Method.Converted<IntVector3> getPosition = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setPosition = new Template.Method.Converted<>();
+        public final Template.Method<Float> getDeltaX = new Template.Method<>();
+        public final Template.Method<Float> getDeltaY = new Template.Method<>();
+        public final Template.Method<Float> getDeltaZ = new Template.Method<>();
+        public final Template.Method<Void> setDeltaX = new Template.Method<>();
+        public final Template.Method<Void> setDeltaY = new Template.Method<>();
+        public final Template.Method<Void> setDeltaZ = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<Void> initMovingObject = new Template.Method<Void>();
+        public final Template.Method<Void> initMovingObject = new Template.Method<>();
 
     }
 

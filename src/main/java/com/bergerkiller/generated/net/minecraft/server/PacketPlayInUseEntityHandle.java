@@ -43,10 +43,10 @@ public abstract class PacketPlayInUseEntityHandle extends PacketHandle {
      */
     public static final class PacketPlayInUseEntityClass extends Template.Class<PacketPlayInUseEntityHandle> {
         public final Template.Field.Integer usedEntityId = new Template.Field.Integer();
-        public final Template.Field.Converted<UseAction> action = new Template.Field.Converted<UseAction>();
-        public final Template.Field.Converted<Vector> offset = new Template.Field.Converted<Vector>();
+        public final Template.Field.Converted<UseAction> action = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Vector> offset = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<Object> enumHand = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> enumHand = new Template.Field.Converted<>();
 
     }
 
@@ -77,9 +77,9 @@ public abstract class PacketPlayInUseEntityHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class EnumEntityUseActionClass extends Template.Class<EnumEntityUseActionHandle> {
-            public final Template.EnumConstant.Converted<EnumEntityUseActionHandle> INTERACT = new Template.EnumConstant.Converted<EnumEntityUseActionHandle>();
-            public final Template.EnumConstant.Converted<EnumEntityUseActionHandle> ATTACK = new Template.EnumConstant.Converted<EnumEntityUseActionHandle>();
-            public final Template.EnumConstant.Converted<EnumEntityUseActionHandle> INTERACT_AT = new Template.EnumConstant.Converted<EnumEntityUseActionHandle>();
+            public final Template.EnumConstant.Converted<EnumEntityUseActionHandle> INTERACT = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumEntityUseActionHandle> ATTACK = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumEntityUseActionHandle> INTERACT_AT = new Template.EnumConstant.Converted<>();
 
         }
 

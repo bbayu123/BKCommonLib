@@ -33,9 +33,9 @@ public abstract class ContainerAnvilHandle extends ContainerHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ContainerAnvilClass extends Template.Class<ContainerAnvilHandle> {
-        public final Template.Field<String> renameText = new Template.Field<String>();
+        public final Template.Field<String> renameText = new Template.Field<>();
 
-        public final Template.StaticMethod<ContainerAnvilHandle> fromBukkit = new Template.StaticMethod<ContainerAnvilHandle>();
+        public final Template.StaticMethod<ContainerAnvilHandle> fromBukkit = new Template.StaticMethod<>();
 
     }
 

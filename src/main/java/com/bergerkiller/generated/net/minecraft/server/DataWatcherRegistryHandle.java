@@ -31,7 +31,7 @@ public abstract class DataWatcherRegistryHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class DataWatcherRegistryClass extends Template.Class<DataWatcherRegistryHandle> {
-        public final Template.StaticMethod.Converted<Integer> getSerializerId = new Template.StaticMethod.Converted<Integer>();
+        public final Template.StaticMethod.Converted<Integer> getSerializerId = new Template.StaticMethod.Converted<>();
 
     }
 

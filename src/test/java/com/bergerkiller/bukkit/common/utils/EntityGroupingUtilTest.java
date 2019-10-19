@@ -169,13 +169,13 @@ public class EntityGroupingUtilTest {
     public void testIsEntityTypeEntitySetOfEntityCategory() {
         for (EntityTestList test : EntityTestList.values()) {
             Entity entity1 = generateEntity(test.getMatching());
-            Set<EntityCategory> set1 = new HashSet<EntityCategory>();
+            Set<EntityCategory> set1 = new HashSet<>();
             set1.add(test.getEntityCategory());
             boolean result1 = EntityGroupingUtil.isEntityType(entity1, set1);
             assertTrue(String.format("%s: (%s) == (%s)", test.name(), test.getMatching().name(), set1.toString()), result1);
 
             Entity entity2 = generateEntity(test.getNonMatching());
-            Set<EntityCategory> set2 = new HashSet<EntityCategory>();
+            Set<EntityCategory> set2 = new HashSet<>();
             set2.add(test.getEntityCategory());
             boolean result2 = EntityGroupingUtil.isEntityType(entity2, set2);
             assertFalse(String.format("%s: (%s) != (%s)", test.name(), test.getNonMatching().name(), set2.toString()), result2);

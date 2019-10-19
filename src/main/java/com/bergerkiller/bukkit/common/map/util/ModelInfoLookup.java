@@ -12,6 +12,7 @@ import com.bergerkiller.bukkit.common.utils.ItemUtil;
 import com.bergerkiller.bukkit.common.utils.LogicUtil;
 import com.bergerkiller.bukkit.common.utils.MaterialUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.BlockRenderOptions;
 import com.bergerkiller.bukkit.common.wrappers.ItemRenderOptions;
 import com.bergerkiller.generated.net.minecraft.server.ItemHandle;
@@ -27,7 +28,7 @@ public class ModelInfoLookup {
         // Blocks
         Material type = (item == null) ? Material.AIR : item.getType();
         if (item == null || type.isBlock()) {
-            BlockRenderOptions blockOpt = BlockData.fromItemStack(item).getDefaultRenderOptions();
+            BlockRenderOptions blockOpt = BlockDataRegistry.fromItemStack(item).getDefaultRenderOptions();
             return new ItemRenderOptions(item, blockOpt);
         }
 
@@ -228,7 +229,7 @@ public class ModelInfoLookup {
         Material type = item.getType();
         String itemName;
         if (type.isBlock()) {
-            itemName = lookupBlock(BlockData.fromItemStack(item).getDefaultRenderOptions(), true);
+            itemName = lookupBlock(BlockDataRegistry.fromItemStack(item).getDefaultRenderOptions(), true);
 
             // Perform renames needed to get the correct item block model name
             if (itemName.equals("fence")) {

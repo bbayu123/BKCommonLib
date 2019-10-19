@@ -87,7 +87,7 @@ public class MathUtilTest {
         do {
             // Slowly approach 90.0 but never quite reach it
             exp += 0.01;
-            angle = 90.0 * (1.0 - (1.0 / (double) (Math.exp(exp))));
+            angle = 90.0 * (1.0 - (1.0 / (Math.exp(exp))));
 
             Quaternion q = Quaternion.fromYawPitchRoll(angle, 90.0, 0.0);
             Vector ypr = q.getYawPitchRoll();
@@ -101,7 +101,7 @@ public class MathUtilTest {
         do {
             // Slowly approach -90.0 but never quite reach it
             exp += 0.01;
-            angle = -90.0 * (1.0 - (1.0 / (double) (Math.exp(exp))));
+            angle = -90.0 * (1.0 - (1.0 / (Math.exp(exp))));
 
             Quaternion q = Quaternion.fromYawPitchRoll(angle, 90.0, 0.0);
             Vector ypr = q.getYawPitchRoll();
@@ -257,7 +257,7 @@ public class MathUtilTest {
         }
 
         // Test some special cases of opposite vectors
-        List<Vector> specialOpposites = new ArrayList<Vector>();
+        List<Vector> specialOpposites = new ArrayList<>();
         specialOpposites.add(new Vector(0.0, 0.0, 1.0));
         specialOpposites.add(new Vector(0.0, 0.0, -1.0));
         specialOpposites.add(new Vector(0.0, 1.0, 0.0));

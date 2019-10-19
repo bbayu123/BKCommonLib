@@ -30,7 +30,7 @@ public abstract class TileEntityHopperHandle extends TileEntityHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class TileEntityHopperClass extends Template.Class<TileEntityHopperHandle> {
-        public final Template.StaticMethod.Converted<Boolean> suckItems = new Template.StaticMethod.Converted<Boolean>();
+        public final Template.StaticMethod.Converted<Boolean> suckItems = new Template.StaticMethod.Converted<>();
 
     }
 

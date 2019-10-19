@@ -32,7 +32,7 @@ public abstract class PacketPlayOutSetCooldownHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutSetCooldownClass extends Template.Class<PacketPlayOutSetCooldownHandle> {
-        public final Template.Field.Converted<Material> material = new Template.Field.Converted<Material>();
+        public final Template.Field.Converted<Material> material = new Template.Field.Converted<>();
         public final Template.Field.Integer cooldown = new Template.Field.Integer();
 
     }

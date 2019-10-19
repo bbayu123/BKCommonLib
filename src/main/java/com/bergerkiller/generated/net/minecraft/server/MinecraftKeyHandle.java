@@ -71,14 +71,14 @@ public abstract class MinecraftKeyHandle extends Template.Handle {
      */
     public static final class MinecraftKeyClass extends Template.Class<MinecraftKeyHandle> {
         @Template.Optional
-        public final Template.Constructor.Converted<Object> constr_code_parts = new Template.Constructor.Converted<Object>();
+        public final Template.Constructor.Converted<Object> constr_code_parts = new Template.Constructor.Converted<>();
 
-        public final Template.Field<String> namespace = new Template.Field<String>();
-        public final Template.Field<String> name = new Template.Field<String>();
+        public final Template.Field<String> namespace = new Template.Field<>();
+        public final Template.Field<String> name = new Template.Field<>();
 
-        public final Template.StaticMethod.Converted<MinecraftKeyHandle> createNew = new Template.StaticMethod.Converted<MinecraftKeyHandle>();
+        public final Template.StaticMethod.Converted<MinecraftKeyHandle> createNew = new Template.StaticMethod.Converted<>();
         @Template.Optional
-        public final Template.StaticMethod.Converted<MinecraftKeyHandle> createNew2 = new Template.StaticMethod.Converted<MinecraftKeyHandle>();
+        public final Template.StaticMethod.Converted<MinecraftKeyHandle> createNew2 = new Template.StaticMethod.Converted<>();
 
     }
 

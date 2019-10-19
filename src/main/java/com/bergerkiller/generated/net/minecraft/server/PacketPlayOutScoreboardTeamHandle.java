@@ -65,17 +65,17 @@ public abstract class PacketPlayOutScoreboardTeamHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutScoreboardTeamClass extends Template.Class<PacketPlayOutScoreboardTeamHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutScoreboardTeamHandle> constr = new Template.Constructor.Converted<PacketPlayOutScoreboardTeamHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutScoreboardTeamHandle> constr = new Template.Constructor.Converted<>();
 
-        public final Template.Field<String> name = new Template.Field<String>();
-        public final Template.Field.Converted<ChatText> displayName = new Template.Field.Converted<ChatText>();
-        public final Template.Field.Converted<ChatText> prefix = new Template.Field.Converted<ChatText>();
-        public final Template.Field.Converted<ChatText> suffix = new Template.Field.Converted<ChatText>();
-        public final Template.Field<String> visibility = new Template.Field<String>();
+        public final Template.Field<String> name = new Template.Field<>();
+        public final Template.Field.Converted<ChatText> displayName = new Template.Field.Converted<>();
+        public final Template.Field.Converted<ChatText> prefix = new Template.Field.Converted<>();
+        public final Template.Field.Converted<ChatText> suffix = new Template.Field.Converted<>();
+        public final Template.Field<String> visibility = new Template.Field<>();
         @Template.Optional
-        public final Template.Field<String> collisionRule = new Template.Field<String>();
-        public final Template.Field.Converted<ChatColor> color = new Template.Field.Converted<ChatColor>();
-        public final Template.Field<Collection<String>> players = new Template.Field<Collection<String>>();
+        public final Template.Field<String> collisionRule = new Template.Field<>();
+        public final Template.Field.Converted<ChatColor> color = new Template.Field.Converted<>();
+        public final Template.Field<Collection<String>> players = new Template.Field<>();
         public final Template.Field.Integer mode = new Template.Field.Integer();
         public final Template.Field.Integer friendlyFire = new Template.Field.Integer();
 

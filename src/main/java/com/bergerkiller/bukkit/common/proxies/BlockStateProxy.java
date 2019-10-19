@@ -148,6 +148,7 @@ public class BlockStateProxy extends ProxyBase<BlockState> implements BlockState
     }
 
     //@Override
+    @Override
     public boolean isPlaced() {
         if (BlockStateHandle.T.isPlaced.isAvailable()) {
             return BlockStateHandle.T.isPlaced.invoke(base);

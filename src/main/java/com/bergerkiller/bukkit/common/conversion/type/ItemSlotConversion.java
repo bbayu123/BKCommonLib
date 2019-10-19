@@ -10,8 +10,8 @@ import com.bergerkiller.bukkit.common.Logging;
 import com.bergerkiller.generated.net.minecraft.server.EnumItemSlotHandle;
 
 public class ItemSlotConversion {
-    private static final Map<Object, EquipmentSlot> slotMap_a = new IdentityHashMap<Object, EquipmentSlot>();
-    private static final Map<EquipmentSlot, Object> slotMap_b = new IdentityHashMap<EquipmentSlot, Object>();
+    private static final Map<Object, EquipmentSlot> slotMap_a = new IdentityHashMap<>();
+    private static final Map<EquipmentSlot, Object> slotMap_b = new IdentityHashMap<>();
 
     static {
         Object[] enumItemSlotValues = EnumItemSlotHandle.T.getType().getEnumConstants();

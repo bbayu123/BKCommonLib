@@ -81,7 +81,7 @@ public class IntHashMap<T> extends BasicWrapper<IntHashMapHandle> {
         if (entryHandle == null) {
             return null;
         } else {
-            return new Entry<T>(entryHandle);
+            return new Entry<>(entryHandle);
         }
     }
 

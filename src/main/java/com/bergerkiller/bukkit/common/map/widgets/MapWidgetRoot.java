@@ -16,7 +16,7 @@ public class MapWidgetRoot extends MapWidget {
     private MapWidget _focusedWidget = null;
     private MapWidget _activatedWidget = this;
     private MapWidget _focusChangeFrom = this;
-    private List<MapWidget> _focusHistory = new ArrayList<MapWidget>();
+    private List<MapWidget> _focusHistory = new ArrayList<>();
 
     public MapWidgetRoot(MapDisplay display) {
         this.parent = null;

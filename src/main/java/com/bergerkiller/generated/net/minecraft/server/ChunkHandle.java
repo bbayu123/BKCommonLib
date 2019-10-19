@@ -63,25 +63,25 @@ public abstract class ChunkHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ChunkClass extends Template.Class<ChunkHandle> {
-        public final Template.Field.Converted<ChunkSectionHandle[]> sections = new Template.Field.Converted<ChunkSectionHandle[]>();
-        public final Template.Field.Converted<WorldHandle> world = new Template.Field.Converted<WorldHandle>();
-        public final Template.Field.Converted<List<Object>[]> entitySlices = new Template.Field.Converted<List<Object>[]>();
-        public final Template.Field<Chunk> bukkitChunk = new Template.Field<Chunk>();
+        public final Template.Field.Converted<ChunkSectionHandle[]> sections = new Template.Field.Converted<>();
+        public final Template.Field.Converted<WorldHandle> world = new Template.Field.Converted<>();
+        public final Template.Field.Converted<List<Object>[]> entitySlices = new Template.Field.Converted<>();
+        public final Template.Field<Chunk> bukkitChunk = new Template.Field<>();
 
-        public final Template.Method<Integer> getLocX = new Template.Method<Integer>();
-        public final Template.Method<Integer> getLocZ = new Template.Method<Integer>();
-        public final Template.Method<Collection<?>> getRawTileEntities = new Template.Method<Collection<?>>();
-        public final Template.Method<Collection<BlockState>> getTileEntities = new Template.Method<Collection<BlockState>>();
-        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<BlockData>();
-        public final Template.Method.Converted<BlockData> getBlockDataAtCoord = new Template.Method.Converted<BlockData>();
-        public final Template.Method.Converted<BlockData> setBlockData = new Template.Method.Converted<BlockData>();
-        public final Template.Method.Converted<Void> addEntity = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<HeightMap> getLightHeightMap = new Template.Method.Converted<HeightMap>();
-        public final Template.Method.Converted<Integer> getBrightness = new Template.Method.Converted<Integer>();
-        public final Template.Method<Integer> getTopSliceY = new Template.Method<Integer>();
-        public final Template.Method<Void> addEntities = new Template.Method<Void>();
-        public final Template.Method<Boolean> checkCanSave = new Template.Method<Boolean>();
-        public final Template.Method<Void> markDirty = new Template.Method<Void>();
+        public final Template.Method<Integer> getLocX = new Template.Method<>();
+        public final Template.Method<Integer> getLocZ = new Template.Method<>();
+        public final Template.Method<Collection<?>> getRawTileEntities = new Template.Method<>();
+        public final Template.Method<Collection<BlockState>> getTileEntities = new Template.Method<>();
+        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<>();
+        public final Template.Method.Converted<BlockData> getBlockDataAtCoord = new Template.Method.Converted<>();
+        public final Template.Method.Converted<BlockData> setBlockData = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> addEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<HeightMap> getLightHeightMap = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Integer> getBrightness = new Template.Method.Converted<>();
+        public final Template.Method<Integer> getTopSliceY = new Template.Method<>();
+        public final Template.Method<Void> addEntities = new Template.Method<>();
+        public final Template.Method<Boolean> checkCanSave = new Template.Method<>();
+        public final Template.Method<Void> markDirty = new Template.Method<>();
 
     }
 

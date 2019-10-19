@@ -27,6 +27,7 @@ public class LongHashSet extends BasicWrapper<LongHashSetHandle> implements Iter
         this.setHandle(LongHashSetHandle.createHandle(handle));
     }
 
+    @Override
     public Iterator<Long> iterator() {
         return handle.iterator();
     }

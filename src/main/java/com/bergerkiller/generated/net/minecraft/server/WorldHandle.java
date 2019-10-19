@@ -92,50 +92,50 @@ public abstract class WorldHandle extends IBlockAccessHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class WorldClass extends Template.Class<WorldHandle> {
-        public final Template.Field<Random> random = new Template.Field<Random>();
-        public final Template.Field.Converted<WorldProviderHandle> worldProvider = new Template.Field.Converted<WorldProviderHandle>();
+        public final Template.Field<Random> random = new Template.Field<>();
+        public final Template.Field.Converted<WorldProviderHandle> worldProvider = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<Object> navigationListener = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> navigationListener = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<Object> field_chunkProvider = new Template.Field.Converted<Object>();
-        public final Template.Field.Converted<World> bukkitWorld = new Template.Field.Converted<World>();
+        public final Template.Field.Converted<Object> field_chunkProvider = new Template.Field.Converted<>();
+        public final Template.Field.Converted<World> bukkitWorld = new Template.Field.Converted<>();
         public final Template.Field.Boolean keepSpawnInMemory = new Template.Field.Boolean();
 
-        public final Template.Method<Void> method_profiler_begin = new Template.Method<Void>();
-        public final Template.Method<Void> method_profiler_end = new Template.Method<Void>();
-        public final Template.Method.Converted<World> getWorld = new Template.Method.Converted<World>();
-        public final Template.Method.Converted<Server> getServer = new Template.Method.Converted<Server>();
-        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<BlockData>();
-        public final Template.Method<BlockData> getBlockDataAtCoord = new Template.Method<BlockData>();
-        public final Template.Method.Converted<Boolean> setBlockData = new Template.Method.Converted<Boolean>();
-        public final Template.Method<Long> getTime = new Template.Method<Long>();
+        public final Template.Method<Void> method_profiler_begin = new Template.Method<>();
+        public final Template.Method<Void> method_profiler_end = new Template.Method<>();
+        public final Template.Method.Converted<World> getWorld = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Server> getServer = new Template.Method.Converted<>();
+        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<>();
+        public final Template.Method<BlockData> getBlockDataAtCoord = new Template.Method<>();
+        public final Template.Method.Converted<Boolean> setBlockData = new Template.Method.Converted<>();
+        public final Template.Method<Long> getTime = new Template.Method<>();
         @Template.Optional
-        public final Template.Method.Converted<Object> getChunkProvider = new Template.Method.Converted<Object>();
-        public final Template.Method.Converted<Boolean> isWithinWorldBorder = new Template.Method.Converted<Boolean>();
+        public final Template.Method.Converted<Object> getChunkProvider = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> isWithinWorldBorder = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Boolean> getBlockCollisions = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Boolean> isNotCollidingWithBlocks = new Template.Method.Converted<Boolean>();
+        public final Template.Method.Converted<Boolean> getBlockCollisions = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> isNotCollidingWithBlocks = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<List<AxisAlignedBBHandle>> opt_getCubes_1_8 = new Template.Method.Converted<List<AxisAlignedBBHandle>>();
-        public final Template.Method.Converted<List<?>> getRawEntitiesOfType = new Template.Method.Converted<List<?>>();
-        public final Template.Method.Converted<List<EntityHandle>> getNearbyEntities = new Template.Method.Converted<List<EntityHandle>>();
-        public final Template.Method.Converted<TileEntityHandle> getTileEntity = new Template.Method.Converted<TileEntityHandle>();
-        public final Template.Method.Converted<WorldDataHandle> getWorldData = new Template.Method.Converted<WorldDataHandle>();
+        public final Template.Method.Converted<List<AxisAlignedBBHandle>> opt_getCubes_1_8 = new Template.Method.Converted<>();
+        public final Template.Method.Converted<List<?>> getRawEntitiesOfType = new Template.Method.Converted<>();
+        public final Template.Method.Converted<List<EntityHandle>> getNearbyEntities = new Template.Method.Converted<>();
+        public final Template.Method.Converted<TileEntityHandle> getTileEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<WorldDataHandle> getWorldData = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method<Void> makeSound = new Template.Method<Void>();
-        public final Template.Method.Converted<Boolean> isBurnArea = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Entity> getEntityById = new Template.Method.Converted<Entity>();
-        public final Template.Method.Converted<Boolean> areChunksLoaded = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<MovingObjectPositionHandle> rayTrace = new Template.Method.Converted<MovingObjectPositionHandle>();
+        public final Template.Method<Void> makeSound = new Template.Method<>();
+        public final Template.Method.Converted<Boolean> isBurnArea = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Entity> getEntityById = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> areChunksLoaded = new Template.Method.Converted<>();
+        public final Template.Method.Converted<MovingObjectPositionHandle> rayTrace = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Void> opt_applyPhysics = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<Void> opt_applyPhysics = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Void> opt_applyPhysics_old = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> applyBlockPhysics = new Template.Method.Converted<Void>();
-        public final Template.Method<Void> setSectionSkyLight = new Template.Method<Void>();
-        public final Template.Method<Void> setSectionBlockLight = new Template.Method<Void>();
-        public final Template.Method<byte[]> getSectionSkyLight = new Template.Method<byte[]>();
-        public final Template.Method<byte[]> getSectionBlockLight = new Template.Method<byte[]>();
+        public final Template.Method.Converted<Void> opt_applyPhysics_old = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> applyBlockPhysics = new Template.Method.Converted<>();
+        public final Template.Method<Void> setSectionSkyLight = new Template.Method<>();
+        public final Template.Method<Void> setSectionBlockLight = new Template.Method<>();
+        public final Template.Method<byte[]> getSectionSkyLight = new Template.Method<>();
+        public final Template.Method<byte[]> getSectionBlockLight = new Template.Method<>();
 
     }
 

@@ -15,7 +15,7 @@ import java.util.Map.Entry;
  */
 public class ClassMap<V> {
 
-    private final LinkedHashMap<Class<?>, V> classes = new LinkedHashMap<Class<?>, V>();
+    private final LinkedHashMap<Class<?>, V> classes = new LinkedHashMap<>();
 
     /**
      * Puts a Class : Value pair into this map. Null types are ignored.

@@ -32,8 +32,8 @@ public abstract class PacketPlayInUpdateSignHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayInUpdateSignClass extends Template.Class<PacketPlayInUpdateSignHandle> {
-        public final Template.Field.Converted<IntVector3> position = new Template.Field.Converted<IntVector3>();
-        public final Template.Field.Converted<ChatText[]> lines = new Template.Field.Converted<ChatText[]>();
+        public final Template.Field.Converted<IntVector3> position = new Template.Field.Converted<>();
+        public final Template.Field.Converted<ChatText[]> lines = new Template.Field.Converted<>();
 
     }
 

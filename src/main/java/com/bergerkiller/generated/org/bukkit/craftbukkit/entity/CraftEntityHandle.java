@@ -37,12 +37,12 @@ public abstract class CraftEntityHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftEntityClass extends Template.Class<CraftEntityHandle> {
-        public final Template.Field.Converted<EntityHandle> entityHandle = new Template.Field.Converted<EntityHandle>();
+        public final Template.Field.Converted<EntityHandle> entityHandle = new Template.Field.Converted<>();
 
-        public final Template.StaticMethod.Converted<Entity> createCraftEntity = new Template.StaticMethod.Converted<Entity>();
+        public final Template.StaticMethod.Converted<Entity> createCraftEntity = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<Void> setHandle = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Object> getHandle = new Template.Method.Converted<Object>();
+        public final Template.Method.Converted<Void> setHandle = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Object> getHandle = new Template.Method.Converted<>();
 
     }
 

@@ -35,7 +35,7 @@ public class CommonTagList extends CommonTag implements List<CommonTag> {
     }
 
     public CommonTagList(Object... values) {
-        this(new ArrayList<Object>(Arrays.asList(values)));
+        this(new ArrayList<>(Arrays.asList(values)));
     }
 
     public CommonTagList(List<?> data) {
@@ -374,17 +374,17 @@ public class CommonTagList extends CommonTag implements List<CommonTag> {
 
     @Override
     public Iterator<CommonTag> iterator() {
-        return new ConvertingIterator<CommonTag>(getRawData().iterator(), Conversion.toCommonTag);
+        return new ConvertingIterator<>(getRawData().iterator(), Conversion.toCommonTag);
     }
 
     @Override
     public ListIterator<CommonTag> listIterator() {
-        return new ConvertingListIterator<CommonTag>(getRawData().listIterator(), DuplexConversion.commonTag);
+        return new ConvertingListIterator<>(getRawData().listIterator(), DuplexConversion.commonTag);
     }
 
     @Override
     public ListIterator<CommonTag> listIterator(int index) {
-        return new ConvertingListIterator<CommonTag>(getRawData().listIterator(index), DuplexConversion.commonTag);
+        return new ConvertingListIterator<>(getRawData().listIterator(index), DuplexConversion.commonTag);
     }
 
     @Override

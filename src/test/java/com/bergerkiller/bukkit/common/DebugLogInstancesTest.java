@@ -26,7 +26,7 @@ public class DebugLogInstancesTest {
 
     public static class TestClass1 {
         public TestClass2 testValue2;
-        public static HashMap<String, TestClass3> values = new HashMap<String, TestClass3>();
+        public static HashMap<String, TestClass3> values = new HashMap<>();
     }
 
     public static class TestClass2 {

@@ -260,7 +260,7 @@ public class MathUtil {
      */
     public static int floor(double value) {
         int i = (int) value;
-        return value < (double) i ? i - 1 : i;
+        return value < i ? i - 1 : i;
     }
 
     /**
@@ -271,7 +271,7 @@ public class MathUtil {
      */
     public static int floor(float value) {
         int i = (int) value;
-        return value < (float) i ? i - 1 : i;
+        return value < i ? i - 1 : i;
     }
 
     /**
@@ -467,7 +467,7 @@ public class MathUtil {
      * @return chunk coordinate
      */
     public static int toChunk(double loc) {
-        return floor(loc / (double) CHUNK_VALUES);
+        return floor(loc / CHUNK_VALUES);
     }
 
     /**

@@ -35,9 +35,9 @@ public abstract class PacketPlayOutScoreboardObjectiveHandle extends Template.Ha
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutScoreboardObjectiveClass extends Template.Class<PacketPlayOutScoreboardObjectiveHandle> {
-        public final Template.Field<String> name = new Template.Field<String>();
-        public final Template.Field.Converted<ChatText> displayName = new Template.Field.Converted<ChatText>();
-        public final Template.Field.Converted<Object> criteria = new Template.Field.Converted<Object>();
+        public final Template.Field<String> name = new Template.Field<>();
+        public final Template.Field.Converted<ChatText> displayName = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Object> criteria = new Template.Field.Converted<>();
         public final Template.Field.Integer action = new Template.Field.Integer();
 
     }

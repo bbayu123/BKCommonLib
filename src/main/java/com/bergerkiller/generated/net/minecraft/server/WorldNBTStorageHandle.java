@@ -28,7 +28,7 @@ public abstract class WorldNBTStorageHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class WorldNBTStorageClass extends Template.Class<WorldNBTStorageHandle> {
-        public final Template.Method<File> getPlayerDir = new Template.Method<File>();
+        public final Template.Method<File> getPlayerDir = new Template.Method<>();
 
     }
 

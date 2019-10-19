@@ -15,7 +15,7 @@ public class IntHashMapTest {
 
     @Test
     public void testHashMap() {
-        IntHashMap<String> test = new IntHashMap<String>();
+        IntHashMap<String> test = new IntHashMap<>();
         test.put(154, "test_string");
         assertEquals("test_string", test.get(154));
         assertTrue(test.contains(154));

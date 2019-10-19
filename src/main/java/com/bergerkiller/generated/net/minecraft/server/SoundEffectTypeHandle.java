@@ -29,9 +29,9 @@ public abstract class SoundEffectTypeHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class SoundEffectTypeClass extends Template.Class<SoundEffectTypeHandle> {
-        public final Template.Method.Converted<SoundEffectHandle> getBreakSound = new Template.Method.Converted<SoundEffectHandle>();
-        public final Template.Method.Converted<SoundEffectHandle> getStepSound = new Template.Method.Converted<SoundEffectHandle>();
-        public final Template.Method.Converted<SoundEffectHandle> getPlaceSound = new Template.Method.Converted<SoundEffectHandle>();
+        public final Template.Method.Converted<SoundEffectHandle> getBreakSound = new Template.Method.Converted<>();
+        public final Template.Method.Converted<SoundEffectHandle> getStepSound = new Template.Method.Converted<>();
+        public final Template.Method.Converted<SoundEffectHandle> getPlaceSound = new Template.Method.Converted<>();
 
     }
 

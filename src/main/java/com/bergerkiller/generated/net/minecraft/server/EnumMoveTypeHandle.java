@@ -32,11 +32,11 @@ public abstract class EnumMoveTypeHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EnumMoveTypeClass extends Template.Class<EnumMoveTypeHandle> {
-        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> SELF = new Template.EnumConstant.Converted<EnumMoveTypeHandle>();
-        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> PLAYER = new Template.EnumConstant.Converted<EnumMoveTypeHandle>();
-        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> PISTON = new Template.EnumConstant.Converted<EnumMoveTypeHandle>();
-        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> SHULKER_BOX = new Template.EnumConstant.Converted<EnumMoveTypeHandle>();
-        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> SHULKER = new Template.EnumConstant.Converted<EnumMoveTypeHandle>();
+        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> SELF = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> PLAYER = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> PISTON = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> SHULKER_BOX = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumMoveTypeHandle> SHULKER = new Template.EnumConstant.Converted<>();
 
     }
 

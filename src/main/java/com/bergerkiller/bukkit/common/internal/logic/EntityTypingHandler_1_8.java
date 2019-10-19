@@ -21,6 +21,7 @@ import com.bergerkiller.generated.net.minecraft.server.EntityTrackerEntryStateHa
 import com.bergerkiller.generated.net.minecraft.server.EntityTrackerHandle;
 import com.bergerkiller.generated.net.minecraft.server.WorldHandle;
 import com.bergerkiller.generated.net.minecraft.server.WorldServerHandle;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 import com.bergerkiller.mountiplex.reflection.SafeField;
 import com.bergerkiller.mountiplex.reflection.declarations.ClassResolver;
 import com.bergerkiller.mountiplex.reflection.declarations.MethodDeclaration;
@@ -42,15 +43,15 @@ public class EntityTypingHandler_1_8 extends EntityTypingHandler {
         SafeField.create(WorldHandle.T.getType(), "players", List.class).set(this.dummyTrackerWorld.getRaw(), Collections.emptyList());
 
         // Initialize the dummy tracker without calling any methods/constructors
-        this.entriesMap = new IntHashMap<Object>();
-        this.entriesSet = new HashSet<Object>();
+        this.entriesMap = new IntHashMap<>();
+        this.entriesSet = new HashSet<>();
         this.dummyTracker = EntityTrackerHandle.T.newHandleNull();
         SafeField.create(EntityTrackerHandle.T.getType(), "c", Set.class).set(this.dummyTracker.getRaw(), this.entriesSet);
         EntityTrackerHandle.T.world.raw.set(dummyTracker.getRaw(), dummyTrackerWorld.getRaw());
         SafeField.set(this.dummyTracker.getRaw(), "trackedEntities", this.entriesMap.getRawHandle());
 
         // Find the fallback constructor for EntityTrackerEntry if track() fails to create one
-        this.fallbackConstructor = new FastMethod<Object>();
+        this.fallbackConstructor = new FastMethod<>();
         {
             ClassResolver resolver = new ClassResolver();
             resolver.setDeclaredClass(EntityTrackerEntryStateHandle.T.getType());
@@ -104,7 +105,7 @@ public class EntityTypingHandler_1_8 extends EntityTypingHandler {
         // Bugfix: Add all current passengers to the passengers field right now
         // We must do this so that the next updatePlayer() update is properly synchronized
         if (EntityTrackerEntryStateHandle.T.opt_passengers.isAvailable()) {
-            EntityTrackerEntryStateHandle.T.opt_passengers.set(createdEntry.getRaw(), (new ExtendedEntity<Entity>(entity)).getPassengers());
+            EntityTrackerEntryStateHandle.T.opt_passengers.set(createdEntry.getRaw(), (new ExtendedEntity<>(entity)).getPassengers());
         }
 
         // Only on MC <= 1.8.8
@@ -119,7 +120,7 @@ public class EntityTypingHandler_1_8 extends EntityTypingHandler {
 
     @Override
     public EntityTrackerEntryHook getEntityTrackerEntryHook(Object entityTrackerEntryHandle) {
-        return EntityTrackerEntryHook_1_8_to_1_13_2.get(entityTrackerEntryHandle, EntityTrackerEntryHook_1_8_to_1_13_2.class);
+        return ClassInterceptor.get(entityTrackerEntryHandle, EntityTrackerEntryHook_1_8_to_1_13_2.class);
     }
 
     @Override

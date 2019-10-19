@@ -70,10 +70,10 @@ public class MCSDWebbingCodec {
         System.arraycopy(codec.strands, 0, this.strands, 0, strands.length);
 
         this.packets_count = 0;
-        for (int i = 0; i < codec.packets.length; i++) {
+        for (BitPacket packet2 : codec.packets) {
             BitPacket packet = this.addPacket();
-            packet.bits = codec.packets[i].bits;
-            packet.data = codec.packets[i].data;
+            packet.bits = packet2.bits;
+            packet.data = packet2.data;
         }
         this.packets_count = codec.packets_count;
     }
@@ -319,7 +319,7 @@ public class MCSDWebbingCodec {
      */
     public void processBest(List<IntVector2> points, int max_iterations) {
         // Get all starting coordinates
-        List<StartPoint> best_coords = new ArrayList<StartPoint>(points.size());
+        List<StartPoint> best_coords = new ArrayList<>(points.size());
         for (IntVector2 point : points) {
             if (this.strands[point.x | (point.z << 8)]) {
                 StartPoint startPoint = new StartPoint();

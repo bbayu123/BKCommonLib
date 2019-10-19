@@ -21,14 +21,14 @@ import com.google.common.io.ByteStreams;
  * Helper class for performing plugin class modification
  */
 public class CommonClassManipulation {
-    private static SafeMethod<Package> cl_getPackage_method = new SafeMethod<Package>(ClassLoader.class, "getPackage", String.class);
-    private static SafeMethod<Void> cl_definePackage_method1 = new SafeMethod<Void>(URLClassLoader.class, "definePackage",
+    private static SafeMethod<Package> cl_getPackage_method = new SafeMethod<>(ClassLoader.class, "getPackage", String.class);
+    private static SafeMethod<Void> cl_definePackage_method1 = new SafeMethod<>(URLClassLoader.class, "definePackage",
             String.class, Manifest.class, URL.class);
-    private static SafeMethod<Void> cl_definePackage_method2 = new SafeMethod<Void>(URLClassLoader.class, "definePackage",
+    private static SafeMethod<Void> cl_definePackage_method2 = new SafeMethod<>(URLClassLoader.class, "definePackage",
             String.class, String.class, String.class, String.class, String.class, String.class, String.class, URL.class);
-    private static SafeMethod<Class<?>> cl_defineClass_method1 = new SafeMethod<Class<?>>(URLClassLoader.class, "defineClass",
+    private static SafeMethod<Class<?>> cl_defineClass_method1 = new SafeMethod<>(URLClassLoader.class, "defineClass",
             String.class, byte[].class, int.class, int.class, CodeSource.class);
-    private static SafeMethod<Class<?>> cl_defineClass_method2 = new SafeMethod<Class<?>>(ClassLoader.class, "defineClass",
+    private static SafeMethod<Class<?>> cl_defineClass_method2 = new SafeMethod<>(ClassLoader.class, "defineClass",
             String.class, byte[].class, int.class, int.class);
 
     public static void writeClassData(ClassLoader classLoader, String name, byte[] classData) {

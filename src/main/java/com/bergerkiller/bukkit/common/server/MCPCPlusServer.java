@@ -1,6 +1,5 @@
 package com.bergerkiller.bukkit.common.server;
 
-import com.bergerkiller.bukkit.common.Common;
 import com.bergerkiller.bukkit.common.utils.StreamUtil;
 import com.bergerkiller.mountiplex.reflection.ClassTemplate;
 import com.bergerkiller.mountiplex.reflection.MethodAccessor;
@@ -124,7 +123,7 @@ public class MCPCPlusServer extends SpigotServer {
     public Collection<String> getLoadableWorlds() {
         File container = Bukkit.getWorldContainer();
         String[] files = container.list();
-        Collection<String> rval = new ArrayList<String>(files.length);
+        Collection<String> rval = new ArrayList<>(files.length);
         // Add the main world
         rval.add(container.getName());
         // Add all sub-worlds found in there

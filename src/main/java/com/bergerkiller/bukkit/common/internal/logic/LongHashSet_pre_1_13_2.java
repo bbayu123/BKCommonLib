@@ -322,7 +322,7 @@ public class LongHashSet_pre_1_13_2 {
 
         @Override
         public Long next() {
-            return Long.valueOf(nextLong());
+            return nextLong();
         }
 
         public long nextLong() {

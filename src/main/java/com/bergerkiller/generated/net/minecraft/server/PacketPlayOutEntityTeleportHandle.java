@@ -96,8 +96,8 @@ public abstract class PacketPlayOutEntityTeleportHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutEntityTeleportClass extends Template.Class<PacketPlayOutEntityTeleportHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutEntityTeleportHandle> constr = new Template.Constructor.Converted<PacketPlayOutEntityTeleportHandle>();
-        public final Template.Constructor.Converted<PacketPlayOutEntityTeleportHandle> constr_entity = new Template.Constructor.Converted<PacketPlayOutEntityTeleportHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutEntityTeleportHandle> constr = new Template.Constructor.Converted<>();
+        public final Template.Constructor.Converted<PacketPlayOutEntityTeleportHandle> constr_entity = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
         @Template.Optional

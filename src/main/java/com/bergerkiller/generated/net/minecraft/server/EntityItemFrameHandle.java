@@ -38,10 +38,10 @@ public abstract class EntityItemFrameHandle extends EntityHandle {
      */
     public static final class EntityItemFrameClass extends Template.Class<EntityItemFrameHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Object>> DATA_ITEM = new Template.StaticField.Converted<Key<Object>>();
+        public final Template.StaticField.Converted<Key<Object>> DATA_ITEM = new Template.StaticField.Converted<>();
 
-        public final Template.Method.Converted<ItemStack> getItem = new Template.Method.Converted<ItemStack>();
-        public final Template.Method.Converted<Void> setItem = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<ItemStack> getItem = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setItem = new Template.Method.Converted<>();
 
     }
 

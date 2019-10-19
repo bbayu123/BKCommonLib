@@ -30,7 +30,7 @@ public abstract class BlockPositionHandle extends BaseBlockPositionHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class BlockPositionClass extends Template.Class<BlockPositionHandle> {
-        public final Template.Constructor.Converted<BlockPositionHandle> constr_x_y_z = new Template.Constructor.Converted<BlockPositionHandle>();
+        public final Template.Constructor.Converted<BlockPositionHandle> constr_x_y_z = new Template.Constructor.Converted<>();
 
     }
 

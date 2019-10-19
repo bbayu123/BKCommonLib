@@ -22,14 +22,15 @@ public abstract class NBTBaseHandle extends Template.Handle {
     /* ============================================================================== */
 
     public abstract byte getTypeId();
+    @Override
     public abstract NBTBaseHandle clone();
     /**
      * Stores class members for <b>net.minecraft.server.NBTBase</b>.
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class NBTBaseClass extends Template.Class<NBTBaseHandle> {
-        public final Template.Method<Byte> getTypeId = new Template.Method<Byte>();
-        public final Template.Method.Converted<NBTBaseHandle> clone = new Template.Method.Converted<NBTBaseHandle>();
+        public final Template.Method<Byte> getTypeId = new Template.Method<>();
+        public final Template.Method.Converted<NBTBaseHandle> clone = new Template.Method.Converted<>();
 
     }
 

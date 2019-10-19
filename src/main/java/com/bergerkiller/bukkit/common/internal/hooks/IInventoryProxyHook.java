@@ -16,6 +16,7 @@ import com.bergerkiller.generated.net.minecraft.server.ItemStackHandle;
 import com.bergerkiller.generated.org.bukkit.inventory.InventoryHandle;
 import com.bergerkiller.mountiplex.conversion.util.ConvertingList;
 import com.bergerkiller.mountiplex.reflection.ClassHook;
+import com.bergerkiller.mountiplex.reflection.declarations.Template.Handle;
 
 /**
  * Redirects all IInventory function calls to the appropriate method in a 
@@ -60,7 +61,7 @@ public class IInventoryProxyHook extends ClassHook<IInventoryProxyHook> {
 
     @HookMethod(value="public abstract List<ItemStack> getContents()", optional=true)
     public List<?> getContents() {
-        return new ConvertingList<Object>(Arrays.asList(this.inventory.getContents()), DuplexConversion.itemStack.reverse());
+        return new ConvertingList<>(Arrays.asList(this.inventory.getContents()), DuplexConversion.itemStack.reverse());
     }
 
     @HookMethod(value="public abstract ItemStack[] getContents()", optional=true)
@@ -70,7 +71,7 @@ public class IInventoryProxyHook extends ClassHook<IInventoryProxyHook> {
 
     @HookMethod("public abstract List<org.bukkit.entity.HumanEntity> getViewers()")
     public List<?> getViewers() {
-        return new ConvertingList<Object>(this.inventory.getViewers(), DuplexConversion.entity.reverse());
+        return new ConvertingList<>(this.inventory.getViewers(), DuplexConversion.entity.reverse());
     }
 
     @HookMethod("public abstract org.bukkit.inventory.InventoryHolder getOwner()")
@@ -103,7 +104,7 @@ public class IInventoryProxyHook extends ClassHook<IInventoryProxyHook> {
         if (nmsItem == null) {
             return ItemStackHandle.EMPTY_ITEM.getRaw();
         }
-        return ItemStackHandle.getRaw(nmsItem.cloneAndSubtract(j));
+        return Handle.getRaw(nmsItem.cloneAndSubtract(j));
     }
 
     @HookMethod("public ItemStack splitWithoutUpdate(int i)")

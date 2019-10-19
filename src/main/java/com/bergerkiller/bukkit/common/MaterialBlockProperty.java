@@ -3,6 +3,7 @@ package com.bergerkiller.bukkit.common;
 import org.bukkit.Material;
 
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 
 /**
  * Property for blocks, that can be retrieved from BlockData information
@@ -13,7 +14,7 @@ public abstract class MaterialBlockProperty<T> extends MaterialProperty<T> {
 
     @Override
     public T get(Material material) {
-        return get(BlockData.fromMaterial(material));
+        return get(BlockDataRegistry.fromMaterial(material));
     }
 
     /**
@@ -22,5 +23,6 @@ public abstract class MaterialBlockProperty<T> extends MaterialProperty<T> {
      * @param blockData to get this property of
      * @return The property of the Block Data
      */
+    @Override
     public abstract T get(BlockData blockData);
 }

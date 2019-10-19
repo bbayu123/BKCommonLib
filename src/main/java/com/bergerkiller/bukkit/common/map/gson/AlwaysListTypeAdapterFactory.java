@@ -72,7 +72,7 @@ public final class AlwaysListTypeAdapterFactory<E> implements TypeAdapterFactory
         public List<E> read(final JsonReader in)
                 throws IOException {
             // This is where we detect the list "type"
-            final List<E> list = new ArrayList<E>();
+            final List<E> list = new ArrayList<>();
             final JsonToken token = in.peek();
             switch ( token ) {
             case BEGIN_ARRAY:

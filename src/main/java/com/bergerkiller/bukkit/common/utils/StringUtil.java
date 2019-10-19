@@ -19,15 +19,15 @@ public class StringUtil {
 
     static {
         ChatColor[] styles = ChatColor.values();
-        LinkedHashSet<Character> chars = new LinkedHashSet<Character>(styles.length * 2);
-        for (int i = 0; i < styles.length; i++) {
-            chars.add(Character.toLowerCase(styles[i].getChar()));
-            chars.add(Character.toUpperCase(styles[i].getChar()));
+        LinkedHashSet<Character> chars = new LinkedHashSet<>(styles.length * 2);
+        for (ChatColor style : styles) {
+            chars.add(Character.toLowerCase(style.getChar()));
+            chars.add(Character.toUpperCase(style.getChar()));
         }
         CHAT_CODES = new char[chars.size()];
         int i = 0;
         for (Character c : chars) {
-            CHAT_CODES[i] = c.charValue();
+            CHAT_CODES[i] = c;
             i++;
         }
     }
@@ -456,7 +456,7 @@ public class StringUtil {
      * Converts the arguments to turn "-surrounded parts into a single element
      */
     public static String[] convertArgs(String[] args) {
-        ArrayList<String> tmpargs = new ArrayList<String>(args.length);
+        ArrayList<String> tmpargs = new ArrayList<>(args.length);
         boolean isCommenting = false;
         for (String arg : args) {
             if (!isCommenting && (arg.startsWith("\"") || arg.startsWith("'"))) {

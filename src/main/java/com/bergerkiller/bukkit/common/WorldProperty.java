@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class WorldProperty<T> {
 
-    private Map<String, T> worldmap = new HashMap<String, T>();
+    private Map<String, T> worldmap = new HashMap<>();
     private T def;
 
     public WorldProperty(T defaultValue) {

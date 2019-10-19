@@ -29,8 +29,8 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
     private final DoubleOctreeIterator<T> remove_iter;
 
     public DoubleOctree() {
-        this.tree = new Octree<Entry<T>>();
-        this.remove_iter = new DoubleOctreeIterator<T>(this.tree.remove_iter);
+        this.tree = new Octree<>();
+        this.remove_iter = new DoubleOctreeIterator<>(this.tree.remove_iter);
     }
 
     /**
@@ -42,7 +42,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
 
     @Override
     public DoubleOctreeIterator<T> iterator() {
-        return new DoubleOctreeIterator<T>(this.tree.iterator());
+        return new DoubleOctreeIterator<>(this.tree.iterator());
     }
 
     /**
@@ -51,7 +51,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
      * @return values
      */
     public Collection<T> values() {
-        return new DoubleOctreeValues<T>(this.tree.values());
+        return new DoubleOctreeValues<>(this.tree.values());
     }
 
     private static final class DoubleOctreeValues<T> extends AbstractCollection<T> {
@@ -113,12 +113,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
      * @return iterable
      */
     public DoubleOctreeIterable<T> cuboid(final IntVector3 min, final IntVector3 max) {
-        return new DoubleOctreeIterable<T>() {
-            @Override
-            public DoubleOctreeIterator<T> iterator() {
-                return new DoubleOctreeIterator<T>(new OctreeCuboidIterator<Entry<T>>(DoubleOctree.this.tree, min, max));
-            }
-        };
+        return () -> new DoubleOctreeIterator<>(new OctreeCuboidIterator<>(DoubleOctree.this.tree, min, max));
     }
 
     /**
@@ -130,12 +125,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
      * @return iterable
      */
     public DoubleOctreeIterable<T> block(final IntVector3 block) {
-        return new DoubleOctreeIterable<T>() {
-            @Override
-            public DoubleOctreeIterator<T> iterator() {
-                return new DoubleOctreeIterator<T>(new OctreePointIterator<Entry<T>>(DoubleOctree.this.tree, block));
-            }
-        };
+        return () -> new DoubleOctreeIterator<>(new OctreePointIterator<>(DoubleOctree.this.tree, block));
     }
 
     /**
@@ -172,7 +162,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
      */
     public Collection<T> get(double x, double y, double z) {
         Entry<T> firstEntry = this.getFirstEntry(x, y, z);
-        return (firstEntry == null) ? Collections.emptyList() : new PositionCollection<T>(firstEntry);
+        return (firstEntry == null) ? Collections.emptyList() : new PositionCollection<>(firstEntry);
     }
 
     /**
@@ -184,7 +174,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
      * @param value  The value to store
      */
     public void add(double x, double y, double z, T value) {
-        addEntry(new Entry<T>(x, y, z, value));
+        addEntry(new Entry<>(x, y, z, value));
     }
 
     /**
@@ -236,7 +226,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
      * @see {@link #moveEntry(Entry, Entry)}
      */
     public boolean move(double oldX, double oldY, double oldZ, T oldValue, double newX, double newY, double newZ, T newValue) {
-        return moveEntry(new Entry<T>(oldX, oldY, oldZ, oldValue), new Entry<T>(newX, newY, newZ, newValue));
+        return moveEntry(new Entry<>(oldX, oldY, oldZ, oldValue), new Entry<>(newX, newY, newZ, newValue));
     }
 
     /**
@@ -259,7 +249,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
      * @see {@link #moveEntry(Entry, Entry)}
      */
     public boolean move(double oldX, double oldY, double oldZ, T value, double newX, double newY, double newZ) {
-        return moveEntry(new Entry<T>(oldX, oldY, oldZ, value), new Entry<T>(newX, newY, newZ, value));
+        return moveEntry(new Entry<>(oldX, oldY, oldZ, value), new Entry<>(newX, newY, newZ, value));
     }
 
     /**
@@ -472,7 +462,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
 
                 // Insert after the entry where we stopped
                 newEntry.next = currentEntry.next;
-                currentEntry.next = (Entry<T>) newEntry;
+                currentEntry.next = newEntry;
                 this.tree.putValueAtIndex(index, entryAtIndex.next);
                 return true;
             } else if (compare > 0) {
@@ -919,7 +909,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
          * @return New Entry
          */
         public static <T> Entry<T> create(Vector pos, T value) {
-            return new Entry<T>(pos, value);
+            return new Entry<>(pos, value);
         }
 
         /**
@@ -932,7 +922,7 @@ public class DoubleOctree<T> implements DoubleOctreeIterable<T> {
          * @return New Entry
          */
         public static <T> Entry<T> create(double x, double y, double z, T value) {
-            return new Entry<T>(x, y, z, value);
+            return new Entry<>(x, y, z, value);
         }
     }
 }

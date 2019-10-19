@@ -19,6 +19,7 @@ import org.bukkit.event.world.ChunkUnloadEvent;
 import com.bergerkiller.bukkit.common.Task;
 import com.bergerkiller.bukkit.common.chunk.ForcedChunkManager;
 import com.bergerkiller.bukkit.common.conversion.type.HandleConversion;
+import com.bergerkiller.bukkit.common.utils.ChunkUtil;
 import com.bergerkiller.bukkit.common.utils.CommonUtil;
 import com.bergerkiller.bukkit.common.utils.WorldUtil;
 import com.bergerkiller.generated.net.minecraft.server.WorldServerHandle;
@@ -28,8 +29,8 @@ import com.bergerkiller.generated.net.minecraft.server.WorldServerHandle;
  * with a reference counter.
  */
 public class CommonForcedChunkManager extends ForcedChunkManager {
-    private final Map<ChunkKey, Entry> chunks = new HashMap<ChunkKey, Entry>();
-    private final Set<ChunkKey> pending = new HashSet<ChunkKey>();
+    private final Map<ChunkKey, Entry> chunks = new HashMap<>();
+    private final Set<ChunkKey> pending = new HashSet<>();
     private final ChunkUnloadEventListener chunkUnloadListener = new ChunkUnloadEventListener();
     private final CommonPlugin plugin;
     private Task pendingHandler = null;
@@ -148,7 +149,7 @@ public class CommonForcedChunkManager extends ForcedChunkManager {
         // Load/unload the chunk
         if (forced) {
             // Request the chunk to be loaded asynchronously
-            WorldUtil.getChunkAsync(chunk.world, chunk.chunkX, chunk.chunkZ).thenAccept(entry);
+            ChunkUtil.getChunkAsync(chunk.world, chunk.chunkX, chunk.chunkZ).thenAccept(entry);
         } else {
             // Trigger the server to unload the chunk. It will fire a single
             // ChunkUnloadEvent (which we will handle) to make sure the chunk unloads.
@@ -169,7 +170,7 @@ public class CommonForcedChunkManager extends ForcedChunkManager {
         }
 
         public void resetAsyncLoad() {
-            this.chunkFuture = new CompletableFuture<Chunk>();
+            this.chunkFuture = new CompletableFuture<>();
         }
         
         public boolean isForced() {

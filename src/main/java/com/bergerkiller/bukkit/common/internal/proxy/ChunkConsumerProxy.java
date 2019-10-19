@@ -10,7 +10,7 @@ import com.bergerkiller.mountiplex.reflection.SafeMethod;
  * instead of a future / consumer system.
  */
 public class ChunkConsumerProxy implements Runnable {
-    private static final SafeMethod<Object> cps_getChunkAt = new SafeMethod<Object>(CommonUtil.getNMSClass("ChunkProviderServer"), "getChunkAt", int.class, int.class);
+    private static final SafeMethod<Object> cps_getChunkAt = new SafeMethod<>(CommonUtil.getNMSClass("ChunkProviderServer"), "getChunkAt", int.class, int.class);
     private final Consumer<Object> consumer;
     private final Object cps;
     private final int chunkX;

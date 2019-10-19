@@ -21,7 +21,7 @@ import java.util.logging.Level;
 
 public class PacketType extends ClassTemplate<Object> {
 
-    private static final ClassMap<List<PacketType>> typesByPacketClass = new ClassMap<List<PacketType>>();
+    private static final ClassMap<List<PacketType>> typesByPacketClass = new ClassMap<>();
 
     /*
      * ========================
@@ -202,7 +202,7 @@ public class PacketType extends ClassTemplate<Object> {
             if (types_old == null || types_old.isEmpty()) {
                 typesByPacketClass.put(packetClass, Collections.singletonList(this));
             } else {
-                ArrayList<PacketType> new_list = new ArrayList<PacketType>(types_old);
+                ArrayList<PacketType> new_list = new ArrayList<>(types_old);
                 new_list.add(0, this);
                 new_list.trimToSize();
                 typesByPacketClass.put(packetClass, new_list);

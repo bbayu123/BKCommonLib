@@ -13,6 +13,7 @@ import com.bergerkiller.bukkit.common.internal.logic.RegionHandler;
 import com.bergerkiller.bukkit.common.protocol.CommonPacket;
 import com.bergerkiller.bukkit.common.protocol.PacketType;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.Dimension;
 import com.bergerkiller.bukkit.common.wrappers.EntityTracker;
 import com.bergerkiller.bukkit.common.wrappers.ResourceKey;
@@ -159,7 +160,7 @@ public class WorldUtil extends ChunkUtil {
      * @param type to set to
      */
     public static void setBlockType(org.bukkit.block.Block block, org.bukkit.Material type) {
-        setBlockData(block, BlockData.fromMaterial(type));
+        setBlockData(block, BlockDataRegistry.fromMaterial(type));
     }
 
     /**
@@ -172,7 +173,7 @@ public class WorldUtil extends ChunkUtil {
      * @param type to set to
      */
     public static void setBlockType(org.bukkit.World world, int x, int y, int z, org.bukkit.Material type) {
-        setBlockData(world, x, y, z, BlockData.fromMaterial(type));
+        setBlockData(world, x, y, z, BlockDataRegistry.fromMaterial(type));
     }
 
     /**
@@ -211,7 +212,7 @@ public class WorldUtil extends ChunkUtil {
      * @param type to set to
      */
     public static void setBlockTypeFast(org.bukkit.block.Block block, org.bukkit.Material type) {
-        setBlockDataFast(block, BlockData.fromMaterial(type));
+        setBlockDataFast(block, BlockDataRegistry.fromMaterial(type));
     }
 
     /**
@@ -224,7 +225,7 @@ public class WorldUtil extends ChunkUtil {
      * @param type to set to
      */
     public static void setBlockTypeFast(org.bukkit.World world, int x, int y, int z, org.bukkit.Material type) {
-        setBlockDataFast(world, x, y, z, BlockData.fromMaterial(type));
+        setBlockDataFast(world, x, y, z, BlockDataRegistry.fromMaterial(type));
     }
 
     /**
@@ -463,7 +464,7 @@ public class WorldUtil extends ChunkUtil {
         Object ignoreHandle = Conversion.toEntityHandle.convert(ignore);
         Object axisAlignedBB = NMSVector.newAxisAlignedBB(xmin, ymin, zmin, xmax, ymax, zmax);
         List<?> entityHandles = (List<?>) WorldHandle.T.getNearbyEntities.raw.invoke(worldHandle, ignoreHandle, axisAlignedBB);
-        return new ConvertingList<org.bukkit.entity.Entity>(entityHandles, DuplexConversion.entity);
+        return new ConvertingList<>(entityHandles, DuplexConversion.entity);
     }
 
     /**
@@ -481,7 +482,7 @@ public class WorldUtil extends ChunkUtil {
         Object entityBounds = EntityHandle.T.getBoundingBox.raw.invoke(entityHandle);
         Object axisAlignedBB = NMSVector.growAxisAlignedBB(entityBounds, radX, radY, radZ);
         List<?> entityHandles = (List<?>) WorldHandle.T.getNearbyEntities.raw.invoke(worldHandle, entityHandle, axisAlignedBB);
-        return new ConvertingList<org.bukkit.entity.Entity>(entityHandles, DuplexConversion.entity);
+        return new ConvertingList<>(entityHandles, DuplexConversion.entity);
     }
 
     /**
@@ -529,13 +530,10 @@ public class WorldUtil extends ChunkUtil {
             // Post to main thread on 1.14, otherwise things break
             // TODO: Is there any step of saveLevel() we could do asynchronously as well?
             //       Like a join on some sort of queue, for example.
-            final CompletableFuture<Object> future = new CompletableFuture<Object>();
-            CommonUtil.nextTick(new Runnable() {
-                @Override
-                public void run() {
-                    CommonNMS.getHandle(world).saveLevel();
-                    future.complete(null);
-                }
+            final CompletableFuture<Object> future = new CompletableFuture<>();
+            CommonUtil.nextTick(() -> {
+                CommonNMS.getHandle(world).saveLevel();
+                future.complete(null);
             });
             future.join();
         } else {
@@ -651,7 +649,7 @@ public class WorldUtil extends ChunkUtil {
             return false;
         }
 
-        List<Player> players = new ArrayList<Player>(playerChunk.getPlayers());
+        List<Player> players = new ArrayList<>(playerChunk.getPlayers());
         if (players.isEmpty()) {
             return false;
         }

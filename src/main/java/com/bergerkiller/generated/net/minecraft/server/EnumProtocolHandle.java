@@ -35,12 +35,12 @@ public abstract class EnumProtocolHandle extends Template.Handle {
 
     public int getPacketIdIn(Class<?> packetClass) {
         Integer id = (Integer) getPacketMap().get(EnumProtocolDirectionHandle.SERVERBOUND).inverse().get(packetClass);
-        return (id == null) ? -1 : id.intValue();
+        return (id == null) ? -1 : id;
     }
 
     public int getPacketIdOut(Class<?> packetClass) {
         Integer id = (Integer) getPacketMap().get(EnumProtocolDirectionHandle.CLIENTBOUND).inverse().get(packetClass);
-        return (id == null) ? -1 : id.intValue();
+        return (id == null) ? -1 : id;
     }
     @SuppressWarnings("rawtypes")
     public abstract Map<EnumProtocolDirectionHandle, BiMap> getPacketMap();
@@ -51,10 +51,10 @@ public abstract class EnumProtocolHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EnumProtocolClass extends Template.Class<EnumProtocolHandle> {
-        public final Template.EnumConstant.Converted<EnumProtocolHandle> PLAY = new Template.EnumConstant.Converted<EnumProtocolHandle>();
+        public final Template.EnumConstant.Converted<EnumProtocolHandle> PLAY = new Template.EnumConstant.Converted<>();
 
         @SuppressWarnings("rawtypes")
-        public final Template.Field.Converted<Map<EnumProtocolDirectionHandle, BiMap>> packetMap = new Template.Field.Converted<Map<EnumProtocolDirectionHandle, BiMap>>();
+        public final Template.Field.Converted<Map<EnumProtocolDirectionHandle, BiMap>> packetMap = new Template.Field.Converted<>();
 
     }
 

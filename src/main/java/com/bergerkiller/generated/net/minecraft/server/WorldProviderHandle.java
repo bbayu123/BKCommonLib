@@ -33,8 +33,8 @@ public abstract class WorldProviderHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class WorldProviderClass extends Template.Class<WorldProviderHandle> {
-        public final Template.Method<Boolean> hasSkyLight = new Template.Method<Boolean>();
-        public final Template.Method.Converted<Dimension> getDimension = new Template.Method.Converted<Dimension>();
+        public final Template.Method<Boolean> hasSkyLight = new Template.Method<>();
+        public final Template.Method.Converted<Dimension> getDimension = new Template.Method.Converted<>();
 
     }
 

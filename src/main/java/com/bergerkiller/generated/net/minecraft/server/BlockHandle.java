@@ -61,28 +61,28 @@ public abstract class BlockHandle extends Template.Handle {
      */
     public static final class BlockClass extends Template.Class<BlockHandle> {
         @SuppressWarnings("rawtypes")
-        public final Template.StaticField.Converted<Iterable> REGISTRY_ID = new Template.StaticField.Converted<Iterable>();
+        public final Template.StaticField.Converted<Iterable> REGISTRY_ID = new Template.StaticField.Converted<>();
 
-        public final Template.StaticMethod<Iterable<?>> getRegistry = new Template.StaticMethod<Iterable<?>>();
-        public final Template.StaticMethod.Converted<IBlockDataHandle> getByCombinedId = new Template.StaticMethod.Converted<IBlockDataHandle>();
-        public final Template.StaticMethod.Converted<Integer> getCombinedId = new Template.StaticMethod.Converted<Integer>();
+        public final Template.StaticMethod<Iterable<?>> getRegistry = new Template.StaticMethod<>();
+        public final Template.StaticMethod.Converted<IBlockDataHandle> getByCombinedId = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Integer> getCombinedId = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<SoundEffectTypeHandle> getSoundType = new Template.Method.Converted<SoundEffectTypeHandle>();
-        public final Template.Method.Converted<Void> entityHitVertical = new Template.Method.Converted<Void>();
-        public final Template.Method<String> getTitle = new Template.Method<String>();
-        public final Template.Method.Converted<Integer> getOpacity = new Template.Method.Converted<Integer>();
-        public final Template.Method.Converted<Integer> getEmission = new Template.Method.Converted<Integer>();
-        public final Template.Method.Converted<Boolean> isOccluding_at = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Boolean> isOccluding = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Boolean> isPowerSource = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Boolean> canSupportTop = new Template.Method.Converted<Boolean>();
-        public final Template.Method<Float> getDamageResillience = new Template.Method<Float>();
-        public final Template.Method.Converted<Void> dropNaturally = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> ignite = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> stepOn = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<IBlockDataHandle> updateState = new Template.Method.Converted<IBlockDataHandle>();
-        public final Template.Method.Converted<AxisAlignedBBHandle> getBoundingBox = new Template.Method.Converted<AxisAlignedBBHandle>();
-        public final Template.Method.Converted<IBlockDataHandle> getBlockData = new Template.Method.Converted<IBlockDataHandle>();
+        public final Template.Method.Converted<SoundEffectTypeHandle> getSoundType = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> entityHitVertical = new Template.Method.Converted<>();
+        public final Template.Method<String> getTitle = new Template.Method<>();
+        public final Template.Method.Converted<Integer> getOpacity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Integer> getEmission = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> isOccluding_at = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> isOccluding = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> isPowerSource = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> canSupportTop = new Template.Method.Converted<>();
+        public final Template.Method<Float> getDamageResillience = new Template.Method<>();
+        public final Template.Method.Converted<Void> dropNaturally = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> ignite = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> stepOn = new Template.Method.Converted<>();
+        public final Template.Method.Converted<IBlockDataHandle> updateState = new Template.Method.Converted<>();
+        public final Template.Method.Converted<AxisAlignedBBHandle> getBoundingBox = new Template.Method.Converted<>();
+        public final Template.Method.Converted<IBlockDataHandle> getBlockData = new Template.Method.Converted<>();
 
     }
 

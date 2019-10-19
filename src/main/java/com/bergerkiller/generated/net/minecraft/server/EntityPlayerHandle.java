@@ -37,12 +37,12 @@ public abstract class EntityPlayerHandle extends EntityHumanHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EntityPlayerClass extends Template.Class<EntityPlayerHandle> {
-        public final Template.Field.Converted<Object> playerConnection = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> playerConnection = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field<List<Integer>> removeQueue = new Template.Field<List<Integer>>();
+        public final Template.Field<List<Integer>> removeQueue = new Template.Field<>();
         public final Template.Field.Integer ping = new Template.Field.Integer();
 
-        public final Template.Method<InventoryView> openAnvilWindow = new Template.Method<InventoryView>();
+        public final Template.Method<InventoryView> openAnvilWindow = new Template.Method<>();
 
     }
 

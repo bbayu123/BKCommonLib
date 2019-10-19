@@ -36,7 +36,7 @@ public abstract class PacketHandle extends Template.Handle {
     }
 
     protected static final double deserializeVelocity(int protVelocity) {
-        return (double) protVelocity / 8000.0;
+        return protVelocity / 8000.0;
     }
 
     protected static final int serializePosition_1_8_8(double position) {
@@ -44,7 +44,7 @@ public abstract class PacketHandle extends Template.Handle {
     }
 
     protected static final double deserializePosition_1_8_8(int protPosition) {
-        return (double) protPosition / 32.0;
+        return protPosition / 32.0;
     }
 
     protected static final int serializePosition_1_10_2(double position) {
@@ -52,7 +52,7 @@ public abstract class PacketHandle extends Template.Handle {
     }
 
     protected static final double deserializePosition_1_10_2(int protPosition) {
-        return (double) protPosition / 4096.0;
+        return protPosition / 4096.0;
     }
 
     protected static final int serializeRotation(float rotation) {
@@ -60,14 +60,14 @@ public abstract class PacketHandle extends Template.Handle {
     }
 
     protected static final float deserializeRotation(int protRotation) {
-        return (float) protRotation * 360.0f / 256.0f;
+        return protRotation * 360.0f / 256.0f;
     }
 
     protected final double getProtocolPosition(Template.Field.Byte field_1_8_8, Template.Field.Integer field_1_10_2) {
         if (field_1_10_2.isAvailable()) {
             return deserializePosition_1_10_2(field_1_10_2.getInteger(getRaw()));
         } else {
-            return deserializePosition_1_8_8((int) field_1_8_8.getByte(getRaw()));
+            return deserializePosition_1_8_8(field_1_8_8.getByte(getRaw()));
         }
     }
 
@@ -96,7 +96,7 @@ public abstract class PacketHandle extends Template.Handle {
     }
 
     protected final float getProtocolRotation(Template.Field.Byte field) {
-        return deserializeRotation((int) field.getByte(getRaw()));
+        return deserializeRotation(field.getByte(getRaw()));
     }
 
     protected final void setProtocolRotation(Template.Field.Byte field, float rotation) {

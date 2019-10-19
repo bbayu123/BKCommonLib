@@ -54,15 +54,15 @@ public abstract class VoxelShapeHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class VoxelShapeClass extends Template.Class<VoxelShapeHandle> {
-        public final Template.StaticMethod.Converted<VoxelShapeHandle> empty = new Template.StaticMethod.Converted<VoxelShapeHandle>();
-        public final Template.StaticMethod.Converted<Object> createRawFromAABB = new Template.StaticMethod.Converted<Object>();
-        public final Template.StaticMethod.Converted<VoxelShapeHandle> fromAABB = new Template.StaticMethod.Converted<VoxelShapeHandle>();
-        public final Template.StaticMethod.Converted<VoxelShapeHandle> mergeOnlyFirst = new Template.StaticMethod.Converted<VoxelShapeHandle>();
-        public final Template.StaticMethod.Converted<VoxelShapeHandle> merge = new Template.StaticMethod.Converted<VoxelShapeHandle>();
-        public final Template.StaticMethod.Converted<Double> traceAxis = new Template.StaticMethod.Converted<Double>();
+        public final Template.StaticMethod.Converted<VoxelShapeHandle> empty = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Object> createRawFromAABB = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<VoxelShapeHandle> fromAABB = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<VoxelShapeHandle> mergeOnlyFirst = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<VoxelShapeHandle> merge = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<Double> traceAxis = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<AxisAlignedBBHandle> getBoundingBox = new Template.Method.Converted<AxisAlignedBBHandle>();
-        public final Template.Method<Boolean> isEmpty = new Template.Method<Boolean>();
+        public final Template.Method.Converted<AxisAlignedBBHandle> getBoundingBox = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> isEmpty = new Template.Method<>();
 
     }
 

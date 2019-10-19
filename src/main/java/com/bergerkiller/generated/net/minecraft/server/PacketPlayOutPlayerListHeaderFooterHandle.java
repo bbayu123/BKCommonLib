@@ -31,8 +31,8 @@ public abstract class PacketPlayOutPlayerListHeaderFooterHandle extends PacketHa
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutPlayerListHeaderFooterClass extends Template.Class<PacketPlayOutPlayerListHeaderFooterHandle> {
-        public final Template.Field.Converted<ChatText> header = new Template.Field.Converted<ChatText>();
-        public final Template.Field.Converted<ChatText> footer = new Template.Field.Converted<ChatText>();
+        public final Template.Field.Converted<ChatText> header = new Template.Field.Converted<>();
+        public final Template.Field.Converted<ChatText> footer = new Template.Field.Converted<>();
 
     }
 

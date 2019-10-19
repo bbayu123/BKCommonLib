@@ -32,7 +32,7 @@ public class CommonTeam implements Serializable {
         this.prefix = "";
         this.suffix = "";
         this.friendlyFire = FriendlyFireType.ON;
-        this.players = new ArrayList<String>();
+        this.players = new ArrayList<>();
     }
 
     /**

@@ -34,8 +34,8 @@ public abstract class EnumSkyBlockHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EnumSkyBlockClass extends Template.Class<EnumSkyBlockHandle> {
-        public final Template.EnumConstant.Converted<EnumSkyBlockHandle> SKY = new Template.EnumConstant.Converted<EnumSkyBlockHandle>();
-        public final Template.EnumConstant.Converted<EnumSkyBlockHandle> BLOCK = new Template.EnumConstant.Converted<EnumSkyBlockHandle>();
+        public final Template.EnumConstant.Converted<EnumSkyBlockHandle> SKY = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumSkyBlockHandle> BLOCK = new Template.EnumConstant.Converted<>();
 
         public final Template.Field.Integer brightness = new Template.Field.Integer();
 

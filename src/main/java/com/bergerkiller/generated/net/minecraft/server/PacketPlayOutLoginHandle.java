@@ -46,12 +46,12 @@ public abstract class PacketPlayOutLoginHandle extends PacketHandle {
     public static final class PacketPlayOutLoginClass extends Template.Class<PacketPlayOutLoginHandle> {
         public final Template.Field.Integer playerId = new Template.Field.Integer();
         public final Template.Field.Boolean hardcore = new Template.Field.Boolean();
-        public final Template.Field.Converted<GameMode> gameMode = new Template.Field.Converted<GameMode>();
-        public final Template.Field.Converted<Dimension> dimension = new Template.Field.Converted<Dimension>();
+        public final Template.Field.Converted<GameMode> gameMode = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Dimension> dimension = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<Difficulty> difficulty = new Template.Field.Converted<Difficulty>();
+        public final Template.Field.Converted<Difficulty> difficulty = new Template.Field.Converted<>();
         public final Template.Field.Integer maxPlayers = new Template.Field.Integer();
-        public final Template.Field.Converted<WorldType> worldType = new Template.Field.Converted<WorldType>();
+        public final Template.Field.Converted<WorldType> worldType = new Template.Field.Converted<>();
         @Template.Optional
         public final Template.Field.Integer viewDistance = new Template.Field.Integer();
         public final Template.Field.Boolean reducedDebugInfo = new Template.Field.Boolean();

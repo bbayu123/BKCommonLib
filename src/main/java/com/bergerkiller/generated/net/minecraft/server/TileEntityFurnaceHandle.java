@@ -30,7 +30,7 @@ public abstract class TileEntityFurnaceHandle extends TileEntityHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class TileEntityFurnaceClass extends Template.Class<TileEntityFurnaceHandle> {
-        public final Template.StaticMethod.Converted<Integer> fuelTime = new Template.StaticMethod.Converted<Integer>();
+        public final Template.StaticMethod.Converted<Integer> fuelTime = new Template.StaticMethod.Converted<>();
 
     }
 

@@ -31,9 +31,9 @@ public abstract class EntityMinecartCommandBlockHandle extends EntityMinecartAbs
      */
     public static final class EntityMinecartCommandBlockClass extends Template.Class<EntityMinecartCommandBlockHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<String>> DATA_COMMAND = new Template.StaticField.Converted<Key<String>>();
+        public final Template.StaticField.Converted<Key<String>> DATA_COMMAND = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Object>> DATA_PREVIOUS_OUTPUT = new Template.StaticField.Converted<Key<Object>>();
+        public final Template.StaticField.Converted<Key<Object>> DATA_PREVIOUS_OUTPUT = new Template.StaticField.Converted<>();
 
     }
 

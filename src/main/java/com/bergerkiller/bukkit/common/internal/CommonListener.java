@@ -59,11 +59,7 @@ public class CommonListener implements Listener {
         if (CommonUtil.hasHandlers(CreaturePreSpawnEvent.getHandlerList())) {
             ChunkGeneratorHook.hook(event.getWorld());
         }
-        CommonUtil.nextTick(new Runnable() {
-            public void run() {
-                CommonPlugin.getInstance().notifyWorldAdded(event.getWorld());
-            }
-        });
+        CommonUtil.nextTick(() -> CommonPlugin.getInstance().notifyWorldAdded(event.getWorld()));
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -86,7 +82,7 @@ public class CommonListener implements Listener {
             if (realVehicle != null && realVehicle != event.getVehicle()) {
                 // Perform the event again for the right Bukkit entity/Handle
                 event.setCancelled(true);
-                ExtendedEntity<Entity> extRealVehicle = new ExtendedEntity<Entity>(realVehicle);
+                ExtendedEntity<Entity> extRealVehicle = new ExtendedEntity<>(realVehicle);
                 extRealVehicle.addPassenger(event.getEntered());
             }
         }

@@ -27,7 +27,7 @@ public class MaterialTypeProperty extends MaterialBooleanProperty {
      * @param properties to set the types of
      */
     public MaterialTypeProperty(MaterialTypeProperty... properties) {
-        HashSet<Material> elems = new HashSet<Material>();
+        HashSet<Material> elems = new HashSet<>();
         for (MaterialTypeProperty prop : properties) {
             for (Material mat : prop.allowedTypes) {
                 elems.add(mat);
@@ -56,7 +56,7 @@ public class MaterialTypeProperty extends MaterialBooleanProperty {
      * @param allowedMaterials names to set
      */
     public MaterialTypeProperty(String... allowedMaterials) {
-        ArrayList<Material> mats = new ArrayList<Material>(allowedMaterials.length);
+        ArrayList<Material> mats = new ArrayList<>(allowedMaterials.length);
         for (String name : allowedMaterials) {
             Material mat = MaterialUtil.getMaterial(name);
             if (mat != null) {

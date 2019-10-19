@@ -99,7 +99,7 @@ public class LookupEntityClassMap<K, V> implements Map<K, V> {
         // <= 1.10.2 had a static Map instance
         if (EntityTypesHandle.T.opt_typeNameMap_1_10_2.isAvailable()) {
             Map<Class<?>, String> base = (Map<Class<?>, String>) EntityTypesHandle.T.opt_typeNameMap_1_10_2.raw.get();
-            Map<Class<?>, String> repl = new LookupEntityClassMap<Class<?>, String>(base);
+            Map<Class<?>, String> repl = new LookupEntityClassMap<>(base);
             EntityTypesHandle.T.opt_typeNameMap_1_10_2.raw.set(repl);
             return;
         }
@@ -107,7 +107,7 @@ public class LookupEntityClassMap<K, V> implements Map<K, V> {
         // >= 1.11 uses RegistryMaterials BiMap
         RegistryMaterialsHandle reg = EntityTypesHandle.T.opt_getRegistry.invoke();
         Map<?, ?> base = RegistryMaterialsHandle.T.opt_inverseLookupField.get(reg.getRaw());
-        Map<Object, Object> repl = new LookupEntityClassMap<Object, Object>(base);
+        Map<Object, Object> repl = new LookupEntityClassMap<>(base);
         RegistryMaterialsHandle.T.opt_inverseLookupField.set(reg.getRaw(), repl);
     }
 

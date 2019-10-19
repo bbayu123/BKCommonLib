@@ -26,7 +26,7 @@ public class FluidRenderingProvider extends BlockRenderProvider {
     public FluidRenderingProvider(String texture1, String texture2, String tint, Collection<Material> fluidMaterials) {
         this.fluidTexture1 = texture1;
         this.fluidTexture2 = texture2;
-        this.fluidMaterials = new ArrayList<Material>(fluidMaterials);
+        this.fluidMaterials = new ArrayList<>(fluidMaterials);
         this.tint = tint;
     }
 

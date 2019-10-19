@@ -36,12 +36,12 @@ public abstract class RegionFileHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class RegionFileClass extends Template.Class<RegionFileHandle> {
-        public final Template.Constructor.Converted<RegionFileHandle> constr_file = new Template.Constructor.Converted<RegionFileHandle>();
+        public final Template.Constructor.Converted<RegionFileHandle> constr_file = new Template.Constructor.Converted<>();
 
-        public final Template.Field<RandomAccessFile> stream = new Template.Field<RandomAccessFile>();
+        public final Template.Field<RandomAccessFile> stream = new Template.Field<>();
 
-        public final Template.Method<Void> close = new Template.Method<Void>();
-        public final Template.Method<Boolean> chunkExists = new Template.Method<Boolean>();
+        public final Template.Method<Void> close = new Template.Method<>();
+        public final Template.Method<Boolean> chunkExists = new Template.Method<>();
 
     }
 

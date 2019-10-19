@@ -39,6 +39,7 @@ import com.bergerkiller.bukkit.common.utils.DebugUtil;
 import com.bergerkiller.bukkit.common.utils.FaceUtil;
 import com.bergerkiller.bukkit.common.utils.WorldUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.BlockRenderOptions;
 import com.bergerkiller.bukkit.common.wrappers.ItemRenderOptions;
 import com.bergerkiller.bukkit.common.wrappers.RenderOptions;
@@ -90,9 +91,9 @@ public class MapResourcePack {
 
     private final MapResourcePack baseResourcePack;
     protected MapResourcePackArchive archive;
-    private final Map<String, MapTexture> textureCache = new HashMap<String, MapTexture>();
-    private final Map<String, Model> modelCache = new HashMap<String, Model>();
-    private final Map<BlockRenderOptions, Model> blockModelCache = new HashMap<BlockRenderOptions, Model>();
+    private final Map<String, MapTexture> textureCache = new HashMap<>();
+    private final Map<String, Model> modelCache = new HashMap<>();
+    private final Map<BlockRenderOptions, Model> blockModelCache = new HashMap<>();
     private BlockRenderProvider currProvider = null;
     private Gson gson = null;
     private boolean loaded = false;
@@ -244,7 +245,7 @@ public class MapResourcePack {
      * @return block model
      */
     public final Model getBlockModel(Material blockMaterial) {
-        return getBlockModel(BlockData.fromMaterial(blockMaterial));
+        return getBlockModel(BlockDataRegistry.fromMaterial(blockMaterial));
     }
 
     /**
@@ -256,7 +257,7 @@ public class MapResourcePack {
      */
     @SuppressWarnings("deprecation")
     public final Model getBlockModel(Material blockMaterial, int data) {
-        return getBlockModel(BlockData.fromMaterialData(blockMaterial, data));
+        return getBlockModel(BlockDataRegistry.fromMaterialData(blockMaterial, data));
     }
 
     /**
@@ -304,7 +305,7 @@ public class MapResourcePack {
 
         model = this.loadModel(path);
         if (model == null) {
-            model = this.createPlaceholderModel(BlockData.AIR.getDefaultRenderOptions()); // failed to load or find
+            model = this.createPlaceholderModel(BlockDataRegistry.AIR.getDefaultRenderOptions()); // failed to load or find
             model.name = path;
         }
         modelCache.put(path, model);
@@ -349,7 +350,7 @@ public class MapResourcePack {
         MapTexture texture = MapTexture.createEmpty(width, height);
         Matrix4x4 transform = new Matrix4x4();
         if (width != 16 || height != 16) {
-            transform.scale((double) width / 16.0, 1.0, (double) height / 16.0);
+            transform.scale(width / 16.0, 1.0, height / 16.0);
         }
         Model.Display display = model.display.get("gui");
         if (display != null) {
@@ -493,7 +494,7 @@ public class MapResourcePack {
      * @return the model, or <i>null</i> if not found
      */
     protected final Model loadModel(String path) {
-        return this.loadModel(path, BlockData.AIR.getDefaultRenderOptions());
+        return this.loadModel(path, BlockDataRegistry.AIR.getDefaultRenderOptions());
     }
 
     /**

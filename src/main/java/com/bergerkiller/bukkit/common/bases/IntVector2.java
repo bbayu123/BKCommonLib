@@ -55,7 +55,7 @@ public class IntVector2 {
     }
 
     public IntVector2 multiply(double x, double z) {
-        return new IntVector2((double) this.x * x, (double) this.z * z);
+        return new IntVector2(this.x * x, this.z * z);
     }
 
     public IntVector2 multiply(int factor) {
@@ -112,7 +112,7 @@ public class IntVector2 {
      * @return block middle X
      */
     public double midX() {
-        return (double) x + 0.5;
+        return x + 0.5;
     }
 
     /**
@@ -121,12 +121,12 @@ public class IntVector2 {
      * @return block middle Z
      */
     public double midZ() {
-        return (double) z + 0.5;
+        return z + 0.5;
     }
 
     @Override
     public int hashCode() {
-        long i = (long) this.x & 4294967295L | ((long) this.z & 4294967295L) << 32;
+        long i = this.x & 4294967295L | (this.z & 4294967295L) << 32;
         int j = (int) i;
         int k = (int) (i >> 32);
         return j ^ k;

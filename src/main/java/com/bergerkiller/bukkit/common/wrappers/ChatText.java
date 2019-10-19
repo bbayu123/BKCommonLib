@@ -69,7 +69,7 @@ public final class ChatText extends BasicWrapper<IChatBaseComponentHandle> {
         handle = CraftChatMessageHandle.fromString(messageText)[0];
 
         // Find trailing color formatting characters in the message that would otherwise be dropped
-        ArrayList<ChatColor> trailing_formatting_chars = new ArrayList<ChatColor>(0);
+        ArrayList<ChatColor> trailing_formatting_chars = new ArrayList<>(0);
         for (int i = messageText.length() - 2; i >= 0; i -= 2) {
             if (messageText.charAt(i) == StringUtil.CHAT_STYLE_CHAR) {
                 ChatColor color = ChatColor.getByChar(messageText.charAt(i + 1));

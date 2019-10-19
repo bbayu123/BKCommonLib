@@ -31,10 +31,10 @@ public abstract class PlayerConnectionHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PlayerConnectionClass extends Template.Class<PlayerConnectionHandle> {
-        public final Template.Field.Converted<Object> networkManager = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> networkManager = new Template.Field.Converted<>();
 
-        public final Template.Method.Converted<Void> sendPacket = new Template.Method.Converted<Void>();
-        public final Template.Method<Void> sendPos = new Template.Method<Void>();
+        public final Template.Method.Converted<Void> sendPacket = new Template.Method.Converted<>();
+        public final Template.Method<Void> sendPos = new Template.Method<>();
 
     }
 

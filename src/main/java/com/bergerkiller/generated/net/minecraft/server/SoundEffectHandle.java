@@ -45,12 +45,12 @@ public abstract class SoundEffectHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class SoundEffectClass extends Template.Class<SoundEffectHandle> {
-        public final Template.Constructor.Converted<SoundEffectHandle> constr_minecraftkey = new Template.Constructor.Converted<SoundEffectHandle>();
+        public final Template.Constructor.Converted<SoundEffectHandle> constr_minecraftkey = new Template.Constructor.Converted<>();
 
-        public final Template.Field.Converted<MinecraftKeyHandle> name = new Template.Field.Converted<MinecraftKeyHandle>();
+        public final Template.Field.Converted<MinecraftKeyHandle> name = new Template.Field.Converted<>();
 
         @Template.Optional
-        public final Template.StaticMethod.Converted<RegistryMaterialsHandle> opt_getRegistry = new Template.StaticMethod.Converted<RegistryMaterialsHandle>();
+        public final Template.StaticMethod.Converted<RegistryMaterialsHandle> opt_getRegistry = new Template.StaticMethod.Converted<>();
 
     }
 

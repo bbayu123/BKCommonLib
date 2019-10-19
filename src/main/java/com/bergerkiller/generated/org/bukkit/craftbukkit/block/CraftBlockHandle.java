@@ -37,10 +37,10 @@ public abstract class CraftBlockHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftBlockClass extends Template.Class<CraftBlockHandle> {
-        public final Template.StaticMethod<Object> getBlockPosition = new Template.StaticMethod<Object>();
-        public final Template.StaticMethod<Block> createBlockAtTileEntity = new Template.StaticMethod<Block>();
+        public final Template.StaticMethod<Object> getBlockPosition = new Template.StaticMethod<>();
+        public final Template.StaticMethod<Block> createBlockAtTileEntity = new Template.StaticMethod<>();
 
-        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<BlockData>();
+        public final Template.Method.Converted<BlockData> getBlockData = new Template.Method.Converted<>();
 
     }
 

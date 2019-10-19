@@ -46,10 +46,10 @@ public abstract class PacketPlayOutSpawnEntityPaintingHandle extends PacketHandl
     public static final class PacketPlayOutSpawnEntityPaintingClass extends Template.Class<PacketPlayOutSpawnEntityPaintingHandle> {
         public final Template.Field.Integer entityId = new Template.Field.Integer();
         @Template.Optional
-        public final Template.Field<UUID> entityUUID = new Template.Field<UUID>();
-        public final Template.Field.Converted<IntVector3> position = new Template.Field.Converted<IntVector3>();
-        public final Template.Field.Converted<BlockFace> facing = new Template.Field.Converted<BlockFace>();
-        public final Template.Field.Converted<Art> art = new Template.Field.Converted<Art>();
+        public final Template.Field<UUID> entityUUID = new Template.Field<>();
+        public final Template.Field.Converted<IntVector3> position = new Template.Field.Converted<>();
+        public final Template.Field.Converted<BlockFace> facing = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Art> art = new Template.Field.Converted<>();
 
     }
 

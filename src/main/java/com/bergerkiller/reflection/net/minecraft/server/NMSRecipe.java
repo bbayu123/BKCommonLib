@@ -47,7 +47,7 @@ public class NMSRecipe {
         if (slots == null) {
             return null;
         } else {
-            ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+            ArrayList<ItemStack> items = new ArrayList<>();
             for (CraftInputSlot slot : slots) {
                 items.add(slot.getDefaultChoice());
             }

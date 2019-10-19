@@ -100,7 +100,7 @@ public class IntVector3 implements Comparable<IntVector3> {
     }
 
     public IntVector3 multiply(double x, double y, double z) {
-        return new IntVector3((double) this.x * x, (double) this.y * y, (double) this.z * z);
+        return new IntVector3(this.x * x, this.y * y, this.z * z);
     }
 
     public IntVector3 multiply(int factor) {
@@ -180,7 +180,7 @@ public class IntVector3 implements Comparable<IntVector3> {
      * @return block middle X
      */
     public double midX() {
-        return (double) x + 0.5;
+        return x + 0.5;
     }
 
     /**
@@ -189,7 +189,7 @@ public class IntVector3 implements Comparable<IntVector3> {
      * @return block middle Y
      */
     public double midY() {
-        return (double) y + 0.5;
+        return y + 0.5;
     }
 
     /**
@@ -198,7 +198,7 @@ public class IntVector3 implements Comparable<IntVector3> {
      * @return block middle Z
      */
     public double midZ() {
-        return (double) z + 0.5;
+        return z + 0.5;
     }
 
     /**

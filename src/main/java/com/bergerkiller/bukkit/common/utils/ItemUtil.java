@@ -10,6 +10,7 @@ import com.bergerkiller.bukkit.common.inventory.ItemParser;
 import com.bergerkiller.bukkit.common.nbt.CommonTagCompound;
 import com.bergerkiller.bukkit.common.nbt.CommonTagList;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.bukkit.common.wrappers.ChatText;
 import com.bergerkiller.generated.net.minecraft.server.CreativeModeTabHandle;
 import com.bergerkiller.generated.net.minecraft.server.EntityItemHandle;
@@ -408,7 +409,7 @@ public class ItemUtil {
     @Deprecated
     public static org.bukkit.inventory.ItemStack createItem(Material type, int data, int amount) {
         if (CommonCapabilities.MATERIAL_ENUM_CHANGES && type.isBlock()) {
-            return BlockData.fromMaterialData(type, data).createItem(amount);
+            return BlockDataRegistry.fromMaterialData(type, data).createItem(amount);
         }
 
         ItemStackHandle stack = ItemStackHandle.newInstance();
@@ -851,7 +852,7 @@ public class ItemUtil {
     public static List<ItemStack> getItemVariants(Material itemType) {
         Object itemHandle = HandleConversion.toItemHandle(itemType);
         if (itemHandle == null) {
-            return new ArrayList<ItemStack>(0);
+            return new ArrayList<>(0);
         } else {
             return ItemHandle.createHandle(itemHandle).getItemVariants(CreativeModeTabHandle.SEARCH);
         }
@@ -864,7 +865,7 @@ public class ItemUtil {
      * @return list of valid inventory item types
      */
     public static List<Material> getItemTypes() {
-        List<Material> result = new ArrayList<Material>(500);
+        List<Material> result = new ArrayList<>(500);
         for (Object itemRawHandle : ItemHandle.getRegistry()) {
             Material type = WrapperConversion.toMaterialFromItemHandle(itemRawHandle);
             if (type == Material.AIR) {

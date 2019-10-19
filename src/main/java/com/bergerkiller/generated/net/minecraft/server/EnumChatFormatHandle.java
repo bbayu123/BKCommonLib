@@ -58,9 +58,9 @@ public abstract class EnumChatFormatHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EnumChatFormatClass extends Template.Class<EnumChatFormatHandle> {
-        public final Template.EnumConstant.Converted<EnumChatFormatHandle> RESET = new Template.EnumConstant.Converted<EnumChatFormatHandle>();
+        public final Template.EnumConstant.Converted<EnumChatFormatHandle> RESET = new Template.EnumConstant.Converted<>();
 
-        public final Template.Method<Integer> getId = new Template.Method<Integer>();
+        public final Template.Method<Integer> getId = new Template.Method<>();
 
     }
 

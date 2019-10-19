@@ -16,6 +16,7 @@ import com.bergerkiller.bukkit.common.internal.CommonLegacyMaterials;
 import com.bergerkiller.bukkit.common.internal.CommonNMS;
 import com.bergerkiller.bukkit.common.internal.legacy.MaterialsByName;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.generated.net.minecraft.server.ItemHandle;
 import com.bergerkiller.mountiplex.reflection.declarations.SourceDeclaration;
 
@@ -30,7 +31,7 @@ import org.bukkit.material.MaterialData;
 public class MaterialUtil {
     private static final Map<String, MaterialTypeProperty> TYPE_PROPERTIES;
     static {
-        TYPE_PROPERTIES = new HashMap<String, MaterialTypeProperty>();
+        TYPE_PROPERTIES = new HashMap<>();
 
         // Load material_categories and send it through the macro pre-parser
         String material_categories_str = "";
@@ -55,7 +56,7 @@ public class MaterialUtil {
         //   etc.
         {
             String key = null;
-            List<Material> values = new ArrayList<Material>();
+            List<Material> values = new ArrayList<>();
             for (String line : material_categories_str.split("\\r?\\n")) {
                 line = line.trim();
                 if (line.startsWith("#") || line.isEmpty()) {
@@ -111,7 +112,7 @@ public class MaterialUtil {
      */
     @Deprecated
     public static MaterialData getData(Material type, int rawData) {
-        return BlockData.fromMaterialData(type, rawData).newMaterialData();
+        return BlockDataRegistry.fromMaterialData(type, rawData).newMaterialData();
     }
 
     /**

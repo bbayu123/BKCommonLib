@@ -29,7 +29,7 @@ public abstract class EntityHangingHandle extends EntityHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EntityHangingClass extends Template.Class<EntityHangingHandle> {
-        public final Template.Field.Converted<IntVector3> blockPosition = new Template.Field.Converted<IntVector3>();
+        public final Template.Field.Converted<IntVector3> blockPosition = new Template.Field.Converted<>();
 
     }
 

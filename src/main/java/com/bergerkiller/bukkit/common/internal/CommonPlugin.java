@@ -21,7 +21,6 @@ import com.bergerkiller.bukkit.common.internal.hooks.LookupEntityClassMap;
 import com.bergerkiller.bukkit.common.internal.logic.EntityAddRemoveHandler;
 import com.bergerkiller.bukkit.common.internal.network.CommonPacketHandler;
 import com.bergerkiller.bukkit.common.internal.network.ProtocolLibPacketHandler;
-import com.bergerkiller.bukkit.common.io.ClassRewriter;
 import com.bergerkiller.bukkit.common.map.MapColorPalette;
 import com.bergerkiller.bukkit.common.metrics.MyDependingPluginsGraph;
 import com.bergerkiller.bukkit.common.metrics.SoftDependenciesGraph;
@@ -33,6 +32,7 @@ import com.bergerkiller.bukkit.common.utils.WorldUtil;
 import com.bergerkiller.generated.net.minecraft.server.EntityPlayerHandle;
 import com.bergerkiller.generated.net.minecraft.server.NBTBaseHandle;
 import com.bergerkiller.mountiplex.MountiplexUtil;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 import com.bergerkiller.mountiplex.reflection.util.ASMUtil;
 
 import org.bukkit.Bukkit;
@@ -183,7 +183,7 @@ public class CommonPlugin extends PluginBase {
         }
 
         // Remove any entity controllers set for the entities that were removed
-        EntityHook hook = EntityHook.get(HandleConversion.toEntityHandle(e), EntityHook.class);
+        EntityHook hook = ClassInterceptor.get(HandleConversion.toEntityHandle(e), EntityHook.class);
         if (hook != null && hook.hasController()) {
             hook.getController().getEntity().setController(null);
         }
@@ -363,15 +363,10 @@ public class CommonPlugin extends PluginBase {
 
         // Modify the BlockStateProxy class on MC <= 1.12.2, because BlockData does not exist there.
         if (Common.evaluateMCVersion("<=", "1.12.2")) {
-            this.rewriteClass("com.bergerkiller.bukkit.common.proxies.BlockStateProxy", new ClassRewriter() {
-                @Override
-                public byte[] rewrite(JavaPlugin plugin, String name, byte[] classBytes) {
-                    return ASMUtil.removeClassMethods(classBytes, new HashSet<String>(Arrays.asList(
-                            "getBlockData()Lorg/bukkit/block/data/BlockData;",
-                            "setBlockData(Lorg/bukkit/block/data/BlockData;)V"
-                    )));
-                }
-            });
+            this.rewriteClass("com.bergerkiller.bukkit.common.proxies.BlockStateProxy", (plugin, name, classBytes) -> ASMUtil.removeClassMethods(classBytes, new HashSet<>(Arrays.asList(
+                    "getBlockData()Lorg/bukkit/block/data/BlockData;",
+                    "setBlockData(Lorg/bukkit/block/data/BlockData;)V"
+            ))));
         }
 
         // Load the classes contained in this library
@@ -381,7 +376,7 @@ public class CommonPlugin extends PluginBase {
     @Override
     public void disable() {
         // Erase all traces of BKCommonLib from this server
-        Collection<Entity> entities = new ArrayList<Entity>();
+        Collection<Entity> entities = new ArrayList<>();
         for (World world : WorldUtil.getWorlds()) {
             // Unhook chunk providers
             ChunkGeneratorHook.unhook(world);
@@ -529,7 +524,7 @@ public class CommonPlugin extends PluginBase {
         eventFactory = new CommonEventFactory();
 
         // Initialize entity map (needs to be here because of CommonPlugin instance needed)
-        playerMetadata = new EntityMap<Player, CommonPlayerMeta>();
+        playerMetadata = new EntityMap<>();
 
         // Register events and tasks, initialize
         register(listener = new CommonListener());
@@ -558,13 +553,11 @@ public class CommonPlugin extends PluginBase {
         }
 
         // Operations to execute the next tick (when the server has started)
-        CommonUtil.nextTick(new Runnable() {
-            public void run() {
-                // Set server started state
-                isServerStarted = true;
-                // Tell the tabs to initialize the initial dimensions
-                getTabController().setDefaultSize();
-            }
+        CommonUtil.nextTick(() -> {
+            // Set server started state
+            isServerStarted = true;
+            // Tell the tabs to initialize the initial dimensions
+            getTabController().setDefaultSize();
         });
 
         // Register listeners and hooks
@@ -612,9 +605,9 @@ public class CommonPlugin extends PluginBase {
                     message.green(variable);
                 }
             } else {
-                List<String> variableNames = new ArrayList<String>(args.length);
-                List<TypedValue> variables = new ArrayList<TypedValue>(args.length);
-                List<String> values = new ArrayList<String>(args.length);
+                List<String> variableNames = new ArrayList<>(args.length);
+                List<TypedValue> variables = new ArrayList<>(args.length);
+                List<String> values = new ArrayList<>(args.length);
                 for (String arg : args) {
                     TypedValue variable = debugVariables.get(arg);
                     if (variable != null) {
@@ -813,15 +806,19 @@ public class CommonPlugin extends PluginBase {
             this.listener.onNextTicked(runnable, executionTime);
         }
 
+        @Override
         public void onChunkLoad(Chunk chunk, long executionTime) {
         }
 
+        @Override
         public void onChunkGenerate(Chunk chunk, long executionTime) {
         }
 
+        @Override
         public void onChunkUnloading(World world, long executionTime) {
         }
 
+        @Override
         public void onChunkPopulate(Chunk chunk, BlockPopulator populator, long executionTime) {
         }
     }
@@ -853,8 +850,8 @@ public class CommonPlugin extends PluginBase {
         public void onNextTicked(Runnable runnable, long executionTime) {
             if (this.active) {
                 try {
-                    for (int i = 0; i < instance.timingsListeners.size(); i++) {
-                        instance.timingsListeners.get(i).onNextTicked(runnable, executionTime);
+                    for (TimingsListener element : instance.timingsListeners) {
+                        element.onNextTicked(runnable, executionTime);
                     }
                 } catch (Throwable t) {
                 	Logging.LOGGER_TIMINGS.log(Level.SEVERE, "An error occurred while calling timings event", t);
@@ -866,8 +863,8 @@ public class CommonPlugin extends PluginBase {
         public void onChunkLoad(Chunk chunk, long executionTime) {
             if (this.active) {
                 try {
-                    for (int i = 0; i < instance.timingsListeners.size(); i++) {
-                        instance.timingsListeners.get(i).onChunkLoad(chunk, executionTime);
+                    for (TimingsListener element : instance.timingsListeners) {
+                        element.onChunkLoad(chunk, executionTime);
                     }
                 } catch (Throwable t) {
                 	Logging.LOGGER_TIMINGS.log(Level.SEVERE, "An error occurred while calling timings event", t);
@@ -879,8 +876,8 @@ public class CommonPlugin extends PluginBase {
         public void onChunkGenerate(Chunk chunk, long executionTime) {
             if (this.active) {
                 try {
-                    for (int i = 0; i < instance.timingsListeners.size(); i++) {
-                        instance.timingsListeners.get(i).onChunkGenerate(chunk, executionTime);
+                    for (TimingsListener element : instance.timingsListeners) {
+                        element.onChunkGenerate(chunk, executionTime);
                     }
                 } catch (Throwable t) {
                 	Logging.LOGGER_TIMINGS.log(Level.SEVERE, "An error occurred while calling timings event", t);
@@ -892,8 +889,8 @@ public class CommonPlugin extends PluginBase {
         public void onChunkUnloading(World world, long executionTime) {
             if (this.active) {
                 try {
-                    for (int i = 0; i < instance.timingsListeners.size(); i++) {
-                        instance.timingsListeners.get(i).onChunkUnloading(world, executionTime);
+                    for (TimingsListener element : instance.timingsListeners) {
+                        element.onChunkUnloading(world, executionTime);
                     }
                 } catch (Throwable t) {
                 	Logging.LOGGER_TIMINGS.log(Level.SEVERE, "An error occurred while calling timings event", t);
@@ -905,8 +902,8 @@ public class CommonPlugin extends PluginBase {
         public void onChunkPopulate(Chunk chunk, BlockPopulator populator, long executionTime) {
             if (this.active) {
                 try {
-                    for (int i = 0; i < instance.timingsListeners.size(); i++) {
-                        instance.timingsListeners.get(i).onChunkPopulate(chunk, populator, executionTime);
+                    for (TimingsListener element : instance.timingsListeners) {
+                        element.onChunkPopulate(chunk, populator, executionTime);
                     }
                 } catch (Throwable t) {
                 	Logging.LOGGER_TIMINGS.log(Level.SEVERE, "An error occurred while calling timings event", t);

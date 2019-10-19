@@ -32,9 +32,9 @@ public abstract class DimensionManagerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class DimensionManagerClass extends Template.Class<DimensionManagerHandle> {
-        public final Template.StaticMethod.Converted<Object> fromId = new Template.StaticMethod.Converted<Object>();
+        public final Template.StaticMethod.Converted<Object> fromId = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<Integer> getId = new Template.Method<Integer>();
+        public final Template.Method<Integer> getId = new Template.Method<>();
 
     }
 

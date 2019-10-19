@@ -67,12 +67,12 @@ public class NMSNBT {
         if (nbtTagHandle == null) {
             return (byte) 0;
         }
-        return NMSNBT.Base.getTypeId.invoke(nbtTagHandle).byteValue();
+        return NMSNBT.Base.getTypeId.invoke(nbtTagHandle);
     }
 
     public static class Type {
-        private static final ClassMap<Type> dataTags = new ClassMap<Type>();
-        private static final Map<Class<?>, Type> nbtTags = new HashMap<Class<?>, Type>();
+        private static final ClassMap<Type> dataTags = new ClassMap<>();
+        private static final Map<Class<?>, Type> nbtTags = new HashMap<>();
         private static final String NBTTagLongArray_datafield = Common.evaluateMCVersion(">=", "1.13") ? "f" : "b";
 
         public final Class<?> nbtType;
@@ -244,7 +244,7 @@ public class NMSNBT {
             } else if (NMSNBT.Compound.T.isInstance(handle)) {
                 // In case of compound: show all key: value pairs on several lines
                 // Make sure to sort the map by key name first for easier display!
-                TreeMap<String, Object> elements = new TreeMap<String, Object>((Map<String, Object>) getData(handle));
+                TreeMap<String, Object> elements = new TreeMap<>((Map<String, Object>) getData(handle));
                 text.append(elements.size()).append(" entries {");
                 for (Entry<String, Object> handleElem : elements.entrySet()) {
                     text.append('\n').append(indentTxt).append("  ");
@@ -277,7 +277,7 @@ public class NMSNBT {
                 if (NMSNBT.List.T.isType(nbtType)) {
                     // Create a new list of valid NBT handles
                     java.util.List<Object> oldData = (java.util.List<Object>) data;
-                    ArrayList<Object> newData = new ArrayList<Object>(oldData.size());
+                    ArrayList<Object> newData = new ArrayList<>(oldData.size());
                     byte type = 0;
                     for (Object element : oldData) {
                         Object base;
@@ -298,7 +298,7 @@ public class NMSNBT {
                 } else if (NMSNBT.Compound.T.isType(nbtType)) {
                     // Fix up the map data
                     Map<Object, Object> oldData = (Map<Object, Object>) data;
-                    Map<String, Object> newData = new HashMap<String, Object>(oldData.size());
+                    Map<String, Object> newData = new HashMap<>(oldData.size());
                     for (Entry<Object, Object> entry : oldData.entrySet()) {
                         Object base;
                         final String key = entry.getKey().toString();
@@ -377,7 +377,7 @@ public class NMSNBT {
             public static final MethodAccessor<Void> writeTagCompound = T.selectMethod("public static void a(NBTTagCompound nbttagcompound, DataOutput dataoutput)");
 
             private static final Class<?> readLimiter_t = CommonUtil.getNMSClass("NBTReadLimiter");
-            private static final SafeField<?> inf_lim = new SafeField<Object>(readLimiter_t, "a", readLimiter_t);
+            private static final SafeField<?> inf_lim = new SafeField<>(readLimiter_t, "a", readLimiter_t);
             public static Object getNoReadLimiter() {
                 return inf_lim.get(null);
             }

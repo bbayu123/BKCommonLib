@@ -42,10 +42,10 @@ public abstract class PacketPlayOutEntityMetadataHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutEntityMetadataClass extends Template.Class<PacketPlayOutEntityMetadataHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutEntityMetadataHandle> constr_entityId_datawatcher_includeUnchangedData = new Template.Constructor.Converted<PacketPlayOutEntityMetadataHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutEntityMetadataHandle> constr_entityId_datawatcher_includeUnchangedData = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer entityId = new Template.Field.Integer();
-        public final Template.Field.Converted<List<Item<Object>>> metadataItems = new Template.Field.Converted<List<Item<Object>>>();
+        public final Template.Field.Converted<List<Item<Object>>> metadataItems = new Template.Field.Converted<>();
 
     }
 

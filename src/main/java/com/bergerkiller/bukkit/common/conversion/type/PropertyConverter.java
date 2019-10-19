@@ -94,7 +94,7 @@ public abstract class PropertyConverter<T> extends Converter<Object, T> {
         public Object convertInput(Object value) {
             Integer id = toPaintingFacingId.convert(value);
             if (id != null) {
-                final int idInt = id.intValue();
+                final int idInt = id;
                 if (LogicUtil.isInBounds(paintingFaces, idInt)) {
                     return paintingFaces[idInt].getRaw();
                 }
@@ -104,7 +104,7 @@ public abstract class PropertyConverter<T> extends Converter<Object, T> {
     };
 
     // ======================= Material -> EntityType for Minecarts =============================
-    private static final EnumMap<Material, EntityType> matToMinecartType = new EnumMap<Material, EntityType>(Material.class);
+    private static final EnumMap<Material, EntityType> matToMinecartType = new EnumMap<>(Material.class);
     private static void storeMinecartTypes(EntityType type, String... materialNames) {
         for (String materialName : materialNames) {
             Material mat = CommonLegacyMaterials.getMaterial(materialName);
@@ -175,7 +175,7 @@ public abstract class PropertyConverter<T> extends Converter<Object, T> {
 
     @SuppressWarnings("unchecked")
     public PropertyConverter(Class<?> outputType) {
-        super(Object.class, (Class<T>) outputType);
+        super(Object.class, outputType);
     }
 
 }

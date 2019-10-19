@@ -32,7 +32,7 @@ public abstract class ExplosionHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ExplosionClass extends Template.Class<ExplosionHandle> {
-        public final Template.StaticMethod.Converted<ExplosionHandle> createNew = new Template.StaticMethod.Converted<ExplosionHandle>();
+        public final Template.StaticMethod.Converted<ExplosionHandle> createNew = new Template.StaticMethod.Converted<>();
 
     }
 

@@ -73,7 +73,7 @@ public class List2D<E> implements List<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new List2DIterator<E>(lists);
+        return new List2DIterator<>(lists);
     }
 
     @Override
@@ -194,12 +194,12 @@ public class List2D<E> implements List<E> {
 
     @Override
     public ListIterator<E> listIterator() {
-        return new List2DListIterator<E>(lists);
+        return new List2DListIterator<>(lists);
     }
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        return new List2DListIterator<E>(lists, index);
+        return new List2DListIterator<>(lists, index);
     }
 
     @Override

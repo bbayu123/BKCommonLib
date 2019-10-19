@@ -32,12 +32,12 @@ public abstract class EnumDirectionHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EnumDirectionClass extends Template.Class<EnumDirectionHandle> {
-        public final Template.EnumConstant.Converted<EnumDirectionHandle> DOWN = new Template.EnumConstant.Converted<EnumDirectionHandle>();
-        public final Template.EnumConstant.Converted<EnumDirectionHandle> UP = new Template.EnumConstant.Converted<EnumDirectionHandle>();
-        public final Template.EnumConstant.Converted<EnumDirectionHandle> NORTH = new Template.EnumConstant.Converted<EnumDirectionHandle>();
-        public final Template.EnumConstant.Converted<EnumDirectionHandle> SOUTH = new Template.EnumConstant.Converted<EnumDirectionHandle>();
-        public final Template.EnumConstant.Converted<EnumDirectionHandle> WEST = new Template.EnumConstant.Converted<EnumDirectionHandle>();
-        public final Template.EnumConstant.Converted<EnumDirectionHandle> EAST = new Template.EnumConstant.Converted<EnumDirectionHandle>();
+        public final Template.EnumConstant.Converted<EnumDirectionHandle> DOWN = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumDirectionHandle> UP = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumDirectionHandle> NORTH = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumDirectionHandle> SOUTH = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumDirectionHandle> WEST = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumDirectionHandle> EAST = new Template.EnumConstant.Converted<>();
 
     }
 
@@ -72,9 +72,9 @@ public abstract class EnumDirectionHandle extends Template.Handle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class EnumAxisClass extends Template.Class<EnumAxisHandle> {
-            public final Template.EnumConstant.Converted<EnumAxisHandle> X = new Template.EnumConstant.Converted<EnumAxisHandle>();
-            public final Template.EnumConstant.Converted<EnumAxisHandle> Y = new Template.EnumConstant.Converted<EnumAxisHandle>();
-            public final Template.EnumConstant.Converted<EnumAxisHandle> Z = new Template.EnumConstant.Converted<EnumAxisHandle>();
+            public final Template.EnumConstant.Converted<EnumAxisHandle> X = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumAxisHandle> Y = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumAxisHandle> Z = new Template.EnumConstant.Converted<>();
 
         }
 

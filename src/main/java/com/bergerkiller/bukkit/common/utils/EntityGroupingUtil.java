@@ -14,8 +14,8 @@ import java.util.logging.Level;
  */
 public class EntityGroupingUtil {
 
-    private static final StringMapCaseInsensitive<Set<EntityCategory>> entityCategories = new StringMapCaseInsensitive<Set<EntityCategory>>();
-    private static final EnumMap<EntityType, String> typeNames = new EnumMap<EntityType, String>(EntityType.class);
+    private static final StringMapCaseInsensitive<Set<EntityCategory>> entityCategories = new StringMapCaseInsensitive<>();
+    private static final EnumMap<EntityType, String> typeNames = new EnumMap<>(EntityType.class);
 
     static {
         // Note: These categories are ONLY used to map by name
@@ -39,7 +39,7 @@ public class EntityGroupingUtil {
                 x.addAll(getCategories(type));
                 entityCategories.put(name, x);
             } else {
-                Set<EntityCategory> x = new HashSet<EntityCategory>();
+                Set<EntityCategory> x = new HashSet<>();
                 x.addAll(getCategories(type));
                 entityCategories.put(name, x);
             }
@@ -279,7 +279,7 @@ public class EntityGroupingUtil {
      * @return Set<EntityCategory> of all matching categories
      */
     public static Set<EntityCategory> getCategories(String name) {
-        Set<EntityCategory> x = new HashSet<EntityCategory>();
+        Set<EntityCategory> x = new HashSet<>();
         x.add(EntityCategory.OTHER);
         return LogicUtil.fixNull(entityCategories.get(name), x);
     }
@@ -301,7 +301,7 @@ public class EntityGroupingUtil {
      * @return Set<EntityCategory> of all matching categories
      */
     public static Set<EntityCategory> getCategories(Entity entity) {
-        Set<EntityCategory> resultSet = new HashSet<EntityCategory>();
+        Set<EntityCategory> resultSet = new HashSet<>();
         if (isKillerBunny(entity)) {
             resultSet.add(EntityCategory.KILLER_BUNNY);
             resultSet.add(EntityCategory.ANIMAL);
@@ -330,7 +330,7 @@ public class EntityGroupingUtil {
      * @return Set<EntityCategory> of all matching categories
      */
     public static Set<EntityCategory> getCategories(Class<? extends Entity> entityClass) {
-        Set<EntityCategory> resultSet = new HashSet<EntityCategory>();
+        Set<EntityCategory> resultSet = new HashSet<>();
         addMatchingCategories(resultSet, entityClass);
         if (resultSet.size() == 0) {
             resultSet.add(EntityCategory.OTHER);
@@ -582,7 +582,7 @@ public class EntityGroupingUtil {
         }
 
         private void setEntityClasses() {
-            this.entityClasses = new HashSet<Class<?>>();
+            this.entityClasses = new HashSet<>();
         }
 
         public boolean isMob() {
@@ -606,7 +606,7 @@ public class EntityGroupingUtil {
         }
 
         public void setEntityClasses(Class<?>[] entityClasses) {
-            this.setEntityClasses(new HashSet<Class<?>>(Arrays.asList(entityClasses)));
+            this.setEntityClasses(new HashSet<>(Arrays.asList(entityClasses)));
             this.entityClasses.remove(null);
         }
 

@@ -72,21 +72,21 @@ public abstract class DataWatcherHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class DataWatcherClass extends Template.Class<DataWatcherHandle> {
-        public final Template.Constructor.Converted<DataWatcherHandle> constr_owner = new Template.Constructor.Converted<DataWatcherHandle>();
+        public final Template.Constructor.Converted<DataWatcherHandle> constr_owner = new Template.Constructor.Converted<>();
 
-        public final Template.Field.Converted<EntityHandle> owner = new Template.Field.Converted<EntityHandle>();
+        public final Template.Field.Converted<EntityHandle> owner = new Template.Field.Converted<>();
 
-        public final Template.Method.Converted<List<Item<?>>> unwatchAndReturnAllWatched = new Template.Method.Converted<List<Item<?>>>();
-        public final Template.Method.Converted<List<Item<?>>> returnAllWatched = new Template.Method.Converted<List<Item<?>>>();
-        public final Template.Method.Converted<Item<Object>> read = new Template.Method.Converted<Item<Object>>();
+        public final Template.Method.Converted<List<Item<?>>> unwatchAndReturnAllWatched = new Template.Method.Converted<>();
+        public final Template.Method.Converted<List<Item<?>>> returnAllWatched = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Item<Object>> read = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Void> register = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<Void> register = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Object> get = new Template.Method.Converted<Object>();
+        public final Template.Method.Converted<Object> get = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Void> set = new Template.Method.Converted<Void>();
-        public final Template.Method<Boolean> isChanged = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> isEmpty = new Template.Method<Boolean>();
+        public final Template.Method.Converted<Void> set = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> isChanged = new Template.Method<>();
+        public final Template.Method<Boolean> isEmpty = new Template.Method<>();
 
     }
 
@@ -133,22 +133,22 @@ public abstract class DataWatcherHandle extends Template.Handle {
          */
         public static final class ItemClass extends Template.Class<ItemHandle> {
             @Template.Optional
-            public final Template.Constructor.Converted<ItemHandle> constr_key_value = new Template.Constructor.Converted<ItemHandle>();
+            public final Template.Constructor.Converted<ItemHandle> constr_key_value = new Template.Constructor.Converted<>();
             @Template.Optional
-            public final Template.Constructor.Converted<ItemHandle> constr_typeId_keyId_value = new Template.Constructor.Converted<ItemHandle>();
+            public final Template.Constructor.Converted<ItemHandle> constr_typeId_keyId_value = new Template.Constructor.Converted<>();
 
             @Template.Optional
             public final Template.Field.Integer typeId = new Template.Field.Integer();
             @Template.Optional
             public final Template.Field.Integer keyId = new Template.Field.Integer();
             @Template.Optional
-            public final Template.Field.Converted<Key<?>> key = new Template.Field.Converted<Key<?>>();
+            public final Template.Field.Converted<Key<?>> key = new Template.Field.Converted<>();
             @Template.Optional
-            public final Template.Field<Object> value = new Template.Field<Object>();
+            public final Template.Field<Object> value = new Template.Field<>();
             public final Template.Field.Boolean changed = new Template.Field.Boolean();
 
-            public final Template.Method<Object> getValue = new Template.Method<Object>();
-            public final Template.Method<Void> setValue = new Template.Method<Void>();
+            public final Template.Method<Object> getValue = new Template.Method<>();
+            public final Template.Method<Void> setValue = new Template.Method<>();
 
         }
 

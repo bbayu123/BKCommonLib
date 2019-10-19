@@ -30,10 +30,12 @@ import com.bergerkiller.bukkit.common.utils.ItemUtil;
 import com.bergerkiller.bukkit.common.utils.LogicUtil;
 import com.bergerkiller.bukkit.common.utils.PacketUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.generated.net.minecraft.server.ContainerAnvilHandle;
 import com.bergerkiller.generated.net.minecraft.server.ContainerHandle;
 import com.bergerkiller.generated.net.minecraft.server.EntityPlayerHandle;
 import com.bergerkiller.mountiplex.reflection.ClassHook;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 
 /**
  * Add this widget to open an interactive anvil window, where the player
@@ -156,13 +158,8 @@ public class MapWidgetAnvil extends MapWidget {
                 // Required for handling text changes < MC 1.9
                 if (!CommonCapabilities.HAS_PREPARE_ANVIL_EVENT) {
                     ContainerAnvilHandle container = ContainerAnvilHandle.fromBukkit(view);
-                    LegacyContainerAnvilHook hook = ClassHook.get(container.getRaw(), LegacyContainerAnvilHook.class);
-                    hook.textChangeCallback = new Runnable() {
-                        @Override
-                        public void run() {
-                            handleTextChange(view);
-                        }
-                    };
+                    LegacyContainerAnvilHook hook = ClassInterceptor.get(container.getRaw(), LegacyContainerAnvilHook.class);
+                    hook.textChangeCallback = () -> handleTextChange(view);
                 }
 
                 this._openInventories.add(view);
@@ -285,7 +282,7 @@ public class MapWidgetAnvil extends MapWidget {
         }
 
         protected ItemStack createItem() {
-            if (getMaterial() == null || BlockData.AIR.isType(getMaterial())) {
+            if (getMaterial() == null || BlockDataRegistry.AIR.isType(getMaterial())) {
                 return null;
             } else {
                 ItemStack item = ItemUtil.createItem(getMaterial(), 1);
@@ -389,12 +386,7 @@ public class MapWidgetAnvil extends MapWidget {
             onClick(button);
 
             if (_isWindowOpen) {
-                CommonUtil.nextTick(new Runnable() {
-                    @Override
-                    public void run() {
-                        refreshButtons(view);
-                    }
-                });
+                CommonUtil.nextTick(() -> refreshButtons(view));
             }
         }
     }

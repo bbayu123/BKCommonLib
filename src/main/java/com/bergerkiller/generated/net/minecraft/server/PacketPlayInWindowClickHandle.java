@@ -44,8 +44,8 @@ public abstract class PacketPlayInWindowClickHandle extends PacketHandle {
         public final Template.Field.Integer slot = new Template.Field.Integer();
         public final Template.Field.Integer button = new Template.Field.Integer();
         public final Template.Field.Short action = new Template.Field.Short();
-        public final Template.Field.Converted<ItemStack> item = new Template.Field.Converted<ItemStack>();
-        public final Template.Field.Converted<InventoryClickType> mode = new Template.Field.Converted<InventoryClickType>();
+        public final Template.Field.Converted<ItemStack> item = new Template.Field.Converted<>();
+        public final Template.Field.Converted<InventoryClickType> mode = new Template.Field.Converted<>();
 
     }
 

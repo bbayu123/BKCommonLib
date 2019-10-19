@@ -33,11 +33,11 @@ public abstract class Vector3fHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class Vector3fClass extends Template.Class<Vector3fHandle> {
-        public final Template.Constructor.Converted<Vector3fHandle> constr_x_y_z = new Template.Constructor.Converted<Vector3fHandle>();
+        public final Template.Constructor.Converted<Vector3fHandle> constr_x_y_z = new Template.Constructor.Converted<>();
 
-        public final Template.Method<Float> getX = new Template.Method<Float>();
-        public final Template.Method<Float> getY = new Template.Method<Float>();
-        public final Template.Method<Float> getZ = new Template.Method<Float>();
+        public final Template.Method<Float> getX = new Template.Method<>();
+        public final Template.Method<Float> getY = new Template.Method<>();
+        public final Template.Method<Float> getZ = new Template.Method<>();
 
     }
 

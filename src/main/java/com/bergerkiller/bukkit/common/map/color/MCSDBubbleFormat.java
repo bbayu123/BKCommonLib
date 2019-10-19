@@ -27,7 +27,7 @@ import com.bergerkiller.bukkit.common.utils.CommonUtil;
  */
 public class MCSDBubbleFormat extends MapColorSpaceData {
     public final boolean[][] strands = new boolean[256][256 * 256];
-    public final ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
+    public final ArrayList<Bubble> bubbles = new ArrayList<>();
     private MapColorSpaceData input_colors = null;
     private int max_iterations = 1000;
 
@@ -271,7 +271,7 @@ public class MCSDBubbleFormat extends MapColorSpaceData {
 
             // Write missing color information using bit encoding
             Logging.LOGGER_MAPDISPLAY.info("Correcting missing color information...");
-            List<BitPacket> colorCodes = new ArrayList<BitPacket>();
+            List<BitPacket> colorCodes = new ArrayList<>();
             for (int i = 0; i < (1 << 24); i++) {
                 if (this.get(i) == 0) {
                     int x = (i & 0xFF);
@@ -410,9 +410,9 @@ public class MCSDBubbleFormat extends MapColorSpaceData {
         // Then try to optimize the order of the remaining intersections
         // Then finally, try to optimize the order in which lines are drawn
         boolean[] cells = this.strands[z];
-        List<IntVector2> edges = new ArrayList<IntVector2>();
-        List<IntVector2> intersects = new ArrayList<IntVector2>();
-        List<IntVector2> lines = new ArrayList<IntVector2>();
+        List<IntVector2> edges = new ArrayList<>();
+        List<IntVector2> intersects = new ArrayList<>();
+        List<IntVector2> lines = new ArrayList<>();
         {
             boolean[] data3x3 = new boolean[9];
             int index = 0;
@@ -488,7 +488,7 @@ public class MCSDBubbleFormat extends MapColorSpaceData {
         public int z_min;
         public int z_max;
         public byte color;
-        private final ArrayList<IntVector2> pixels = new ArrayList<IntVector2>();
+        private final ArrayList<IntVector2> pixels = new ArrayList<>();
 
         @Override
         public boolean equals(Object o) {

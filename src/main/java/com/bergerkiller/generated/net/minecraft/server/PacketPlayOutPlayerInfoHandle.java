@@ -38,10 +38,10 @@ public abstract class PacketPlayOutPlayerInfoHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutPlayerInfoClass extends Template.Class<PacketPlayOutPlayerInfoHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutPlayerInfoHandle> constr = new Template.Constructor.Converted<PacketPlayOutPlayerInfoHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutPlayerInfoHandle> constr = new Template.Constructor.Converted<>();
 
-        public final Template.Field.Converted<EnumPlayerInfoActionHandle> action = new Template.Field.Converted<EnumPlayerInfoActionHandle>();
-        public final Template.Field.Converted<List<PlayerInfoDataHandle>> players = new Template.Field.Converted<List<PlayerInfoDataHandle>>();
+        public final Template.Field.Converted<EnumPlayerInfoActionHandle> action = new Template.Field.Converted<>();
+        public final Template.Field.Converted<List<PlayerInfoDataHandle>> players = new Template.Field.Converted<>();
 
     }
 
@@ -77,12 +77,12 @@ public abstract class PacketPlayOutPlayerInfoHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class PlayerInfoDataClass extends Template.Class<PlayerInfoDataHandle> {
-            public final Template.Constructor.Converted<PlayerInfoDataHandle> constr_packet_profile_ping_gameMode_listName = new Template.Constructor.Converted<PlayerInfoDataHandle>();
+            public final Template.Constructor.Converted<PlayerInfoDataHandle> constr_packet_profile_ping_gameMode_listName = new Template.Constructor.Converted<>();
 
-            public final Template.Method.Converted<GameProfileHandle> getProfile = new Template.Method.Converted<GameProfileHandle>();
-            public final Template.Method<Integer> getPing = new Template.Method<Integer>();
-            public final Template.Method.Converted<GameMode> getGameMode = new Template.Method.Converted<GameMode>();
-            public final Template.Method.Converted<ChatText> getListName = new Template.Method.Converted<ChatText>();
+            public final Template.Method.Converted<GameProfileHandle> getProfile = new Template.Method.Converted<>();
+            public final Template.Method<Integer> getPing = new Template.Method<>();
+            public final Template.Method.Converted<GameMode> getGameMode = new Template.Method.Converted<>();
+            public final Template.Method.Converted<ChatText> getListName = new Template.Method.Converted<>();
 
         }
 
@@ -117,11 +117,11 @@ public abstract class PacketPlayOutPlayerInfoHandle extends PacketHandle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class EnumPlayerInfoActionClass extends Template.Class<EnumPlayerInfoActionHandle> {
-            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> ADD_PLAYER = new Template.EnumConstant.Converted<EnumPlayerInfoActionHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> UPDATE_GAME_MODE = new Template.EnumConstant.Converted<EnumPlayerInfoActionHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> UPDATE_LATENCY = new Template.EnumConstant.Converted<EnumPlayerInfoActionHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> UPDATE_DISPLAY_NAME = new Template.EnumConstant.Converted<EnumPlayerInfoActionHandle>();
-            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> REMOVE_PLAYER = new Template.EnumConstant.Converted<EnumPlayerInfoActionHandle>();
+            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> ADD_PLAYER = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> UPDATE_GAME_MODE = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> UPDATE_LATENCY = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> UPDATE_DISPLAY_NAME = new Template.EnumConstant.Converted<>();
+            public final Template.EnumConstant.Converted<EnumPlayerInfoActionHandle> REMOVE_PLAYER = new Template.EnumConstant.Converted<>();
 
         }
 

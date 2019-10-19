@@ -46,15 +46,15 @@ public abstract class GameProfileHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class GameProfileClass extends Template.Class<GameProfileHandle> {
-        public final Template.Constructor.Converted<GameProfileHandle> constr_uuid_name = new Template.Constructor.Converted<GameProfileHandle>();
+        public final Template.Constructor.Converted<GameProfileHandle> constr_uuid_name = new Template.Constructor.Converted<>();
 
-        public final Template.Method<UUID> getId = new Template.Method<UUID>();
-        public final Template.Method<String> getName = new Template.Method<String>();
-        public final Template.Method<Void> clearProperties = new Template.Method<Void>();
-        public final Template.Method<Set<String>> getPropertyKeys = new Template.Method<Set<String>>();
-        public final Template.Method.Converted<Collection<PropertyHandle>> getProperties = new Template.Method.Converted<Collection<PropertyHandle>>();
-        public final Template.Method.Converted<Boolean> putProperty = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Void> setAllProperties = new Template.Method.Converted<Void>();
+        public final Template.Method<UUID> getId = new Template.Method<>();
+        public final Template.Method<String> getName = new Template.Method<>();
+        public final Template.Method<Void> clearProperties = new Template.Method<>();
+        public final Template.Method<Set<String>> getPropertyKeys = new Template.Method<>();
+        public final Template.Method.Converted<Collection<PropertyHandle>> getProperties = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> putProperty = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setAllProperties = new Template.Method.Converted<>();
 
     }
 

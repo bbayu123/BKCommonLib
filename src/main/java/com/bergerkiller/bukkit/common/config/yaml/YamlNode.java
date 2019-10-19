@@ -42,7 +42,7 @@ public class YamlNode {
      * @param entry
      */
     protected YamlNode(YamlEntry entry) {
-        this._children = new ArrayList<YamlEntry>(10);
+        this._children = new ArrayList<>(10);
         if (entry == null) {
             this._root = new YamlRoot();
             this._entry = new YamlEntry(this);
@@ -242,7 +242,7 @@ public class YamlNode {
      */
     public Map<String, Object> getValues() {
         //TODO: Efficiency!
-        HashMap<String, Object> values = new HashMap<String, Object>();
+        HashMap<String, Object> values = new HashMap<>();
         for (YamlEntry entry : this._children) {
             values.put(entry.getPath().name(), entry.getValue());
         }
@@ -304,7 +304,7 @@ public class YamlNode {
      */
     public Set<YamlNode> getNodes() {
         //TODO: Efficiency!
-        LinkedHashSet<YamlNode> result = new LinkedHashSet<YamlNode>();
+        LinkedHashSet<YamlNode> result = new LinkedHashSet<>();
         for (YamlEntry child : this._children) {
             if (child.isNodeValue()) {
                 result.add((YamlNode) child.getValue());

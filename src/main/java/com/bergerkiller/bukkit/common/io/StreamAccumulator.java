@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
  * @param <T>
  */
 public class StreamAccumulator<T> {
-    private final ArrayList<T> buffer = new ArrayList<T>();
+    private final ArrayList<T> buffer = new ArrayList<>();
     private Iterator<T> iterator = null;
 
     /**
@@ -47,6 +47,7 @@ public class StreamAccumulator<T> {
         return StreamSupport.stream(new Spliterators.AbstractSpliterator<T>(Long.MAX_VALUE, Spliterator.NONNULL | Spliterator.IMMUTABLE) {
             private int index = 0;
 
+            @Override
             public boolean tryAdvance(Consumer<? super T> consumer) {
                 T object;
 

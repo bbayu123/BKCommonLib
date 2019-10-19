@@ -81,10 +81,10 @@ public class MapColorPalette {
                     // 0.0 = black
                     // 1.0 = natural color
                     // 2.0 = white
-                    float f = (float) b / 128.0f;
-                    int sr = (int) ((float) color_a.getRed() * f);
-                    int sg = (int) ((float) color_a.getGreen() * f);
-                    int sb = (int) ((float) color_a.getBlue() * f);
+                    float f = b / 128.0f;
+                    int sr = (int) (color_a.getRed() * f);
+                    int sg = (int) (color_a.getGreen() * f);
+                    int sb = (int) (color_a.getBlue() * f);
                     COLOR_MAP_SPECULAR[index++] = getColor(sr, sg, sb);
                 }
             }

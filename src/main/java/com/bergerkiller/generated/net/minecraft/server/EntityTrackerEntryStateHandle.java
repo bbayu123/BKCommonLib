@@ -163,7 +163,7 @@ public abstract class EntityTrackerEntryStateHandle extends Template.Handle {
         if (protAngle >= 128) {
             protAngle -= 256;
         }
-        return (float) protAngle * ROTATION_STEP;
+        return protAngle * ROTATION_STEP;
     }
 
     public void setLocX(double x) {
@@ -204,25 +204,25 @@ public abstract class EntityTrackerEntryStateHandle extends Template.Handle {
 
     public double getLocX() {
         if (T.long_xLoc.isAvailable()) {
-            return (double) T.long_xLoc.getLong(getRaw()) / 4096.0;
+            return T.long_xLoc.getLong(getRaw()) / 4096.0;
         } else {
-            return (double) T.int_xLoc.getInteger(getRaw()) / 32.0;
+            return T.int_xLoc.getInteger(getRaw()) / 32.0;
         }
     }
 
     public double getLocY() {
         if (T.long_yLoc.isAvailable()) {
-            return (double) T.long_yLoc.getLong(getRaw()) / 4096.0;
+            return T.long_yLoc.getLong(getRaw()) / 4096.0;
         } else {
-            return (double) T.int_yLoc.getInteger(getRaw()) / 32.0;
+            return T.int_yLoc.getInteger(getRaw()) / 32.0;
         }
     }
 
     public double getLocZ() {
         if (T.long_zLoc.isAvailable()) {
-            return (double) T.long_zLoc.getLong(getRaw()) / 4096.0;
+            return T.long_zLoc.getLong(getRaw()) / 4096.0;
         } else {
-            return (double) T.int_zLoc.getInteger(getRaw()) / 32.0;
+            return T.int_zLoc.getInteger(getRaw()) / 32.0;
         }
     }
 
@@ -259,7 +259,7 @@ public abstract class EntityTrackerEntryStateHandle extends Template.Handle {
      */
     public static final class EntityTrackerEntryStateClass extends Template.Class<EntityTrackerEntryStateHandle> {
         @Template.Readonly
-        public final Template.Field.Converted<EntityHandle> entity = new Template.Field.Converted<EntityHandle>();
+        public final Template.Field.Converted<EntityHandle> entity = new Template.Field.Converted<>();
         public final Template.Field.Integer updateInterval = new Template.Field.Integer();
         public final Template.Field.Boolean isMobile = new Template.Field.Boolean();
         @Template.Optional
@@ -284,17 +284,17 @@ public abstract class EntityTrackerEntryStateHandle extends Template.Handle {
         @Template.Optional
         public final Template.Field.Double opt_zVel = new Template.Field.Double();
         @Template.Optional
-        public final Template.Field.Converted<Vector> opt_velocity = new Template.Field.Converted<Vector>();
+        public final Template.Field.Converted<Vector> opt_velocity = new Template.Field.Converted<>();
         public final Template.Field.Integer tickCounter = new Template.Field.Integer();
         public final Template.Field.Integer timeSinceLocationSync = new Template.Field.Integer();
         @Template.Optional
-        public final Template.Field.Converted<List<Entity>> opt_passengers = new Template.Field.Converted<List<Entity>>();
+        public final Template.Field.Converted<List<Entity>> opt_passengers = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<Entity> opt_vehicle = new Template.Field.Converted<Entity>();
+        public final Template.Field.Converted<Entity> opt_vehicle = new Template.Field.Converted<>();
 
-        public final Template.Method<Boolean> checkTrackNeeded = new Template.Method<Boolean>();
-        public final Template.Method.Converted<CommonPacket> getSpawnPacket = new Template.Method.Converted<CommonPacket>();
-        public final Template.Method<Void> onTick = new Template.Method<Void>();
+        public final Template.Method<Boolean> checkTrackNeeded = new Template.Method<>();
+        public final Template.Method.Converted<CommonPacket> getSpawnPacket = new Template.Method.Converted<>();
+        public final Template.Method<Void> onTick = new Template.Method<>();
 
     }
 

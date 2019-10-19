@@ -57,21 +57,21 @@ public abstract class EntityHumanHandle extends EntityLivingHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EntityHumanClass extends Template.Class<EntityHumanHandle> {
-        public final Template.Field.Converted<Object> inventoryRaw = new Template.Field.Converted<Object>();
-        public final Template.Field.Converted<Object> enderChestRaw = new Template.Field.Converted<Object>();
-        public final Template.Field.Converted<ContainerHandle> activeContainer = new Template.Field.Converted<ContainerHandle>();
-        public final Template.Field.Converted<Object> foodDataRaw = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> inventoryRaw = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Object> enderChestRaw = new Template.Field.Converted<>();
+        public final Template.Field.Converted<ContainerHandle> activeContainer = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Object> foodDataRaw = new Template.Field.Converted<>();
         public final Template.Field.Integer sleepTicks = new Template.Field.Integer();
-        public final Template.Field.Converted<IntVector3> spawnCoord = new Template.Field.Converted<IntVector3>();
+        public final Template.Field.Converted<IntVector3> spawnCoord = new Template.Field.Converted<>();
         public final Template.Field.Boolean spawnForced = new Template.Field.Boolean();
-        public final Template.Field.Converted<PlayerAbilities> abilities = new Template.Field.Converted<PlayerAbilities>();
+        public final Template.Field.Converted<PlayerAbilities> abilities = new Template.Field.Converted<>();
         public final Template.Field.Integer expLevel = new Template.Field.Integer();
         public final Template.Field.Integer expTotal = new Template.Field.Integer();
         public final Template.Field.Float exp = new Template.Field.Float();
-        public final Template.Field.Converted<GameProfileHandle> gameProfile = new Template.Field.Converted<GameProfileHandle>();
-        public final Template.Field<String> spawnWorld = new Template.Field<String>();
+        public final Template.Field.Converted<GameProfileHandle> gameProfile = new Template.Field.Converted<>();
+        public final Template.Field<String> spawnWorld = new Template.Field<>();
 
-        public final Template.Method.Converted<Void> attack = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<Void> attack = new Template.Method.Converted<>();
 
     }
 

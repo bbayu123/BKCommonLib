@@ -54,10 +54,10 @@ public class BlockDataImpl extends BlockData {
     public static final int REGISTRY_MASK = (REGISTRY_SIZE - 1);
 
     public static final BlockDataConstant AIR;
-    public static final EnumMap<Material, BlockDataConstant> BY_MATERIAL = new EnumMap<Material, BlockDataConstant>(Material.class);
+    public static final EnumMap<Material, BlockDataConstant> BY_MATERIAL = new EnumMap<>(Material.class);
     public static final BlockDataConstant[] BY_ID_AND_DATA = new BlockDataConstant[REGISTRY_SIZE];
-    public static final Map<Object, BlockDataConstant> BY_BLOCK = new IdentityHashMap<Object, BlockDataConstant>();
-    public static final IdentityHashMap<Object, BlockDataConstant> BY_BLOCK_DATA = new IdentityHashMap<Object, BlockDataConstant>();
+    public static final Map<Object, BlockDataConstant> BY_BLOCK = new IdentityHashMap<>();
+    public static final IdentityHashMap<Object, BlockDataConstant> BY_BLOCK_DATA = new IdentityHashMap<>();
 
     // Legacy: array of all possible Material values with all possible legacy data values
     // Index into it by taking data x 1024 | mat.ordinal()
@@ -346,7 +346,7 @@ public class BlockDataImpl extends BlockData {
         } else {
             // Serialize all tokens into String key-value pairs
             Map<IBlockStateHandle, Comparable<?>> states = IBlockDataHandle.T.getStates.invoke(stateData);
-            Map<String, String> statesStr = new HashMap<String, String>(states.size());
+            Map<String, String> statesStr = new HashMap<>(states.size());
             for (Map.Entry<IBlockStateHandle, Comparable<?>> state : states.entrySet()) {
                 String key = state.getKey().getKeyToken();
                 String value = state.getKey().getValueToken(state.getValue());

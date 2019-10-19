@@ -40,13 +40,13 @@ public abstract class ContainerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ContainerClass extends Template.Class<ContainerHandle> {
-        public final Template.Field.Converted<List<ItemStack>> oldItems = new Template.Field.Converted<List<ItemStack>>();
-        public final Template.Field.Converted<List<SlotHandle>> slots = new Template.Field.Converted<List<SlotHandle>>();
+        public final Template.Field.Converted<List<ItemStack>> oldItems = new Template.Field.Converted<>();
+        public final Template.Field.Converted<List<SlotHandle>> slots = new Template.Field.Converted<>();
         public final Template.Field.Integer windowId = new Template.Field.Integer();
 
-        public final Template.StaticMethod<ContainerHandle> fromBukkit = new Template.StaticMethod<ContainerHandle>();
+        public final Template.StaticMethod<ContainerHandle> fromBukkit = new Template.StaticMethod<>();
 
-        public final Template.Method<InventoryView> getBukkitView = new Template.Method<InventoryView>();
+        public final Template.Method<InventoryView> getBukkitView = new Template.Method<>();
 
     }
 

@@ -203,17 +203,12 @@ public class ImplicitlySharedList<E> extends ImplicitlySharedHolder<List<E>> imp
      * @return iterable clone view of this list's data
      */
     public Iterable<E> cloneAsIterable() {
-        return new Iterable<E>() {
-            @Override
-            public Iterator<E> iterator() {
-                return new ReferencedListCopyIterator<E>(ImplicitlySharedList.this);
-            }
-        };
+        return () -> new ReferencedListCopyIterator<>(ImplicitlySharedList.this);
     }
 
     @Override
     public ImplicitlySharedList<E> clone() {
-        return new ImplicitlySharedList<E>(this);
+        return new ImplicitlySharedList<>(this);
     }
 
     private static final class ReferencedListCopyIterator<E> implements Iterator<E> {
@@ -377,11 +372,11 @@ public class ImplicitlySharedList<E> extends ImplicitlySharedHolder<List<E>> imp
         if (input instanceof ArrayList) {
             return (List<E>) ((ArrayList<E>) input).clone();
         } else if (input instanceof LinkedList) {
-            return new LinkedList<E>(input);
+            return new LinkedList<>(input);
         } else if (input instanceof Vector) {
             return (List<E>) ((Vector<E>) input).clone();
         } else {
-            return new ArrayList<E>(input);
+            return new ArrayList<>(input);
         }
     }
 

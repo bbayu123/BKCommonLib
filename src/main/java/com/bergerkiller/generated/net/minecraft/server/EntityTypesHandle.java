@@ -41,26 +41,26 @@ public abstract class EntityTypesHandle extends Template.Handle {
      */
     public static final class EntityTypesClass extends Template.Class<EntityTypesHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Map<String, Class<?>>> opt_nameTypeMap_1_10_2 = new Template.StaticField.Converted<Map<String, Class<?>>>();
+        public final Template.StaticField.Converted<Map<String, Class<?>>> opt_nameTypeMap_1_10_2 = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Map<Class<?>, String>> opt_typeNameMap_1_10_2 = new Template.StaticField.Converted<Map<Class<?>, String>>();
+        public final Template.StaticField.Converted<Map<Class<?>, String>> opt_typeNameMap_1_10_2 = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField<List<String>> opt_typeIdToName_1_11 = new Template.StaticField<List<String>>();
+        public final Template.StaticField<List<String>> opt_typeIdToName_1_11 = new Template.StaticField<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Map<Class<?>, Integer>> opt_typeIdMap_1_8 = new Template.StaticField.Converted<Map<Class<?>, Integer>>();
+        public final Template.StaticField.Converted<Map<Class<?>, Integer>> opt_typeIdMap_1_8 = new Template.StaticField.Converted<>();
 
         @Template.Optional
-        public final Template.StaticMethod.Converted<RegistryMaterialsHandle> opt_getRegistry = new Template.StaticMethod.Converted<RegistryMaterialsHandle>();
+        public final Template.StaticMethod.Converted<RegistryMaterialsHandle> opt_getRegistry = new Template.StaticMethod.Converted<>();
         @Template.Optional
-        public final Template.StaticMethod.Converted<EntityTypesHandle> fromEntityClass = new Template.StaticMethod.Converted<EntityTypesHandle>();
-        public final Template.StaticMethod<Class<?>> getEntityClass = new Template.StaticMethod<Class<?>>();
-        public final Template.StaticMethod<String> getEntityInternalName = new Template.StaticMethod<String>();
-        public final Template.StaticMethod<Integer> getEntityTypeId = new Template.StaticMethod<Integer>();
+        public final Template.StaticMethod.Converted<EntityTypesHandle> fromEntityClass = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod<Class<?>> getEntityClass = new Template.StaticMethod<>();
+        public final Template.StaticMethod<String> getEntityInternalName = new Template.StaticMethod<>();
+        public final Template.StaticMethod<Integer> getEntityTypeId = new Template.StaticMethod<>();
 
         @Template.Optional
-        public final Template.Method.Converted<Class<?>> getEntityClassInst = new Template.Method.Converted<Class<?>>();
+        public final Template.Method.Converted<Class<?>> getEntityClassInst = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method<Integer> getTypeId = new Template.Method<Integer>();
+        public final Template.Method<Integer> getTypeId = new Template.Method<>();
 
     }
 

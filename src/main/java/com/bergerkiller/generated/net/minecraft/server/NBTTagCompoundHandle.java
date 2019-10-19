@@ -44,16 +44,16 @@ public abstract class NBTTagCompoundHandle extends NBTBaseHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class NBTTagCompoundClass extends Template.Class<NBTTagCompoundHandle> {
-        public final Template.Field.Converted<Map<String, NBTBaseHandle>> map = new Template.Field.Converted<Map<String, NBTBaseHandle>>();
+        public final Template.Field.Converted<Map<String, NBTBaseHandle>> map = new Template.Field.Converted<>();
 
-        public final Template.StaticMethod.Converted<NBTBaseHandle> fromMojangson = new Template.StaticMethod.Converted<NBTBaseHandle>();
+        public final Template.StaticMethod.Converted<NBTBaseHandle> fromMojangson = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<Set<String>> getKeys = new Template.Method<Set<String>>();
-        public final Template.Method<Void> remove = new Template.Method<Void>();
-        public final Template.Method.Converted<Void> set = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<NBTBaseHandle> get = new Template.Method.Converted<NBTBaseHandle>();
-        public final Template.Method<Boolean> contains = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> isEmpty = new Template.Method<Boolean>();
+        public final Template.Method<Set<String>> getKeys = new Template.Method<>();
+        public final Template.Method<Void> remove = new Template.Method<>();
+        public final Template.Method.Converted<Void> set = new Template.Method.Converted<>();
+        public final Template.Method.Converted<NBTBaseHandle> get = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> contains = new Template.Method<>();
+        public final Template.Method<Boolean> isEmpty = new Template.Method<>();
 
     }
 

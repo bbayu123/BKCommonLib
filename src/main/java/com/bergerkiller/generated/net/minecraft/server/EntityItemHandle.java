@@ -39,16 +39,16 @@ public abstract class EntityItemHandle extends EntityHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EntityItemClass extends Template.Class<EntityItemHandle> {
-        public final Template.Constructor.Converted<EntityItemHandle> constr_world_x_y_z_itemstack = new Template.Constructor.Converted<EntityItemHandle>();
+        public final Template.Constructor.Converted<EntityItemHandle> constr_world_x_y_z_itemstack = new Template.Constructor.Converted<>();
 
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Object>> DATA_ITEM = new Template.StaticField.Converted<Key<Object>>();
+        public final Template.StaticField.Converted<Key<Object>> DATA_ITEM = new Template.StaticField.Converted<>();
 
         public final Template.Field.Integer age = new Template.Field.Integer();
         public final Template.Field.Integer pickupDelay = new Template.Field.Integer();
 
-        public final Template.Method.Converted<ItemStackHandle> getItemStack = new Template.Method.Converted<ItemStackHandle>();
-        public final Template.Method.Converted<Void> setItemStack = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<ItemStackHandle> getItemStack = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setItemStack = new Template.Method.Converted<>();
 
     }
 

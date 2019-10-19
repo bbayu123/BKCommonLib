@@ -40,16 +40,16 @@ public abstract class LongObjectHashMapHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class LongObjectHashMapClass extends Template.Class<LongObjectHashMapHandle> {
-        public final Template.StaticMethod.Converted<LongObjectHashMapHandle> createNew = new Template.StaticMethod.Converted<LongObjectHashMapHandle>();
+        public final Template.StaticMethod.Converted<LongObjectHashMapHandle> createNew = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<Void> clear = new Template.Method<Void>();
-        public final Template.Method<Integer> size = new Template.Method<Integer>();
-        public final Template.Method<Boolean> containsKey = new Template.Method<Boolean>();
-        public final Template.Method<Object> get = new Template.Method<Object>();
-        public final Template.Method<Object> remove = new Template.Method<Object>();
-        public final Template.Method<Object> put = new Template.Method<Object>();
-        public final Template.Method<Collection<Object>> values = new Template.Method<Collection<Object>>();
-        public final Template.Method<Set<Long>> keySet = new Template.Method<Set<Long>>();
+        public final Template.Method<Void> clear = new Template.Method<>();
+        public final Template.Method<Integer> size = new Template.Method<>();
+        public final Template.Method<Boolean> containsKey = new Template.Method<>();
+        public final Template.Method<Object> get = new Template.Method<>();
+        public final Template.Method<Object> remove = new Template.Method<>();
+        public final Template.Method<Object> put = new Template.Method<>();
+        public final Template.Method<Collection<Object>> values = new Template.Method<>();
+        public final Template.Method<Set<Long>> keySet = new Template.Method<>();
 
     }
 

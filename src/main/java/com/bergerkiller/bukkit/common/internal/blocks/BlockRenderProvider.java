@@ -27,7 +27,7 @@ import com.bergerkiller.bukkit.common.wrappers.BlockRenderOptions;
  * Some blocks are handled on the server-side, but blocks like Water lack this required information.
  */
 public abstract class BlockRenderProvider {
-    private static final Map<Material, BlockRenderProvider> providers = new EnumMap<Material, BlockRenderProvider>(Material.class);
+    private static final Map<Material, BlockRenderProvider> providers = new EnumMap<>(Material.class);
 
     static {
         String tex_root = Common.evaluateMCVersion(">=",  "1.13") ? "block/" : "blocks/";
@@ -58,7 +58,7 @@ public abstract class BlockRenderProvider {
         return providers.get(blockData.getType());
     }
 
-    private final HashMap<String, String> resources = new HashMap<String, String>();
+    private final HashMap<String, String> resources = new HashMap<>();
 
     /**
      * Adds a link to a resource stored in BKCommonLib itself

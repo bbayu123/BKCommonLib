@@ -63,9 +63,9 @@ public abstract class BiomeBaseHandle extends Template.Handle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class BiomeMetaClass extends Template.Class<BiomeMetaHandle> {
-            public final Template.Constructor.Converted<BiomeMetaHandle> constr_entityClass_x_y_z = new Template.Constructor.Converted<BiomeMetaHandle>();
+            public final Template.Constructor.Converted<BiomeMetaHandle> constr_entityClass_x_y_z = new Template.Constructor.Converted<>();
 
-            public final Template.Field.Converted<java.lang.Class<?>> entityClass = new Template.Field.Converted<java.lang.Class<?>>();
+            public final Template.Field.Converted<java.lang.Class<?>> entityClass = new Template.Field.Converted<>();
             public final Template.Field.Integer minSpawnCount = new Template.Field.Integer();
             public final Template.Field.Integer maxSpawnCount = new Template.Field.Integer();
 

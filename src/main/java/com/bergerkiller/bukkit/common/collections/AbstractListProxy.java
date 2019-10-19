@@ -113,6 +113,6 @@ public class AbstractListProxy<E> extends AbstractList<E> {
     }
 
     public static <E> AbstractListProxy<E> create(List<E> source) {
-        return new AbstractListProxy<E>(source);
+        return new AbstractListProxy<>(source);
     }
 }

@@ -12,6 +12,7 @@ import com.bergerkiller.bukkit.common.internal.hooks.EntityHook;
 import com.bergerkiller.bukkit.common.internal.logic.EntityMoveHandler;
 import com.bergerkiller.bukkit.common.wrappers.HumanHand;
 import com.bergerkiller.bukkit.common.wrappers.MoveType;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 
 public abstract class EntityController<T extends CommonEntity<?>> extends CommonEntityController<T> {
     private EntityHook hook = null;
@@ -37,7 +38,7 @@ public abstract class EntityController<T extends CommonEntity<?>> extends Common
         }
         this.entity = (T) entity;
         if (this.entity != null) {
-            this.hook = EntityHook.get(this.entity.getHandle(), EntityHook.class);
+            this.hook = ClassInterceptor.get(this.entity.getHandle(), EntityHook.class);
             if (this.hook == null) {
                 this.hook = new EntityHook();
                 this.hook.mock(this.entity.getHandle());
@@ -59,6 +60,7 @@ public abstract class EntityController<T extends CommonEntity<?>> extends Common
     /**
      * Called every tick to update the entity
      */
+    @Override
     public void onTick() {
         this.hook.base.onTick();
     }

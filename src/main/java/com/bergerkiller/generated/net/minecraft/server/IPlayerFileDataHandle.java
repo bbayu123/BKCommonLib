@@ -31,9 +31,9 @@ public abstract class IPlayerFileDataHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class IPlayerFileDataClass extends Template.Class<IPlayerFileDataHandle> {
-        public final Template.Method.Converted<Void> save = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<CommonTagCompound> load = new Template.Method.Converted<CommonTagCompound>();
-        public final Template.Method<String[]> getSeenPlayers = new Template.Method<String[]>();
+        public final Template.Method.Converted<Void> save = new Template.Method.Converted<>();
+        public final Template.Method.Converted<CommonTagCompound> load = new Template.Method.Converted<>();
+        public final Template.Method<String[]> getSeenPlayers = new Template.Method<>();
 
     }
 

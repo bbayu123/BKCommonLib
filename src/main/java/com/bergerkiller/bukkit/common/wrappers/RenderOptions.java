@@ -40,14 +40,14 @@ public abstract class RenderOptions implements Map<String, String>, Cloneable {
             if (this.optionsToken.isEmpty()) {
                 // Shortcut
                 if (write) {
-                    this.optionsMap = new HashMap<String, String>(1);
+                    this.optionsMap = new HashMap<>(1);
                     this.optionsToken = null;
                 } else {
                     return Collections.emptyMap();
                 }
             } else {
                 // If the element is a single String token, parse it as key=value pairs separated by ,
-                this.optionsMap = new HashMap<String, String>(2);
+                this.optionsMap = new HashMap<>(2);
                 int index = 0;
                 do {
                     // Find next pair (key=value)

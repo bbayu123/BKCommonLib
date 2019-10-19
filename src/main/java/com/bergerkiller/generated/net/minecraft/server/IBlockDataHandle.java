@@ -58,10 +58,10 @@ public abstract class IBlockDataHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class IBlockDataClass extends Template.Class<IBlockDataHandle> {
-        public final Template.Method.Converted<BlockHandle> getBlock = new Template.Method.Converted<BlockHandle>();
-        public final Template.Method.Converted<Object> get = new Template.Method.Converted<Object>();
-        public final Template.Method.Converted<IBlockDataHandle> set = new Template.Method.Converted<IBlockDataHandle>();
-        public final Template.Method.Converted<Map<IBlockStateHandle, Comparable<?>>> getStates = new Template.Method.Converted<Map<IBlockStateHandle, Comparable<?>>>();
+        public final Template.Method.Converted<BlockHandle> getBlock = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Object> get = new Template.Method.Converted<>();
+        public final Template.Method.Converted<IBlockDataHandle> set = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Map<IBlockStateHandle, Comparable<?>>> getStates = new Template.Method.Converted<>();
 
     }
 

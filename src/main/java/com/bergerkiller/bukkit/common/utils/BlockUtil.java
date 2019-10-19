@@ -23,6 +23,7 @@ import com.bergerkiller.bukkit.common.conversion.type.HandleConversion;
 import com.bergerkiller.bukkit.common.conversion.type.WrapperConversion;
 import com.bergerkiller.bukkit.common.protocol.CommonPacket;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.generated.net.minecraft.server.AxisAlignedBBHandle;
 import com.bergerkiller.generated.net.minecraft.server.ChunkHandle;
 import com.bergerkiller.generated.net.minecraft.server.TileEntityHandle;
@@ -81,7 +82,7 @@ public class BlockUtil extends MaterialUtil {
      * @return True if permitted, False if not
      */
     public static boolean canBuildBlock(org.bukkit.block.Block block, Material type, boolean isBuildable) {
-        return canBuildBlock(block, BlockData.fromMaterial(type), isBuildable);
+        return canBuildBlock(block, BlockDataRegistry.fromMaterial(type), isBuildable);
     }
 
     /**
@@ -118,7 +119,7 @@ public class BlockUtil extends MaterialUtil {
      */
     @SuppressWarnings("deprecation")
     public static void setTypeAndData(org.bukkit.block.Block block, Material type, MaterialData data, boolean update) {
-        BlockData blockData = BlockData.fromMaterialData(type, data);
+        BlockData blockData = BlockDataRegistry.fromMaterialData(type, data);
         if (update) {
             WorldUtil.setBlockData(block, blockData);
         } else {
@@ -147,7 +148,7 @@ public class BlockUtil extends MaterialUtil {
      */
     @SuppressWarnings("deprecation")
     public static void setTypeAndRawData(org.bukkit.block.Block block, Material type, int data, boolean update) {
-        BlockData blockData = BlockData.fromMaterialData(type, data);
+        BlockData blockData = BlockDataRegistry.fromMaterialData(type, data);
         if (update) {
             WorldUtil.setBlockData(block, blockData);
         } else {
@@ -175,7 +176,7 @@ public class BlockUtil extends MaterialUtil {
      */
     @SuppressWarnings("deprecation")
     public static void setData(org.bukkit.block.Block block, MaterialData materialData, boolean doPhysics) {
-        BlockData data = BlockData.fromMaterialData(materialData);
+        BlockData data = BlockDataRegistry.fromMaterialData(materialData);
         if (doPhysics) {
             WorldUtil.setBlockData(block, data);
         } else {
@@ -408,7 +409,7 @@ public class BlockUtil extends MaterialUtil {
      * @param updateSelf whether the block itself is updated. With false, only surrounding blocks are notified.
      */
     public static void applyPhysics(org.bukkit.block.Block block, Material callerType, boolean updateSelf) {
-        WorldServerHandle.fromBukkit(block.getWorld()).applyPhysics(new IntVector3(block), BlockData.fromMaterial(callerType), updateSelf);
+        WorldServerHandle.fromBukkit(block.getWorld()).applyPhysics(new IntVector3(block), BlockDataRegistry.fromMaterial(callerType), updateSelf);
     }
 
     /**
@@ -505,7 +506,7 @@ public class BlockUtil extends MaterialUtil {
         return getBlockStates(middle.getWorld(), middle.getX(), middle.getY(), middle.getZ(), radiusX, radiusY, radiusZ);
     }
 
-    private static final ArrayList<BlockState> blockStateBuff = new ArrayList<BlockState>();
+    private static final ArrayList<BlockState> blockStateBuff = new ArrayList<>();
 
     public static Collection<BlockState> getBlockStates(org.bukkit.World world, int x, int y, int z, int radiusX, int radiusY, int radiusZ) {
         try {
@@ -532,7 +533,7 @@ public class BlockUtil extends MaterialUtil {
                 for (int cx = chunk_xMin; cx <= chunk_xMax; cx++) {
                     for (int cz = chunk_zMin; cz <= chunk_zMax; cz++) {
                         // Find chunk if loaded
-                        org.bukkit.Chunk chunk = WorldUtil.getChunk(world, cx, cz);
+                        org.bukkit.Chunk chunk = ChunkUtil.getChunk(world, cx, cz);
                         if (chunk == null) {
                             continue;
                         }
@@ -552,7 +553,7 @@ public class BlockUtil extends MaterialUtil {
                     }
                 }
             }
-            return new ArrayList<BlockState>(blockStateBuff);
+            return new ArrayList<>(blockStateBuff);
         } finally {
             blockStateBuff.clear();
         }

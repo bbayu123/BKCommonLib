@@ -35,11 +35,11 @@ public class CommonTabController implements PacketListener, Listener {
     private int serverMaxPlayers;
     private int serverListWidth, serverListHeight, serverListCount;
     private int customListWidth, customListHeight, customListCount;
-    private final EntityMap<Player, PlayerTabInfo> players = new EntityMap<Player, PlayerTabInfo>();
+    private final EntityMap<Player, PlayerTabInfo> players = new EntityMap<>();
     private TabView defaultTab;
 
     static {
-        LinkedHashSet<Character> chars = new LinkedHashSet<Character>();
+        LinkedHashSet<Character> chars = new LinkedHashSet<>();
         // Add all chars available that do not conflict with rendering
         // ===========================================================================
         LogicUtil.addArray(chars, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
@@ -323,8 +323,8 @@ public class CommonTabController implements PacketListener, Listener {
     private static class PlayerTabInfo {
 
         //private final Player player;
-        private final Map<String, Integer> defaultView = new LinkedHashMap<String, Integer>();
-        private final UniqueList<String> names = new UniqueList<String>();
+        private final Map<String, Integer> defaultView = new LinkedHashMap<>();
+        private final UniqueList<String> names = new UniqueList<>();
         private final String[] text;
         private final int[] ping;
         private final int width, height, count;

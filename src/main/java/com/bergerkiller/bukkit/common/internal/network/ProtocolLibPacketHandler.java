@@ -32,8 +32,8 @@ import java.util.logging.Level;
 public class ProtocolLibPacketHandler implements PacketHandler {
 
     public static final String LIB_ROOT = "com.comphenix.protocol.";
-    private final List<CommonPacketMonitor> monitors = new ArrayList<CommonPacketMonitor>();
-    private final List<CommonPacketListener> listeners = new ArrayList<CommonPacketListener>();
+    private final List<CommonPacketMonitor> monitors = new ArrayList<>();
+    private final List<CommonPacketListener> listeners = new ArrayList<>();
     private final SilentPacketQueue silentPacketQueueFallback = new SilentPacketQueue();
     private final SilentQueueCleanupTask silentQueueCleanupTask = new SilentQueueCleanupTask();
     private boolean useSilentPacketQueue = false;
@@ -94,7 +94,7 @@ public class ProtocolLibPacketHandler implements PacketHandler {
 
     @Override
     public Collection<Plugin> getListening(PacketType packetType) {
-        Set<Plugin> plugins = new HashSet<Plugin>();
+        Set<Plugin> plugins = new HashSet<>();
         // Obtain all plugins that have a listener (ignore monitors)
         boolean outGoing = packetType.isOutGoing();
         com.comphenix.protocol.PacketType comType = getPacketType(packetType);
@@ -350,7 +350,7 @@ public class ProtocolLibPacketHandler implements PacketHandler {
         }
 
         private static ListeningWhitelist getWhiteList(ListenerPriority priority, PacketType[] types, boolean receiving) {
-            List<com.comphenix.protocol.PacketType> comTypes = new ArrayList<com.comphenix.protocol.PacketType>();
+            List<com.comphenix.protocol.PacketType> comTypes = new ArrayList<>();
             for (PacketType type : types) {
                 if ((!type.isOutGoing()) != receiving) {
                     continue;

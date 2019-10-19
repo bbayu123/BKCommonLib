@@ -40,15 +40,15 @@ public abstract class EntityTrackerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EntityTrackerClass extends Template.Class<EntityTrackerHandle> {
-        public final Template.Field.Converted<World> world = new Template.Field.Converted<World>();
+        public final Template.Field.Converted<World> world = new Template.Field.Converted<>();
         public final Template.Field.Integer trackingDistance = new Template.Field.Integer();
 
-        public final Template.Method.Converted<Collection<EntityTrackerEntryHandle>> getEntries = new Template.Method.Converted<Collection<EntityTrackerEntryHandle>>();
-        public final Template.Method.Converted<EntityTrackerEntryHandle> getEntry = new Template.Method.Converted<EntityTrackerEntryHandle>();
-        public final Template.Method.Converted<EntityTrackerEntryHandle> putEntry = new Template.Method.Converted<EntityTrackerEntryHandle>();
-        public final Template.Method.Converted<Void> sendPacketToEntity = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> trackEntity = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> untrackEntity = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<Collection<EntityTrackerEntryHandle>> getEntries = new Template.Method.Converted<>();
+        public final Template.Method.Converted<EntityTrackerEntryHandle> getEntry = new Template.Method.Converted<>();
+        public final Template.Method.Converted<EntityTrackerEntryHandle> putEntry = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> sendPacketToEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> trackEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> untrackEntity = new Template.Method.Converted<>();
 
     }
 

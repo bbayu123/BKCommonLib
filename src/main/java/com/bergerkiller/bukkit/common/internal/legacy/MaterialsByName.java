@@ -15,7 +15,7 @@ import com.bergerkiller.bukkit.common.utils.LogicUtil;
  */
 public class MaterialsByName {
     private static final Material[] allMaterialValues;
-    private static final Map<String, Material> allMaterialValuesByName = new HashMap<String, Material>();
+    private static final Map<String, Material> allMaterialValuesByName = new HashMap<>();
 
     static {
         // Retrieve all Material values through reflection

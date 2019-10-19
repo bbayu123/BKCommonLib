@@ -46,12 +46,12 @@ public abstract class PacketPlayOutBossHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutBossClass extends Template.Class<PacketPlayOutBossHandle> {
-        public final Template.Field<UUID> entityUUID = new Template.Field<UUID>();
-        public final Template.Field.Converted<Object> action = new Template.Field.Converted<Object>();
-        public final Template.Field.Converted<Object> chat = new Template.Field.Converted<Object>();
+        public final Template.Field<UUID> entityUUID = new Template.Field<>();
+        public final Template.Field.Converted<Object> action = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Object> chat = new Template.Field.Converted<>();
         public final Template.Field.Float progress = new Template.Field.Float();
-        public final Template.Field.Converted<Object> bossBarColor = new Template.Field.Converted<Object>();
-        public final Template.Field.Converted<Object> bossBarStyle = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> bossBarColor = new Template.Field.Converted<>();
+        public final Template.Field.Converted<Object> bossBarStyle = new Template.Field.Converted<>();
         public final Template.Field.Boolean unknown1 = new Template.Field.Boolean();
         public final Template.Field.Boolean unknown2 = new Template.Field.Boolean();
         public final Template.Field.Boolean unknown3 = new Template.Field.Boolean();

@@ -200,7 +200,7 @@ public class IndexedCollection<T> extends AbstractCollection<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new IndexedCollectionIterator<T>(this);
+        return new IndexedCollectionIterator<>(this);
     }
 
     private static final class IndexedCollectionIterator<T> implements Iterator<T> {

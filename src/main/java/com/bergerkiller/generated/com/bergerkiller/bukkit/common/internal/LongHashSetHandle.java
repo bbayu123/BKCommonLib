@@ -46,19 +46,19 @@ public abstract class LongHashSetHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class LongHashSetClass extends Template.Class<LongHashSetHandle> {
-        public final Template.StaticMethod.Converted<LongHashSetHandle> createNew = new Template.StaticMethod.Converted<LongHashSetHandle>();
+        public final Template.StaticMethod.Converted<LongHashSetHandle> createNew = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method.Converted<Iterator<Long>> iterator = new Template.Method.Converted<Iterator<Long>>();
-        public final Template.Method<Integer> size = new Template.Method<Integer>();
-        public final Template.Method<Boolean> isEmpty = new Template.Method<Boolean>();
-        public final Template.Method<Void> clear = new Template.Method<Void>();
-        public final Template.Method<Boolean> add = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> remove = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> contains = new Template.Method<Boolean>();
-        public final Template.Method<Long> popFirstElement = new Template.Method<Long>();
-        public final Template.Method<long[]> toArray = new Template.Method<long[]>();
-        public final Template.Method<long[]> popAll = new Template.Method<long[]>();
-        public final Template.Method<Void> trim = new Template.Method<Void>();
+        public final Template.Method.Converted<Iterator<Long>> iterator = new Template.Method.Converted<>();
+        public final Template.Method<Integer> size = new Template.Method<>();
+        public final Template.Method<Boolean> isEmpty = new Template.Method<>();
+        public final Template.Method<Void> clear = new Template.Method<>();
+        public final Template.Method<Boolean> add = new Template.Method<>();
+        public final Template.Method<Boolean> remove = new Template.Method<>();
+        public final Template.Method<Boolean> contains = new Template.Method<>();
+        public final Template.Method<Long> popFirstElement = new Template.Method<>();
+        public final Template.Method<long[]> toArray = new Template.Method<>();
+        public final Template.Method<long[]> popAll = new Template.Method<>();
+        public final Template.Method<Void> trim = new Template.Method<>();
 
     }
 

@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
  * This class is thread-safe.
  */
 public class SilentPacketQueue {
-    private final LinkedList<SilentPacket> _queue = new LinkedList<SilentPacket>();
+    private final LinkedList<SilentPacket> _queue = new LinkedList<>();
 
     /**
      * Adds a packet, sent to a player, to the queue

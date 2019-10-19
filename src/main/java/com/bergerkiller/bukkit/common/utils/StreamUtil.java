@@ -73,7 +73,7 @@ public class StreamUtil {
      */
     public static List<File> deleteFile(File file) {
         if (file.isDirectory()) {
-            List<File> failFiles = new ArrayList<File>();
+            List<File> failFiles = new ArrayList<>();
             deleteFileList(file, failFiles);
             return Collections.unmodifiableList(failFiles);
         } else if (file.delete()) {

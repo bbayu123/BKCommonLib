@@ -38,13 +38,13 @@ public abstract class PacketPlayOutOpenWindowHandle extends PacketHandle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutOpenWindowClass extends Template.Class<PacketPlayOutOpenWindowHandle> {
-        public final Template.Constructor.Converted<PacketPlayOutOpenWindowHandle> constr = new Template.Constructor.Converted<PacketPlayOutOpenWindowHandle>();
+        public final Template.Constructor.Converted<PacketPlayOutOpenWindowHandle> constr = new Template.Constructor.Converted<>();
 
         public final Template.Field.Integer windowId = new Template.Field.Integer();
-        public final Template.Field.Converted<ChatText> windowTitle = new Template.Field.Converted<ChatText>();
+        public final Template.Field.Converted<ChatText> windowTitle = new Template.Field.Converted<>();
 
-        public final Template.Method<WindowType> getWindowType = new Template.Method<WindowType>();
-        public final Template.Method<Void> setWindowType = new Template.Method<Void>();
+        public final Template.Method<WindowType> getWindowType = new Template.Method<>();
+        public final Template.Method<Void> setWindowType = new Template.Method<>();
 
     }
 

@@ -65,20 +65,20 @@ public abstract class EntityTrackerEntryHandle extends Template.Handle {
     public static final class EntityTrackerEntryClass extends Template.Class<EntityTrackerEntryHandle> {
         public final Template.Field.Integer trackingDistance = new Template.Field.Integer();
 
-        public final Template.Method<Integer> getPlayerViewDistance = new Template.Method<Integer>();
-        public final Template.Method.Converted<Collection<Player>> getViewers = new Template.Method.Converted<Collection<Player>>();
-        public final Template.Method<Void> clearViewers = new Template.Method<Void>();
-        public final Template.Method.Converted<Boolean> addViewerToSet = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Boolean> removeViewerFromSet = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<EntityTrackerEntryStateHandle> getState = new Template.Method.Converted<EntityTrackerEntryStateHandle>();
+        public final Template.Method<Integer> getPlayerViewDistance = new Template.Method<>();
+        public final Template.Method.Converted<Collection<Player>> getViewers = new Template.Method.Converted<>();
+        public final Template.Method<Void> clearViewers = new Template.Method<>();
+        public final Template.Method.Converted<Boolean> addViewerToSet = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> removeViewerFromSet = new Template.Method.Converted<>();
+        public final Template.Method.Converted<EntityTrackerEntryStateHandle> getState = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Void> setState = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<EntityHandle> getEntity = new Template.Method.Converted<EntityHandle>();
-        public final Template.Method.Converted<Void> setEntity = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> scanPlayers = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> removeViewer = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> updatePlayer = new Template.Method.Converted<Void>();
-        public final Template.Method<Void> hideForAll = new Template.Method<Void>();
+        public final Template.Method.Converted<Void> setState = new Template.Method.Converted<>();
+        public final Template.Method.Converted<EntityHandle> getEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> scanPlayers = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> removeViewer = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> updatePlayer = new Template.Method.Converted<>();
+        public final Template.Method<Void> hideForAll = new Template.Method<>();
 
     }
 

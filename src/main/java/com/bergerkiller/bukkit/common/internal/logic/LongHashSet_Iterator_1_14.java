@@ -24,7 +24,7 @@ public class LongHashSet_Iterator_1_14 extends LongHashSet.LongIterator {
 
     @Override
     public long next() {
-        return this.iterator.next().longValue();
+        return this.iterator.next();
     }
 
     @Override

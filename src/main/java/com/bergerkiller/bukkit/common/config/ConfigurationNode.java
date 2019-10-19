@@ -200,7 +200,7 @@ public class ConfigurationNode implements Cloneable {
      */
     public Map<String, String> getHeaders() {
         String root = this.getPath();
-        Map<String, String> rval = new HashMap<String, String>(this.headers.size());
+        Map<String, String> rval = new HashMap<>(this.headers.size());
         if (LogicUtil.nullOrEmpty(root)) {
             rval.putAll(this.headers);
         } else {
@@ -280,21 +280,18 @@ public class ConfigurationNode implements Cloneable {
      * @return list of configuration nodes
      */
     public List<ConfigurationNode> getNodeList(String path) {
-        ArrayList<ConfigurationNode> list = new ArrayList<ConfigurationNode>(this.getNode(path).getNodes());
-        Collections.sort(list, new Comparator<ConfigurationNode>() {
-            @Override
-            public int compare(ConfigurationNode o1, ConfigurationNode o2) {
-                String n1 = o1.getName();
-                String n2 = o2.getName();
-                if (ParseUtil.isNumeric(n1) && ParseUtil.isNumeric(n2)) {
-                    try {
-                        int num1 = Integer.parseInt(n1);
-                        int num2 = Integer.parseInt(n2);
-                        return Integer.compare(num1, num2);
-                    } catch (NumberFormatException ex) {}
-                }
-                return n1.compareTo(n2);
+        ArrayList<ConfigurationNode> list = new ArrayList<>(this.getNode(path).getNodes());
+        Collections.sort(list, (o1, o2) -> {
+            String n1 = o1.getName();
+            String n2 = o2.getName();
+            if (ParseUtil.isNumeric(n1) && ParseUtil.isNumeric(n2)) {
+                try {
+                    int num1 = Integer.parseInt(n1);
+                    int num2 = Integer.parseInt(n2);
+                    return Integer.compare(num1, num2);
+                } catch (NumberFormatException ex) {}
             }
+            return n1.compareTo(n2);
         });
         return list;
     }
@@ -315,7 +312,7 @@ public class ConfigurationNode implements Cloneable {
         // Clone the list with the nodes cloned that are directly originating from here
         // This prevents nasty problems where setting a node thats in the list will corrupt it
         if (root != null) {
-            list = new ArrayList<ConfigurationNode>(list);
+            list = new ArrayList<>(list);
             for (int i = 0; i < list.size(); i++) {
                 ConfigurationNode node = list.get(i);
                 if (node != null && node.source.getRoot() == root) {
@@ -338,7 +335,7 @@ public class ConfigurationNode implements Cloneable {
      * @return Set of configuration nodes
      */
     public Set<ConfigurationNode> getNodes() {
-        Set<ConfigurationNode> rval = new LinkedHashSet<ConfigurationNode>();
+        Set<ConfigurationNode> rval = new LinkedHashSet<>();
         for (String path : this.getKeys()) {
             if (this.isNode(path)) {
                 rval.add(this.getNode(path));
@@ -546,7 +543,7 @@ public class ConfigurationNode implements Cloneable {
     public <T> List<T> getList(String path, Class<T> type, List<T> def) {
         List list = this.getList(path);
         if (list != null) {
-            def = new ArrayList<T>();
+            def = new ArrayList<>();
             T val;
             for (Object o : list) {
                 val = ParseUtil.convert(o, type);

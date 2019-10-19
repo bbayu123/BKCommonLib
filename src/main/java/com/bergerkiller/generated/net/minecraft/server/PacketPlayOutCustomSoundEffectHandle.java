@@ -36,7 +36,7 @@ public abstract class PacketPlayOutCustomSoundEffectHandle extends PacketHandle 
         if (T.opt_pitch_float.isAvailable()) {
             return T.opt_pitch_float.getFloat(getRaw());
         } else {
-            return (float) T.opt_pitch_integer.getInteger(getRaw()) / 63.0f;
+            return T.opt_pitch_integer.getInteger(getRaw()) / 63.0f;
         }
     }
     public abstract ResourceKey getSound();
@@ -56,8 +56,8 @@ public abstract class PacketPlayOutCustomSoundEffectHandle extends PacketHandle 
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PacketPlayOutCustomSoundEffectClass extends Template.Class<PacketPlayOutCustomSoundEffectHandle> {
-        public final Template.Field.Converted<ResourceKey> sound = new Template.Field.Converted<ResourceKey>();
-        public final Template.Field.Converted<String> category = new Template.Field.Converted<String>();
+        public final Template.Field.Converted<ResourceKey> sound = new Template.Field.Converted<>();
+        public final Template.Field.Converted<String> category = new Template.Field.Converted<>();
         public final Template.Field.Integer x = new Template.Field.Integer();
         public final Template.Field.Integer y = new Template.Field.Integer();
         public final Template.Field.Integer z = new Template.Field.Integer();

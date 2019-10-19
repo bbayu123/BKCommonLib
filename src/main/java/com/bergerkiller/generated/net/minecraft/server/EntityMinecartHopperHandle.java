@@ -33,9 +33,9 @@ public abstract class EntityMinecartHopperHandle extends EntityMinecartAbstractH
     public static final class EntityMinecartHopperClass extends Template.Class<EntityMinecartHopperHandle> {
         public final Template.Field.Integer suckingCooldown = new Template.Field.Integer();
 
-        public final Template.Method<Boolean> suckItems = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> isSuckingEnabled = new Template.Method<Boolean>();
-        public final Template.Method<Void> setSuckingEnabled = new Template.Method<Void>();
+        public final Template.Method<Boolean> suckItems = new Template.Method<>();
+        public final Template.Method<Boolean> isSuckingEnabled = new Template.Method<>();
+        public final Template.Method<Void> setSuckingEnabled = new Template.Method<>();
 
     }
 

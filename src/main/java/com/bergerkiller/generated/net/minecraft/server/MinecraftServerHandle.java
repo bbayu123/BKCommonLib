@@ -43,11 +43,11 @@ public abstract class MinecraftServerHandle extends Template.Handle {
     public static final class MinecraftServerClass extends Template.Class<MinecraftServerHandle> {
         public final Template.Field.Boolean hasStopped = new Template.Field.Boolean();
 
-        public final Template.Method<String> getResourcePack = new Template.Method<String>();
-        public final Template.Method<String> getResourcePackHash = new Template.Method<String>();
-        public final Template.Method<String> getProperty = new Template.Method<String>();
-        public final Template.Method<Integer> getTicks = new Template.Method<Integer>();
-        public final Template.Method<Boolean> isMainThread = new Template.Method<Boolean>();
+        public final Template.Method<String> getResourcePack = new Template.Method<>();
+        public final Template.Method<String> getResourcePackHash = new Template.Method<>();
+        public final Template.Method<String> getProperty = new Template.Method<>();
+        public final Template.Method<Integer> getTicks = new Template.Method<>();
+        public final Template.Method<Boolean> isMainThread = new Template.Method<>();
 
     }
 

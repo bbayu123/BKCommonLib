@@ -103,7 +103,7 @@ public class CommonPlayer extends CommonHumanEntity<Player> {
         while (ids.size() >= 128) {
             final int[] rawIds = new int[127];
             for (int i = 0; i < rawIds.length; i++) {
-                rawIds[i] = ids.remove(0).intValue();
+                rawIds[i] = ids.remove(0);
             }
             sendPacket(PacketType.OUT_ENTITY_DESTROY.newInstance(rawIds));
         }

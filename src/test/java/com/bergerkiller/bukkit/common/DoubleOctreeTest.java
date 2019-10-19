@@ -34,7 +34,7 @@ public class DoubleOctreeTest {
 
     @Test
     public void testPutGet() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         putDemoValues(tree);
 
         assertTreeGetEquals(tree, 0, 0, 0, "A");
@@ -56,7 +56,7 @@ public class DoubleOctreeTest {
 
     @Test
     public void testContains() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         putDemoValues(tree);
 
         assertTrue(tree.contains(0, 0, 0, "A"));
@@ -80,7 +80,7 @@ public class DoubleOctreeTest {
 
     @Test
     public void testRemove() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         putDemoValues(tree);
 
         // Remove C, D should become head of chain and D and E should both remain
@@ -105,7 +105,7 @@ public class DoubleOctreeTest {
 
     @Test
     public void testIterator() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         putDemoValues(tree);
 
         DoubleOctreeIterator<String> iter = tree.iterator();
@@ -123,7 +123,7 @@ public class DoubleOctreeTest {
 
     @Test
     public void testValues() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         putDemoValues(tree);
 
         Collection<String> values = tree.values();
@@ -140,7 +140,7 @@ public class DoubleOctreeTest {
     
     @Test
     public void testCuboidIterator() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         putDemoValues(tree);
 
         DoubleOctreeIterator<String> iter = tree.cuboid(new IntVector3(9, 4, -7), new IntVector3(200, 60, 40)).iterator();
@@ -153,7 +153,7 @@ public class DoubleOctreeTest {
 
     @Test
     public void testBlockIterator() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         putDemoValues(tree);
 
         DoubleOctreeIterator<String> iter = tree.block(new IntVector3(100, 50, 20)).iterator();
@@ -166,7 +166,7 @@ public class DoubleOctreeTest {
     @Test
     public void testMoveSamePositionChangeValue() {
         // Create a chain at 10/10/10 with 4 values
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         tree.add(10.0, 10.0, 10.0, "A");
         tree.add(10.5, 10.0, 10.0, "B");
         tree.add(10.5, 10.5, 10.0, "C");
@@ -206,8 +206,8 @@ public class DoubleOctreeTest {
 
     @Test
     public void benchmarkMoveSameBlock() {
-        DoubleOctree<String> tree = new DoubleOctree<String>();
-        HashSet<Vector> blocks = new HashSet<Vector>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
+        HashSet<Vector> blocks = new HashSet<>();
         List<DoubleOctree.Entry<String>> values = new ArrayList<>();
         List<DoubleOctree.Entry<String>> newValues = new ArrayList<>();
 
@@ -221,15 +221,15 @@ public class DoubleOctreeTest {
                                rand.nextInt(1000)-500);
             } while (!blocks.add(v));
 
-            values.add(new DoubleOctree.Entry<String>(new Vector(0.0, 0.0, 0.0).add(v), "A"));
-            values.add(new DoubleOctree.Entry<String>(new Vector(0.5, 0.0, 0.0).add(v), "B"));
-            values.add(new DoubleOctree.Entry<String>(new Vector(0.5, 0.5, 0.0).add(v), "C"));
-            values.add(new DoubleOctree.Entry<String>(new Vector(0.5, 0.5, 0.5).add(v), "D"));
+            values.add(new DoubleOctree.Entry<>(new Vector(0.0, 0.0, 0.0).add(v), "A"));
+            values.add(new DoubleOctree.Entry<>(new Vector(0.5, 0.0, 0.0).add(v), "B"));
+            values.add(new DoubleOctree.Entry<>(new Vector(0.5, 0.5, 0.0).add(v), "C"));
+            values.add(new DoubleOctree.Entry<>(new Vector(0.5, 0.5, 0.5).add(v), "D"));
 
-            newValues.add(new DoubleOctree.Entry<String>(new Vector(0.3, 0.1, 0.4).add(v), "A"));
-            newValues.add(new DoubleOctree.Entry<String>(new Vector(0.9, 0.2, 0.3).add(v), "B"));
-            newValues.add(new DoubleOctree.Entry<String>(new Vector(0.6, 0.3, 0.2).add(v), "C"));
-            newValues.add(new DoubleOctree.Entry<String>(new Vector(0.6, 0.4, 0.1).add(v), "D"));
+            newValues.add(new DoubleOctree.Entry<>(new Vector(0.3, 0.1, 0.4).add(v), "A"));
+            newValues.add(new DoubleOctree.Entry<>(new Vector(0.9, 0.2, 0.3).add(v), "B"));
+            newValues.add(new DoubleOctree.Entry<>(new Vector(0.6, 0.3, 0.2).add(v), "C"));
+            newValues.add(new DoubleOctree.Entry<>(new Vector(0.6, 0.4, 0.1).add(v), "D"));
 
             for (int i = values.size()-4; i < values.size(); i++) {
                 tree.addEntry(values.get(i));
@@ -314,7 +314,7 @@ public class DoubleOctreeTest {
     @Test
     public void testMoveSameBlock_firstNodeNextOccupied() {
         // Create a chain at 10/10/10 with 4 values
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         tree.add(10.0, 10.0, 10.0, "A");
         tree.add(10.5, 10.0, 10.0, "B");
         tree.add(10.5, 10.5, 10.0, "C");
@@ -335,7 +335,7 @@ public class DoubleOctreeTest {
     @Test
     public void testMoveSameBlock_nodeBeforeFirstMissing() {
         // Create a chain at 10/10/10 with 4 values
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         tree.add(10.2, 10.0, 10.0, "A");
         tree.add(10.5, 10.0, 10.0, "B");
         tree.add(10.5, 10.5, 10.0, "C");
@@ -356,7 +356,7 @@ public class DoubleOctreeTest {
     @Test
     public void testMoveSameBlock_missingNodeMoveToBeforeFirst() {
         // Create a chain at 10/10/10 with 4 values
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         tree.add(10.2, 10.0, 10.0, "A");
         tree.add(10.5, 10.0, 10.0, "B");
         tree.add(10.5, 10.5, 10.0, "C");
@@ -384,7 +384,7 @@ public class DoubleOctreeTest {
     @Test
     public void testMoveSameBlock_secondNodeMoveToFirst() {
         // Create a chain at 10/10/10 with 4 values
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         tree.add(10.2, 10.0, 10.0, "A");
         tree.add(10.5, 10.0, 10.0, "B");
         tree.add(10.5, 10.5, 10.0, "C");
@@ -450,7 +450,7 @@ public class DoubleOctreeTest {
 
     private void testMoveDifferentBlock(String name, double toX, double toY, double toZ) {
         // Create two chains at 10/10/10 and 50/50/50 with 4 values each
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         tree.add(10.2, 10.0, 10.0, "A1");
         tree.add(10.5, 10.0, 10.0, "B1");
         tree.add(10.5, 10.5, 10.0, "C1");
@@ -502,7 +502,7 @@ public class DoubleOctreeTest {
 
     private void testMoveSameBlock(String name, double toX, double toY, double toZ) {
         // Create a chain at 10/10/10 with 4 values
-        DoubleOctree<String> tree = new DoubleOctree<String>();
+        DoubleOctree<String> tree = new DoubleOctree<>();
         tree.add(10.2, 10.0, 10.0, "A");
         tree.add(10.5, 10.0, 10.0, "B");
         tree.add(10.5, 10.5, 10.0, "C");
@@ -578,7 +578,7 @@ public class DoubleOctreeTest {
             assertFalse("PositionCollection Iterator hasNext() not working [2]", iter.hasNext());
         } else {
             // Multiple values, use containsAll
-            Collection<String> expected = new HashSet<String>(Arrays.asList(values));
+            Collection<String> expected = new HashSet<>(Arrays.asList(values));
             Collection<String> actual = tree.get(x, y, z);
             assertTrue("Values stored at [" + x + ", " + y + ", " + z + "] are different",
                     expected.containsAll(actual) && actual.containsAll(expected));

@@ -42,15 +42,15 @@ public abstract class PlayerChunkHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class PlayerChunkClass extends Template.Class<PlayerChunkHandle> {
-        public final Template.Field.Converted<IntVector2> location = new Template.Field.Converted<IntVector2>();
+        public final Template.Field.Converted<IntVector2> location = new Template.Field.Converted<>();
         public final Template.Field.Integer dirtyCount = new Template.Field.Integer();
         public final Template.Field.Integer dirtySectionMask = new Template.Field.Integer();
         public final Template.Field.Boolean done = new Template.Field.Boolean();
 
-        public final Template.Method.Converted<PlayerChunkMapHandle> getPlayerChunkMap = new Template.Method.Converted<PlayerChunkMapHandle>();
-        public final Template.Method<Void> markAllLightDirty = new Template.Method<Void>();
-        public final Template.Method.Converted<List<Player>> getPlayers = new Template.Method.Converted<List<Player>>();
-        public final Template.Method.Converted<Chunk> getChunkIfLoaded = new Template.Method.Converted<Chunk>();
+        public final Template.Method.Converted<PlayerChunkMapHandle> getPlayerChunkMap = new Template.Method.Converted<>();
+        public final Template.Method<Void> markAllLightDirty = new Template.Method<>();
+        public final Template.Method.Converted<List<Player>> getPlayers = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Chunk> getChunkIfLoaded = new Template.Method.Converted<>();
 
     }
 

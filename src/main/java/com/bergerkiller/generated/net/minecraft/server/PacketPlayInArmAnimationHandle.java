@@ -35,7 +35,7 @@ public abstract class PacketPlayInArmAnimationHandle extends PacketHandle {
      */
     public static final class PacketPlayInArmAnimationClass extends Template.Class<PacketPlayInArmAnimationHandle> {
         @Template.Optional
-        public final Template.Field.Converted<Object> enumHand = new Template.Field.Converted<Object>();
+        public final Template.Field.Converted<Object> enumHand = new Template.Field.Converted<>();
 
     }
 

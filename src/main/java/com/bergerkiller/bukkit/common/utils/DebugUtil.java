@@ -143,7 +143,7 @@ public class DebugUtil {
      * @return value of the variable
      */
     public static double getDoubleValue(String name, double value) {
-        return getVariableValue(name, Double.valueOf(value)).doubleValue();
+        return getVariableValue(name, value);
     }
 
     /**
@@ -154,7 +154,7 @@ public class DebugUtil {
      * @return value of the variable
      */
     public static float getFloatValue(String name, double value) {
-        return getVariableValue(name, Double.valueOf(value)).floatValue();
+        return getVariableValue(name, value).floatValue();
     }
 
     /**
@@ -165,7 +165,7 @@ public class DebugUtil {
      * @return value of the variable
      */
     public static short getShortValue(String name, int value) {
-        return getVariableValue(name, Integer.valueOf(value)).shortValue();
+        return getVariableValue(name, value).shortValue();
     }
 
     /**
@@ -176,7 +176,7 @@ public class DebugUtil {
      * @return value of the variable
      */
     public static int getIntValue(String name, int value) {
-        return getVariableValue(name, Integer.valueOf(value)).intValue();
+        return getVariableValue(name, value);
     }
 
     /**
@@ -249,15 +249,15 @@ public class DebugUtil {
      */
     public static void logInstances(Class<?> startClass, Object value) {
         System.out.println("Searching for [" + value.getClass().getName() + "] " + value.toString() + ":");
-        IdentityHashMap<Object, Boolean> crossedValues = new IdentityHashMap<Object, Boolean>();
-        HashMap<Class<?>, ArrayList<Field>> classFieldMapping = new HashMap<Class<?>, ArrayList<Field>>();
+        IdentityHashMap<Object, Boolean> crossedValues = new IdentityHashMap<>();
+        HashMap<Class<?>, ArrayList<Field>> classFieldMapping = new HashMap<>();
         logInstancesInClass(startClass, value, crossedValues, classFieldMapping);
         System.out.println("Search completed.");
     }
 
     private static ArrayList<Field> logInstancesInClass(Class<?> type, Object value, IdentityHashMap<Object, Boolean> crossedValues, HashMap<Class<?>, ArrayList<Field>> classFieldMapping) {
-        ArrayList<Field> staticFields = new ArrayList<Field>();
-        ArrayList<Field> localFields = new ArrayList<Field>();
+        ArrayList<Field> staticFields = new ArrayList<>();
+        ArrayList<Field> localFields = new ArrayList<>();
         Class<?> t = type;
         do {
             for (Field f : t.getDeclaredFields()) {
@@ -281,7 +281,7 @@ public class DebugUtil {
 
         classFieldMapping.put(type, localFields);
 
-        LinkedList<StackElement> fieldStack = new LinkedList<StackElement>();
+        LinkedList<StackElement> fieldStack = new LinkedList<>();
         fieldStack.addLast(new StackElement(type));
         for (Field staticField : staticFields) {
             Object staticValue = null;
@@ -347,7 +347,7 @@ public class DebugUtil {
         }
 
         // Check if not already discovered
-        if (crossedValues.put(current, Boolean.valueOf(true)) != null) {
+        if (crossedValues.put(current, true) != null) {
             return;
         }
 
@@ -443,8 +443,8 @@ public class DebugUtil {
                 sleep(delay);
                 StackTraceElement[] stack = thread.getStackTrace();
                 System.err.println("Stack trace of thread " + thread.getName() + ":");
-                for (int i = 0; i < stack.length; i++) {
-                    System.err.println("  at " + stack[i].toString());
+                for (StackTraceElement element : stack) {
+                    System.err.println("  at " + element.toString());
                 }
             }
         }.start();

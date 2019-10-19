@@ -316,32 +316,32 @@ public abstract class EntityHandle extends Template.Handle {
      */
     public static final class EntityClass extends Template.Class<EntityHandle> {
         @Template.Optional
-        public final Template.StaticField<AtomicInteger> opt_atomic_entityCount = new Template.StaticField<AtomicInteger>();
+        public final Template.StaticField<AtomicInteger> opt_atomic_entityCount = new Template.StaticField<>();
         @Template.Optional
         public final Template.StaticField.Integer opt_int_entityCount = new Template.StaticField.Integer();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Byte>> DATA_FLAGS = new Template.StaticField.Converted<Key<Byte>>();
+        public final Template.StaticField.Converted<Key<Byte>> DATA_FLAGS = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Integer>> DATA_AIR_TICKS = new Template.StaticField.Converted<Key<Integer>>();
+        public final Template.StaticField.Converted<Key<Integer>> DATA_AIR_TICKS = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<?>> DATA_CUSTOM_NAME = new Template.StaticField.Converted<Key<?>>();
+        public final Template.StaticField.Converted<Key<?>> DATA_CUSTOM_NAME = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Boolean>> DATA_CUSTOM_NAME_VISIBLE = new Template.StaticField.Converted<Key<Boolean>>();
+        public final Template.StaticField.Converted<Key<Boolean>> DATA_CUSTOM_NAME_VISIBLE = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Boolean>> DATA_SILENT = new Template.StaticField.Converted<Key<Boolean>>();
+        public final Template.StaticField.Converted<Key<Boolean>> DATA_SILENT = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Boolean>> DATA_NO_GRAVITY = new Template.StaticField.Converted<Key<Boolean>>();
+        public final Template.StaticField.Converted<Key<Boolean>> DATA_NO_GRAVITY = new Template.StaticField.Converted<>();
 
-        public final Template.Field.Converted<Entity> bukkitEntityField = new Template.Field.Converted<Entity>();
+        public final Template.Field.Converted<Entity> bukkitEntityField = new Template.Field.Converted<>();
         public final Template.Field.Integer idField = new Template.Field.Integer();
         public final Template.Field.Boolean preventBlockPlace = new Template.Field.Boolean();
         @Template.Optional
-        public final Template.Field.Converted<List<EntityHandle>> opt_passengers = new Template.Field.Converted<List<EntityHandle>>();
+        public final Template.Field.Converted<List<EntityHandle>> opt_passengers = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field.Converted<EntityHandle> opt_passenger = new Template.Field.Converted<EntityHandle>();
-        public final Template.Field.Converted<EntityHandle> vehicle = new Template.Field.Converted<EntityHandle>();
+        public final Template.Field.Converted<EntityHandle> opt_passenger = new Template.Field.Converted<>();
+        public final Template.Field.Converted<EntityHandle> vehicle = new Template.Field.Converted<>();
         public final Template.Field.Boolean ignoreChunkCheck = new Template.Field.Boolean();
-        public final Template.Field.Converted<WorldHandle> world = new Template.Field.Converted<WorldHandle>();
+        public final Template.Field.Converted<WorldHandle> world = new Template.Field.Converted<>();
         public final Template.Field.Double lastX = new Template.Field.Double();
         public final Template.Field.Double lastY = new Template.Field.Double();
         public final Template.Field.Double lastZ = new Template.Field.Double();
@@ -352,7 +352,7 @@ public abstract class EntityHandle extends Template.Handle {
         public final Template.Field.Float pitch = new Template.Field.Float();
         public final Template.Field.Float lastYaw = new Template.Field.Float();
         public final Template.Field.Float lastPitch = new Template.Field.Float();
-        public final Template.Field.Converted<AxisAlignedBBHandle> boundingBoxField = new Template.Field.Converted<AxisAlignedBBHandle>();
+        public final Template.Field.Converted<AxisAlignedBBHandle> boundingBoxField = new Template.Field.Converted<>();
         public final Template.Field.Boolean onGround = new Template.Field.Boolean();
         public final Template.Field.Boolean horizontalMovementImpaired = new Template.Field.Boolean();
         public final Template.Field.Boolean verticalMovementImpaired = new Template.Field.Boolean();
@@ -364,12 +364,12 @@ public abstract class EntityHandle extends Template.Handle {
         public final Template.Field.Float fallDistance = new Template.Field.Float();
         public final Template.Field.Float heightOffset = new Template.Field.Float();
         public final Template.Field.Boolean noclip = new Template.Field.Boolean();
-        public final Template.Field<Random> random = new Template.Field<Random>();
+        public final Template.Field<Random> random = new Template.Field<>();
         public final Template.Field.Integer ticksLived = new Template.Field.Integer();
         @Template.Optional
         public final Template.Field.Integer field_maxFireTicks = new Template.Field.Integer();
         public final Template.Field.Integer fireTicks = new Template.Field.Integer();
-        public final Template.Field.Converted<DataWatcher> datawatcherField = new Template.Field.Converted<DataWatcher>();
+        public final Template.Field.Converted<DataWatcher> datawatcherField = new Template.Field.Converted<>();
         public final Template.Field.Boolean isLoaded = new Template.Field.Boolean();
         public final Template.Field.Integer chunkX = new Template.Field.Integer();
         public final Template.Field.Integer chunkY = new Template.Field.Integer();
@@ -377,90 +377,90 @@ public abstract class EntityHandle extends Template.Handle {
         public final Template.Field.Boolean positionChanged = new Template.Field.Boolean();
         public final Template.Field.Integer portalCooldown = new Template.Field.Integer();
         public final Template.Field.Boolean allowTeleportation = new Template.Field.Boolean();
-        public final Template.Field.Converted<Dimension> dimension = new Template.Field.Converted<Dimension>();
+        public final Template.Field.Converted<Dimension> dimension = new Template.Field.Converted<>();
         @Template.Optional
-        public final Template.Field<double[]> move_SomeArray = new Template.Field<double[]>();
+        public final Template.Field<double[]> move_SomeArray = new Template.Field<>();
         @Template.Optional
         public final Template.Field.Long move_SomeState = new Template.Field.Long();
         public final Template.Field.Boolean valid = new Template.Field.Boolean();
 
-        public final Template.Method<Vector> getMot = new Template.Method<Vector>();
-        public final Template.Method<Void> setMot = new Template.Method<Void>();
-        public final Template.Method<Void> setMotX = new Template.Method<Void>();
-        public final Template.Method<Void> setMotY = new Template.Method<Void>();
-        public final Template.Method<Void> setMotZ = new Template.Method<Void>();
-        public final Template.Method<Double> getMotX = new Template.Method<Double>();
-        public final Template.Method<Double> getMotY = new Template.Method<Double>();
-        public final Template.Method<Double> getMotZ = new Template.Method<Double>();
-        public final Template.Method<Boolean> isCollidingWithBlock = new Template.Method<Boolean>();
-        public final Template.Method<Vector> getBlockCollisionMultiplier = new Template.Method<Vector>();
-        public final Template.Method<Void> setNotCollidingWithBlock = new Template.Method<Void>();
-        public final Template.Method<Float> getWidth = new Template.Method<Float>();
-        public final Template.Method<Float> getHeight = new Template.Method<Float>();
-        public final Template.Method<Void> setStepCounter = new Template.Method<Void>();
-        public final Template.Method<Float> getStepCounter = new Template.Method<Float>();
-        public final Template.Method<Void> updateBlockCollision = new Template.Method<Void>();
-        public final Template.Method.Converted<Void> playStepSound = new Template.Method.Converted<Void>();
-        public final Template.Method<Void> setRotation = new Template.Method<Void>();
-        public final Template.Method<Void> burn = new Template.Method<Void>();
-        public final Template.Method.Converted<Item> dropItem = new Template.Method.Converted<Item>();
-        public final Template.Method.Converted<Item> dropItemStack = new Template.Method.Converted<Item>();
-        public final Template.Method.Converted<ResourceKey> getSwimSound = new Template.Method.Converted<ResourceKey>();
-        public final Template.Method.Converted<Void> makeSound = new Template.Method.Converted<Void>();
-        public final Template.Method<Boolean> isInWaterUpdate = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> isInWater = new Template.Method<Boolean>();
-        public final Template.Method<Boolean> hasMovementSound = new Template.Method<Boolean>();
-        public final Template.Method.Converted<Void> updateFalling = new Template.Method.Converted<Void>();
-        public final Template.Method<Boolean> isOutsideWorldBorder = new Template.Method<Boolean>();
-        public final Template.Method<Void> setOutsideWorldBorder = new Template.Method<Void>();
-        public final Template.Method<Void> checkBlockCollisions = new Template.Method<Void>();
-        public final Template.Method<Double> calculateDistance = new Template.Method<Double>();
-        public final Template.Method.Converted<Boolean> damageEntity = new Template.Method.Converted<Boolean>();
-        public final Template.Method<Void> setPosition = new Template.Method<Void>();
-        public final Template.Method<Void> setSize = new Template.Method<Void>();
-        public final Template.Method<Void> setPositionRotation = new Template.Method<Void>();
-        public final Template.Method<Void> setLocation = new Template.Method<Void>();
-        public final Template.Method<Float> getHeadRotation = new Template.Method<Float>();
-        public final Template.Method.Converted<AxisAlignedBBHandle> getBoundingBox = new Template.Method.Converted<AxisAlignedBBHandle>();
-        public final Template.Method.Converted<Void> setBoundingBox = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<AxisAlignedBBHandle> getOtherBoundingBox = new Template.Method.Converted<AxisAlignedBBHandle>();
-        public final Template.Method.Converted<AxisAlignedBBHandle> getEntityBoundingBox = new Template.Method.Converted<AxisAlignedBBHandle>();
+        public final Template.Method<Vector> getMot = new Template.Method<>();
+        public final Template.Method<Void> setMot = new Template.Method<>();
+        public final Template.Method<Void> setMotX = new Template.Method<>();
+        public final Template.Method<Void> setMotY = new Template.Method<>();
+        public final Template.Method<Void> setMotZ = new Template.Method<>();
+        public final Template.Method<Double> getMotX = new Template.Method<>();
+        public final Template.Method<Double> getMotY = new Template.Method<>();
+        public final Template.Method<Double> getMotZ = new Template.Method<>();
+        public final Template.Method<Boolean> isCollidingWithBlock = new Template.Method<>();
+        public final Template.Method<Vector> getBlockCollisionMultiplier = new Template.Method<>();
+        public final Template.Method<Void> setNotCollidingWithBlock = new Template.Method<>();
+        public final Template.Method<Float> getWidth = new Template.Method<>();
+        public final Template.Method<Float> getHeight = new Template.Method<>();
+        public final Template.Method<Void> setStepCounter = new Template.Method<>();
+        public final Template.Method<Float> getStepCounter = new Template.Method<>();
+        public final Template.Method<Void> updateBlockCollision = new Template.Method<>();
+        public final Template.Method.Converted<Void> playStepSound = new Template.Method.Converted<>();
+        public final Template.Method<Void> setRotation = new Template.Method<>();
+        public final Template.Method<Void> burn = new Template.Method<>();
+        public final Template.Method.Converted<Item> dropItem = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Item> dropItemStack = new Template.Method.Converted<>();
+        public final Template.Method.Converted<ResourceKey> getSwimSound = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> makeSound = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> isInWaterUpdate = new Template.Method<>();
+        public final Template.Method<Boolean> isInWater = new Template.Method<>();
+        public final Template.Method<Boolean> hasMovementSound = new Template.Method<>();
+        public final Template.Method.Converted<Void> updateFalling = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> isOutsideWorldBorder = new Template.Method<>();
+        public final Template.Method<Void> setOutsideWorldBorder = new Template.Method<>();
+        public final Template.Method<Void> checkBlockCollisions = new Template.Method<>();
+        public final Template.Method<Double> calculateDistance = new Template.Method<>();
+        public final Template.Method.Converted<Boolean> damageEntity = new Template.Method.Converted<>();
+        public final Template.Method<Void> setPosition = new Template.Method<>();
+        public final Template.Method<Void> setSize = new Template.Method<>();
+        public final Template.Method<Void> setPositionRotation = new Template.Method<>();
+        public final Template.Method<Void> setLocation = new Template.Method<>();
+        public final Template.Method<Float> getHeadRotation = new Template.Method<>();
+        public final Template.Method.Converted<AxisAlignedBBHandle> getBoundingBox = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> setBoundingBox = new Template.Method.Converted<>();
+        public final Template.Method.Converted<AxisAlignedBBHandle> getOtherBoundingBox = new Template.Method.Converted<>();
+        public final Template.Method.Converted<AxisAlignedBBHandle> getEntityBoundingBox = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method<Boolean> isVehicle = new Template.Method<Boolean>();
+        public final Template.Method<Boolean> isVehicle = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<Boolean> isPassenger = new Template.Method<Boolean>();
-        public final Template.Method<Void> recalcPosition = new Template.Method<Void>();
-        public final Template.Method<Boolean> isBurning = new Template.Method<Boolean>();
-        public final Template.Method<Void> setOnFire = new Template.Method<Void>();
+        public final Template.Method<Boolean> isPassenger = new Template.Method<>();
+        public final Template.Method<Void> recalcPosition = new Template.Method<>();
+        public final Template.Method<Boolean> isBurning = new Template.Method<>();
+        public final Template.Method<Void> setOnFire = new Template.Method<>();
         @Template.Optional
-        public final Template.Method<Integer> prop_getMaxFireTicks = new Template.Method<Integer>();
-        public final Template.Method<Boolean> isWet = new Template.Method<Boolean>();
+        public final Template.Method<Integer> prop_getMaxFireTicks = new Template.Method<>();
+        public final Template.Method<Boolean> isWet = new Template.Method<>();
         @Template.Optional
-        public final Template.Method.Converted<EntityHandle> getDriverEntity = new Template.Method.Converted<EntityHandle>();
-        public final Template.Method.Converted<Void> saveToNBT = new Template.Method.Converted<Void>();
-        public final Template.Method<Void> onTick = new Template.Method<Void>();
-        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Boolean> savePassenger = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Boolean> saveEntity = new Template.Method.Converted<Boolean>();
-        public final Template.Method<Boolean> isSneaking = new Template.Method<Boolean>();
+        public final Template.Method.Converted<EntityHandle> getDriverEntity = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> saveToNBT = new Template.Method.Converted<>();
+        public final Template.Method<Void> onTick = new Template.Method<>();
+        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> savePassenger = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Boolean> saveEntity = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> isSneaking = new Template.Method<>();
         @Template.Optional
-        public final Template.Method.Converted<Boolean> isInSameVehicle = new Template.Method.Converted<Boolean>();
-        public final Template.Method.Converted<Void> appendEntityCrashDetails = new Template.Method.Converted<Void>();
-        public final Template.Method<Integer> getId = new Template.Method<Integer>();
-        public final Template.Method<UUID> getUniqueID = new Template.Method<UUID>();
-        public final Template.Method.Converted<DataWatcher> getDataWatcher = new Template.Method.Converted<DataWatcher>();
-        public final Template.Method<Void> onPush = new Template.Method<Void>();
-        public final Template.Method<Integer> getPortalCooldownMaximum = new Template.Method<Integer>();
+        public final Template.Method.Converted<Boolean> isInSameVehicle = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> appendEntityCrashDetails = new Template.Method.Converted<>();
+        public final Template.Method<Integer> getId = new Template.Method<>();
+        public final Template.Method<UUID> getUniqueID = new Template.Method<>();
+        public final Template.Method.Converted<DataWatcher> getDataWatcher = new Template.Method.Converted<>();
+        public final Template.Method<Void> onPush = new Template.Method<>();
+        public final Template.Method<Integer> getPortalCooldownMaximum = new Template.Method<>();
         @Template.Optional
-        public final Template.Method.Converted<Boolean> onInteractBy_1_8_8 = new Template.Method.Converted<Boolean>();
+        public final Template.Method.Converted<Boolean> onInteractBy_1_8_8 = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Boolean> onInteractBy_1_9 = new Template.Method.Converted<Boolean>();
+        public final Template.Method.Converted<Boolean> onInteractBy_1_9 = new Template.Method.Converted<>();
         @Template.Optional
-        public final Template.Method.Converted<Boolean> onInteractBy_1_11_2 = new Template.Method.Converted<Boolean>();
-        public final Template.Method<Boolean> hasCustomName = new Template.Method<Boolean>();
-        public final Template.Method.Converted<ChatText> getCustomName = new Template.Method.Converted<ChatText>();
-        public final Template.Method.Converted<Void> collide = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Entity> getBukkitEntity = new Template.Method.Converted<Entity>();
+        public final Template.Method.Converted<Boolean> onInteractBy_1_11_2 = new Template.Method.Converted<>();
+        public final Template.Method<Boolean> hasCustomName = new Template.Method<>();
+        public final Template.Method.Converted<ChatText> getCustomName = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> collide = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Entity> getBukkitEntity = new Template.Method.Converted<>();
 
     }
 

@@ -54,7 +54,7 @@ public class CommonUtil {
     public static final int BLOCKVIEW;
     public static final Thread MAIN_THREAD = Thread.currentThread();
 
-    private static final Map<String, Class<?>> classMap = new HashMap<String, Class<?>>();
+    private static final Map<String, Class<?>> classMap = new HashMap<>();
     
     static {
     	if (Bukkit.getServer() == null) {
@@ -324,7 +324,7 @@ public class CommonUtil {
         if (elements == null || elements.length == 0) {
             return new StackTraceElement[0];
         }
-        ArrayList<StackTraceElement> rval = new ArrayList<StackTraceElement>(elements.length - 1);
+        ArrayList<StackTraceElement> rval = new ArrayList<>(elements.length - 1);
         for (StackTraceElement elem : elements) {
             if (elem.getClassName().equals(className) && elem.getMethodName().equals(methodName)) {
                 break;
@@ -564,14 +564,11 @@ public class CommonUtil {
 
         // Lock object that keeps us waiting
         final CountDownLatch lock = new CountDownLatch(1);
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    runnable.run();
-                } finally {
-                    lock.countDown();
-                }
+        Runnable r = () -> {
+            try {
+                runnable.run();
+            } finally {
+                lock.countDown();
             }
         };
         nextTick(r);
@@ -755,7 +752,7 @@ public class CommonUtil {
      * @return array of plugins mentioned in the Stack Trace
      */
     public static Plugin[] findPlugins(List<StackTraceElement> stackTrace) {
-        LinkedHashSet<Plugin> found = new LinkedHashSet<Plugin>(3);
+        LinkedHashSet<Plugin> found = new LinkedHashSet<>(3);
         for (StackTraceElement elem : stackTrace) {
             Plugin plugin = getPluginByClass(elem.getClassName());
             if (plugin != null) {
@@ -875,7 +872,7 @@ public class CommonUtil {
             // Get using reflection
             try {
                 Field[] declaredFields = theClass.getDeclaredFields();
-                ArrayList<T> constants = new ArrayList<T>(declaredFields.length);
+                ArrayList<T> constants = new ArrayList<>(declaredFields.length);
                 for (Field field : declaredFields) {
                     if (Modifier.isStatic(field.getModifiers()) && type.isAssignableFrom(field.getType())) {
                         T constant = (T) field.get(null);
@@ -942,9 +939,9 @@ public class CommonUtil {
      */
     public static void unregisterListener(Listener listener) {
         // Query all event types listened to by this listener
-        Set<java.lang.Class<?>> eventTypes = new HashSet<java.lang.Class<?>>();
+        Set<java.lang.Class<?>> eventTypes = new HashSet<>();
         {
-            Set<java.lang.reflect.Method> methods = new HashSet<java.lang.reflect.Method>();
+            Set<java.lang.reflect.Method> methods = new HashSet<>();
             methods.addAll(Arrays.asList(listener.getClass().getMethods()));
             methods.addAll(Arrays.asList(listener.getClass().getDeclaredMethods()));
             for (java.lang.reflect.Method method : methods) {
@@ -1017,7 +1014,7 @@ public class CommonUtil {
                 registeredListenerList.add(requestedIndex, registeredListener);
 
                 // Get the index of the listener in the baked array
-                ArrayList<RegisteredListener> newListeners = new ArrayList<RegisteredListener>(allListeners.length);
+                ArrayList<RegisteredListener> newListeners = new ArrayList<>(allListeners.length);
                 if (first) {
                     newListeners.add(registeredListener);
                     for (RegisteredListener otherListener : allListeners) {

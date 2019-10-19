@@ -35,13 +35,13 @@ public abstract class ChunkProviderServerHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class ChunkProviderServerClass extends Template.Class<ChunkProviderServerHandle> {
-        public final Template.Field.Converted<WorldServerHandle> world = new Template.Field.Converted<WorldServerHandle>();
+        public final Template.Field.Converted<WorldServerHandle> world = new Template.Field.Converted<>();
 
-        public final Template.Method.Converted<ChunkHandle> getChunkAt = new Template.Method.Converted<ChunkHandle>();
-        public final Template.Method<Executor> getAsyncExecutor = new Template.Method<Executor>();
-        public final Template.Method<Void> getChunkAtAsync = new Template.Method<Void>();
-        public final Template.Method.Converted<Void> saveLoadedChunk = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> markBlockDirty = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<ChunkHandle> getChunkAt = new Template.Method.Converted<>();
+        public final Template.Method<Executor> getAsyncExecutor = new Template.Method<>();
+        public final Template.Method<Void> getChunkAtAsync = new Template.Method<>();
+        public final Template.Method.Converted<Void> saveLoadedChunk = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> markBlockDirty = new Template.Method.Converted<>();
 
     }
 

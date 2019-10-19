@@ -12,10 +12,10 @@ public class MobEffectList {
     }
 
     public static int getId(MobEffectList mobeffectlist) {
-        return mobeffectlist.getId().intValue();
+        return mobeffectlist.getId();
     }
 
     public static MobEffectList fromId(int id) {
-        return new MobEffectList(Integer.valueOf(id));
+        return new MobEffectList(id);
     }
 }

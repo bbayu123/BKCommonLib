@@ -75,7 +75,7 @@ public class CraftBukkitServer extends CommonServerBase {
             if (Bukkit.getServer() != null) {
                 // Obtain MinecraftServer instance from server
                 Class<?> server = Class.forName(CB_ROOT_VERSIONED + ".CraftServer");
-                MethodAccessor<Object> getServer = new SafeMethod<Object>(server, "getServer");
+                MethodAccessor<Object> getServer = new SafeMethod<>(server, "getServer");
                 Object minecraftServerInstance = getServer.invoke(Bukkit.getServer());
 
                 // Use getVersion() on this instance

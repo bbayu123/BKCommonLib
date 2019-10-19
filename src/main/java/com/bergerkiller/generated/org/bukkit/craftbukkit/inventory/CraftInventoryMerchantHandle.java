@@ -31,7 +31,7 @@ public abstract class CraftInventoryMerchantHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class CraftInventoryMerchantClass extends Template.Class<CraftInventoryMerchantHandle> {
-        public final Template.StaticMethod.Converted<MerchantInventory> createNew = new Template.StaticMethod.Converted<MerchantInventory>();
+        public final Template.StaticMethod.Converted<MerchantInventory> createNew = new Template.StaticMethod.Converted<>();
 
     }
 

@@ -92,7 +92,7 @@ public class CommonTagCompound extends CommonTag implements Map<String, CommonTa
             Long uuidMost = putGetRemove(op, key + "UUIDMost", Long.class, (uuid == null) ? null : uuid.getMostSignificantBits());
             Long uuidLeast = putGetRemove(op, key + "UUIDLeast", Long.class, (uuid == null) ? null : uuid.getLeastSignificantBits());
             if (uuidMost != null && uuidLeast != null) {
-                return (T) new UUID(uuidMost.longValue(), uuidLeast.longValue());
+                return (T) new UUID(uuidMost, uuidLeast);
             }
         } else if (type == BlockLocation.class) {
             // == BlockLocation ==
@@ -102,7 +102,7 @@ public class CommonTagCompound extends CommonTag implements Map<String, CommonTa
             Integer y = putGetRemove(op, key + "Y", Integer.class, (pos == null) ? null : pos.y);
             Integer z = putGetRemove(op, key + "Z", Integer.class,  (pos == null) ? null : pos.z);
             if (world != null && !world.isEmpty() && x != null && y != null && z != null) {
-                return (T) new BlockLocation(world, x.intValue(), y.intValue(), z.intValue());
+                return (T) new BlockLocation(world, x, y, z);
             }
         } else if (type == IntVector3.class) {
             // == IntVector3 ==
@@ -111,7 +111,7 @@ public class CommonTagCompound extends CommonTag implements Map<String, CommonTa
             Integer y = putGetRemove(op, key + "Y", Integer.class, (pos == null) ? null : pos.y);
             Integer z = putGetRemove(op, key + "Z", Integer.class, (pos == null) ? null : pos.z);
             if (x != null && y != null && z != null) {
-                return (T) new IntVector3(x.intValue(), y.intValue(), z.intValue());
+                return (T) new IntVector3(x, y, z);
             }
         } else if (type == boolean.class || type == Boolean.class) {
             // == Booleans (serialized as Byte) ==

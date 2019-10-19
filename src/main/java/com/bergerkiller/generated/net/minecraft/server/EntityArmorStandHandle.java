@@ -42,19 +42,19 @@ public abstract class EntityArmorStandHandle extends EntityLivingHandle {
      */
     public static final class EntityArmorStandClass extends Template.Class<EntityArmorStandHandle> {
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Byte>> DATA_ARMORSTAND_FLAGS = new Template.StaticField.Converted<Key<Byte>>();
+        public final Template.StaticField.Converted<Key<Byte>> DATA_ARMORSTAND_FLAGS = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_HEAD = new Template.StaticField.Converted<Key<Vector>>();
+        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_HEAD = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_BODY = new Template.StaticField.Converted<Key<Vector>>();
+        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_BODY = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_ARM_LEFT = new Template.StaticField.Converted<Key<Vector>>();
+        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_ARM_LEFT = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_ARM_RIGHT = new Template.StaticField.Converted<Key<Vector>>();
+        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_ARM_RIGHT = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_LEG_LEFT = new Template.StaticField.Converted<Key<Vector>>();
+        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_LEG_LEFT = new Template.StaticField.Converted<>();
         @Template.Optional
-        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_LEG_RIGHT = new Template.StaticField.Converted<Key<Vector>>();
+        public final Template.StaticField.Converted<Key<Vector>> DATA_POSE_LEG_RIGHT = new Template.StaticField.Converted<>();
 
     }
 

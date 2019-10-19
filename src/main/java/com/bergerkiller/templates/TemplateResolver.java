@@ -14,7 +14,7 @@ import com.bergerkiller.mountiplex.reflection.declarations.SourceDeclaration;
 import com.bergerkiller.mountiplex.reflection.resolver.ClassDeclarationResolver;
 
 public class TemplateResolver implements ClassDeclarationResolver {
-    private HashMap<Class<?>, List<ClassDeclaration>> classes = new HashMap<Class<?>, List<ClassDeclaration>>();
+    private HashMap<Class<?>, List<ClassDeclaration>> classes = new HashMap<>();
     private boolean classes_loaded = false;
     private String version = "UNKNOWN";
     private String pre_version = null;
@@ -58,7 +58,7 @@ public class TemplateResolver implements ClassDeclarationResolver {
      * @return all class declarations
      */
     public Collection<ClassDeclaration> all() {
-        List<ClassDeclaration> all = new ArrayList<ClassDeclaration>(classes.size() + 10);
+        List<ClassDeclaration> all = new ArrayList<>(classes.size() + 10);
         for (List<ClassDeclaration> ls : classes.values()) {
             all.addAll(ls);
         }
@@ -70,7 +70,7 @@ public class TemplateResolver implements ClassDeclarationResolver {
      */
     public void unload() {
         this.classes_loaded = false;
-        this.classes = new HashMap<Class<?>, List<ClassDeclaration>>(0);
+        this.classes = new HashMap<>(0);
     }
 
     /**
@@ -83,7 +83,7 @@ public class TemplateResolver implements ClassDeclarationResolver {
             this.pre_version = preVersion(Common.MC_VERSION);
 
             String templatePath = "com/bergerkiller/templates/init.txt";
-            Map<String, String> variables = new HashMap<String, String>();
+            Map<String, String> variables = new HashMap<>();
             variables.put("version", this.version);
             if (this.pre_version != null) {
                 variables.put("pre", this.pre_version);
@@ -108,7 +108,7 @@ public class TemplateResolver implements ClassDeclarationResolver {
         if (old_list == null) {
             classes.put(cdec.type.type, Collections.singletonList(cdec));
         } else {
-            ArrayList<ClassDeclaration> new_list = new ArrayList<ClassDeclaration>(old_list);
+            ArrayList<ClassDeclaration> new_list = new ArrayList<>(old_list);
             new_list.add(cdec);
             new_list.trimToSize();
             classes.put(cdec.type.type, new_list);

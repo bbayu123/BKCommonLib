@@ -46,7 +46,7 @@ public class Graph {
     /**
      * The set of plotters that are contained within this graph
      */
-    private final Map<String, Object> plotters = new LinkedHashMap<String, Object>();
+    private final Map<String, Object> plotters = new LinkedHashMap<>();
 
     /**
      * Constructs a new default Graph for the plugin. The name of this new Graph

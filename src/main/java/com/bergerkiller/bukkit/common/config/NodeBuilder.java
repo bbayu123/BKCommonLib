@@ -10,7 +10,7 @@ import java.util.LinkedList;
  */
 public class NodeBuilder {
 
-    private LinkedList<String> nodes = new LinkedList<String>();
+    private LinkedList<String> nodes = new LinkedList<>();
     private int indent;
 
     /**

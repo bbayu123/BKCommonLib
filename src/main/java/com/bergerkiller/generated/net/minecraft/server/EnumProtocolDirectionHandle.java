@@ -28,8 +28,8 @@ public abstract class EnumProtocolDirectionHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class EnumProtocolDirectionClass extends Template.Class<EnumProtocolDirectionHandle> {
-        public final Template.EnumConstant.Converted<EnumProtocolDirectionHandle> SERVERBOUND = new Template.EnumConstant.Converted<EnumProtocolDirectionHandle>();
-        public final Template.EnumConstant.Converted<EnumProtocolDirectionHandle> CLIENTBOUND = new Template.EnumConstant.Converted<EnumProtocolDirectionHandle>();
+        public final Template.EnumConstant.Converted<EnumProtocolDirectionHandle> SERVERBOUND = new Template.EnumConstant.Converted<>();
+        public final Template.EnumConstant.Converted<EnumProtocolDirectionHandle> CLIENTBOUND = new Template.EnumConstant.Converted<>();
 
     }
 

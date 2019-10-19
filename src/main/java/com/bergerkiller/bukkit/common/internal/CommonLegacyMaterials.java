@@ -22,11 +22,11 @@ import com.bergerkiller.mountiplex.reflection.util.FastMethod;
  * Helper methods for all legacy Material API
  */
 public class CommonLegacyMaterials {
-    private static final HashMap<Integer, Material> idToMaterial = new HashMap<Integer, Material>();
-    private static final EnumMap<Material, Integer> materialToId = new EnumMap<Material, Integer>(Material.class);
-    private static final EnumMap<Material, Material> materialToLegacy = new EnumMap<Material, Material>(Material.class);
+    private static final HashMap<Integer, Material> idToMaterial = new HashMap<>();
+    private static final EnumMap<Material, Integer> materialToId = new EnumMap<>(Material.class);
+    private static final EnumMap<Material, Material> materialToLegacy = new EnumMap<>(Material.class);
     private static final Material[] allLegacyMaterialValues;
-    private static final FastMethod<Boolean> isLegacyMethod = new FastMethod<Boolean>();
+    private static final FastMethod<Boolean> isLegacyMethod = new FastMethod<>();
 
     static {
         // This method gets whether a material is legacy, or not
@@ -48,7 +48,7 @@ public class CommonLegacyMaterials {
         if (CommonCapabilities.MATERIAL_ENUM_CHANGES) {
             // Material names that start with LEGACY_ are legacy material values
             // We do not use isLegacy() on purpose when under test to avoid initialization of templates
-            List<Material> legacyMaterials = new ArrayList<Material>();
+            List<Material> legacyMaterials = new ArrayList<>();
             for (Material material : MaterialsByName.getAllMaterials()) {
                 if (isLegacy(material)) {
                     legacyMaterials.add(material);
@@ -68,7 +68,7 @@ public class CommonLegacyMaterials {
             try {
                 java.lang.reflect.Method m = Material.class.getDeclaredMethod("getId");
                 for (Material mat : getAllMaterials()) {
-                    int id = ((Integer) m.invoke(mat)).intValue();
+                    int id = ((Integer) m.invoke(mat));
                     idToMaterial.put(id, mat);
                     materialToId.put(mat, id);
                 }
@@ -85,7 +85,7 @@ public class CommonLegacyMaterials {
         if (CommonCapabilities.MATERIAL_ENUM_CHANGES) {
             // Use CraftLegacy toLegacy(material) to convert them by default
             // Some we override ourselves, which is done by IBlockDataToMaterialData utility class
-            SafeMethod<Material> craftbukkitToLegacy = new SafeMethod<Material>(CommonUtil.getCBClass("util.CraftLegacy"), "toLegacy", Material.class);
+            SafeMethod<Material> craftbukkitToLegacy = new SafeMethod<>(CommonUtil.getCBClass("util.CraftLegacy"), "toLegacy", Material.class);
             for (Material material :  MaterialsByName.getAllMaterials()) {
                 if (isLegacy(material)) {
                     continue;

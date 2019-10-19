@@ -159,6 +159,7 @@ public class EntityMoveEvent extends EntityEvent {
         return entityHandle.getPitch();
     }
 
+    @Override
     public HandlerList getHandlers() {
         return handlers;
     }

@@ -12,7 +12,7 @@ import com.bergerkiller.bukkit.common.map.widgets.MapWidget;
 public class MapWidgetNavigator {
 
     public static List<MapWidget> getFocusableWidgets(MapWidget widget) {
-        List<MapWidget> result = new ArrayList<MapWidget>();
+        List<MapWidget> result = new ArrayList<>();
         addFocusableWidgets(result, widget);
         return result;
     }

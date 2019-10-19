@@ -12,7 +12,7 @@ public abstract class ImplicitlySharedHolder<T> implements AutoCloseable {
     protected Reference<T> ref;
 
     public ImplicitlySharedHolder(T value) {
-        this(new Reference<T>(value));
+        this(new Reference<>(value));
     }
 
     protected ImplicitlySharedHolder(Reference<T> reference) {
@@ -84,7 +84,7 @@ public abstract class ImplicitlySharedHolder<T> implements AutoCloseable {
 
             // Create a clone (while having old_ref locked!)
             // Lock this clone, so it can not be modified the moment it is assigned
-            Reference<T> new_ref = new Reference<T>(this.cloneValue(old_ref.val));
+            Reference<T> new_ref = new Reference<>(this.cloneValue(old_ref.val));
             new_ref.ctr++;
             new_ref.open();
 

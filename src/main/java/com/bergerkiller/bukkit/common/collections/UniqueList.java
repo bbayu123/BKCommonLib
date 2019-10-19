@@ -40,7 +40,7 @@ public class UniqueList<E> extends ArrayList<E> {
      */
     public UniqueList(int capacity) {
         super(capacity);
-        uniqueElements = new HashSet<E>(capacity);
+        uniqueElements = new HashSet<>(capacity);
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.bergerkiller.bukkit.common.internal.CommonNMS;
 import com.bergerkiller.bukkit.common.inventory.CraftRecipe;
 import com.bergerkiller.bukkit.common.inventory.ItemParser;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 import com.bergerkiller.generated.net.minecraft.server.CraftingManagerHandle;
 import com.bergerkiller.generated.net.minecraft.server.FurnaceRecipeHandle;
 import com.bergerkiller.generated.net.minecraft.server.IRecipeHandle;
@@ -23,7 +24,7 @@ import java.util.*;
 
 public class RecipeUtil {
 
-    private static final EnumMap<Material, Integer> fuelTimes = new EnumMap<Material, Integer>(Material.class);
+    private static final EnumMap<Material, Integer> fuelTimes = new EnumMap<>(Material.class);
 
     static {
         // Store initial values
@@ -31,7 +32,7 @@ public class RecipeUtil {
             ItemStackHandle item = ItemStackHandle.newInstance();
             item.setTypeField(material);
             item.setAmountField(1);
-            int fuel = ((Integer) TileEntityFurnaceHandle.T.fuelTime.raw.invoke(item.getRaw())).intValue();
+            int fuel = ((Integer) TileEntityFurnaceHandle.T.fuelTime.raw.invoke(item.getRaw()));
             if (fuel > 0) {
                 fuelTimes.put(material, fuel);
             }
@@ -39,7 +40,7 @@ public class RecipeUtil {
 
         // Store legacy material values too
         for (Material legacyMaterial : CommonLegacyMaterials.getAllLegacyMaterials()) {
-            Material modernType = BlockData.fromMaterial(legacyMaterial).getType();
+            Material modernType = BlockDataRegistry.fromMaterial(legacyMaterial).getType();
             Integer modernFuelValue = fuelTimes.get(modernType);
             if (modernFuelValue != null) {
                 fuelTimes.put(legacyMaterial, modernFuelValue);
@@ -110,7 +111,7 @@ public class RecipeUtil {
     public static Set<Integer> getHeatableItems() {
         DuplexConverter<?, Integer> conv = DuplexConverter.pair(Conversion.toItemId, Conversion.toItemStackHandle);
         Map<?, ?> recipes = (Map<?, ?>) RecipesFurnaceHandle.T.recipes.raw.get(RecipesFurnaceHandle.getInstance().getRaw());
-        return new ConvertingSet<Integer>(recipes.keySet(), conv);
+        return new ConvertingSet<>(recipes.keySet(), conv);
     }
 
     /**
@@ -121,7 +122,7 @@ public class RecipeUtil {
      * @return the Crafting Recipes that can craft the item specified
      */
     public static CraftRecipe[] getCraftingRequirements(Material type, int data) {
-        List<CraftRecipe> poss = new ArrayList<CraftRecipe>(2);
+        List<CraftRecipe> poss = new ArrayList<>(2);
         for (IRecipeHandle rec : getCraftRecipes()) {
             ItemStack item = rec.getOutput();
             if (item != null && (type == null || item.getType() == type) && (data == -1 || MaterialUtil.getRawData(item) == data)) {

@@ -29,8 +29,8 @@ public abstract class FoodMetaDataHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class FoodMetaDataClass extends Template.Class<FoodMetaDataHandle> {
-        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<Void>();
-        public final Template.Method.Converted<Void> saveToNBT = new Template.Method.Converted<Void>();
+        public final Template.Method.Converted<Void> loadFromNBT = new Template.Method.Converted<>();
+        public final Template.Method.Converted<Void> saveToNBT = new Template.Method.Converted<>();
 
     }
 

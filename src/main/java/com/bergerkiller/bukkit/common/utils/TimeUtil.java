@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 public class TimeUtil {
 
-    private static final StringMap<Integer> times = new StringMap<Integer>();
+    private static final StringMap<Integer> times = new StringMap<>();
 
     static {
         times.put("dawn", 22000);

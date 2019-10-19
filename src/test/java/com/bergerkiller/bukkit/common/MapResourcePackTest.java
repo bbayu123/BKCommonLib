@@ -19,6 +19,7 @@ import com.bergerkiller.bukkit.common.map.util.MapDebugWindow;
 import com.bergerkiller.bukkit.common.map.util.Model;
 import com.bergerkiller.bukkit.common.utils.ItemUtil;
 import com.bergerkiller.bukkit.common.wrappers.BlockData;
+import com.bergerkiller.bukkit.common.wrappers.BlockDataRegistry;
 
 /**
  * These test the various texture/model loading routines of the Map Resource Pack
@@ -107,7 +108,7 @@ public class MapResourcePackTest {
         // All of these have animations or a complicated model
         // We need to define a simplified placeholder model to make it work
         // This acts as a TODO list for models to fix
-        HashSet<String> ignore = new HashSet<String>();
+        HashSet<String> ignore = new HashSet<>();
         ignore.add("bed");
         ignore.add("chest");
         ignore.add("trapped_chest");
@@ -160,7 +161,7 @@ public class MapResourcePackTest {
         // All of these have animations or a complicated model
         // We need to define a simplified placeholder model to make it work
         // This acts as a TODO list for models to fix
-        HashSet<String> ignore = new HashSet<String>();
+        HashSet<String> ignore = new HashSet<>();
         ignore.add("bed");
         ignore.add("skull");
         ignore.add("barrier");
@@ -190,7 +191,7 @@ public class MapResourcePackTest {
         ignore.add("silver_shulker_box");
 
         boolean hasLoadErrors = false;
-        for (BlockData block : BlockData.values()) {
+        for (BlockData block : BlockDataRegistry.values()) {
             Model model = resourcePack.getBlockModel(block);
             String name = block.getBlockName();
             if (model.placeholder && !ignore.contains(name)) {

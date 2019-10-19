@@ -17,7 +17,7 @@ import java.util.List;
  */
 public abstract class InstanceBuffer<E> extends AbstractList<E> {
 
-    private final ArrayList<E> buffer = new ArrayList<E>();
+    private final ArrayList<E> buffer = new ArrayList<>();
     private int size = 0;
 
     /**

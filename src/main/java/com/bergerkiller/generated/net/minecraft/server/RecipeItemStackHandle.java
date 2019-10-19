@@ -37,9 +37,9 @@ public abstract class RecipeItemStackHandle extends Template.Handle {
      */
     public static final class RecipeItemStackClass extends Template.Class<RecipeItemStackHandle> {
         @Template.Optional
-        public final Template.Field.Converted<List<ItemStack>> choices = new Template.Field.Converted<List<ItemStack>>();
+        public final Template.Field.Converted<List<ItemStack>> choices = new Template.Field.Converted<>();
 
-        public final Template.Method.Converted<List<ItemStack>> getChoices = new Template.Method.Converted<List<ItemStack>>();
+        public final Template.Method.Converted<List<ItemStack>> getChoices = new Template.Method.Converted<>();
 
     }
 

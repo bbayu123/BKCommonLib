@@ -45,14 +45,14 @@ public abstract class MapIconHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class MapIconClass extends Template.Class<MapIconHandle> {
-        public final Template.StaticMethod.Converted<MapIconHandle> createNew = new Template.StaticMethod.Converted<MapIconHandle>();
-        public final Template.StaticMethod.Converted<MapIconHandle> fromCursor = new Template.StaticMethod.Converted<MapIconHandle>();
+        public final Template.StaticMethod.Converted<MapIconHandle> createNew = new Template.StaticMethod.Converted<>();
+        public final Template.StaticMethod.Converted<MapIconHandle> fromCursor = new Template.StaticMethod.Converted<>();
 
-        public final Template.Method<MapCursor> toCursor = new Template.Method<MapCursor>();
-        public final Template.Method<Byte> getTypeid = new Template.Method<Byte>();
-        public final Template.Method<Byte> getX = new Template.Method<Byte>();
-        public final Template.Method<Byte> getY = new Template.Method<Byte>();
-        public final Template.Method<Byte> getDirection = new Template.Method<Byte>();
+        public final Template.Method<MapCursor> toCursor = new Template.Method<>();
+        public final Template.Method<Byte> getTypeid = new Template.Method<>();
+        public final Template.Method<Byte> getX = new Template.Method<>();
+        public final Template.Method<Byte> getY = new Template.Method<>();
+        public final Template.Method<Byte> getDirection = new Template.Method<>();
 
     }
 
@@ -85,7 +85,7 @@ public abstract class MapIconHandle extends Template.Handle {
          * Methods, fields, and constructors can be used without using Handle Objects.
          */
         public static final class TypeClass extends Template.Class<TypeHandle> {
-            public final Template.StaticMethod.Converted<TypeHandle> fromId = new Template.StaticMethod.Converted<TypeHandle>();
+            public final Template.StaticMethod.Converted<TypeHandle> fromId = new Template.StaticMethod.Converted<>();
 
         }
 

@@ -100,7 +100,7 @@ public class CommonMapUUIDStore {
      */
     public static UUID getStaticMapUUID(int mapId) {
         // Turn Map durability into an UUID
-        long leastBits = (long) mapId;
+        long leastBits = mapId;
         long mostBits = 0L;
         return new UUID(mostBits, leastBits);
     }

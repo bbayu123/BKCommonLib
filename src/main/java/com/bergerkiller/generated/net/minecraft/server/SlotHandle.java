@@ -28,7 +28,7 @@ public abstract class SlotHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class SlotClass extends Template.Class<SlotHandle> {
-        public final Template.Method.Converted<ItemStack> getItem = new Template.Method.Converted<ItemStack>();
+        public final Template.Method.Converted<ItemStack> getItem = new Template.Method.Converted<>();
 
     }
 

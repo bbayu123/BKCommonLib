@@ -16,6 +16,7 @@ import com.bergerkiller.generated.net.minecraft.server.WorldServerHandle;
 import com.bergerkiller.generated.net.minecraft.server.BiomeBaseHandle.BiomeMetaHandle;
 import com.bergerkiller.mountiplex.conversion.util.ConvertingList;
 import com.bergerkiller.mountiplex.reflection.ClassHook;
+import com.bergerkiller.mountiplex.reflection.ClassInterceptor;
 import com.bergerkiller.mountiplex.reflection.SafeField;
 
 public class ChunkGeneratorHook extends ClassHook<ChunkGeneratorHook> {
@@ -39,7 +40,7 @@ public class ChunkGeneratorHook extends ClassHook<ChunkGeneratorHook> {
     public static void hook(org.bukkit.World world) {
         Object cps = getCPS(world);
         Object generator = cpsChunkGeneratorField.get(cps);
-        ChunkGeneratorHook hook = ChunkGeneratorHook.get(generator, ChunkGeneratorHook.class);
+        ChunkGeneratorHook hook = ClassInterceptor.get(generator, ChunkGeneratorHook.class);
         if (hook == null && generator != null && !Modifier.isFinal(generator.getClass().getModifiers())) {
             try {
                 hook = new ChunkGeneratorHook(world);
@@ -54,10 +55,10 @@ public class ChunkGeneratorHook extends ClassHook<ChunkGeneratorHook> {
     public static void unhook(org.bukkit.World world) {
         Object cps = getCPS(world);
         Object generator = cpsChunkGeneratorField.get(cps);
-        ChunkGeneratorHook hook = ChunkGeneratorHook.get(generator, ChunkGeneratorHook.class);
+        ChunkGeneratorHook hook = ClassInterceptor.get(generator, ChunkGeneratorHook.class);
         if (hook != null) {
             try {
-                generator = ChunkGeneratorHook.unhook(generator);
+                generator = ClassInterceptor.unhook(generator);
                 cpsChunkGeneratorField.set(cps, generator);
             } catch (Throwable t) {
                 t.printStackTrace();
@@ -80,11 +81,11 @@ public class ChunkGeneratorHook extends ClassHook<ChunkGeneratorHook> {
             }
             // Wrap the parameters and send the event along
             BlockPositionHandle pos = BlockPositionHandle.createHandle(blockposition);
-            List<BiomeMetaHandle> mobsHandles = new ConvertingList<BiomeMetaHandle>(mobs, BiomeMetaHandle.T.getHandleConverter());
+            List<BiomeMetaHandle> mobsHandles = new ConvertingList<>(mobs, BiomeMetaHandle.T.getHandleConverter());
             mobsHandles = CommonPlugin.getInstance().getEventFactory().handleCreaturePreSpawn(this.world, 
                     pos.getX(), pos.getY(), pos.getZ(), mobsHandles);
 
-            return new ConvertingList<Object>(mobsHandles, BiomeMetaHandle.T.getHandleConverter().reverse());
+            return new ConvertingList<>(mobsHandles, BiomeMetaHandle.T.getHandleConverter().reverse());
         } else {
             return mobs;
         }

@@ -108,7 +108,7 @@ public class MapResourcePackDownloadedArchive implements MapResourcePackArchive 
                 // Create new entry if needed
                 if (foundEntry == null) {
                     foundEntry = new PackIndex.Entry();
-                    index.entries = new ArrayList<PackIndex.Entry>(index.entries);
+                    index.entries = new ArrayList<>(index.entries);
                     index.entries.add(foundEntry);
                 }
 

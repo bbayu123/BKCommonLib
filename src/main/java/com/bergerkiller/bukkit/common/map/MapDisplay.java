@@ -60,7 +60,7 @@ public class MapDisplay implements MapDisplayEvents {
     private final MapSession session = new MapSession(this);
     private int width, height;
     private final MapClip clip = new MapClip();
-    private List<MapDisplayTile> tiles = new ArrayList<MapDisplayTile>();
+    private List<MapDisplayTile> tiles = new ArrayList<>();
     private byte[] zbuffer = null;
     private byte[] livebuffer = null;
     private Layer layerStack;
@@ -389,7 +389,7 @@ public class MapDisplay implements MapDisplayEvents {
     }
 
     private final List<CommonPacket> getUpdatePackets(MapClip clip) {
-        List<CommonPacket> packets = new ArrayList<CommonPacket>(this.tiles.size());
+        List<CommonPacket> packets = new ArrayList<>(this.tiles.size());
         for (MapDisplayTile tile : this.tiles) {
             tile.addUpdatePackets(packets, clip);
         }
@@ -470,7 +470,7 @@ public class MapDisplay implements MapDisplayEvents {
      * @return list of owners
      */
     public List<Player> getOwners() {
-        ArrayList<Player> owners = new ArrayList<Player>(this.session.onlineOwners.size());
+        ArrayList<Player> owners = new ArrayList<>(this.session.onlineOwners.size());
         for (MapSession.Owner owner : this.session.onlineOwners) {
             owners.add(owner.player);
         }
@@ -483,7 +483,7 @@ public class MapDisplay implements MapDisplayEvents {
      * @return list of viewers
      */
     public List<Player> getViewers() {
-        ArrayList<Player> viewers = new ArrayList<Player>(this.session.onlineOwners.size());
+        ArrayList<Player> viewers = new ArrayList<>(this.session.onlineOwners.size());
         for (MapSession.Owner owner : this.session.onlineOwners) {
             if (owner.viewing) {
                 viewers.add(owner.player);
@@ -804,12 +804,7 @@ public class MapDisplay implements MapDisplayEvents {
     public final void setRunning(boolean running) {
         if (running) {
             if (this.plugin != null && this.updateTaskId == -1) {
-                this.updateTaskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(this.plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        update();
-                    }
-                }, 1, 1);
+                this.updateTaskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(this.plugin, () -> update(), 1, 1);
 
                 CommonPlugin.getInstance().getMapController().getDisplays().add(getClass(), this);
 
@@ -1301,7 +1296,7 @@ public class MapDisplay implements MapDisplayEvents {
     public static void restartDisplays(ItemStack mapItem) {
         MapDisplayInfo mapInfo = CommonPlugin.getInstance().getMapController().getInfo(mapItem);
         if (mapInfo != null) {
-            for (MapSession session : new ArrayList<MapSession>(mapInfo.sessions)) {
+            for (MapSession session : new ArrayList<>(mapInfo.sessions)) {
                 MapDisplay display = session.display;
                 display.setRunning(false);
                 display.setRunning(true);
@@ -1317,7 +1312,7 @@ public class MapDisplay implements MapDisplayEvents {
     public static void stopDisplays(ItemStack mapItem) {
         MapDisplayInfo mapInfo = CommonPlugin.getInstance().getMapController().getInfo(mapItem);
         if (mapInfo != null) {
-            for (MapSession session : new ArrayList<MapSession>(mapInfo.sessions)) {
+            for (MapSession session : new ArrayList<>(mapInfo.sessions)) {
                 session.display.setRunning(false);
             }
         }
@@ -1330,8 +1325,8 @@ public class MapDisplay implements MapDisplayEvents {
      */
     public static void stopDisplaysForPlugin(Plugin plugin) {
         // End all map display sessions for this plugin
-        for (MapDisplayInfo map : new ArrayList<MapDisplayInfo>(CommonPlugin.getInstance().getMapController().getMaps())) {
-            for (MapSession session : new ArrayList<MapSession>(map.sessions)) {
+        for (MapDisplayInfo map : new ArrayList<>(CommonPlugin.getInstance().getMapController().getMaps())) {
+            for (MapSession session : new ArrayList<>(map.sessions)) {
                 if (session.display.getPlugin() == plugin) {
                     session.display.setRunning(false);
                 }
@@ -1376,7 +1371,7 @@ public class MapDisplay implements MapDisplayEvents {
 
     private static Collection<MapDisplay> getAllDisplaysFromInfo(MapDisplayInfo info) {
         if (info != null) {
-            HashSet<MapDisplay> uniqueDisplays = new HashSet<MapDisplay>(info.sessions.size());
+            HashSet<MapDisplay> uniqueDisplays = new HashSet<>(info.sessions.size());
             for (MapSession session : info.sessions) {
                 if (session.display != null) {
                     uniqueDisplays.add(session.display);

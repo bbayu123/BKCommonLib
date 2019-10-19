@@ -26,11 +26,11 @@ public class Octree<T> implements OctreeIterable<T> {
     protected final OctreePointIterator<T> remove_iter;
 
     public Octree() {
-        this.values = new IndexedCollection<T>();
+        this.values = new IndexedCollection<>();
         this.values.reserve(1);
         this.values.setAt(0, null);
         this.clear();
-        this.remove_iter = new OctreePointIterator<T>(this, 0, 0, 0);
+        this.remove_iter = new OctreePointIterator<>(this, 0, 0, 0);
     }
 
     /**
@@ -100,7 +100,7 @@ public class Octree<T> implements OctreeIterable<T> {
      */
     public void compress() {
         // Iterate all values in the tree to generate a remapping array
-        OctreeDefragmentIterator<T> iter = new OctreeDefragmentIterator<T>(this);
+        OctreeDefragmentIterator<T> iter = new OctreeDefragmentIterator<>(this);
         while (iter.hasNext()) {
             iter.next();
         }
@@ -180,7 +180,7 @@ public class Octree<T> implements OctreeIterable<T> {
 
     @Override
     public OctreeIterator<T> iterator() {
-        return new OctreeIterator<T>(this);
+        return new OctreeIterator<>(this);
     }
 
     /**
@@ -191,12 +191,7 @@ public class Octree<T> implements OctreeIterable<T> {
      * @return iterable
      */
     public OctreeIterable<T> cuboid(final IntVector3 min, final IntVector3 max) {
-        return new OctreeIterable<T>() {
-            @Override
-            public OctreeIterator<T> iterator() {
-                return new OctreeCuboidIterator<T>(Octree.this, min, max);
-            }
-        };
+        return () -> new OctreeCuboidIterator<>(Octree.this, min, max);
     }
 
     protected boolean clean(int parent) {
@@ -389,7 +384,7 @@ public class Octree<T> implements OctreeIterable<T> {
     }
 
     public static void test3() {
-        Octree<String> tree = new Octree<String>();
+        Octree<String> tree = new Octree<>();
 
         tree.put(12214211, 42352352, 235236236, "hello");
         tree.put(12214211, 42352351, 235236236, "wat");
@@ -421,7 +416,7 @@ public class Octree<T> implements OctreeIterable<T> {
     }
 
     public static void test2() {
-        Octree<String> bst = new Octree<String>();
+        Octree<String> bst = new Octree<>();
         IntVector3 test_cluster = new IntVector3(0, 0, 0);
         addCluster(bst, test_cluster.x, test_cluster.y, test_cluster.z, 500, 1000);
         //bst.put(test_cluster.x, test_cluster.y, test_cluster.z, "lol");

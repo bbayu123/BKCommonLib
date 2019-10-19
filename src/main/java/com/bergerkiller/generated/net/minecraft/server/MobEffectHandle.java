@@ -43,14 +43,14 @@ public abstract class MobEffectHandle extends Template.Handle {
      * Methods, fields, and constructors can be used without using Handle Objects.
      */
     public static final class MobEffectClass extends Template.Class<MobEffectHandle> {
-        public final Template.Field.Converted<MobEffectListHandle> effectList = new Template.Field.Converted<MobEffectListHandle>();
+        public final Template.Field.Converted<MobEffectListHandle> effectList = new Template.Field.Converted<>();
         public final Template.Field.Integer duration = new Template.Field.Integer();
         public final Template.Field.Integer amplification = new Template.Field.Integer();
         public final Template.Field.Boolean splash = new Template.Field.Boolean();
         public final Template.Field.Boolean ambient = new Template.Field.Boolean();
         public final Template.Field.Boolean particles = new Template.Field.Boolean();
 
-        public final Template.StaticMethod.Converted<MobEffectHandle> fromNBT = new Template.StaticMethod.Converted<MobEffectHandle>();
+        public final Template.StaticMethod.Converted<MobEffectHandle> fromNBT = new Template.StaticMethod.Converted<>();
 
     }
 
